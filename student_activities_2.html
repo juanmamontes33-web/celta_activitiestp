@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reading activities — Microchips save lives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8F1E4;
+    --cream-2: #F3E9D4;
+    --paper: #FFFCF6;
+    --ink: #1F3D3A;
+    --ink-soft: #355956;
+    --ink-light: #6F8985;
+    --coral: #D26C4A;
+    --coral-soft: #E89677;
+    --mustard: #D9A23B;
+    --border: rgba(31, 61, 58, 0.14);
+    --shadow-sm: 0 2px 8px rgba(31,61,58,.06);
+    --shadow-md: 0 12px 36px -8px rgba(31,61,58,.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header.hero {
+    background: var(--ink); color: var(--cream);
+    padding: 56px 6vw 80px; position: relative;
+  }
+  header.hero::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 40px; background: var(--cream);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 70%);
+  }
+  header .eyebrow {
+    font-family: 'DM Sans', sans-serif; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 12px; color: var(--coral-soft); margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Fraunces', serif; font-weight: 900;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.05; letter-spacing: -0.02em; max-width: 22ch;
+  }
+  header h1 em { font-style: italic; font-weight: 500; color: var(--coral-soft); }
+  header .meta {
+    margin-top: 18px; font-size: 15px; color: rgba(248, 241, 228, 0.78);
+    display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+  }
+  header .meta b { color: var(--cream); font-weight: 600; }
+  header .name-input {
+    margin-top: 28px; display: flex; gap: 12px; max-width: 480px;
+    flex-wrap: wrap;
+  }
+  header .name-input input {
+    flex: 1; min-width: 200px; padding: 12px 18px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    color: var(--cream); border-radius: 999px;
+    font-family: inherit; font-size: 15px;
+    outline: none;
+  }
+  header .name-input input::placeholder { color: rgba(248, 241, 228, 0.45); }
+  header .name-input input:focus { border-color: var(--coral-soft); background: rgba(255,255,255,.12); }
+
+  /* MAIN GRID */
+  main {
+    max-width: 1200px; margin: -28px auto 80px; padding: 0 6vw;
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 36px;
+  }
+  @media (max-width: 980px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  /* ARTICLE CARD */
+  .article-card {
+    background: var(--paper); border-radius: 24px;
+    padding: 40px 44px; box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .article-card .source {
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    color: var(--coral); font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .article-card h2 {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 32px); line-height: 1.15;
+    margin-bottom: 12px; color: var(--ink);
+  }
+  .article-card .byline {
+    font-size: 13px; color: var(--ink-light); margin-bottom: 24px;
+    font-style: italic;
+  }
+  .article-card .lede {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 18px; color: var(--ink-soft); margin-bottom: 24px;
+    padding-bottom: 18px; border-bottom: 1px solid var(--border);
+  }
+  .article-card p {
+    margin-bottom: 18px; font-size: 16px; color: var(--ink);
+  }
+  .article-card p:last-child { margin-bottom: 0; }
+  .article-card .pull {
+    display: inline-block; background: var(--mustard);
+    color: var(--ink); padding: 2px 6px; border-radius: 4px;
+    font-weight: 600;
+  }
+
+  /* ACTIVITY PANEL */
+  .activity-panel { display: flex; flex-direction: column; gap: 24px; }
+  .card {
+    background: var(--paper); border-radius: 24px;
+    padding: 32px; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+  .card .stage-tag {
+    display: inline-block;
+    background: var(--ink); color: var(--cream);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .card.gist .stage-tag { background: var(--coral); }
+  .card.scanning .stage-tag { background: var(--mustard); color: var(--ink); }
+  .card.followup .stage-tag { background: var(--ink-soft); }
+
+  .card h3 {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 24px; line-height: 1.2; margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .card .instruction {
+    font-size: 14px; color: var(--ink-light); margin-bottom: 18px;
+  }
+  .card .question {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+    font-size: 20px; line-height: 1.3; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  textarea, input[type="text"] {
+    width: 100%; padding: 14px 16px;
+    border: 1px solid var(--border); border-radius: 14px;
+    background: var(--cream); color: var(--ink);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    line-height: 1.5; resize: vertical;
+    transition: border-color .15s ease, background .15s ease;
+    outline: none;
+  }
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--coral); background: var(--paper);
+  }
+  textarea { min-height: 90px; }
+
+  .q-block { margin-bottom: 22px; }
+  .q-block:last-child { margin-bottom: 0; }
+  .q-block .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--coral); color: var(--cream);
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px;
+    margin-right: 10px; vertical-align: middle;
+  }
+  .q-block label {
+    display: block; margin-bottom: 10px;
+    font-size: 16px; font-weight: 500; color: var(--ink);
+  }
+  .q-block .evidence {
+    margin-top: 8px; font-size: 13px;
+  }
+  .q-block .evidence-label {
+    display: block; color: var(--ink-light); margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  /* group toggle */
+  .group-pick { display: flex; gap: 10px; margin-bottom: 18px; }
+  .group-pick label {
+    flex: 1; padding: 12px 14px; border-radius: 12px;
+    border: 1.5px solid var(--border); cursor: pointer;
+    text-align: center; font-weight: 600; font-size: 14px;
+    transition: all .15s ease; background: var(--cream);
+  }
+  .group-pick input { display: none; }
+  .group-pick input:checked + label.a {
+    background: var(--ink); color: var(--cream); border-color: var(--ink);
+  }
+  .group-pick input:checked + label.b {
+    background: var(--coral); color: var(--cream); border-color: var(--coral);
+  }
+
+  /* footer / submit */
+  .submit-card {
+    background: var(--ink); color: var(--cream);
+    text-align: center; padding: 36px;
+  }
+  .submit-card h3 { color: var(--cream); }
+  .submit-card .instruction { color: rgba(248, 241, 228, 0.7); }
+  .submit-card button {
+    margin-top: 16px;
+    background: var(--coral); color: var(--cream);
+    border: none; padding: 14px 32px;
+    font-family: inherit; font-weight: 700; font-size: 15px;
+    border-radius: 999px; cursor: pointer;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: transform .12s ease, background .15s ease;
+  }
+  .submit-card button:hover { transform: translateY(-1px); background: var(--coral-soft); }
+  .submit-card button.secondary {
+    background: transparent; border: 1.5px solid rgba(248, 241, 228, 0.3);
+    margin-left: 8px;
+  }
+  .submit-card button.secondary:hover { background: rgba(255,255,255,.06); }
+
+  /* autosave indicator */
+  .autosave {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--paper); color: var(--ink-soft);
+    padding: 10px 16px; border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    box-shadow: var(--shadow-md);
+    opacity: 0; transition: opacity .25s ease;
+    pointer-events: none; z-index: 100;
+  }
+  .autosave.show { opacity: 1; }
+  .autosave .dot {
+    display: inline-block; width: 7px; height: 7px;
+    border-radius: 50%; background: var(--coral);
+    margin-right: 6px; vertical-align: middle;
+  }
+
+  /* modal */
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(31, 61, 58, 0.5);
+    backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200; padding: 20px;
+  }
+  .modal-bg.show { display: flex; }
+  .modal {
+    background: var(--paper); border-radius: 24px;
+    max-width: 640px; width: 100%; max-height: 86vh;
+    overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: 0 30px 80px rgba(0,0,0,.3);
+  }
+  .modal header {
+    padding: 24px 28px; background: var(--ink); color: var(--cream);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal header h3 {
+    font-family: 'Fraunces', serif; font-size: 22px; color: var(--cream);
+  }
+  .modal header button {
+    background: none; border: none; color: var(--cream);
+    font-size: 24px; cursor: pointer; line-height: 1;
+  }
+  .modal .content {
+    padding: 28px; overflow-y: auto;
+  }
+  .modal .content h4 {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    color: var(--coral); margin: 16px 0 6px; font-size: 14px;
+    text-transform: uppercase; letter-spacing: 0.15em;
+  }
+  .modal .content h4:first-child { margin-top: 0; }
+  .modal .content p, .modal .content li {
+    font-size: 14px; color: var(--ink); margin-bottom: 8px;
+  }
+  .modal .content .row {
+    background: var(--cream); padding: 12px 14px; border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .modal .content .row b { color: var(--ink-soft); }
+  .modal footer {
+    padding: 20px 28px; border-top: 1px solid var(--border);
+    display: flex; gap: 10px; justify-content: flex-end;
+  }
+  .modal footer button {
+    background: var(--coral); color: var(--cream); border: none;
+    padding: 10px 22px; border-radius: 999px;
+    font-family: inherit; font-weight: 600; cursor: pointer;
+  }
+  .modal footer button.secondary {
+    background: transparent; color: var(--ink-soft);
+    border: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Reading lesson</div>
+  <h1>Microchips <em>save</em> lives.</h1>
+  <div class="meta">
+    <span><b>Source:</b> Scoop Upworthy</span>
+    <span><b>Author:</b> Shruti Menon</span>
+  </div>
+  <div class="name-input">
+    <input id="studentName" type="text" placeholder="Your name (so I can find your answers)" />
+  </div>
+</header>
+
+<main>
+
+  <!-- LEFT: ARTICLE -->
+  <article class="article-card" id="text">
+    <div class="source">Scoop Upworthy · Animals</div>
+    <h2>After three long years, a lost dog was finally reunited with her family: "Microchips save lives"</h2>
+    <div class="byline">By Shruti Menon — 9 August 2023</div>
+    <div class="lede">A nonprofit organization that helped the family is urging everyone to microchip and register their fur babies.</div>
+
+    <p>Back in <span class="pull">July 2020</span>, a Texas family was left heartbroken when their pups Jack and Jill managed to wrangle their way from the family's fenced-in backyard in Little Rock, Arkansas. Rex and Britnee Smith, who also had a 5-year-old daughter at the time, put up fliers everywhere and knocked on doors to get any information on their lost pitbulls but sadly they had no luck at the time. Over time they ended up moving 300 miles away to McKinney, Texas and still had no idea where their fur babies were.</p>
+
+    <p>That is until three years later, the family received a surprise when they found out one of their pets was recently found safe and sound. "I didn't think our dogs would ever come back because they're such great dogs and I know no one would ever just turn them in or take them to the vet," Britnee shared according to USA Today. The family was contacted by Little Rock Animal Village who informed them that Jill was found alive and credited them for deciding to place a microchip in her.</p>
+
+    <p>In a July Facebook post, they wrote, "Friends of the Animal Village, If we've said it once, we've said it a thousand times… microchips save lives!!! This family just drove all the way from Texas to be reunited with their beloved Jill at the Little Rock Animal Village. Jill went missing two years ago. This reunion would not have happened had she not been microchipped. They were overjoyed when they got the phone call yesterday afternoon. We love a happy ending. Microchips make them possible. Please microchip your pets! And be sure to register them!!" The nonprofit noted that donations "for the price of a cup of coffee" could save so many lives by helping others get the procedure for their pets.</p>
+
+    <p>Britnee was initially worried that Jill had forgotten them and was nervous to pick her up but Jill surprised her. "It's like she never left us," Britnee said. "We picked up right off when she left three years ago. She came right into our arms." Unbelievably she had been found just a few blocks away from their old house. The family wonder what happened for all of those years after Jill disappeared. "We wish she could talk," Rex said. "We have so many questions and we just want to ask her 'Take us from the beginning, what happened?'" The sweet pooch was overall healthy but had suffered some scratches and scrapes. The family took her to a day of pampering at the dog spa where she was groomed and had her teeth cleaned. "We found our family member," Rex added, sharing that Jill loves taking naps with their daughter. They admitted that their daughter's reaction to being reunited with Jill was indescribable. Now the family is hoping Jack finds his way back to them.</p>
+  </article>
+
+  <!-- RIGHT: ACTIVITIES -->
+  <aside class="activity-panel">
+
+    <!-- GIST -->
+    <section class="card gist">
+      <span class="stage-tag">Task 1 · Read for gist</span>
+      <h3>Read quickly — 2 minutes</h3>
+      <p class="instruction">Don't try to understand every word. Just answer the question below in your own words.</p>
+      <p class="question">How was the dog finally found, and how did her family feel?</p>
+      <textarea id="gist" placeholder="Your short answer..." rows="3"></textarea>
+    </section>
+
+    <!-- SCANNING -->
+    <section class="card scanning">
+      <span class="stage-tag">Task 2 · Read for specific information</span>
+      <h3>Find the details — 5 minutes</h3>
+      <p class="instruction">Answer the five questions and copy the line from the text where you found each answer.</p>
+
+      <div class="q-block">
+        <label><span class="num">1</span> What are the names of the family's two pet dogs?</label>
+        <input type="text" id="s1" placeholder="Your answer..." />
+        <div class="evidence">
+          <span class="evidence-label">Copy the line from the text:</span>
+          <textarea id="s1e" rows="2" placeholder="I found this in the text..."></textarea>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label><span class="num">2</span> Where did the family live when the dogs escaped, and where do they live now?</label>
+        <input type="text" id="s2" placeholder="Your answer..." />
+        <div class="evidence">
+          <span class="evidence-label">Copy the line from the text:</span>
+          <textarea id="s2e" rows="2" placeholder="I found this in the text..."></textarea>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label><span class="num">3</span> How many years was the dog missing from her family?</label>
+        <input type="text" id="s3" placeholder="Your answer..." />
+        <div class="evidence">
+          <span class="evidence-label">Copy the line from the text:</span>
+          <textarea id="s3e" rows="2" placeholder="I found this in the text..."></textarea>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label><span class="num">4</span> Who contacted the family to tell them their dog had been found?</label>
+        <input type="text" id="s4" placeholder="Your answer..." />
+        <div class="evidence">
+          <span class="evidence-label">Copy the line from the text:</span>
+          <textarea id="s4e" rows="2" placeholder="I found this in the text..."></textarea>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label><span class="num">5</span> According to the nonprofit, what made the reunion possible?</label>
+        <input type="text" id="s5" placeholder="Your answer..." />
+        <div class="evidence">
+          <span class="evidence-label">Copy the line from the text:</span>
+          <textarea id="s5e" rows="2" placeholder="I found this in the text..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOLLOW-UP -->
+    <section class="card followup">
+      <span class="stage-tag">Task 3 · Speaking · Group discussion</span>
+      <h3>Should all pets be microchipped?</h3>
+      <p class="instruction">Choose your breakout room. Take notes here while your group discusses.</p>
+
+      <div class="group-pick">
+        <input type="radio" name="group" id="ga" value="A" />
+        <label for="ga" class="a">Group A · Advantages</label>
+        <input type="radio" name="group" id="gb" value="B" />
+        <label for="gb" class="b">Group B · Disadvantages</label>
+      </div>
+
+      <label for="notes" style="font-size: 14px; color: var(--ink-soft); display: block; margin-bottom: 8px;">
+        Your group's notes:
+      </label>
+      <textarea id="notes" placeholder="List as many ideas as you can think of — with reasons and examples." rows="6"></textarea>
+    </section>
+
+    <!-- SUBMIT card removed per request -->
+
+  </aside>
+</main>
+
+<div class="autosave" id="autosave"><span class="dot"></span> Your answers are saved on this device</div>
+
+<script>
+  const fieldIds = ['studentName','gist','s1','s1e','s2','s2e','s3','s3e','s4','s4e','s5','s5e','notes'];
+  const KEY = 'lsrt_microchips_answers_v1';
+
+  // restore
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    fieldIds.forEach(id => { if (saved[id] != null) document.getElementById(id).value = saved[id]; });
+    if (saved.group) {
+      const r = document.querySelector('input[name="group"][value="' + saved.group + '"]');
+      if (r) r.checked = true;
+    }
+  } catch (e) {}
+
+  const autosaveEl = document.getElementById('autosave');
+  let autosaveTimer = null;
+  function showAutosave() {
+    autosaveEl.classList.add('show');
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(() => autosaveEl.classList.remove('show'), 1500);
+  }
+
+  function save() {
+    const data = {};
+    fieldIds.forEach(id => data[id] = document.getElementById(id).value);
+    const g = document.querySelector('input[name="group"]:checked');
+    if (g) data.group = g.value;
+    try { localStorage.setItem(KEY, JSON.stringify(data)); showAutosave(); } catch (e) {}
+  }
+
+  fieldIds.forEach(id => document.getElementById(id).addEventListener('input', save));
+  document.querySelectorAll('input[name="group"]').forEach(r => r.addEventListener('change', save));
+</script>
+
+</body>
+</html>
