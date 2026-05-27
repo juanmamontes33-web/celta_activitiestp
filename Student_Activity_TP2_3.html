@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do & Make — Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0a0a14;
+  color: #fff;
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,159,102,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,224,102,0.06), transparent 40%);
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.top-banner {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 22px;
+  padding: 30px 36px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.top-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,159,102,0.15);
+}
+.top-banner h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 36px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  position: relative;
+}
+.top-banner h1 .yellow { color: #FFE066; }
+.top-banner h1 .orange { color: #FF9F66; }
+.top-banner .subtitle {
+  font-size: 14px;
+  color: #a0a0c0;
+  margin-bottom: 14px;
+  position: relative;
+}
+.banner-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.banner-chip {
+  background: rgba(255,255,255,0.08);
+  padding: 5px 14px;
+  border-radius: 18px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.banner-chip.yellow { color: #FFE066; border: 1px solid rgba(255,224,102,0.3); }
+.banner-chip.orange { color: #FF9F66; border: 1px solid rgba(255,159,102,0.3); }
+
+/* SECTION CARDS */
+.section {
+  background: #14141f;
+  border-radius: 22px;
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+.section-number {
+  display: inline-block;
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+}
+.section-1 .section-number { background: #FFE066; }
+.section-2 .section-number { background: #FF9F66; }
+.section-3 .section-number { background: #9FE1CB; }
+.section-4 .section-number { background: #F48FB1; }
+
+.section h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.section .desc {
+  font-size: 14px;
+  color: #a0a0c0;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.section .desc strong { color: #fff; }
+
+/* ─── SECTION 1: TEXT + GIST ─── */
+.text-box {
+  background: #1a1a2e;
+  border-radius: 14px;
+  padding: 22px 26px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 22px;
+  line-height: 2.1;
+}
+.text-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.speaker-avatar {
+  width: 32px; height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 1px;
+}
+.avatar-A { background: #F48FB1; }
+.avatar-M { background: #90CAF9; }
+.text-line .text-content {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #E0E0EF;
+  padding-top: 2px;
+}
+.text-line .name-A { color: #F48FB1; font-weight: 800; }
+.text-line .name-M { color: #90CAF9; font-weight: 800; }
+
+/* Clickable spans for intensive task */
+.coll-span {
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+.coll-span:hover { background: rgba(255,224,102,0.15); }
+.coll-span.found {
+  background: #FFE066;
+  color: #1a1a2e;
+  font-weight: 700;
+  animation: pop 0.3s;
+}
+.coll-span.wrong {
+  background: #C62828;
+  color: #fff;
+  animation: shake 0.4s;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Gist options */
+.gist-question {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gist-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gist-option {
+  background: #1a1a2e;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 14.5px;
+  color: #E0E0EF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.15s;
+}
+.gist-option:hover {
+  border-color: #FFE066;
+  background: #1f1f33;
+}
+.gist-option .opt-letter {
+  width: 30px; height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  background: rgba(255,224,102,0.2);
+  color: #FFE066;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 13px;
+}
+.gist-option.selected {
+  border-color: #FFE066;
+  background: rgba(255,224,102,0.1);
+}
+.gist-option.correct {
+  border-color: #2E7D32 !important;
+  background: rgba(46,125,50,0.2) !important;
+}
+.gist-option.correct .opt-letter {
+  background: #2E7D32 !important;
+  color: #fff !important;
+}
+.gist-option.incorrect {
+  border-color: #C62828 !important;
+  background: rgba(198,40,40,0.2) !important;
+}
+
+/* Progress badges */
+.progress-strip {
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.progress-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFE066;
+}
+.progress-counter {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  color: #fff;
+}
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 8px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFE066, #FF9F66);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+/* ─── SECTION 3: MFP CARDS ─── */
+.mfp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.mfp-card {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.mfp-card.orange-border { border-left: 5px solid #FF9F66; }
+.mfp-card.yellow-border { border-left: 5px solid #FFE066; }
+.mfp-card .emoji-col {
+  text-align: center;
+}
+.mfp-card .emoji-col .emoji {
+  font-size: 38px;
+  margin-bottom: 4px;
+}
+.mfp-card .emoji-col .coll-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 11px;
+  color: #FF9F66;
+  line-height: 1.1;
+}
+.mfp-card.yellow-border .emoji-col .coll-name { color: #FFE066; }
+.mfp-card .info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mfp-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.mfp-row:last-child { border-bottom: none; }
+.mfp-row .mfp-label {
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.mfp-row.m .mfp-label { color: #9FE1CB; }
+.mfp-row.f .mfp-label { color: #FF9F66; }
+.mfp-row.p .mfp-label { color: #FFE066; }
+.mfp-row.a .mfp-label { color: #CE93D8; }
+.mfp-row .mfp-content {
+  color: #E0E0EF;
+}
+.mfp-row .mfp-content strong { color: #fff; }
+.mfp-row .mfp-content .pron {
+  font-family: monospace;
+  background: rgba(255,224,102,0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #FFE066;
+}
+.mfp-row .mfp-content .stress {
+  background: #FFE066;
+  color: #1a1a2e;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+.mfp-row .mfp-content .warn {
+  color: #FFAB91;
+  font-weight: 700;
+  font-size: 11.5px;
+}
+
+/* ─── SECTION 4: CONTROLLED PRACTICE ─── */
+.verb-bank {
+  background: #1a1a2e;
+  border-radius: 14px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 18px;
+}
+.verb-bank-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9FE1CB;
+  margin-bottom: 10px;
+}
+.verb-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.verb-chip {
+  background: #2a2a3e;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.verb-chip:hover {
+  background: #3a3a52;
+  border-color: rgba(255,255,255,0.2);
+}
+.verb-chip.do { color: #FFE066; border-color: rgba(255,224,102,0.3); }
+.verb-chip.make { color: #FF9F66; border-color: rgba(255,159,102,0.3); }
+.verb-chip.selected {
+  transform: scale(1.08);
+  border-width: 2px;
+}
+.verb-chip.do.selected { background: rgba(255,224,102,0.2); border-color: #FFE066; }
+.verb-chip.make.selected { background: rgba(255,159,102,0.2); border-color: #FF9F66; }
+
+.cp-sentence {
+  background: #1a1a2e;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #E0E0EF;
+}
+.cp-num {
+  width: 28px; height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: rgba(255,159,102,0.2);
+  color: #FF9F66;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 13px;
+}
+.cp-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.cp-blank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  height: 32px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 2px dashed rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.5);
+}
+.cp-blank:hover { background: rgba(255,255,255,0.05); }
+.cp-blank.can-fill {
+  border-color: #FFE066;
+  background: rgba(255,224,102,0.1);
+  color: #FFE066;
+  animation: pulse 1s infinite;
+  cursor: pointer;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,224,102,0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(255,224,102,0.05); }
+}
+.cp-blank.filled {
+  border-style: solid;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.cp-blank.correct {
+  background: rgba(46,125,50,0.3) !important;
+  border-color: #4CAF50 !important;
+  color: #A5D6A7 !important;
+}
+.cp-blank.wrong {
+  background: rgba(198,40,40,0.3) !important;
+  border-color: #E53935 !important;
+  color: #FFAB91 !important;
+}
+.cp-result {
+  width: 24px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* HINT STRIP */
+.hint-strip {
+  background: rgba(255,224,102,0.08);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #FFE066;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255,224,102,0.2);
+}
+.hint-badge {
+  background: #FFE066;
+  color: #1a1a2e;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* BUTTONS */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #FFE066, #FF9F66);
+  color: #1a1a2e;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,159,102,0.3); }
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+.score-text { font-size: 14px; font-weight: 700; }
+.score-text.good { color: #A5D6A7; }
+.score-text.partial { color: #FFE066; }
+.score-text.bad { color: #FFAB91; }
+
+/* Mobile */
+@media (max-width: 660px) {
+  body { padding: 18px 12px; }
+  .top-banner, .section { padding: 22px 20px; }
+  .top-banner h1 { font-size: 28px; }
+  .section h2 { font-size: 21px; }
+  .mfp-card { grid-template-columns: 1fr; }
+  .mfp-card .emoji-col { display: flex; align-items: center; gap: 10px; }
+  .mfp-row { grid-template-columns: 1fr; gap: 2px; }
+  .text-line .text-content { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <h1><span class="yellow">Do</span> or <span class="orange">Make</span>?</h1>
+    <div class="subtitle">A conversation between two friends. Read, find, practise! 🎯</div>
+    <div class="banner-chips">
+      <span class="banner-chip yellow">📖 Read</span>
+      <span class="banner-chip orange">🔍 Find collocations</span>
+      <span class="banner-chip yellow">✏️ Practise</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ SECTION 1: TEXT + GIST ═══════════ -->
+  <div class="section section-1">
+    <div class="section-number">SECTION 1</div>
+    <h2>Read the conversation 📖</h2>
+    <p class="desc">Anna and Marco are friends. Read their conversation. Then answer <strong>one question</strong>.</p>
+
+    <!-- TEXT -->
+    <div class="text-box" id="textBox">
+      <div class="text-line">
+        <div class="speaker-avatar avatar-A">A</div>
+        <div class="text-content"><span class="name-A">Anna:</span> Hi Marco! How are you today? Did you <span class="coll-span" data-key="do_homework">do your homework</span> already?</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-M">M</div>
+        <div class="text-content"><span class="name-M">Marco:</span> Yes! I finished it this morning, but it was really difficult. Oh — I almost forgot — I need to <span class="coll-span" data-key="make_phone">make a phone call</span> to my mum quickly. She's waiting for my answer about lunch on Sunday.</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-A">A</div>
+        <div class="text-content"><span class="name-A">Anna:</span> No problem! Before you go, how was school this week? Did you <span class="coll-span" data-key="make_mistake">make a mistake</span> in the science test yesterday? My brother said it was really hard.</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-M">M</div>
+        <div class="text-content"><span class="name-M">Marco:</span> Yes, one of the answers was completely wrong, and I felt really bad about it! But I'm also <span class="coll-span" data-key="do_project">doing a project</span> with Lisa this week, so I'm studying extra and reading lots of new books.</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-A">A</div>
+        <div class="text-content"><span class="name-A">Anna:</span> That sounds great! I really hope you <span class="coll-span" data-key="do_well">do well in your next exam</span> — you deserve it after all this effort.</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-M">M</div>
+        <div class="text-content"><span class="name-M">Marco:</span> Thank you! I hope so too. And what about you? You started a new job last month — is it easy to <span class="coll-span" data-key="make_friends">make friends</span> at your new job?</div>
+      </div>
+      <div class="text-line">
+        <div class="speaker-avatar avatar-A">A</div>
+        <div class="text-content"><span class="name-A">Anna:</span> Honestly, it's quite hard at first when you don't know anyone, but I'm trying my best. The people seem nice — I'm sure things will get better soon!</div>
+      </div>
+    </div>
+
+    <!-- GIST QUESTION -->
+    <div class="gist-question">🎯 What is the conversation about?</div>
+    <div class="gist-options" id="gistOptions">
+      <div class="gist-option" data-letter="A">
+        <div class="opt-letter">A</div>
+        <div>Two friends planning a holiday together</div>
+      </div>
+      <div class="gist-option" data-letter="B">
+        <div class="opt-letter">B</div>
+        <div>Two friends talking about their daily lives and school</div>
+      </div>
+      <div class="gist-option" data-letter="C">
+        <div class="opt-letter">C</div>
+        <div>Two friends arguing about an exam</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SECTION 2: INTENSIVE TASK ═══════════ -->
+  <div class="section section-2">
+    <div class="section-number">SECTION 2</div>
+    <h2>Find the 6 collocations 🔍</h2>
+    <p class="desc">Read the conversation above again. Find and <strong>click on the 6 collocations</strong> with <span style="color:#FFE066;">do</span> and <span style="color:#FF9F66;">make</span>.</p>
+
+    <div class="hint-strip">
+      <span class="hint-badge">Tip</span>
+      <span>3 collocations with <strong>make</strong> + 3 collocations with <strong>do</strong> = 6 total!</span>
+    </div>
+
+    <div class="progress-strip">
+      <span class="progress-label">Found:</span>
+      <span class="progress-counter" id="foundCounter">0 / 6</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%;"></div></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="resetIntensive()">Reset</button>
+      <span class="score-text" id="intensiveScore"></span>
+    </div>
+  </div>
+
+  <!-- ═══════════ SECTION 3: MFPA ═══════════ -->
+  <div class="section section-3">
+    <div class="section-number">SECTION 3</div>
+    <h2>6 collocations to remember ⭐</h2>
+    <p class="desc">For each one: <strong>M</strong>eaning, <strong>F</strong>orm, <strong>P</strong>ronunciation, <strong>A</strong>ppropriacy (when to use it)!</p>
+
+    <div class="mfp-grid">
+
+      <!-- MFPA 1: make a phone call -->
+      <div class="mfp-card orange-border">
+        <div class="emoji-col">
+          <div class="emoji">📞</div>
+          <div class="coll-name">make a<br>phone call</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Use a phone to talk to someone.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>make + a + phone call</strong> (countable) · Past: <strong>made a phone call</strong></div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/meɪk ə <span class="stress">fəʊn</span> kɔːl/</span> Stress on <strong>PHONE</strong>. "a" = weak /ə/</div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Neutral</strong> · spoken &amp; written · works in work and social contexts. More informal: "give sb a call".</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MFPA 2: make a mistake -->
+      <div class="mfp-card orange-border">
+        <div class="emoji-col">
+          <div class="emoji">😅</div>
+          <div class="coll-name">make a<br>mistake</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Do something wrong by accident.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>make + a + mistake</strong> (countable) · Past: <strong>made a mistake</strong></div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/meɪk ə mɪˈ<span class="stress">steɪk</span>/</span> Stress on <strong>-TAKE</strong> (not <span class="warn">mis-</span>!)</div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Neutral</strong> · universal — formal &amp; informal. More formal: "make an error" · informal: "mess up".</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MFPA 3: make friends -->
+      <div class="mfp-card orange-border">
+        <div class="emoji-col">
+          <div class="emoji">🤝</div>
+          <div class="coll-name">make<br>friends</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Meet new people and start a friendship with them.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>make + friends</strong> (plural — <span class="warn">NO "a"!</span>) · Past: <strong>made friends</strong></div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/meɪk ˈ<span class="stress">frendz</span>/</span> /fr/ cluster · final /z/ <strong>voiced</strong> (not /s/)</div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Informal / neutral</strong> · mostly spoken · everyday talk. Often about new places (school, work, travel).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MFPA 4: do your homework -->
+      <div class="mfp-card yellow-border">
+        <div class="emoji-col">
+          <div class="emoji">📚</div>
+          <div class="coll-name" style="color:#FFE066;">do your<br>homework</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Complete the school tasks the teacher gives you to do at home.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>do + your/my + homework</strong> · <span class="warn">⚠ NO "a"! Uncountable!</span> · Past: <strong>did your homework</strong></div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/duː jə ˈ<span class="stress">həʊm</span>wɜːk/</span> Stress on <strong>HOME</strong> · "your" = weak /jə/</div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Neutral</strong> · school / study context · spoken &amp; written. Metaphorical at work: "do your homework before the meeting" = prepare.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MFPA 5: do a project -->
+      <div class="mfp-card yellow-border">
+        <div class="emoji-col">
+          <div class="emoji">📋</div>
+          <div class="coll-name" style="color:#FFE066;">do a<br>project</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Work on a specific piece of research or study on one topic.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>do + a + project</strong> (countable!) · Past: <strong>did a project</strong> · "do a project <strong>on/about</strong> + topic"</div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/duː ə ˈ<span class="stress">prɒ</span>dʒekt/</span> Stress on <strong>PRO-</strong> (1st syll.) — <span class="warn">not pro-JECT!</span></div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Neutral</strong> · school AND work contexts · spoken &amp; written. Very common in professional settings.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MFPA 6: do well in an exam -->
+      <div class="mfp-card yellow-border">
+        <div class="emoji-col">
+          <div class="emoji">🏆</div>
+          <div class="coll-name" style="color:#FFE066;">do well in<br>an exam</div>
+        </div>
+        <div class="info-col">
+          <div class="mfp-row m">
+            <div class="mfp-label">Meaning</div>
+            <div class="mfp-content">Get a good score or result on a test/exam.</div>
+          </div>
+          <div class="mfp-row f">
+            <div class="mfp-label">Form</div>
+            <div class="mfp-content"><strong>do + well + in + an + exam</strong> · <span class="warn">⚠ "well" is an adverb!</span> ✓ do well · ✗ do good</div>
+          </div>
+          <div class="mfp-row p">
+            <div class="mfp-label">Pron</div>
+            <div class="mfp-content"><span class="pron">/duː ˈ<span class="stress">wel</span> ɪn ən ɪɡˈ<span class="stress">zæm</span>/</span> Stress on <strong>WELL</strong> + ex-<strong>AM</strong></div>
+          </div>
+          <div class="mfp-row a">
+            <div class="mfp-label">Appr</div>
+            <div class="mfp-content"><strong>Neutral</strong> · academic context · spoken &amp; written. More formal: "perform well in" / "achieve a good result in".</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════ SECTION 4: CONTROLLED PRACTICE ═══════════ -->
+  <div class="section section-4">
+    <div class="section-number">SECTION 4</div>
+    <h2>Fill in the blanks ✏️</h2>
+    <p class="desc"><strong>Select a verb</strong> from the bank, then <strong>click the blank</strong> to fill it. Click a filled blank to remove it.</p>
+
+    <!-- VERB BANK -->
+    <div class="verb-bank">
+      <div class="verb-bank-label">Verb bank — choose one, then click a blank ↓</div>
+      <div class="verb-chips" id="verbChips">
+        <span class="verb-chip do" data-verb="do">do</span>
+        <span class="verb-chip do" data-verb="does">does</span>
+        <span class="verb-chip do" data-verb="did">did</span>
+        <span class="verb-chip make" data-verb="make">make</span>
+        <span class="verb-chip make" data-verb="makes">makes</span>
+        <span class="verb-chip make" data-verb="made">made</span>
+      </div>
+    </div>
+
+    <div class="hint-strip">
+      <span class="hint-badge">Hint</span>
+      <span id="cpHint">Click a verb above, then click a blank below to fill it.</span>
+    </div>
+
+    <!-- SENTENCES -->
+    <div id="cpSentences"></div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkCP()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetCP()">Reset</button>
+      <span class="score-text" id="cpScore"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════════════
+// SECTION 1 — GIST
+// ════════════════════════════════════════════════════
+const GIST_CORRECT = 'B';
+let gistAnswered = false;
+
+document.querySelectorAll('.gist-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    if (gistAnswered) return;
+    document.querySelectorAll('.gist-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    gistAnswered = true;
+    const letter = opt.dataset.letter;
+    if (letter === GIST_CORRECT) {
+      opt.classList.add('correct');
+    } else {
+      opt.classList.add('incorrect');
+      const correctOpt = document.querySelector(`.gist-option[data-letter="${GIST_CORRECT}"]`);
+      correctOpt.classList.add('correct');
+    }
+  });
+});
+
+// ════════════════════════════════════════════════════
+// SECTION 2 — INTENSIVE TASK (click collocations)
+// ════════════════════════════════════════════════════
+const COLLOCATIONS = ['do_homework','do_well','do_project','make_phone','make_mistake','make_friends'];
+let foundColls = new Set();
+
+document.querySelectorAll('.coll-span').forEach(span => {
+  span.addEventListener('click', () => {
+    const key = span.dataset.key;
+    if (foundColls.has(key)) return;
+    foundColls.add(key);
+    span.classList.add('found');
+    updateIntensiveProgress();
+  });
+});
+
+function updateIntensiveProgress() {
+  const count = foundColls.size;
+  document.getElementById('foundCounter').textContent = `${count} / 6`;
+  document.getElementById('progressFill').style.width = (count / 6 * 100) + '%';
+  const scoreEl = document.getElementById('intensiveScore');
+  if (count === 6) {
+    scoreEl.textContent = '🎉 Excellent! You found all 6 collocations!';
+    scoreEl.className = 'score-text good';
+  } else if (count > 0) {
+    scoreEl.textContent = '';
+  }
+}
+
+function resetIntensive() {
+  foundColls.clear();
+  document.querySelectorAll('.coll-span').forEach(span => {
+    span.classList.remove('found');
+  });
+  document.getElementById('foundCounter').textContent = '0 / 6';
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('intensiveScore').textContent = '';
+}
+
+// ════════════════════════════════════════════════════
+// SECTION 4 — CONTROLLED PRACTICE
+// ════════════════════════════════════════════════════
+const CP_SENTENCES = [
+  { id: 1, before: 'I ',                                                   after: ' my homework every evening.',           answer: 'do',    type: 'do'   },
+  { id: 2, before: 'Last week, I ',                                        after: ' a phone call to my friend.',           answer: 'made',  type: 'make' },
+  { id: 3, before: 'She always ',                                          after: ' mistakes when she speaks English.',    answer: 'makes', type: 'make' },
+  { id: 4, before: 'We are going to ',                                     after: ' a project about animals.',             answer: 'do',    type: 'do'   },
+  { id: 5, before: 'It\'s hard to ',                                       after: ' new friends when you are shy.',        answer: 'make',  type: 'make' },
+  { id: 6, before: 'Maria studies a lot because she wants to ',            after: ' well in her exam.',                    answer: 'do',    type: 'do'   },
+];
+
+let selectedVerb = null;
+let cpFilled = {};
+let cpChecked = false;
+
+function renderCP() {
+  const container = document.getElementById('cpSentences');
+  container.innerHTML = '';
+  CP_SENTENCES.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'cp-sentence';
+
+    const num = document.createElement('div');
+    num.className = 'cp-num';
+    num.textContent = s.id;
+
+    const txt = document.createElement('div');
+    txt.className = 'cp-text';
+    txt.appendChild(document.createTextNode(s.before));
+
+    const blank = document.createElement('span');
+    blank.className = 'cp-blank';
+    blank.dataset.id = s.id;
+
+    const filled = cpFilled[s.id];
+    if (filled) {
+      blank.classList.add('filled');
+      blank.textContent = filled;
+      blank.title = 'Click to remove';
+      blank.onclick = () => {
+        if (cpChecked) return;
+        delete cpFilled[s.id];
+        renderCP();
+      };
+    } else {
+      blank.textContent = '_____';
+      if (selectedVerb) {
+        blank.classList.add('can-fill');
+        blank.onclick = () => {
+          cpFilled[s.id] = selectedVerb;
+          selectedVerb = null;
+          cpChecked = false;
+          updateVerbChips();
+          renderCP();
+        };
+      }
+    }
+
+    txt.appendChild(blank);
+    txt.appendChild(document.createTextNode(s.after));
+
+    const result = document.createElement('div');
+    result.className = 'cp-result';
+    result.id = 'cpResult-' + s.id;
+
+    row.appendChild(num);
+    row.appendChild(txt);
+    row.appendChild(result);
+    container.appendChild(row);
+  });
+
+  if (cpChecked) applyCPResults();
+  updateCPHint();
+}
+
+function updateCPHint() {
+  const hintEl = document.getElementById('cpHint');
+  if (selectedVerb) {
+    hintEl.innerHTML = `<strong>"${selectedVerb}"</strong> selected — now click a blank to fill it!`;
+  } else {
+    hintEl.textContent = 'Click a verb above, then click a blank below to fill it.';
+  }
+}
+
+function updateVerbChips() {
+  document.querySelectorAll('.verb-chip').forEach(chip => {
+    if (chip.dataset.verb === selectedVerb) {
+      chip.classList.add('selected');
+    } else {
+      chip.classList.remove('selected');
+    }
+  });
+}
+
+document.querySelectorAll('.verb-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    if (cpChecked) cpChecked = false;
+    const v = chip.dataset.verb;
+    selectedVerb = (selectedVerb === v) ? null : v;
+    updateVerbChips();
+    renderCP();
+  });
+});
+
+function applyCPResults() {
+  CP_SENTENCES.forEach(s => {
+    const blanks = document.querySelectorAll('.cp-blank');
+    blanks.forEach(b => {
+      if (parseInt(b.dataset.id) === s.id && cpFilled[s.id]) {
+        if (cpFilled[s.id] === s.answer) {
+          b.classList.add('correct');
+        } else {
+          b.classList.add('wrong');
+        }
+      }
+    });
+    const resEl = document.getElementById('cpResult-' + s.id);
+    if (resEl && cpFilled[s.id]) {
+      resEl.textContent = cpFilled[s.id] === s.answer ? '✅' : '❌';
+    }
+  });
+}
+
+function checkCP() {
+  cpChecked = true;
+  const total = CP_SENTENCES.length;
+  const filled = Object.keys(cpFilled).length;
+  const scoreEl = document.getElementById('cpScore');
+
+  if (filled < total) {
+    scoreEl.textContent = `${filled} / ${total} done — fill in all the blanks first!`;
+    scoreEl.className = 'score-text partial';
+    renderCP();
+    return;
+  }
+
+  const correct = CP_SENTENCES.filter(s => cpFilled[s.id] === s.answer).length;
+  if (correct === total) {
+    scoreEl.textContent = `${correct} / ${total} — perfect! 🎉`;
+    scoreEl.className = 'score-text good';
+  } else if (correct >= total / 2) {
+    scoreEl.textContent = `${correct} / ${total} — good job, check the red ones!`;
+    scoreEl.className = 'score-text partial';
+  } else {
+    scoreEl.textContent = `${correct} / ${total} — try again!`;
+    scoreEl.className = 'score-text bad';
+  }
+  renderCP();
+}
+
+function resetCP() {
+  cpFilled = {};
+  selectedVerb = null;
+  cpChecked = false;
+  document.getElementById('cpScore').textContent = '';
+  updateVerbChips();
+  renderCP();
+}
+
+renderCP();
+</script>
+</body>
+</html>
