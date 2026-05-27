@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Simple — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0a0a14;
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+  color: #fff;
+}
+
+.container { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before { content:''; position:absolute; top:-60px; right:-40px; width:220px; height:220px; border-radius:50%; background:rgba(83,74,183,0.15); }
+.hero-tag { font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#7F77DD;font-weight:700;margin-bottom:10px; }
+.hero h1 { font-family:'Fredoka One',cursive;font-size:42px;line-height:1.1;margin-bottom:8px; }
+.hero h1 span { color:#FFE066; }
+.hero-sub { font-size:14px;color:#a0a0c0;line-height:1.6; }
+
+/* SECTION */
+.section {
+  background: #14141e;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 32px 36px;
+}
+.section-num {
+  display:inline-block;
+  width:34px; height:34px;
+  border-radius:50%;
+  background: #534AB7;
+  color:#fff;
+  font-family:'Fredoka One',cursive;
+  font-size:16px;
+  text-align:center;
+  line-height:34px;
+  margin-right:12px;
+}
+.section h2 { font-family:'Fredoka One',cursive;font-size:22px;color:#fff;margin-bottom:8px;display:flex;align-items:center; }
+.section-desc { font-size:13.5px;color:#a0a0c0;line-height:1.7;margin-bottom:22px;padding-left:46px; }
+
+/* READING TEXT */
+.text-box {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:24px 28px;
+  font-size:15px;
+  line-height:2;
+  color:#e8e8f0;
+}
+.text-box .title { font-family:'Fredoka One',cursive;font-size:20px;color:#90CAF9;margin-bottom:12px; }
+.text-box p { margin-bottom:10px; }
+.coll-span {
+  display:inline;
+  cursor:pointer;
+  padding:1px 6px;
+  border-radius:6px;
+  transition:all 0.15s;
+}
+.coll-span:hover { background:rgba(255,224,102,0.15); }
+.coll-span.found {
+  background:rgba(76,175,80,0.25);
+  color:#A5D6A7;
+  font-weight:700;
+}
+.coll-span.found::after { content:' ✓'; color:#A5D6A7; }
+
+/* GIST */
+.gist-options { display:flex;flex-direction:column;gap:10px;margin-top:10px; }
+.gist-opt {
+  background:rgba(255,255,255,0.04);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-size:13.5px;
+  color:#d8d8e8;
+  transition:all 0.15s;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.gist-opt:hover { background:rgba(255,224,102,0.08);border-color:rgba(255,224,102,0.4); }
+.gist-opt .opt-letter {
+  width:30px; height:30px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.06);
+  color:#FFE066;
+  font-family:'Fredoka One',cursive;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:13px;
+}
+.gist-opt.selected.correct { background:rgba(76,175,80,0.18);border-color:#4CAF50;color:#A5D6A7; }
+.gist-opt.selected.wrong { background:rgba(244,67,54,0.18);border-color:#F44336;color:#FFCDD2; }
+.gist-opt.selected.correct .opt-letter { background:#4CAF50;color:#fff; }
+.gist-opt.selected.wrong .opt-letter { background:#F44336;color:#fff; }
+
+/* PROGRESS */
+.progress-row {
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;
+  font-size:12px;color:#a0a0c0;font-weight:700;
+}
+.progress-bar {
+  height:6px;background:rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;margin-top:8px;
+}
+.progress-fill { height:100%;background:linear-gradient(to right,#534AB7,#FFE066);transition:width 0.3s; border-radius:6px;}
+
+/* MFP CARDS */
+.mfp-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px; }
+.mfp-card {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:18px 20px;
+}
+.mfp-card.aff { border-top:4px solid #4CAF50; }
+.mfp-card.neg { border-top:4px solid #F44336; }
+.mfp-card.que { border-top:4px solid #2196F3; }
+
+.mfp-card .head { font-family:'Fredoka One',cursive;font-size:18px;margin-bottom:6px; }
+.mfp-card.aff .head { color:#A5D6A7; }
+.mfp-card.neg .head { color:#FFCDD2; }
+.mfp-card.que .head { color:#90CAF9; }
+.mfp-card .formula {
+  background:rgba(255,255,255,0.06);
+  border-radius:8px;
+  padding:6px 12px;
+  font-size:11px;
+  font-weight:800;
+  color:#FFE066;
+  margin-bottom:10px;
+  letter-spacing:0.3px;
+}
+.mfp-card .examples {
+  font-size:12.5px;
+  color:#d0d0e0;
+  line-height:1.9;
+  font-style:italic;
+}
+.mfp-card .examples strong { color:#FFE066;font-style:normal;font-weight:800; }
+
+/* PRONUNCIATION CARDS */
+.pron-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px; }
+.pron-card {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:16px 18px;
+}
+.pron-card .ipa {
+  display:inline-block;
+  background:rgba(255,255,255,0.08);
+  font-family:'Fredoka One',cursive;
+  font-size:18px;
+  padding:4px 14px;
+  border-radius:10px;
+  margin-bottom:8px;
+}
+.pron-card .ex { font-size:12.5px;color:#d0d0e0;line-height:1.9; }
+.pron-card .ex strong { color:#FFE066;font-weight:800; }
+
+/* CONTROLLED PRACTICE */
+.cp-hint {
+  background: rgba(83,74,183,0.15);
+  border: 1px solid rgba(127,119,221,0.3);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  font-size: 12.5px;
+  color: #CECBF6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cp-hint .badge {
+  background:#534AB7;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;white-space:nowrap;
+}
+
+.verb-bank {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:16px 18px;
+  margin-bottom:20px;
+}
+.verb-bank-label {
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#FFE066;
+  margin-bottom:10px;
+}
+.verb-chips { display:flex;flex-wrap:wrap;gap:8px; }
+.chip {
+  background:#fff;color:#1a1a2e;
+  padding:6px 14px;border-radius:20px;
+  font-size:12.5px;font-weight:700;
+  cursor:pointer;user-select:none;
+  border:1.5px solid transparent;
+  transition:all 0.15s;
+}
+.chip:hover { background:#FFE066;transform:translateY(-1px); }
+.chip.selected { background:#FFE066;color:#1a1a2e;border-color:#FFA000;transform:scale(1.06); }
+.chip.used { background:rgba(255,255,255,0.1);color:#555;cursor:default;text-decoration:line-through; }
+.chip.used:hover { transform:none;background:rgba(255,255,255,0.1); }
+
+.cp-sentences { display:flex;flex-direction:column;gap:10px; }
+.cp-row {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  padding:12px 18px;
+  font-size:14px;
+  color:#e8e8f0;
+  line-height:1.8;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.cp-num {
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(83,74,183,0.4);color:#fff;
+  font-family:'Fredoka One',cursive;font-size:12px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+.blank {
+  display:inline-block;
+  min-width:80px;
+  height:26px;
+  padding:0 12px;
+  border-radius:18px;
+  border:2px dashed rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.3);
+  font-size:12px;font-weight:700;
+  text-align:center;
+  line-height:22px;
+  cursor:pointer;
+  transition:all 0.15s;
+  vertical-align:middle;
+}
+.blank:hover { border-color:rgba(255,224,102,0.5);color:#FFE066; }
+.blank.can-fill { border-color:#FFE066;background:rgba(255,224,102,0.1);color:#FFE066;animation:pulse 1.2s infinite;}
+.blank.filled {
+  border-style:solid;
+  border-color:#534AB7;
+  background:rgba(83,74,183,0.25);
+  color:#FFE066;
+  font-weight:800;
+}
+.blank.correct {
+  border-color:#4CAF50 !important;
+  background:rgba(76,175,80,0.25) !important;
+  color:#A5D6A7 !important;
+}
+.blank.wrong {
+  border-color:#F44336 !important;
+  background:rgba(244,67,54,0.25) !important;
+  color:#FFCDD2 !important;
+}
+@keyframes pulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(255,224,102,0.3); }
+  50% { box-shadow:0 0 0 5px rgba(255,224,102,0); }
+}
+
+.hint-verb {
+  color:#7F77DD;
+  font-style:italic;
+  font-size:12px;
+  margin-left:6px;
+}
+
+/* FOOTER */
+.footer { display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:24px; }
+.btn {
+  font-family:'Nunito',sans-serif;
+  font-size:14px;font-weight:800;
+  padding:11px 26px;
+  border-radius:14px;
+  cursor:pointer;border:none;
+  transition:all 0.15s;
+}
+.btn-primary { background:#FFE066;color:#1a1a2e; }
+.btn-primary:hover { background:#FFD54F; }
+.btn-secondary { background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15); }
+.btn-secondary:hover { background:rgba(255,255,255,0.12); }
+
+.score-text { font-size:14px;color:#a0a0c0; }
+.score-text.good { color:#A5D6A7;font-weight:800; }
+.score-text.partial { color:#FFE066;font-weight:800; }
+.score-text.bad { color:#FFCDD2;font-weight:800; }
+
+@media (max-width: 660px) {
+  .container { padding: 0 4px; }
+  .hero { padding: 28px 22px; }
+  .hero h1 { font-size: 30px; }
+  .section { padding: 22px 18px; }
+  .mfp-grid, .pron-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">🎙️ Talk about the past</div>
+    <h1>Past <span>Simple</span></h1>
+    <div class="hero-sub">Read a story, find the verbs, learn the rules, and practise!</div>
+  </div>
+
+  <!-- SECTION 1: READING + GIST -->
+  <div class="section">
+    <h2><span class="section-num">1</span>Read the story</h2>
+    <div class="section-desc">Read about a trip I took to Madrid. Read quickly and then answer the question below.</div>
+
+    <div class="text-box" id="textBox">
+      <div class="title">✈️ My Trip to Madrid</div>
+      <p>Last summer, I <span class="coll-span" data-key="v_went">went</span> on holiday to Madrid for the first time. I <span class="coll-span" data-key="v_arrived">arrived</span> on a sunny Friday afternoon and <span class="coll-span" data-key="v_stayed">stayed</span> in a small hotel near the city centre.</p>
+      <p>On Saturday, I <span class="coll-span" data-key="v_visited">visited</span> the famous Prado Museum and <span class="coll-span" data-key="v_walked">walked</span> around beautiful Retiro Park. I <span class="coll-span" data-key="v_ate">ate</span> the best paella of my life at a little restaurant!</p>
+      <p>I <span class="coll-span" data-key="v_didnttake">didn't take</span> many photos, but I <span class="coll-span" data-key="v_made">made</span> wonderful memories. <span class="coll-span" data-key="v_didilove">Did I love</span> Madrid? Absolutely!</p>
+    </div>
+
+    <div style="margin-top:22px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFE066;margin-bottom:10px;">🎯 Quick question</div>
+      <div style="font-size:15px;color:#fff;font-weight:800;margin-bottom:8px;">Was the trip good or bad?</div>
+      <div class="gist-options" id="gistOpts">
+        <div class="gist-opt" data-correct="false"><div class="opt-letter">A</div>Bad — the writer didn't like it 😞</div>
+        <div class="gist-opt" data-correct="true"><div class="opt-letter">B</div>Good — the writer loved it 😊</div>
+        <div class="gist-opt" data-correct="false"><div class="opt-letter">C</div>The writer didn't go to Madrid 🤔</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: FIND THE VERBS -->
+  <div class="section">
+    <h2><span class="section-num">2</span>Find the past simple verbs!</h2>
+    <div class="section-desc">There are <strong style="color:#FFE066;">9 past simple verbs</strong> in the text above. Click each one to mark it!</div>
+
+    <div class="progress-row">
+      <span>Verbs found: <span id="foundCount" style="color:#FFE066;font-weight:900;">0</span> / 9</span>
+      <button class="btn btn-secondary" style="padding:5px 14px;font-size:12px;" onclick="resetVerbs()">Reset</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%;"></div></div>
+
+    <div id="verbsFoundMsg" style="margin-top:14px;font-size:13px;color:#A5D6A7;display:none;">
+      ✓ Great! You found all 9 past simple verbs. Now let's look at the grammar!
+    </div>
+  </div>
+
+  <!-- SECTION 3: MFP REFERENCE -->
+  <div class="section">
+    <h2><span class="section-num">3</span>How does Past Simple work?</h2>
+    <div class="section-desc">Three forms: <strong style="color:#A5D6A7;">Affirmative</strong>, <strong style="color:#FFCDD2;">Negative</strong>, <strong style="color:#90CAF9;">Question</strong>. After <em>didn't</em> and <em>Did</em>, always use the <strong>base verb</strong>!</div>
+
+    <div class="mfp-grid">
+      <div class="mfp-card aff">
+        <div class="head">✓ Affirmative</div>
+        <div class="formula">Subject + verb (past form)</div>
+        <div class="examples">
+          I <strong>walked</strong> home.<br>
+          She <strong>visited</strong> Paris.<br>
+          We <strong>went</strong> out.
+        </div>
+      </div>
+      <div class="mfp-card neg">
+        <div class="head">✗ Negative</div>
+        <div class="formula">Subject + didn't + base verb</div>
+        <div class="examples">
+          I <strong>didn't walk</strong>.<br>
+          She <strong>didn't visit</strong>.<br>
+          We <strong>didn't go</strong>.
+        </div>
+      </div>
+      <div class="mfp-card que">
+        <div class="head">? Question</div>
+        <div class="formula">Did + subject + base verb?</div>
+        <div class="examples">
+          <strong>Did</strong> you <strong>walk</strong>?<br>
+          <strong>Did</strong> she <strong>visit</strong>?<br>
+          <strong>Did</strong> we <strong>go</strong>?
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:#FFE066;font-weight:700;margin-top:24px;margin-bottom:8px;">🔊 The 3 sounds of -ed</div>
+    <div class="pron-grid">
+      <div class="pron-card" style="border-top:3px solid #2196F3;">
+        <div class="ipa" style="color:#90CAF9;">/t/</div>
+        <div class="ex">wal<strong>ked</strong> /wɔːkt/<br>wat<strong>ched</strong> /wɒtʃt/<br>sto<strong>pped</strong> /stɒpt/</div>
+      </div>
+      <div class="pron-card" style="border-top:3px solid #4CAF50;">
+        <div class="ipa" style="color:#A5D6A7;">/d/</div>
+        <div class="ex">pla<strong>yed</strong> /pleɪd/<br>liste<strong>ned</strong> /ˈlɪsənd/<br>li<strong>ved</strong> /lɪvd/</div>
+      </div>
+      <div class="pron-card" style="border-top:3px solid #F44336;">
+        <div class="ipa" style="color:#FFCDD2;">/ɪd/</div>
+        <div class="ex">wan<strong>ted</strong> /ˈwɒntɪd/<br>sta<strong>rted</strong> /ˈstɑːtɪd/<br>nee<strong>ded</strong> /ˈniːdɪd/</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: CONTROLLED PRACTICE -->
+  <div class="section">
+    <h2><span class="section-num">4</span>Fill in the blanks!</h2>
+    <div class="section-desc">Click a verb from the bank below, then click a blank to fill it in. <strong style="color:#FFE066;">Remember:</strong> after <em>didn't</em> and <em>Did</em>, use the BASE verb!</div>
+
+    <div class="cp-hint" id="cpHint">
+      <span class="badge">Tip</span>
+      <span id="cpHintText">Click a verb from the bank to start!</span>
+    </div>
+
+    <div class="verb-bank">
+      <div class="verb-bank-label">📦 Verb bank</div>
+      <div class="verb-chips" id="verbBank"></div>
+    </div>
+
+    <div class="cp-sentences" id="cpSentences"></div>
+
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkAnswers()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetCP()">Reset</button>
+      <span class="score-text" id="scoreText"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ──────────── SECTION 1: GIST ──────────── */
+document.querySelectorAll('#gistOpts .gist-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    if (opt.classList.contains('selected')) return;
+    document.querySelectorAll('#gistOpts .gist-opt').forEach(o => {
+      o.classList.remove('selected', 'correct', 'wrong');
+    });
+    opt.classList.add('selected');
+    opt.classList.add(opt.dataset.correct === 'true' ? 'correct' : 'wrong');
+  });
+});
+
+/* ──────────── SECTION 2: VERB FINDING ──────────── */
+const verbSpans = document.querySelectorAll('.coll-span');
+const TOTAL_VERBS = verbSpans.length;
+let foundVerbs = 0;
+
+verbSpans.forEach(span => {
+  span.addEventListener('click', () => {
+    if (span.classList.contains('found')) {
+      span.classList.remove('found');
+      foundVerbs--;
+    } else {
+      span.classList.add('found');
+      foundVerbs++;
+    }
+    updateProgress();
+  });
+});
+
+function updateProgress() {
+  document.getElementById('foundCount').textContent = foundVerbs;
+  const pct = (foundVerbs / TOTAL_VERBS) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('verbsFoundMsg').style.display = foundVerbs === TOTAL_VERBS ? 'block' : 'none';
+}
+
+function resetVerbs() {
+  verbSpans.forEach(s => s.classList.remove('found'));
+  foundVerbs = 0;
+  updateProgress();
+}
+
+/* ──────────── SECTION 4: CONTROLLED PRACTICE ──────────── */
+const SENTENCES = [
+  { id: 1, parts: ['Yesterday I ', '___', ' pizza for dinner. 🍕'], hint: '(eat)', answer: 'ate' },
+  { id: 2, parts: ['She didn\'t ', '___', ' to work last Friday.'], hint: '(go)', answer: 'go' },
+  { id: 3, parts: ['Did you ', '___', ' the new movie? 🎬'], hint: '(see)', answer: 'see' },
+  { id: 4, parts: ['We ', '___', ' our grandparents last summer.'], hint: '(visit)', answer: 'visited' },
+  { id: 5, parts: ['They didn\'t ', '___', ' time to finish the project.'], hint: '(have)', answer: 'have' },
+  { id: 6, parts: ['Did he ', '___', ' for the exam?'], hint: '(study)', answer: 'study' },
+  { id: 7, parts: ['I ', '___', ' to school every day when I was 10.'], hint: '(walk)', answer: 'walked' },
+  { id: 8, parts: ['Did they ', '___', ' to Europe last year? ✈️'], hint: '(travel)', answer: 'travel' },
+];
+
+const VERB_BANK = ['ate', 'eat', 'went', 'go', 'saw', 'see', 'visited', 'visit',
+                   'had', 'have', 'studied', 'study', 'walked', 'walk', 'travelled', 'travel'];
+
+let selectedVerb = null;
+let filled = {};
+let checked = false;
+
+function updateCPHint() {
+  const el = document.getElementById('cpHintText');
+  if (selectedVerb) {
+    el.textContent = `"${selectedVerb}" selected — now click a blank to fill it in.`;
+  } else {
+    const filledCount = Object.keys(filled).length;
+    if (filledCount === SENTENCES.length) {
+      el.textContent = `All ${filledCount} blanks filled — click "Check answers"!`;
+    } else if (filledCount > 0) {
+      el.textContent = `${filledCount}/${SENTENCES.length} blanks filled — keep going!`;
+    } else {
+      el.textContent = 'Click a verb from the bank to start!';
+    }
+  }
+}
+
+function isUsed(verb) {
+  return Object.values(filled).includes(verb);
+}
+
+function renderVerbBank() {
+  const bank = document.getElementById('verbBank');
+  bank.innerHTML = '';
+  VERB_BANK.forEach(v => {
+    const chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.textContent = v;
+    if (isUsed(v)) chip.classList.add('used');
+    else if (selectedVerb === v) chip.classList.add('selected');
+    chip.addEventListener('click', () => {
+      if (isUsed(v)) return;
+      selectedVerb = (selectedVerb === v) ? null : v;
+      checked = false;
+      render();
+    });
+    bank.appendChild(chip);
+  });
+}
+
+function renderSentences() {
+  const container = document.getElementById('cpSentences');
+  container.innerHTML = '';
+  SENTENCES.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'cp-row';
+
+    const num = document.createElement('div');
+    num.className = 'cp-num';
+    num.textContent = s.id;
+    row.appendChild(num);
+
+    const textWrap = document.createElement('div');
+    textWrap.style.flex = '1';
+
+    s.parts.forEach((part, idx) => {
+      if (part === '___') {
+        const blank = document.createElement('span');
+        blank.className = 'blank';
+        const fillVal = filled[s.id];
+        if (fillVal) {
+          blank.classList.add('filled');
+          blank.textContent = fillVal;
+          if (checked) {
+            blank.classList.add(fillVal === s.answer ? 'correct' : 'wrong');
+          }
+          blank.addEventListener('click', () => {
+            selectedVerb = fillVal;
+            delete filled[s.id];
+            checked = false;
+            render();
+          });
+        } else {
+          blank.textContent = 'verb';
+          if (selectedVerb) {
+            blank.classList.add('can-fill');
+            blank.addEventListener('click', () => {
+              filled[s.id] = selectedVerb;
+              selectedVerb = null;
+              checked = false;
+              render();
+            });
+          }
+        }
+        textWrap.appendChild(blank);
+      } else {
+        textWrap.appendChild(document.createTextNode(part));
+      }
+    });
+
+    const hint = document.createElement('span');
+    hint.className = 'hint-verb';
+    hint.textContent = s.hint;
+    textWrap.appendChild(hint);
+
+    row.appendChild(textWrap);
+    container.appendChild(row);
+  });
+}
+
+function render() {
+  renderVerbBank();
+  renderSentences();
+  updateCPHint();
+  if (!checked) {
+    document.getElementById('scoreText').textContent = '';
+    document.getElementById('scoreText').className = 'score-text';
+  }
+}
+
+function checkAnswers() {
+  const filledCount = Object.keys(filled).length;
+  const total = SENTENCES.length;
+  const scoreEl = document.getElementById('scoreText');
+
+  if (filledCount < total) {
+    scoreEl.textContent = `Only ${filledCount}/${total} filled — complete all sentences first!`;
+    scoreEl.className = 'score-text partial';
+    return;
+  }
+
+  checked = true;
+  const correct = SENTENCES.filter(s => filled[s.id] === s.answer).length;
+  render();
+
+  if (correct === total) {
+    scoreEl.textContent = `${correct}/${total} — perfect! 🎉`;
+    scoreEl.className = 'score-text good';
+  } else if (correct >= total / 2) {
+    scoreEl.textContent = `${correct}/${total} — good effort! Check the red ones and try again 💪`;
+    scoreEl.className = 'score-text partial';
+  } else {
+    scoreEl.textContent = `${correct}/${total} — let's review the rules together 📚`;
+    scoreEl.className = 'score-text bad';
+  }
+}
+
+function resetCP() {
+  filled = {};
+  selectedVerb = null;
+  checked = false;
+  document.getElementById('scoreText').textContent = '';
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
