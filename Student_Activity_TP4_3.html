@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talking About the Future — Discover!</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0a0a14; color: #fff; min-height: 100vh; padding: 30px 20px 60px;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,224,102,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(144,202,249,0.07), transparent 40%);
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.top-banner { background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 22px; padding: 30px 36px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+.top-banner::before { content:''; position:absolute; top:-60px; right:-60px; width:180px; height:180px; border-radius:50%; background:rgba(255,224,102,0.13); }
+.top-banner h1 { font-family: 'Fredoka One', cursive; font-size: 34px; line-height: 1.1; margin-bottom: 6px; position: relative; }
+.top-banner h1 .yellow { color: #FFE066; }
+.top-banner h1 .blue { color: #90CAF9; }
+.top-banner .subtitle { font-size: 14px; color: #a0a0c0; position: relative; }
+.detective { font-size:13px; color:#FFE066; margin-top:10px; position:relative; font-weight:700; }
+
+.section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 32px; margin-bottom: 24px; }
+.section-number { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+.section-1 .section-number { background: rgba(144,202,249,0.15); color: #90CAF9; }
+.section-2 .section-number { background: rgba(206,147,216,0.15); color: #CE93D8; }
+.section-3 .section-number { background: rgba(255,183,77,0.15); color: #FFB74D; }
+.section-4 .section-number { background: rgba(165,214,167,0.15); color: #A5D6A7; }
+.section h2 { font-family: 'Fredoka One', cursive; font-size: 23px; margin-bottom: 8px; }
+.section .desc { font-size: 14px; color: #b0b0c8; margin-bottom: 18px; line-height: 1.6; }
+.step-label { font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color:#fff; margin: 18px 0 10px; opacity:0.85; }
+
+/* CONVERSATION */
+.text-box { background: rgba(0,0,0,0.25); border-radius: 16px; padding: 22px 24px; }
+.text-line { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 12px; }
+.text-line:last-child { margin-bottom: 0; }
+.speaker-avatar { width: 30px; height: 30px; min-width: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka One', cursive; font-size: 13px; }
+.avatar-A { background: #C2185B; } .avatar-M { background: #1565C0; }
+.text-content { font-size: 14.5px; line-height: 1.65; color: #e8e8f0; }
+.name-A { color: #F48FB1; font-weight: 800; } .name-M { color: #90CAF9; font-weight: 800; }
+.pc { color: #90CAF9; font-weight: 700; border-bottom: 2px solid rgba(144,202,249,0.4); }
+.gt { color: #FFB74D; font-weight: 700; border-bottom: 2px solid rgba(255,183,77,0.4); }
+.legend { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+.legend span { font-size: 12px; color: #b0b0c8; }
+.legend b.pc { color: #90CAF9; } .legend b.gt { color: #FFB74D; }
+
+/* CLICKABLE PHRASES (find the future forms) */
+.pick { cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.28); padding: 0 1px 1px; border-radius: 3px; transition: all 0.12s; }
+.pick:hover { background: rgba(255,255,255,0.09); }
+.pick.marked { background: rgba(255,224,102,0.22); border-bottom: 2px solid #FFE066; color: #fff; font-weight: 700; }
+.pick.correct { background: rgba(102,187,106,0.25); border-bottom: 2px solid #66BB6A; color: #A5D6A7; font-weight: 700; }
+.pick.wrong { background: rgba(239,83,80,0.2); border-bottom: 2px solid #EF5350; color: #EF9A9A; }
+.pick.missed { border-bottom: 2px dotted #FFB74D; background: rgba(255,183,77,0.12); }
+.find-box { margin-top: 16px; background: rgba(255,224,102,0.07); border: 1px solid rgba(255,224,102,0.25); border-radius: 14px; padding: 16px 20px; }
+.find-q { font-size: 14px; font-weight: 700; color: #FFE066; margin-bottom: 6px; }
+.find-sub { font-size: 12.5px; color: #b0b0c8; line-height: 1.5; }
+
+/* GIST */
+.gist-box { margin-top: 18px; background: rgba(144,202,249,0.08); border: 1px solid rgba(144,202,249,0.25); border-radius: 14px; padding: 18px 20px; }
+.gist-q { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+.opt { background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 11px 16px; margin-bottom: 8px; font-size: 14px; cursor: pointer; transition: all 0.15s; }
+.opt:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); }
+.opt.sel { background: rgba(144,202,249,0.18); border-color: #90CAF9; }
+.opt.correct { background: rgba(102,187,106,0.2); border-color: #66BB6A; color: #A5D6A7; }
+.opt.wrong { background: rgba(239,83,80,0.18); border-color: #EF5350; color: #EF9A9A; }
+
+/* MATCH */
+.match-row { background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; }
+.match-sentence { font-size: 15px; color: #fff; margin-bottom: 12px; line-height: 1.5; }
+.match-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.match-btn { flex: 1; min-width: 200px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.03); color: #c8c8d8; font-family: 'Nunito', sans-serif; text-align: left; }
+.match-btn .mb-title { display: block; font-size: 13px; margin-bottom: 2px; }
+.match-btn .mb-sub { display: block; font-size: 11px; opacity: 0.7; font-weight: 600; }
+.match-btn:hover { background: rgba(255,255,255,0.07); }
+.match-btn.sel-arr { background: rgba(144,202,249,0.2); border-color: #90CAF9; color: #fff; }
+.match-btn.sel-int { background: rgba(255,183,77,0.2); border-color: #FFB74D; color: #fff; }
+.match-row.correct { border-color: #66BB6A; }
+.match-row.wrong { border-color: #EF5350; }
+.match-fb { font-size: 12px; margin-top: 10px; font-weight: 700; display: none; }
+.match-row.correct .match-fb.ok { display: block; color: #A5D6A7; }
+.match-row.wrong .match-fb.no { display: block; color: #EF9A9A; }
+
+/* EXAMPLE BOXES (form discovery) */
+.ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:6px; }
+.ex-box { border-radius:14px; padding:16px 18px; }
+.ex-box.pcbox { background:rgba(144,202,249,0.08); border:1px solid rgba(144,202,249,0.3); }
+.ex-box.gtbox { background:rgba(255,183,77,0.08); border:1px solid rgba(255,183,77,0.3); }
+.ex-box .ex-title { font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.ex-box.pcbox .ex-title { color:#90CAF9; } .ex-box.gtbox .ex-title { color:#FFB74D; }
+.ex-box ul { list-style:none; }
+.ex-box li { font-size:13.5px; color:#e0e0ee; line-height:1.9; }
+.ex-box li b.b1 { color:#FFE066; } .ex-box li b.b2 { color:#9FE1CB; }
+@media(max-width:640px){ .ex-grid{grid-template-columns:1fr;} }
+
+/* RULE COMPLETION */
+.rule-row { background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; }
+.rule-q { font-size: 14.5px; margin-bottom: 12px; line-height: 1.6; }
+.rule-q .gap { color:#FFE066; font-weight:800; letter-spacing:1px; }
+.rule-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.rule-opt { border: 1.5px solid rgba(255,255,255,0.15); border-radius: 9px; padding: 9px 15px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.03); color: #c8c8d8; font-family:'Nunito',sans-serif; }
+.rule-opt:hover { background: rgba(255,255,255,0.08); }
+.rule-opt.sel { background: rgba(255,224,102,0.18); border-color: #FFE066; color: #fff; }
+.rule-row.correct .rule-opt.sel { background: rgba(102,187,106,0.25); border-color: #66BB6A; color: #A5D6A7; }
+.rule-row.wrong .rule-opt.sel { background: rgba(239,83,80,0.2); border-color: #EF5350; color: #EF9A9A; }
+.rule-row.wrong .rule-opt.ans { background: rgba(102,187,106,0.18); border-color: #66BB6A; color: #A5D6A7; }
+
+/* CONTROLLED PRACTICE */
+.cp-item { background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; }
+.cp-q { font-size: 14.5px; margin-bottom: 12px; line-height: 1.5; }
+.cp-q .num { color: #A5D6A7; font-weight: 800; margin-right: 6px; }
+.cp-q .tag { font-size: 11px; color: #888; font-style: italic; }
+.cp-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.cp-opt { border: 1.5px solid rgba(255,255,255,0.15); border-radius: 9px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: rgba(255,255,255,0.03); color: #c8c8d8; }
+.cp-opt:hover { background: rgba(255,255,255,0.08); }
+.cp-opt.sel { background: rgba(165,214,167,0.2); border-color: #A5D6A7; color: #fff; }
+.cp-item.correct .cp-opt.sel { background: rgba(102,187,106,0.25); border-color: #66BB6A; color: #A5D6A7; }
+.cp-item.wrong .cp-opt.sel { background: rgba(239,83,80,0.2); border-color: #EF5350; color: #EF9A9A; }
+.cp-item.wrong .cp-opt.ans { background: rgba(102,187,106,0.18); border-color: #66BB6A; color: #A5D6A7; }
+
+/* BUTTONS */
+.btn { font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 28px; border-radius: 12px; cursor: pointer; border: none; transition: all 0.15s; }
+.btn-check { background: #FFE066; color: #1a1a2e; }
+.btn-check:hover { background: #ffd633; }
+.action-row { display: flex; align-items: center; gap: 16px; margin-top: 18px; flex-wrap: wrap; }
+.score { font-size: 14px; font-weight: 700; }
+.score.good { color: #A5D6A7; } .score.mid { color: #FFB74D; } .score.low { color: #EF9A9A; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-banner">
+    <h1>Talking About the <span class="yellow">Future</span> 🕵️</h1>
+    <div class="subtitle">Plans &amp; arrangements — <span class="blue">present continuous</span> &amp; <span style="color:#FFB74D;">be going to</span></div>
+    <div class="detective">🔍 Be a grammar detective! Work out the rules YOURSELF — don't wait to be told!</div>
+  </div>
+
+  <!-- ═══ SECTION 1: READ & NOTICE ═══ -->
+  <div class="section section-1">
+    <div class="section-number">Step 1 · Notice</div>
+    <h2>Read the conversation 📖</h2>
+    <p class="desc">Anna and Marco are talking about the weekend. First read quickly and answer the question — then go hunting for the future phrases!</p>
+
+    <div class="text-box">
+      <div class="text-line"><div class="speaker-avatar avatar-A">A</div><div class="text-content"><span class="name-A">Anna:</span> Hi Marco! <span class="pick" data-f="1">What are you doing</span> this weekend? <span class="pick" data-f="0">Do you have</span> any plans?</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-M">M</div><div class="text-content"><span class="name-M">Marco:</span> Hi Anna! Yes, I'm quite busy. On Saturday <span class="pick" data-f="1">I'm meeting</span> some friends in the centre at eleven o'clock. <span class="pick" data-f="1">We're having</span> lunch at a new Italian restaurant.</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-A">A</div><div class="text-content"><span class="name-A">Anna:</span> That sounds lovely! <span class="pick" data-f="1">Are you going to do</span> anything special after lunch?</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-M">M</div><div class="text-content"><span class="name-M">Marco:</span> Yes — <span class="pick" data-f="1">I'm going to visit</span> the new art exhibition. <span class="pick" data-f="0">I really want</span> to see it. What about you? <span class="pick" data-f="1">What are you going to do</span>?</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-A">A</div><div class="text-content"><span class="name-A">Anna:</span> I'm not sure yet. I think <span class="pick" data-f="1">I'm going to relax</span> at home. But on Sunday <span class="pick" data-f="1">I'm playing</span> tennis with my sister at nine o'clock — <span class="pick" data-f="0">we booked</span> the court last week.</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-M">M</div><div class="text-content"><span class="name-M">Marco:</span> Nice! <span class="pick" data-f="1">Are you going to watch</span> the football match on Sunday evening too?</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-A">A</div><div class="text-content"><span class="name-A">Anna:</span> Maybe — <span class="pick" data-f="0">I haven't decided</span>. Oh, <span class="pick" data-f="0">I almost forgot</span>: <span class="pick" data-f="1">I'm seeing</span> the dentist on Monday at eight o'clock, so <span class="pick" data-f="1">I'm not staying</span> out late.</div></div>
+      <div class="text-line"><div class="speaker-avatar avatar-M">M</div><div class="text-content"><span class="name-M">Marco:</span> Good plan. Have a great weekend — <span class="pick" data-f="1">I'm going to call</span> you on Sunday to tell you about the exhibition!</div></div>
+    </div>
+
+    <div class="gist-box">
+      <div class="gist-q">🎧 A · First, what is the conversation about?</div>
+      <div class="opt" data-g="a">a) Their problems at work</div>
+      <div class="opt" data-g="b">b) Their plans for the weekend</div>
+      <div class="opt" data-g="c">c) Their last holiday</div>
+      <div class="action-row">
+        <button class="btn btn-check" onclick="checkGist()">Check</button>
+        <span class="score" id="gistScore"></span>
+      </div>
+    </div>
+
+    <div class="find-box">
+      <div class="find-q">🖍️ B · Now underline the future! Click every phrase that talks about the FUTURE.</div>
+      <div class="find-sub">Tap a phrase to underline it (tap again to remove). Careful — some phrases are about the past or the present! 🕵️</div>
+      <div class="action-row">
+        <button class="btn btn-check" onclick="checkFind()">Check what I found</button>
+        <span class="score" id="findScore"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: DISCOVER THE MEANING ═══ -->
+  <div class="section section-2">
+    <div class="section-number">Step 2 · Discover the MEANING</div>
+    <h2>When do we use each one? 🔎</h2>
+    <p class="desc">Some plans are <b style="color:#90CAF9;">fixed arrangements</b> (a specific time/place, often with other people). Others are just <b style="color:#FFB74D;">plans or intentions</b> you have decided. Read each sentence and decide — <b>you</b> work it out!</p>
+
+    <div class="step-label">A · Match each sentence</div>
+    <div id="matchArea">
+      <div class="match-row" id="m0">
+        <div class="match-sentence">1. I'm meeting my dentist at 9am tomorrow.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(0,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(0,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+      <div class="match-row" id="m1">
+        <div class="match-sentence">2. I'm going to learn French next year.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(1,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(1,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+      <div class="match-row" id="m2">
+        <div class="match-sentence">3. We're having dinner with Tom on Friday.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(2,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(2,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+      <div class="match-row" id="m3">
+        <div class="match-sentence">4. I'm going to start exercising more.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(3,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(3,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+      <div class="match-row" id="m4">
+        <div class="match-sentence">5. She's flying to Paris on Monday morning.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(4,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(4,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+      <div class="match-row" id="m5">
+        <div class="match-sentence">6. They're going to buy a new car someday.</div>
+        <div class="match-btns">
+          <button class="match-btn" data-v="arr" onclick="pickMatch(5,'arr')"><span class="mb-title">📅 Fixed arrangement</span><span class="mb-sub">present continuous</span></button>
+          <button class="match-btn" data-v="int" onclick="pickMatch(5,'int')"><span class="mb-title">💭 Plan / intention</span><span class="mb-sub">be going to</span></button>
+        </div>
+        <div class="match-fb ok">✓ Correct!</div>
+        <div class="match-fb no">✗ Look at the time/place — is it fixed, or just a plan?</div>
+      </div>
+    </div>
+
+    <div class="step-label">B · Now complete the RULE yourself!</div>
+    <div class="rule-row" id="rm0">
+      <div class="rule-q">We use the <b style="color:#90CAF9;">present continuous</b> (<i>I'm meeting…</i>) for plans that are <span class="gap">______</span>.</div>
+      <div class="rule-opts">
+        <button class="rule-opt" data-j="0" onclick="pickRule('rm',0,0)">already fixed, with a time and place</button>
+        <button class="rule-opt" data-j="1" onclick="pickRule('rm',0,1)">not decided yet</button>
+      </div>
+    </div>
+    <div class="rule-row" id="rm1">
+      <div class="rule-q">We use <b style="color:#FFB74D;">be going to</b> (<i>I'm going to…</i>) for <span class="gap">______</span>.</div>
+      <div class="rule-opts">
+        <button class="rule-opt" data-j="0" onclick="pickRule('rm',1,0)">intentions and plans we have decided</button>
+        <button class="rule-opt" data-j="1" onclick="pickRule('rm',1,1)">actions happening right now</button>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn-check" onclick="checkMeaning()">Check my discovery</button>
+      <span class="score" id="meaningScore"></span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: DISCOVER THE FORM ═══ -->
+  <div class="section section-3">
+    <div class="section-number">Step 3 · Discover the FORM</div>
+    <h2>How do we build it? 🧩</h2>
+    <p class="desc">Look carefully at the examples below. What pattern do you see? Then complete the rules — <b>you</b> are the detective!</p>
+
+    <div class="ex-grid">
+      <div class="ex-box pcbox">
+        <div class="ex-title">📅 present continuous</div>
+        <ul>
+          <li>I <b class="b1">'m</b> <b class="b2">meeting</b> friends at 11.</li>
+          <li>We <b class="b1">'re</b> <b class="b2">having</b> lunch.</li>
+          <li>I <b class="b1">'m</b> not <b class="b2">staying</b> late.</li>
+          <li>What <b class="b1">are</b> you <b class="b2">doing</b>?</li>
+        </ul>
+      </div>
+      <div class="ex-box gtbox">
+        <div class="ex-title">💭 be going to</div>
+        <ul>
+          <li>I <b class="b1">'m going to</b> <b class="b2">visit</b> the show.</li>
+          <li>She <b class="b1">isn't going to</b> <b class="b2">study</b>.</li>
+          <li><b class="b1">Are</b> you <b class="b1">going to</b> <b class="b2">watch</b>?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-label">Complete the RULES yourself!</div>
+    <div class="rule-row" id="rf0">
+      <div class="rule-q"><b style="color:#90CAF9;">Present continuous</b> future = subject + <span class="gap">______</span> + verb<b style="color:#9FE1CB;">-ing</b></div>
+      <div class="rule-opts">
+        <button class="rule-opt" data-j="0" onclick="pickRule('rf',0,0)">am / is / are</button>
+        <button class="rule-opt" data-j="1" onclick="pickRule('rf',0,1)">do / does</button>
+        <button class="rule-opt" data-j="2" onclick="pickRule('rf',0,2)">will</button>
+      </div>
+    </div>
+    <div class="rule-row" id="rf1">
+      <div class="rule-q">After <b style="color:#FFB74D;">going to</b>, the next verb is the <span class="gap">______</span> form.</div>
+      <div class="rule-opts">
+        <button class="rule-opt" data-j="0" onclick="pickRule('rf',1,0)">base form (visit)</button>
+        <button class="rule-opt" data-j="1" onclick="pickRule('rf',1,1)">-ing form (visiting)</button>
+        <button class="rule-opt" data-j="2" onclick="pickRule('rf',1,2)">past form (visited)</button>
+      </div>
+    </div>
+    <div class="rule-row" id="rf2">
+      <div class="rule-q">To make a <b>question</b>, we put <span class="gap">______</span> before the subject.</div>
+      <div class="rule-opts">
+        <button class="rule-opt" data-j="0" onclick="pickRule('rf',2,0)">am / is / are</button>
+        <button class="rule-opt" data-j="1" onclick="pickRule('rf',2,1)">the main verb</button>
+        <button class="rule-opt" data-j="2" onclick="pickRule('rf',2,2)">do / does</button>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn-check" onclick="checkForm()">Check my discovery</button>
+      <span class="score" id="formScore"></span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: NOW YOU TRY ═══ -->
+  <div class="section section-4">
+    <div class="section-number">Step 4 · Use your rules</div>
+    <h2>Now you try! ✍️</h2>
+    <p class="desc">Use the rules YOU discovered. Choose the correct form. <b>Don't submit</b> until your teacher says so!</p>
+
+    <div id="cpArea">
+      <div class="cp-item" id="cp0">
+        <div class="cp-q"><span class="num">1.</span>I ___ my cousin next month. <span class="tag">(a plan)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(0,0)">'m going to visit</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(0,1)">'m going to visiting</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(0,2)">going to visit</button>
+        </div>
+      </div>
+      <div class="cp-item" id="cp1">
+        <div class="cp-q"><span class="num">2.</span>She ___ a new phone. <span class="tag">(a plan — negative)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(1,0)">isn't going to buy</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(1,1)">isn't going to buying</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(1,2)">not going to buy</button>
+        </div>
+      </div>
+      <div class="cp-item" id="cp2">
+        <div class="cp-q"><span class="num">3.</span>___ to a new house? <span class="tag">(a plan — question)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(2,0)">Are they going to move</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(2,1)">They are going to move</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(2,2)">Are they going to moving</button>
+        </div>
+      </div>
+      <div class="cp-item" id="cp3">
+        <div class="cp-q"><span class="num">4.</span>We ___ lunch at 1pm tomorrow. <span class="tag">(a fixed arrangement)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(3,0)">'re having</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(3,1)">'re going have</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(3,2)">are have</button>
+        </div>
+      </div>
+      <div class="cp-item" id="cp4">
+        <div class="cp-q"><span class="num">5.</span>I ___ on Saturday. <span class="tag">(arrangement — negative)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(4,0)">'m not working</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(4,1)">not working</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(4,2)">'m not work</button>
+        </div>
+      </div>
+      <div class="cp-item" id="cp5">
+        <div class="cp-q"><span class="num">6.</span>What time ___? <span class="tag">(arrangement — question)</span></div>
+        <div class="cp-opts">
+          <button class="cp-opt" data-j="0" onclick="pickCP(5,0)">are you arriving</button>
+          <button class="cp-opt" data-j="1" onclick="pickCP(5,1)">you are arriving</button>
+          <button class="cp-opt" data-j="2" onclick="pickCP(5,2)">are you arrive</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn-check" onclick="checkCP()">Check my answers</button>
+      <span class="score" id="cpScore"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ---------- SECTION 1: GIST ---------- */
+let gistSel = null;
+document.querySelectorAll('.gist-box .opt').forEach(o => {
+  o.onclick = () => {
+    if (o.classList.contains('correct') || o.classList.contains('wrong')) return;
+    document.querySelectorAll('.gist-box .opt').forEach(x => x.classList.remove('sel'));
+    o.classList.add('sel'); gistSel = o.dataset.g;
+  };
+});
+function checkGist() {
+  if (!gistSel) { setScore('gistScore','Choose an answer first!','mid'); return; }
+  document.querySelectorAll('.gist-box .opt').forEach(o => {
+    o.classList.remove('correct','wrong');
+    if (o.dataset.g === 'b') o.classList.add('correct');
+    else if (o.dataset.g === gistSel) o.classList.add('wrong');
+  });
+  setScore('gistScore', gistSel === 'b' ? 'Correct! 🎉 They are talking about weekend plans.' : 'Not quite — read again and try!', gistSel === 'b' ? 'good' : 'low');
+}
+
+/* ---------- SECTION 1B: FIND THE FUTURE (click to underline) ---------- */
+let findChecked = false;
+document.querySelectorAll('.pick').forEach(sp => {
+  sp.onclick = () => {
+    if (findChecked) return;
+    sp.classList.toggle('marked');
+  };
+});
+function checkFind() {
+  findChecked = true;
+  const picks = document.querySelectorAll('.pick');
+  let found = 0, totalFuture = 0, wrong = 0;
+  picks.forEach(sp => {
+    const isFuture = sp.dataset.f === '1';
+    const marked = sp.classList.contains('marked');
+    sp.classList.remove('marked');
+    if (isFuture) totalFuture++;
+    if (isFuture && marked) { sp.classList.add('correct'); found++; }
+    else if (!isFuture && marked) { sp.classList.add('wrong'); wrong++; }
+    else if (isFuture && !marked) { sp.classList.add('missed'); }
+  });
+  let msg = `You found ${found}/${totalFuture} future phrases`;
+  if (wrong > 0) msg += ` · ${wrong} of your choices were not future (red)`;
+  if (found === totalFuture && wrong === 0) msg += ' 🎉 Perfect noticing!';
+  else msg += ' — orange dots = ones you missed.';
+  setScore('findScore', msg, (found === totalFuture && wrong === 0) ? 'good' : (found >= totalFuture/2 ? 'mid' : 'low'));
+}
+
+const MATCH_ANS = ['arr','int','arr','int','arr','int'];
+const matchSel = {};
+function pickMatch(i, v) {
+  const row = document.getElementById('m' + i);
+  if (row.classList.contains('correct')) return;
+  row.classList.remove('wrong');
+  matchSel[i] = v;
+  row.querySelectorAll('.match-btn').forEach(b => {
+    b.classList.remove('sel-arr','sel-int');
+    if (b.dataset.v === v) b.classList.add(v === 'arr' ? 'sel-arr' : 'sel-int');
+  });
+}
+
+/* ---------- RULE COMPLETION (generic) ---------- */
+const RULE_ANS = { rm: [0, 0], rf: [0, 0, 2] };
+const ruleSel = { rm: {}, rf: {} };
+function pickRule(group, i, j) {
+  const row = document.getElementById(group + i);
+  if (row.classList.contains('correct')) return;
+  row.classList.remove('wrong');
+  ruleSel[group][i] = j;
+  row.querySelectorAll('.rule-opt').forEach(b => b.classList.remove('sel'));
+  row.querySelectorAll('.rule-opt')[j].classList.add('sel');
+}
+function checkRuleGroup(group) {
+  const ans = RULE_ANS[group];
+  let correct = 0, answered = 0;
+  ans.forEach((a, i) => {
+    const row = document.getElementById(group + i);
+    row.classList.remove('correct','wrong');
+    row.querySelectorAll('.rule-opt').forEach(b => b.classList.remove('ans'));
+    if (ruleSel[group][i] === undefined) return;
+    answered++;
+    if (ruleSel[group][i] === a) { row.classList.add('correct'); correct++; }
+    else { row.classList.add('wrong'); row.querySelectorAll('.rule-opt')[a].classList.add('ans'); }
+  });
+  return { correct, answered, total: ans.length };
+}
+
+/* SECTION 2: meaning = match (6) + rules rm (2) */
+function checkMeaning() {
+  let mc = 0, ma = 0;
+  MATCH_ANS.forEach((ans, i) => {
+    const row = document.getElementById('m' + i);
+    row.classList.remove('correct','wrong');
+    if (matchSel[i] === undefined) return;
+    ma++;
+    if (matchSel[i] === ans) { row.classList.add('correct'); mc++; }
+    else row.classList.add('wrong');
+  });
+  const r = checkRuleGroup('rm');
+  const totC = mc + r.correct, totN = ma + r.answered, totT = MATCH_ANS.length + r.total;
+  if (totN < totT) { setScore('meaningScore', `${totN}/${totT} done — finish them all!`, 'mid'); return; }
+  setScore('meaningScore', `${totC}/${totT} correct ${totC===totT?'🎉 You discovered the meaning rule!':'— check the red ones again!'}`, totC===totT?'good':(totC>=totT/2?'mid':'low'));
+}
+
+/* SECTION 3: form = rules rf (3) */
+function checkForm() {
+  const r = checkRuleGroup('rf');
+  if (r.answered < r.total) { setScore('formScore', `${r.answered}/${r.total} done — finish them all!`, 'mid'); return; }
+  setScore('formScore', `${r.correct}/${r.total} correct ${r.correct===r.total?'🎉 You worked out the form!':'— green shows the right answer.'}`, r.correct===r.total?'good':(r.correct>=2?'mid':'low'));
+}
+
+/* ---------- SECTION 4: CONTROLLED PRACTICE ---------- */
+const CP_ANS = [0,0,0,0,0,0];
+const cpSel = {};
+function pickCP(i, j) {
+  const el = document.getElementById('cp' + i);
+  if (el.classList.contains('correct')) return;
+  el.classList.remove('wrong');
+  cpSel[i] = j;
+  el.querySelectorAll('.cp-opt').forEach(b => b.classList.remove('sel'));
+  el.querySelectorAll('.cp-opt')[j].classList.add('sel');
+}
+function checkCP() {
+  let correct = 0, answered = 0;
+  CP_ANS.forEach((ans, i) => {
+    const el = document.getElementById('cp' + i);
+    el.classList.remove('correct','wrong');
+    el.querySelectorAll('.cp-opt').forEach(b => b.classList.remove('ans'));
+    if (cpSel[i] === undefined) return;
+    answered++;
+    if (cpSel[i] === ans) { el.classList.add('correct'); correct++; }
+    else { el.classList.add('wrong'); el.querySelectorAll('.cp-opt')[ans].classList.add('ans'); }
+  });
+  if (answered < CP_ANS.length) { setScore('cpScore', `${answered}/${CP_ANS.length} done — finish them all!`, 'mid'); return; }
+  setScore('cpScore', `${correct}/${CP_ANS.length} correct ${correct===CP_ANS.length?'🎉 Excellent!':'— green shows the right answer.'}`, correct===CP_ANS.length?'good':(correct>=3?'mid':'low'));
+}
+
+/* ---------- helper ---------- */
+function setScore(id, txt, cls) {
+  const el = document.getElementById(id);
+  el.textContent = txt; el.className = 'score ' + cls;
+}
+</script>
+</body>
+</html>
