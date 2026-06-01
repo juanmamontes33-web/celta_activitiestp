@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Continuous vs Past Simple — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; min-height: 100vh; padding: 36px 18px 70px; }
+.wrap { max-width: 880px; margin: 0 auto; }
+
+.topcard { background: linear-gradient(135deg,#0a1628,#1a1a2e,#16213e); border-radius: 22px; padding: 32px 40px; color:#fff; position:relative; overflow:hidden; margin-bottom: 22px; }
+.topcard::before { content:''; position:absolute; top:-70px; right:-50px; width:220px; height:220px; border-radius:50%; background:rgba(83,74,183,0.2); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#7F77DD; font-weight:700; margin-bottom:6px; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:30px; line-height:1.1; }
+.topcard h1 span { color:#FFE066; }
+.topcard p { font-size:14px; color:#a0a0c0; margin-top:8px; }
+
+/* TABS */
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { flex:1; min-width:150px; background:#fff; border:0.5px solid #E0DDD8; border-radius:14px; padding:12px 14px; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:10px; }
+.tab:hover { background:#FAF8F4; }
+.tab.active { background:#1a1a2e; border-color:#1a1a2e; }
+.tab.active .tab-num { background:#FFE066; color:#1a1a2e; }
+.tab.active .tab-label { color:#fff; }
+.tab.done .tab-num { background:#2E7D32; color:#fff; }
+.tab-num { width:28px; height:28px; min-width:28px; border-radius:8px; background:#F2F0EB; color:#666; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:14px; }
+.tab-label { font-size:13px; font-weight:800; color:#1a1a2e; line-height:1.2; }
+
+/* PANELS */
+.panel { display:none; background:#fff; border-radius:22px; padding:34px 40px; border:0.5px solid #E0DDD8; box-shadow:0 8px 36px rgba(0,0,0,0.07); }
+.panel.active { display:block; }
+.panel h2 { font-family:'Fredoka One',cursive; font-size:24px; margin-bottom:6px; }
+.panel .sub { font-size:14px; color:#666; line-height:1.6; margin-bottom:22px; padding:12px 16px; border-radius:12px; }
+
+/* PART 1 — noticing */
+.story { font-size:18px; line-height:2.3; color:#1a1a2e; background:#FAF8F4; border-radius:14px; padding:24px 28px; border:0.5px solid #EDE9E2; }
+.vtok { cursor:pointer; padding:0 1px; border-radius:3px; transition:background 0.1s; }
+.vtok:hover { background:rgba(94,53,177,0.10); }
+.vtok.marked { background:#EDE7F6; box-shadow:inset 0 -3px 0 #5E35B1; color:#4527A0; font-weight:700; }
+.vtok.correct { background:#E8F5E9 !important; box-shadow:inset 0 -3px 0 #2E7D32 !important; color:#1B5E20 !important; font-weight:700; }
+.vtok.wrong { background:#FFEBEE !important; box-shadow:inset 0 -3px 0 #C62828 !important; color:#C62828 !important; text-decoration:line-through; }
+.vtok.missed { background:#FFF3E0 !important; box-shadow:inset 0 -3px 0 #E65100 !important; color:#E65100 !important; font-weight:700; }
+
+/* PART 2 — gap fill */
+.q { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:12px; font-size:16px; color:#1a1a2e; line-height:1.7; }
+.q .num { font-family:'Fredoka One',cursive; color:#5E35B1; margin-right:6px; }
+.q .cue { color:#888; font-style:italic; font-size:14px; }
+.opts { display:inline-flex; gap:8px; margin:0 4px; }
+.opt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:4px 14px; border-radius:20px; border:1.5px solid #B39DDB; background:#fff; color:#5E35B1; cursor:pointer; transition:all 0.12s; }
+.opt:hover { background:#EDE7F6; }
+.opt.sel { background:#5E35B1; color:#fff; border-color:#5E35B1; }
+.opt.correct { background:#E8F5E9 !important; border-color:#2E7D32 !important; color:#1B5E20 !important; }
+.opt.wrong { background:#FFEBEE !important; border-color:#C62828 !important; color:#C62828 !important; }
+
+/* PART 3 — when/while */
+.cw-opt { border-color:#C2185B; color:#C2185B; }
+.cw-opt:hover { background:#FCE4EC; }
+.cw-opt.sel { background:#C2185B; color:#fff; border-color:#C2185B; }
+.cw-opt.correct { background:#E8F5E9 !important; border-color:#2E7D32 !important; color:#1B5E20 !important; }
+.cw-opt.wrong { background:#FFEBEE !important; border-color:#C62828 !important; color:#C62828 !important; }
+
+/* PART 4 — matching */
+.match-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.mcol-label { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:12px; }
+.mitem { border-radius:12px; padding:13px 16px; border:1.5px solid #E0DDD8; margin-bottom:10px; font-size:15px; cursor:pointer; transition:all 0.12s; background:#fff; line-height:1.4; }
+.mitem:hover { border-color:#5E35B1; }
+.mitem.sel { border-color:#5E35B1; background:#EDE7F6; border-width:2px; }
+.mitem.matched { background:#F4F1FB; }
+.mitem .pairtag { display:inline-block; font-size:11px; font-weight:800; color:#fff; border-radius:50%; width:20px; height:20px; line-height:20px; text-align:center; margin-right:8px; }
+.mitem.correct { background:#E8F5E9 !important; border-color:#2E7D32 !important; }
+.mitem.wrong { background:#FFEBEE !important; border-color:#C62828 !important; }
+
+/* FOOTER */
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 24px; border-radius:12px; cursor:pointer; border:none; transition:all 0.12s; }
+.btn-primary { background:#1a1a2e; color:#fff; }
+.btn-primary:hover { background:#2C2C50; }
+.btn-secondary { background:#F2F0EB; color:#666; border:0.5px solid #E0DDD8; }
+.btn-secondary:hover { background:#E8E5DF; }
+.score { font-size:14px; color:#555; }
+.score.good { color:#2E7D32; font-weight:800; }
+.score.partial { color:#E65100; font-weight:800; }
+.score.bad { color:#C62828; font-weight:800; }
+
+@media (max-width:680px){ .panel{padding:24px 20px;} .match-grid{grid-template-columns:1fr;} .story{font-size:16px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topcard">
+    <div class="tag">Grammar Practice · B1</div>
+    <h1>Past Continuous <span>vs</span> Past Simple</h1>
+    <p>One long action… and something that interrupts it. Work through the 4 parts and check your answers!</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">Notice it 🔍</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">Gap-fill ✍️</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">3</div><div class="tab-label">when / while 🔗</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">4</div><div class="tab-label">Match it 🧩</div></div>
+  </div>
+
+  <!-- ════ PART 1: NOTICING ════ -->
+  <div class="panel active" id="panel-0">
+    <h2 style="color:#5E35B1;">Part 1 — Find the Past Continuous 🔍</h2>
+    <div class="sub" style="background:#EDE7F6;color:#4527A0;">Read the story carefully. <strong>Click the words</strong> that form a <strong>Past Continuous</strong> verb. Remember — Past Continuous needs <strong>TWO words</strong>: <em>was/were</em> + a verb ending in <em>-ing</em>. No underlines this time — find them yourself! 👀 Then press <em>Check</em>.</div>
+    <div class="story" id="story"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP1()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP1()">Reset</button>
+      <span class="score" id="score1"></span>
+    </div>
+  </div>
+
+  <!-- ════ PART 2: GAP-FILL ════ -->
+  <div class="panel" id="panel-1">
+    <h2 style="color:#5E35B1;">Part 2 — Choose the correct form ✍️</h2>
+    <div class="sub" style="background:#EDE7F6;color:#4527A0;">Pick <strong>Past Continuous</strong> (was/were + -ing) for the long action, or <strong>Past Simple</strong> for the short/finished one.</div>
+    <div id="gapQs"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP2()">Reset</button>
+      <span class="score" id="score2"></span>
+    </div>
+  </div>
+
+  <!-- ════ PART 3: WHEN/WHILE ════ -->
+  <div class="panel" id="panel-2">
+    <h2 style="color:#C2185B;">Part 3 — when or while? 🔗</h2>
+    <div class="sub" style="background:#FCE4EC;color:#880E4F;">Remember: <strong>while</strong> + the long action (was/were + -ing) · <strong>when</strong> + the short action (Past Simple).</div>
+    <div id="cwQs"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP3()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP3()">Reset</button>
+      <span class="score" id="score3"></span>
+    </div>
+  </div>
+
+  <!-- ════ PART 4: MATCHING ════ -->
+  <div class="panel" id="panel-3">
+    <h2 style="color:#E65100;">Part 4 — Make a sentence 🧩</h2>
+    <div class="sub" style="background:#FFF3E0;color:#BF360C;">Click a <strong>beginning</strong> on the left, then click its <strong>ending</strong> on the right to join them. Click again to undo.</div>
+    <div class="match-grid">
+      <div>
+        <div class="mcol-label">🟪 Beginnings (long action)</div>
+        <div id="mLeft"></div>
+      </div>
+      <div>
+        <div class="mcol-label">🟧 Endings (what happened)</div>
+        <div id="mRight"></div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP4()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP4()">Reset</button>
+      <span class="score" id="score4"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ===== TABS ===== */
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+/* ================= PART 1: NOTICING (word-level, no hints) ================= */
+/* Every word is clickable. Targets = the words that build a Past Continuous verb. */
+const STORY_TEXT = "Last Saturday, Daniel was having a quiet evening at home. He was watching a film when suddenly the lights went out. While he was looking for his phone, he heard a strange noise in the kitchen. His heart was beating fast. He slowly walked to the kitchen and opened the door. His cat was sitting on the counter and it was eating his dinner! Daniel laughed and felt relieved. It was just a hungry cat.";
+const WORDS = STORY_TEXT.split(" ");
+/* indices of the words that form Past Continuous verbs (was/were + -ing) */
+const PC_TARGETS = new Set([3,4, 11,12, 23,24, 38,39, 53,54, 60,61]);
+const TOTAL_TARGETS = PC_TARGETS.size;
+let p1state = {};
+let p1checked = false;
+function renderStory(){
+  const el = document.getElementById('story');
+  el.innerHTML = '';
+  WORDS.forEach((w,idx)=>{
+    const span = document.createElement('span');
+    span.className = 'vtok' + (p1state[idx]?' marked':'');
+    span.textContent = w;
+    span.onclick = ()=>{ if(p1checked) return; p1state[idx]=!p1state[idx]; renderStory(); };
+    el.appendChild(span);
+    el.appendChild(document.createTextNode(' '));
+  });
+}
+function checkP1(){
+  p1checked = true;
+  let correct=0, wrong=0;
+  const spans = document.querySelectorAll('#story .vtok');
+  WORDS.forEach((w,idx)=>{
+    const span = spans[idx];
+    const isTarget = PC_TARGETS.has(idx);
+    if(p1state[idx] && isTarget){ span.classList.add('correct'); correct++; }
+    else if(p1state[idx] && !isTarget){ span.classList.add('wrong'); wrong++; }
+    else if(!p1state[idx] && isTarget){ span.classList.add('missed'); }
+  });
+  const s = document.getElementById('score1');
+  s.textContent = `You found ${correct} / ${TOTAL_TARGETS} Past Continuous words`
+    + (wrong?` · ${wrong} wrong click${wrong>1?'s':''} (not Past Continuous!)`:'')
+    + (correct===TOTAL_TARGETS&&!wrong?' — perfect! 🎉':'');
+  s.className = 'score ' + (correct===TOTAL_TARGETS&&!wrong?'good':(correct>=6?'partial':'bad'));
+  if(correct===TOTAL_TARGETS&&!wrong) markDone(0);
+}
+function resetP1(){ p1state={}; p1checked=false; document.getElementById('score1').textContent=''; renderStory(); }
+
+/* ================= PART 2: GAP-FILL ================= */
+const GAP = [
+  {pre:"While she ", cue:"(cook)", a:"was cooking", b:"cooked", ans:"was cooking", post:", the phone rang."},
+  {pre:"When I arrived, they ", cue:"(play)", a:"were playing", b:"played", ans:"were playing", post:" football."},
+  {pre:"He ", cue:"(break)", a:"was breaking", b:"broke", ans:"broke", post:" his leg while he was skiing."},
+  {pre:"We ", cue:"(watch)", a:"were watching", b:"watched", ans:"were watching", post:" a film when the lights went out."},
+  {pre:"I ", cue:"(meet)", a:"was meeting", b:"met", ans:"met", post:" my best friend while I was studying at university."},
+  {pre:"What ", cue:"(you / do)", a:"were you doing", b:"did you do", ans:"were you doing", post:" at 9 p.m. last night?"}
+];
+let p2sel = {};
+let p2checked=false;
+function renderGap(){
+  const c = document.getElementById('gapQs'); c.innerHTML='';
+  GAP.forEach((g,i)=>{
+    const div = document.createElement('div'); div.className='q';
+    div.innerHTML = `<span class="num">${i+1}.</span> ${g.pre}`;
+    const opts = document.createElement('span'); opts.className='opts';
+    [g.a,g.b].forEach(o=>{
+      const b = document.createElement('span');
+      b.className='opt'+(p2sel[i]===o?' sel':'');
+      b.textContent=o;
+      b.onclick=()=>{ if(p2checked) return; p2sel[i]=o; renderGap(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    div.insertAdjacentHTML('beforeend', ` ${g.post} <span class="cue">${g.cue}</span>`);
+    c.appendChild(div);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0;
+  const qs=document.querySelectorAll('#gapQs .q');
+  GAP.forEach((g,i)=>{
+    const opts = qs[i].querySelectorAll('.opt');
+    opts.forEach(o=>{
+      if(o.textContent===g.ans) o.classList.add('correct');
+      else if(o.classList.contains('sel')) o.classList.add('wrong');
+    });
+    if(p2sel[i]===g.ans) correct++;
+  });
+  const s=document.getElementById('score2');
+  s.textContent = `${correct} / ${GAP.length} correct` + (correct===GAP.length?' — excellent! 🎉':'');
+  s.className='score '+(correct===GAP.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===GAP.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderGap(); }
+
+/* ================= PART 3: WHEN / WHILE ================= */
+const CW = [
+  {pre:"______ I was sleeping, the dog barked.", ans:"While"},
+  {pre:"I was reading ______ the doorbell rang.", ans:"when"},
+  {pre:"______ the teacher was talking, a student fell asleep.", ans:"While"},
+  {pre:"She was driving ______ she saw the accident.", ans:"when"},
+  {pre:"______ we were having dinner, the lights went out.", ans:"While"},
+  {pre:"They were playing ______ it started to rain.", ans:"when"}
+];
+let p3sel={}; let p3checked=false;
+function renderCW(){
+  const c=document.getElementById('cwQs'); c.innerHTML='';
+  CW.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML = `<span class="num">${i+1}.</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts'; opts.style.marginLeft='10px';
+    ['While','when'].forEach(o=>{
+      const b=document.createElement('span');
+      b.className='opt cw-opt'+(p3sel[i]===o?' sel':'');
+      b.textContent=o;
+      b.onclick=()=>{ if(p3checked) return; p3sel[i]=o; renderCW(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    c.appendChild(div);
+  });
+}
+function checkP3(){
+  p3checked=true; let correct=0;
+  const qs=document.querySelectorAll('#cwQs .q');
+  CW.forEach((q,i)=>{
+    qs[i].querySelectorAll('.opt').forEach(o=>{
+      if(o.textContent===q.ans) o.classList.add('correct');
+      else if(o.classList.contains('sel')) o.classList.add('wrong');
+    });
+    if(p3sel[i]===q.ans) correct++;
+  });
+  const s=document.getElementById('score3');
+  s.textContent=`${correct} / ${CW.length} correct`+(correct===CW.length?' — great linking! 🎉':'');
+  s.className='score '+(correct===CW.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===CW.length) markDone(2);
+}
+function resetP3(){ p3sel={}; p3checked=false; document.getElementById('score3').textContent=''; renderCW(); }
+
+/* ================= PART 4: MATCHING ================= */
+const LEFT = [
+  {id:'A', t:"While I was walking home,"},
+  {id:'B', t:"She was taking a shower"},
+  {id:'C', t:"We were watching the match"},
+  {id:'D', t:"I was cooking dinner"},
+  {id:'E', t:"They were sleeping"}
+];
+const RIGHT = [
+  {id:'3', t:"when our team scored.", match:'C'},
+  {id:'1', t:"it started to rain.", match:'A'},
+  {id:'5', t:"when the earthquake started.", match:'E'},
+  {id:'2', t:"when the phone rang.", match:'B'},
+  {id:'4', t:"when the smoke alarm went off.", match:'D'}
+];
+const PAIRCOLOR = {A:'#5E35B1',B:'#1565C0',C:'#2E7D32',D:'#E65100',E:'#C2185B'};
+let selLeft=null;
+let pairs={}; /* leftId -> rightId */
+let p4checked=false;
+function renderMatch(){
+  const L=document.getElementById('mLeft'); const R=document.getElementById('mRight');
+  L.innerHTML=''; R.innerHTML='';
+  LEFT.forEach(l=>{
+    const d=document.createElement('div'); d.className='mitem'+(selLeft===l.id?' sel':'')+(pairs[l.id]?' matched':'');
+    let tag = pairs[l.id] ? `<span class="pairtag" style="background:${PAIRCOLOR[l.id]}">${l.id}</span>` : '';
+    d.innerHTML = tag + l.t;
+    d.onclick=()=>{ if(p4checked) return;
+      if(pairs[l.id]){ delete pairs[l.id]; selLeft=null; renderMatch(); return; }
+      selLeft = (selLeft===l.id)?null:l.id; renderMatch();
+    };
+    L.appendChild(d);
+  });
+  RIGHT.forEach(r=>{
+    const ownerLeft = Object.keys(pairs).find(k=>pairs[k]===r.id);
+    const d=document.createElement('div'); d.className='mitem'+(ownerLeft?' matched':'');
+    let tag = ownerLeft ? `<span class="pairtag" style="background:${PAIRCOLOR[ownerLeft]}">${ownerLeft}</span>` : '';
+    d.innerHTML = tag + r.t;
+    d.onclick=()=>{ if(p4checked) return;
+      if(ownerLeft){ delete pairs[ownerLeft]; renderMatch(); return; }
+      if(selLeft){ pairs[selLeft]=r.id; selLeft=null; renderMatch(); }
+    };
+    R.appendChild(d);
+  });
+}
+function checkP4(){
+  p4checked=true; let correct=0;
+  const Ls=document.querySelectorAll('#mLeft .mitem');
+  const Rs=document.querySelectorAll('#mRight .mitem');
+  LEFT.forEach((l,i)=>{
+    const rid=pairs[l.id];
+    const r=RIGHT.find(x=>x.id===rid);
+    const ok = r && r.match===l.id;
+    Ls[i].classList.add(ok?'correct':'wrong');
+  });
+  RIGHT.forEach((r,i)=>{
+    const ownerLeft=Object.keys(pairs).find(k=>pairs[k]===r.id);
+    const ok = ownerLeft && r.match===ownerLeft;
+    if(ownerLeft) Rs[i].classList.add(ok?'correct':'wrong');
+  });
+  LEFT.forEach(l=>{ const r=RIGHT.find(x=>x.id===pairs[l.id]); if(r&&r.match===l.id) correct++; });
+  const s=document.getElementById('score4');
+  s.textContent=`${correct} / ${LEFT.length} correct`+(correct===LEFT.length?' — perfect match! 🎉':'');
+  s.className='score '+(correct===LEFT.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===LEFT.length) markDone(3);
+}
+function resetP4(){ pairs={}; selLeft=null; p4checked=false; document.getElementById('score4').textContent=''; renderMatch(); }
+
+/* init */
+renderStory(); renderGap(); renderCW(); renderMatch();
+</script>
+</body>
+</html>
