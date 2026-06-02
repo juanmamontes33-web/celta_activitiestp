@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Let's Polish Your Stories — Review Class</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 100px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 30px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 17px; }
+.step-card { background: #fff; border-radius: 14px; padding: 16px 20px; border: 0.5px solid #E0DDD8; box-shadow: 0 3px 12px rgba(0,0,0,0.05); display: flex; gap: 14px; align-items: center; }
+.step-num { width: 36px; height: 36px; min-width: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka One', cursive; font-size: 17px; color: #fff; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#2a1810);">
+  <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(255,112,67,0.16);"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(83,74,183,0.14);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:620px;display:flex;flex-direction:column;justify-content:center;padding:60px;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#FFAB91;font-weight:700;margin-bottom:18px;">Task Review · B1 · 30–40 min</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:54px;color:#fff;line-height:1.08;margin-bottom:16px;">Let's polish<br>your <span style="color:#FFE066;">stories</span> ✨</div>
+    <div style="font-size:17px;color:#a0a0c0;line-height:1.7;margin-bottom:30px;">You wrote about a <strong style="color:#fff;">shared experience</strong>.<br>Today we read them, fix them, and make them <em style="color:#FFAB91;">shine</em>.</div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,171,145,0.3);border-radius:14px;padding:16px 22px;">
+      <div style="font-size:12px;color:#FFAB91;font-weight:800;letter-spacing:1px;margin-bottom:6px;">YOUR TASK WAS:</div>
+      <div style="font-size:14px;color:#E0E0FF;line-height:1.7;">≈200 words · 2 affirmative · 2 negative · 2 questions (past) · 3 adverbs of frequency</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:660px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" width="520" height="520">
+      <circle cx="260" cy="260" r="230" fill="rgba(255,112,67,0.05)"/>
+      <!-- paper -->
+      <rect x="150" y="120" width="240" height="300" rx="14" fill="#fff" transform="rotate(-5 270 270)"/>
+      <g transform="rotate(-5 270 270)">
+        <line x1="175" y1="170" x2="365" y2="170" stroke="#CFD8DC" stroke-width="6" stroke-linecap="round"/>
+        <line x1="175" y1="200" x2="365" y2="200" stroke="#CFD8DC" stroke-width="6" stroke-linecap="round"/>
+        <line x1="175" y1="230" x2="320" y2="230" stroke="#CFD8DC" stroke-width="6" stroke-linecap="round"/>
+        <line x1="175" y1="280" x2="365" y2="280" stroke="#CFD8DC" stroke-width="6" stroke-linecap="round"/>
+        <line x1="175" y1="310" x2="340" y2="310" stroke="#CFD8DC" stroke-width="6" stroke-linecap="round"/>
+        <!-- red correction marks -->
+        <line x1="250" y1="200" x2="290" y2="200" stroke="#E64A19" stroke-width="6" stroke-linecap="round"/>
+        <path d="M255 192 L285 208 M285 192 L255 208" stroke="#E64A19" stroke-width="3" stroke-linecap="round"/>
+        <text x="300" y="195" font-size="20" fill="#E64A19" font-family="Fredoka One,cursive">✓</text>
+      </g>
+      <!-- pencil -->
+      <g transform="rotate(40 400 380)">
+        <rect x="385" y="280" width="30" height="150" rx="4" fill="#FFB300"/>
+        <polygon points="385,430 415,430 400,470" fill="#FDBCB4"/>
+        <polygon points="393,455 407,455 400,470" fill="#3E2723"/>
+        <rect x="385" y="280" width="30" height="22" fill="#E64A19"/>
+      </g>
+      <!-- sparkles -->
+      <text x="120" y="160" font-size="30" fill="#FFE066">✦</text>
+      <text x="400" y="160" font-size="22" fill="#FFAB91">✦</text>
+      <text x="150" y="430" font-size="24" fill="#FFE066">✦</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: LEAD-IN ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#2a1810);">
+  <div style="position:absolute;top:-60px;right:430px;width:240px;height:240px;border-radius:50%;background:rgba(255,112,67,0.16);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:580px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#FFAB91;font-weight:700;margin-bottom:14px;">Warm up · speak first!</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:46px;color:#fff;line-height:1.1;margin-bottom:28px;">Tell me about it 💬</div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,224,102,0.4);border-radius:18px;padding:22px 26px;margin-bottom:16px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFE066;font-weight:700;margin-bottom:10px;">Question 1</div>
+      <div style="font-size:18px;color:#E0E0FF;line-height:1.6;font-style:italic;">"What shared experience did you write about? Tell me in 2 sentences."</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,171,145,0.4);border-radius:18px;padding:22px 26px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFAB91;font-weight:700;margin-bottom:10px;">Question 2</div>
+      <div style="font-size:18px;color:#E0E0FF;line-height:1.6;font-style:italic;">"What did you BOTH do the same? What was different?"</div>
+    </div>
+    <div style="margin-top:18px;font-size:13px;color:#FFAB91;font-style:italic;">🗣️ Don't read your paragraph yet — just talk!</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:700px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg" width="560" height="520">
+      <circle cx="280" cy="260" r="230" fill="rgba(255,112,67,0.05)"/>
+      <!-- two people talking -->
+      <g>
+        <circle cx="190" cy="240" r="48" fill="#7F77DD"/>
+        <circle cx="190" cy="225" r="22" fill="#FDBCB4"/>
+        <path d="M158 270 Q190 250 222 270 L222 300 L158 300 Z" fill="#534AB7"/>
+        <path d="M178 222 Q190 216 202 222" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <g>
+        <circle cx="370" cy="240" r="48" fill="#FFAB91"/>
+        <circle cx="370" cy="225" r="22" fill="#FDBCB4"/>
+        <path d="M338 270 Q370 250 402 270 L402 300 L338 300 Z" fill="#E64A19"/>
+        <path d="M358 222 Q370 216 382 222" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- speech bubbles -->
+      <g>
+        <rect x="120" y="120" width="150" height="70" rx="18" fill="#fff"/>
+        <polygon points="170,188 190,188 165,215" fill="#fff"/>
+        <text x="195" y="150" text-anchor="middle" font-size="22">😄</text>
+        <text x="195" y="178" text-anchor="middle" font-size="13" fill="#666" font-family="Nunito" font-weight="700">"We always..."</text>
+      </g>
+      <g>
+        <rect x="300" y="110" width="160" height="70" rx="18" fill="#fff"/>
+        <polygon points="375,178 395,178 400,205" fill="#fff"/>
+        <text x="380" y="140" text-anchor="middle" font-size="22">🙂</text>
+        <text x="380" y="168" text-anchor="middle" font-size="13" fill="#666" font-family="Nunito" font-weight="700">"Me too! / Really?"</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 3: SELF & PEER CHECK ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFCC80;">
+    <div class="header-icon" style="background:#E64A19;">✅</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Check your work — did you include everything?</h2>
+      <p>Swap paragraphs with your partner. Read it. Tick the boxes together.</p>
+    </div>
+    <div class="timer-pill" style="background:#E64A19;">Check ✓</div>
+  </div>
+
+  <div style="padding:34px 70px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+    <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#BF360C;margin-bottom:6px;">Your partner's paragraph has…</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:14px;"><div style="width:30px;height:30px;border:2px solid #2E7D32;border-radius:8px;flex-shrink:0;"></div><div style="font-size:15px;color:#1a1a2e;"><strong>2 affirmative</strong> past sentences ➕</div></div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:14px;"><div style="width:30px;height:30px;border:2px solid #2E7D32;border-radius:8px;flex-shrink:0;"></div><div style="font-size:15px;color:#1a1a2e;"><strong>2 negative</strong> past sentences ➖</div></div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:14px;"><div style="width:30px;height:30px;border:2px solid #2E7D32;border-radius:8px;flex-shrink:0;"></div><div style="font-size:15px;color:#1a1a2e;"><strong>2 questions</strong> in the past ❓</div></div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:14px;"><div style="width:30px;height:30px;border:2px solid #2E7D32;border-radius:8px;flex-shrink:0;"></div><div style="font-size:15px;color:#1a1a2e;"><strong>3 adverbs</strong> of frequency 🔁</div></div>
+    </div>
+
+    <div style="background:#FFF3E0;border-radius:14px;padding:16px 22px;border-left:4px solid #FFD700;margin-top:8px;">
+      <div style="font-size:14px;color:#7A5C00;line-height:1.7;">💡 <strong>Underline</strong> each one in a different colour as you find it. If something is missing — tell your partner so they can add it!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 4: THE FREQUENCY CLINE (MEANING) ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">📊</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">How often? — the frequency line</h2>
+      <p>Adverbs of frequency tell us how often something happens.</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">Meaning 📊</div>
+  </div>
+
+  <div style="padding:50px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:40px;">
+    <!-- gradient bar -->
+    <div style="position:relative;height:34px;border-radius:20px;background:linear-gradient(90deg,#2E7D32,#7CB342,#FDD835,#FB8C00,#E53935,#B71C1C);box-shadow:0 4px 14px rgba(0,0,0,0.12);"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:18px;">
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">🟢</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#2E7D32;">always</div><div style="font-size:13px;color:#888;font-weight:700;">100%</div></div>
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">&nbsp;</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#7CB342;">usually</div><div style="font-size:13px;color:#888;font-weight:700;">~90%</div></div>
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">&nbsp;</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#C0A000;">often</div><div style="font-size:13px;color:#888;font-weight:700;">~70%</div></div>
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">🟡</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#FB8C00;">sometimes</div><div style="font-size:13px;color:#888;font-weight:700;">~50%</div></div>
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">&nbsp;</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#E53935;">rarely</div><div style="font-size:13px;color:#888;font-weight:700;">~10%</div></div>
+      <div style="text-align:center;width:16%;"><div style="font-size:22px;margin-bottom:4px;">🔴</div><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#B71C1C;">never</div><div style="font-size:13px;color:#888;font-weight:700;">0%</div></div>
+    </div>
+
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:10px;">
+      <div style="background:#E8F5E9;border-radius:14px;padding:16px 24px;border:0.5px solid #A5D6A7;font-size:16px;color:#1a1a2e;">I <strong style="color:#2E7D32;">always</strong> drink coffee. ☕</div>
+      <div style="background:#FFEBEE;border-radius:14px;padding:16px 24px;border:0.5px solid #EF9A9A;font-size:16px;color:#1a1a2e;">She <strong style="color:#C62828;">never</strong> eats meat. 🥗</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5: POSITION (THE CORE) ═══ -->
+<div class="slide" style="background:#F0F9FF;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #90CAF9;">
+    <div class="header-icon" style="background:#1565C0;">📍</div>
+    <div class="header-text">
+      <h2 style="color:#0D47A1;">WHERE do they go? — the golden rule</h2>
+      <p>This is the part most students get wrong. Two simple rules!</p>
+    </div>
+    <div class="timer-pill" style="background:#1565C0;">Position 📍</div>
+  </div>
+
+  <div style="padding:26px 56px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;border-top:6px solid #1565C0;border:0.5px solid #90CAF9;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#1565C0;letter-spacing:1px;margin-bottom:8px;">RULE 1 · with normal verbs</div>
+        <div style="font-size:19px;color:#1a1a2e;font-weight:700;margin-bottom:10px;">adverb goes <span style="color:#1565C0;">BEFORE</span> the verb</div>
+        <div style="background:#E3F2FD;border-radius:10px;padding:12px 16px;font-size:18px;color:#1a1a2e;">I <strong style="color:#1565C0;">usually</strong> walk to work. 🚶</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;border-top:6px solid #2E7D32;border:0.5px solid #A5D6A7;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#2E7D32;letter-spacing:1px;margin-bottom:8px;">RULE 2 · with the verb 'be'</div>
+        <div style="font-size:19px;color:#1a1a2e;font-weight:700;margin-bottom:10px;">adverb goes <span style="color:#2E7D32;">AFTER</span> be</div>
+        <div style="background:#E8F5E9;border-radius:10px;padding:12px 16px;font-size:18px;color:#1a1a2e;">She <strong style="color:#2E7D32;">is</strong> <strong style="color:#2E7D32;">often</strong> tired. 😴</div>
+      </div>
+    </div>
+
+    <!-- the common mistake -->
+    <div style="background:#fff;border-radius:16px;padding:22px 30px;border:2px solid #EF9A9A;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-size:13px;font-weight:800;color:#C62828;letter-spacing:1px;margin-bottom:14px;">⚠️ THE COMMON MISTAKE (careful — this is the Spanish habit!)</div>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+        <div style="font-size:18px;color:#C62828;"><s>I drink <strong>always</strong> coffee.</s> ❌</div>
+        <div style="font-size:18px;color:#C62828;"><s><strong>Always</strong> I drink coffee.</s> ❌</div>
+        <div style="font-size:20px;color:#2E7D32;font-weight:800;">→ I <strong>always</strong> drink coffee. ✅</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 6: ADVERBS + THE PAST ═══ -->
+<div class="slide" style="background:#F4F1FB;">
+  <div class="slide-header" style="background:#EDE7F6;border-bottom:2px solid #B39DDB;">
+    <div class="header-icon" style="background:#5E35B1;">⏪</div>
+    <div class="header-text">
+      <h2 style="color:#4527A0;">In YOUR stories — adverbs + the past</h2>
+      <p>Same position rule — just put the verb in the past!</p>
+    </div>
+    <div class="timer-pill" style="background:#5E35B1;">Past 🔁</div>
+  </div>
+
+  <div style="padding:34px 56px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#fff;border-radius:14px;padding:18px 24px;border:0.5px solid #B39DDB;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:20px;color:#1a1a2e;">We <strong style="color:#5E35B1;">always</strong> <strong>went</strong> to the beach in summer. 🏖️</div>
+      <div style="background:#fff;border-radius:14px;padding:18px 24px;border:0.5px solid #B39DDB;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:20px;color:#1a1a2e;">She <strong style="color:#5E35B1;">never</strong> <strong>wanted</strong> to leave early. 😅</div>
+      <div style="background:#fff;border-radius:14px;padding:18px 24px;border:0.5px solid #B39DDB;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:20px;color:#1a1a2e;">My family <strong style="color:#5E35B1;">often</strong> <strong>visited</strong> my grandparents. 👵</div>
+    </div>
+
+    <div style="background:#EDE7F6;border-radius:14px;padding:18px 24px;border-left:4px solid #5E35B1;">
+      <div style="font-size:15px;color:#4527A0;line-height:1.7;">🌉 <strong>Next week:</strong> there's another way to talk about past habits like these — <em style="color:#5E35B1;font-weight:800;">"We used to go to the beach…"</em> Get ready! 😉</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: ERROR CORRECTION BOARD ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFCC80;">
+    <div class="header-icon" style="background:#E64A19;">🔧</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Find and fix the mistakes 🔎</h2>
+      <p>These are real sentences (no names!). Work together — how do we correct them?</p>
+    </div>
+    <div class="timer-pill" style="background:#E64A19;">Fix it 🔧</div>
+  </div>
+
+  <div style="padding:28px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:13px;">
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:19px;color:#1a1a2e;"><strong style="color:#E64A19;">1.</strong> &nbsp;<em>"Did you went to the concert?"</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:19px;color:#1a1a2e;"><strong style="color:#E64A19;">2.</strong> &nbsp;<em>"We always was tired after the game."</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:19px;color:#1a1a2e;"><strong style="color:#E64A19;">3.</strong> &nbsp;<em>"I drink usually water, not soda."</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:19px;color:#1a1a2e;"><strong style="color:#E64A19;">4.</strong> &nbsp;<em>"Always we played football on Sundays."</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #FFCC80;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:19px;color:#1a1a2e;"><strong style="color:#E64A19;">5.</strong> &nbsp;<em>"She doesn't never call me."</em></div>
+
+    <div style="background:#FFF3E0;border-radius:12px;padding:12px 18px;border-left:4px solid #FFD700;margin-top:4px;">
+      <div style="font-size:13px;color:#7A5C00;line-height:1.6;">💡 For each one: <strong>What's wrong? Why? How do we fix it?</strong> — try to explain the rule!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 8: REDRAFT & SHARE ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(255,112,67,0.15);"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(46,125,50,0.12);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;gap:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#FFAB91;font-weight:700;">Last step · make it better</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:42px;color:#fff;line-height:1.15;">Improve & share ✨</div>
+
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:22px 26px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#FFE066;font-weight:700;margin-bottom:12px;">Fix 3 things in your paragraph:</div>
+      <div style="font-size:16px;color:#fff;line-height:2;">
+        ✏️ 1 adverb in the wrong <strong style="color:#FFE066;">position</strong><br>
+        ⏪ 1 <strong style="color:#FFE066;">past verb</strong> (check the spelling!)<br>
+        ❓ 1 <strong style="color:#FFE066;">question</strong> form
+      </div>
+    </div>
+
+    <div style="font-size:14px;color:#a0a0c0;line-height:1.7;">Then <strong style="color:#fff;">read your improved version</strong> out loud to your partner. 🎤</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:720px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" width="520" height="520">
+      <circle cx="260" cy="260" r="220" fill="rgba(255,112,67,0.05)"/>
+      <!-- trophy / star burst -->
+      <circle cx="260" cy="250" r="120" fill="rgba(255,224,102,0.10)" stroke="#FFE066" stroke-width="1.5"/>
+      <path d="M260 160 l22 58 l62 2 l-49 38 l18 60 l-53 -36 l-53 36 l18 -60 l-49 -38 l62 -2 z" fill="#FFE066"/>
+      <text x="260" y="265" text-anchor="middle" font-size="46">🌟</text>
+      <text x="130" y="170" font-size="30" fill="#FFAB91">✦</text>
+      <text x="380" y="180" font-size="24" fill="#FFE066">✦</text>
+      <text x="150" y="380" font-size="26" fill="#FFAB91">✦</text>
+      <text x="370" y="370" font-size="30" fill="#FFE066">✦</text>
+      <text x="260" y="450" text-anchor="middle" font-size="16" fill="#a0a0c0" font-family="Nunito" font-weight="700">Great writing — see you next week! 👋</text>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>
