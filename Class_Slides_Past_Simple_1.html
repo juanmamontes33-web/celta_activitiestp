@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Past Simple — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 100px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 30px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 17px; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(83,74,183,0.18);"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(15,110,86,0.14);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;padding:60px;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#7F77DD;font-weight:700;margin-bottom:18px;">Grammar · A2 / B1</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:68px;color:#fff;line-height:1.05;margin-bottom:14px;">Past <span style="color:#FFE066;">Simple</span></div>
+    <div style="font-size:18px;color:#a0a0c0;line-height:1.7;margin-bottom:36px;">Today we are going to talk about<br>things that <strong style="color:#fff;">happened in the past</strong>. 📖</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 22px;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#FFE066;">I walked</div><div style="font-size:12px;color:#a0a0c0;margin-top:3px;">✓ Affirmative</div></div>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 22px;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#F48FB1;">I didn't walk</div><div style="font-size:12px;color:#a0a0c0;margin-top:3px;">✗ Negative</div></div>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px 22px;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#9FE1CB;">Did I walk?</div><div style="font-size:12px;color:#a0a0c0;margin-top:3px;">? Question</div></div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:680px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" width="560" height="560">
+      <circle cx="280" cy="280" r="240" fill="rgba(83,74,183,0.06)"/>
+      <!-- Big clock face -->
+      <circle cx="280" cy="280" r="180" fill="rgba(255,255,255,0.04)" stroke="rgba(255,224,102,0.4)" stroke-width="3"/>
+      <circle cx="280" cy="280" r="170" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2,6"/>
+      <!-- Hour marks -->
+      <g stroke="#FFE066" stroke-width="3" stroke-linecap="round">
+        <line x1="280" y1="115" x2="280" y2="135"/>
+        <line x1="445" y1="280" x2="425" y2="280"/>
+        <line x1="280" y1="445" x2="280" y2="425"/>
+        <line x1="115" y1="280" x2="135" y2="280"/>
+      </g>
+      <!-- Numbers -->
+      <text x="280" y="160" text-anchor="middle" font-size="20" fill="#FFE066" font-family="Fredoka One,cursive">12</text>
+      <text x="400" y="290" text-anchor="middle" font-size="20" fill="#FFE066" font-family="Fredoka One,cursive">3</text>
+      <text x="280" y="410" text-anchor="middle" font-size="20" fill="#FFE066" font-family="Fredoka One,cursive">6</text>
+      <text x="160" y="290" text-anchor="middle" font-size="20" fill="#FFE066" font-family="Fredoka One,cursive">9</text>
+      <!-- Hour hand pointing backward/left -->
+      <line x1="280" y1="280" x2="180" y2="240" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      <line x1="280" y1="280" x2="320" y2="200" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="280" cy="280" r="10" fill="#FFE066"/>
+      <!-- Arrow indicating "back" -->
+      <path d="M 200 470 Q 280 510 360 470" stroke="#9FE1CB" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="6,4"/>
+      <polygon points="195,468 207,460 207,478" fill="#9FE1CB"/>
+      <text x="280" y="510" text-anchor="middle" font-size="14" fill="#9FE1CB" font-family="Nunito,sans-serif" font-weight="800">← BACK IN TIME</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: WARM-UP ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-60px;right:430px;width:240px;height:240px;border-radius:50%;background:rgba(83,74,183,0.18);"></div>
+  <div style="position:absolute;bottom:-50px;right:360px;width:180px;height:180px;border-radius:50%;background:rgba(206,147,216,0.14);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#7F77DD;font-weight:700;margin-bottom:14px;">Warm Up</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:52px;color:#fff;line-height:1.1;margin-bottom:28px;">Let's <span style="color:#FFE066;">talk!</span> 💬</div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,224,102,0.4);border-radius:18px;padding:22px 26px;margin-bottom:16px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFE066;font-weight:700;margin-bottom:10px;">Question 1</div>
+      <div style="font-size:18px;color:#E0E0FF;line-height:1.7;font-style:italic;">"What did you do last weekend?"</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(159,225,203,0.4);border-radius:18px;padding:22px 26px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9FE1CB;font-weight:700;margin-bottom:10px;">Question 2</div>
+      <div style="font-size:18px;color:#E0E0FF;line-height:1.7;font-style:italic;">"Did you do anything special or fun?"</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:720px;display:flex;align-items:center;justify-content:center;padding:40px;">
+    <div style="width:100%;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,224,102,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">🍕</div><div style="font-size:13px;color:#FFE066;font-weight:700;">I ate pizza</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(159,225,203,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">🎬</div><div style="font-size:13px;color:#9FE1CB;font-weight:700;">I watched a movie</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(206,147,216,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">🏃</div><div style="font-size:13px;color:#CE93D8;font-weight:700;">I went running</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(144,202,249,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">📚</div><div style="font-size:13px;color:#90CAF9;font-weight:700;">I read a book</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(244,143,177,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">👨‍👩‍👧</div><div style="font-size:13px;color:#F48FB1;font-weight:700;">I saw my family</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,183,77,0.3);border-radius:14px;padding:16px 18px;text-align:center;"><div style="font-size:36px;margin-bottom:6px;">😴</div><div style="font-size:13px;color:#FFB74D;font-weight:700;">I slept a lot</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 3: READING TEXT ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #90CAF9;">
+    <div class="header-icon" style="background:#1565C0;">📖</div>
+    <div class="header-text">
+      <h2 style="color:#0D47A1;">Read about my trip!</h2>
+      <p>I went on holiday. Read the story and find the past simple verbs!</p>
+    </div>
+    <div class="timer-pill" style="background:#1565C0;">3 min ⏱️</div>
+  </div>
+
+  <div style="padding:24px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:32px;height:596px;align-items:start;">
+
+    <!-- The text -->
+    <div style="background:#fff;border-radius:18px;padding:28px 32px;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.07);font-size:15px;line-height:2;">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#1565C0;margin-bottom:14px;">✈️ My Trip to Madrid</div>
+      <p style="color:#333;">Last summer, I <strong style="color:#534AB7;">went</strong> on holiday to Madrid for the first time. I <strong style="color:#534AB7;">arrived</strong> on a sunny Friday afternoon and <strong style="color:#534AB7;">stayed</strong> in a small hotel near the city centre.</p>
+      <p style="color:#333;margin-top:10px;">On Saturday, I <strong style="color:#534AB7;">visited</strong> the famous Prado Museum and <strong style="color:#534AB7;">walked</strong> around beautiful Retiro Park. I <strong style="color:#534AB7;">ate</strong> the best paella of my life at a little restaurant! 🥘</p>
+      <p style="color:#333;margin-top:10px;">I <strong style="color:#E91E63;">didn't take</strong> many photos, but I <strong style="color:#534AB7;">made</strong> wonderful memories. <strong style="color:#2E7D32;">Did I love</strong> Madrid? Absolutely! ❤️</p>
+    </div>
+
+    <!-- Right: tasks -->
+    <div style="display:flex;flex-direction:column;gap:14px;">
+
+      <!-- Gist -->
+      <div style="background:#fff;border-radius:16px;padding:20px 22px;border:2px solid #FFE066;box-shadow:0 4px 14px rgba(0,0,0,0.05);">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:8px;">🎯 Gist Task</div>
+        <div style="font-size:14px;color:#1a1a2e;font-weight:800;margin-bottom:10px;">Was the trip good or bad?</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;display:flex;flex-direction:column;gap:5px;">
+          <div>A) Bad — the writer didn't like it 😞</div>
+          <div>B) Good — the writer loved it 😊</div>
+          <div>C) The writer didn't go to Madrid 🤔</div>
+        </div>
+      </div>
+
+      <!-- Intensive -->
+      <div style="background:#fff;border-radius:16px;padding:20px 22px;border:2px solid #90CAF9;box-shadow:0 4px 14px rgba(0,0,0,0.05);">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1565C0;margin-bottom:8px;">🔍 Find the verbs!</div>
+        <div style="font-size:14px;color:#1a1a2e;font-weight:800;margin-bottom:8px;">Underline all <em>past simple</em> verbs</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+          <span style="background:#E8F5E9;color:#2E7D32;padding:3px 10px;border-radius:14px;font-size:11px;font-weight:700;">✓ Affirmative</span>
+          <span style="background:#FFEBEE;color:#C62828;padding:3px 10px;border-radius:14px;font-size:11px;font-weight:700;">✗ Negative</span>
+          <span style="background:#E3F2FD;color:#1565C0;padding:3px 10px;border-radius:14px;font-size:11px;font-weight:700;">? Question</span>
+        </div>
+      </div>
+
+      <div style="background:#E8F5E9;border-radius:12px;padding:12px 16px;border-left:4px solid #2E7D32;font-size:12px;color:#1B5E20;line-height:1.6;">
+        💡 Read individually first, then we'll find the verbs together!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 4: MEANING + FORM ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFD180;">
+    <div class="header-icon" style="background:#E65100;">🎯</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Meaning + Form</h2>
+      <p>WHEN do we use Past Simple? HOW do we make it?</p>
+    </div>
+    <div class="timer-pill" style="background:#E65100;">10 min ⏱️</div>
+  </div>
+
+  <div style="padding:18px 48px;display:flex;flex-direction:column;gap:14px;height:596px;">
+
+    <!-- MEANING — Timeline -->
+    <div style="background:#fff;border-radius:16px;padding:18px 24px;border:0.5px solid #E0DDD8;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#E65100;margin-bottom:10px;">💡 Meaning — Finished actions in the past</div>
+      <div style="display:flex;align-items:center;gap:14px;padding:8px 0;">
+        <div style="flex:1;height:3px;background:linear-gradient(to right,#F48FB1,#FFE066,#A5D6A7);border-radius:3px;position:relative;">
+          <div style="position:absolute;left:8%;top:-6px;width:14px;height:14px;border-radius:50%;background:#E91E63;border:3px solid #fff;box-shadow:0 0 0 2px #E91E63;"></div>
+          <div style="position:absolute;left:50%;top:-6px;width:14px;height:14px;border-radius:50%;background:#FF9800;border:3px solid #fff;box-shadow:0 0 0 2px #FF9800;"></div>
+          <div style="position:absolute;right:0;top:-9px;width:20px;height:20px;border-radius:50%;background:#2E7D32;border:3px solid #fff;box-shadow:0 0 0 2px #2E7D32;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;">▶</div>
+          <div style="position:absolute;left:5%;top:14px;font-size:11px;color:#E91E63;font-weight:800;">5 years ago</div>
+          <div style="position:absolute;left:47%;top:14px;font-size:11px;color:#FF9800;font-weight:800;">yesterday</div>
+          <div style="position:absolute;right:-10px;top:14px;font-size:11px;color:#2E7D32;font-weight:800;">NOW</div>
+        </div>
+      </div>
+      <div style="margin-top:22px;font-size:13px;color:#555;line-height:1.7;">
+        <strong style="color:#E65100;">Time markers:</strong> yesterday · last week / month / year · two days ago · in 2020 · when I was a child
+      </div>
+    </div>
+
+    <!-- FORM — 3 cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1;">
+
+      <!-- Affirmative -->
+      <div style="background:#fff;border-radius:16px;padding:18px 20px;border-top:5px solid #2E7D32;border:0.5px solid #E0DDD8;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:5px solid #2E7D32;display:flex;flex-direction:column;">
+        <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#2E7D32;margin-bottom:8px;">✓ Affirmative</div>
+        <div style="background:#E8F5E9;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:12px;color:#1B5E20;font-weight:700;">Subject + verb<sub style="color:#2E7D32;">past</sub></div>
+        <div style="font-size:13px;color:#333;line-height:1.9;font-style:italic;">
+          I <strong>walked</strong> to school.<br>
+          She <strong>visited</strong> Paris.<br>
+          We <strong>went</strong> home.
+        </div>
+        <div style="margin-top:auto;background:#F1F8E9;border-radius:8px;padding:8px 10px;font-size:11px;color:#33691E;line-height:1.5;border-left:3px solid #2E7D32;">
+          <strong>Regular:</strong> verb + ed<br>
+          <strong>Irregular:</strong> change form (go→went)
+        </div>
+      </div>
+
+      <!-- Negative -->
+      <div style="background:#fff;border-radius:16px;padding:18px 20px;border:0.5px solid #E0DDD8;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:5px solid #C62828;display:flex;flex-direction:column;">
+        <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#C62828;margin-bottom:8px;">✗ Negative</div>
+        <div style="background:#FFEBEE;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:12px;color:#B71C1C;font-weight:700;">Subject + didn't + verb<sub style="color:#C62828;">base</sub></div>
+        <div style="font-size:13px;color:#333;line-height:1.9;font-style:italic;">
+          I <strong>didn't walk</strong> to school.<br>
+          She <strong>didn't visit</strong> Paris.<br>
+          We <strong>didn't go</strong> home.
+        </div>
+        <div style="margin-top:auto;background:#FFEBEE;border-radius:8px;padding:8px 10px;font-size:11px;color:#880E4F;line-height:1.5;border-left:3px solid #C62828;">
+          ⚠️ <strong>Base verb</strong> (not past!)<br>
+          ❌ I didn't <s>went</s> · ✓ I didn't go
+        </div>
+      </div>
+
+      <!-- Question -->
+      <div style="background:#fff;border-radius:16px;padding:18px 20px;border:0.5px solid #E0DDD8;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:5px solid #1565C0;display:flex;flex-direction:column;">
+        <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#1565C0;margin-bottom:8px;">? Question</div>
+        <div style="background:#E3F2FD;border-radius:8px;padding:8px 12px;margin-bottom:10px;font-size:12px;color:#0D47A1;font-weight:700;">Did + subject + verb<sub style="color:#1565C0;">base</sub>?</div>
+        <div style="font-size:13px;color:#333;line-height:1.9;font-style:italic;">
+          <strong>Did</strong> you <strong>walk</strong>?<br>
+          <strong>Did</strong> she <strong>visit</strong> Paris?<br>
+          <strong>Did</strong> we <strong>go</strong> home?
+        </div>
+        <div style="margin-top:auto;background:#E3F2FD;border-radius:8px;padding:8px 10px;font-size:11px;color:#0D47A1;line-height:1.5;border-left:3px solid #1565C0;">
+          ⚠️ <strong>Base verb</strong> after Did!<br>
+          ❌ Did you <s>went</s> · ✓ Did you go
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5: PRONUNCIATION OF -ED ═══ -->
+<div class="slide" style="background:#F0F4FF;">
+  <div class="slide-header" style="background:#EDE7F6;border-bottom:2px solid #B39DDB;">
+    <div class="header-icon" style="background:#5D3A8A;">🔊</div>
+    <div class="header-text">
+      <h2 style="color:#4527A0;">Pronunciation — the 3 sounds of -ed</h2>
+      <p>Regular verbs end in -ed, but they have THREE different sounds!</p>
+    </div>
+    <div class="timer-pill" style="background:#5D3A8A;">5 min ⏱️</div>
+  </div>
+
+  <div style="padding:24px 56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;height:596px;align-items:start;">
+
+    <!-- /t/ -->
+    <div style="background:#fff;border-radius:18px;padding:22px 26px;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.07);border-top:5px solid #1565C0;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:56px;height:56px;background:#E3F2FD;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:24px;color:#1565C0;">/t/</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#1565C0;">SOUND 1</div>
+      </div>
+      <div style="font-size:12.5px;color:#666;line-height:1.7;margin-bottom:12px;">After <strong>voiceless</strong> sounds: /k/ /p/ /s/ /ʃ/ /tʃ/ /f/</div>
+      <div style="background:#E3F2FD;border-radius:10px;padding:10px 14px;font-size:14px;color:#0D47A1;line-height:2;">
+        wal<strong>ked</strong> · /wɔːkt/<br>
+        wat<strong>ched</strong> · /wɒtʃt/<br>
+        sto<strong>pped</strong> · /stɒpt/<br>
+        wor<strong>ked</strong> · /wɜːkt/
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#888;font-style:italic;">🗣️ Like a quick "t" — no extra syllable!</div>
+    </div>
+
+    <!-- /d/ -->
+    <div style="background:#fff;border-radius:18px;padding:22px 26px;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.07);border-top:5px solid #2E7D32;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:56px;height:56px;background:#E8F5E9;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:24px;color:#2E7D32;">/d/</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#2E7D32;">SOUND 2</div>
+      </div>
+      <div style="font-size:12.5px;color:#666;line-height:1.7;margin-bottom:12px;">After <strong>voiced</strong> sounds (and vowels): /l/ /n/ /v/ /b/ /g/</div>
+      <div style="background:#E8F5E9;border-radius:10px;padding:10px 14px;font-size:14px;color:#1B5E20;line-height:2;">
+        pla<strong>yed</strong> · /pleɪd/<br>
+        liste<strong>ned</strong> · /ˈlɪsənd/<br>
+        li<strong>ved</strong> · /lɪvd/<br>
+        ca<strong>lled</strong> · /kɔːld/
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#888;font-style:italic;">🗣️ Soft "d" sound — no extra syllable!</div>
+    </div>
+
+    <!-- /ɪd/ -->
+    <div style="background:#fff;border-radius:18px;padding:22px 26px;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.07);border-top:5px solid #C62828;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:56px;height:56px;background:#FFEBEE;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#C62828;">/ɪd/</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#C62828;">SOUND 3</div>
+      </div>
+      <div style="font-size:12.5px;color:#666;line-height:1.7;margin-bottom:12px;">After /t/ and /d/ sounds <strong>only</strong></div>
+      <div style="background:#FFEBEE;border-radius:10px;padding:10px 14px;font-size:14px;color:#B71C1C;line-height:2;">
+        wan<strong>ted</strong> · /ˈwɒntɪd/<br>
+        sta<strong>rted</strong> · /ˈstɑːtɪd/<br>
+        deci<strong>ded</strong> · /dɪˈsaɪdɪd/<br>
+        nee<strong>ded</strong> · /ˈniːdɪd/
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:#FFE066;background:#5D3A8A;padding:6px 10px;border-radius:6px;font-weight:800;">⚠️ Adds an EXTRA syllable: want-ID</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ SLIDE 6: CONTROLLED PRACTICE ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">✍️</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">Practice — Complete the sentences</h2>
+      <p>Use the past simple form of the verbs in the activity link</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">10 min ⏱️</div>
+  </div>
+
+  <div style="padding:28px 56px;display:grid;grid-template-columns:1fr 1.1fr;gap:36px;height:596px;align-items:center;">
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:30px;color:#1B5E20;margin-bottom:4px;">How it works:</div>
+
+      <div style="background:#fff;border-radius:14px;padding:14px 18px;border:0.5px solid #E0DDD8;display:flex;align-items:center;gap:12px;">
+        <div style="width:34px;height:34px;border-radius:10px;background:#2E7D32;color:#fff;font-family:'Fredoka One',cursive;display:flex;align-items:center;justify-content:center;">1</div>
+        <div style="font-size:13.5px;color:#1a1a2e;">Open the activity link in the chat 📎</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:14px 18px;border:0.5px solid #E0DDD8;display:flex;align-items:center;gap:12px;">
+        <div style="width:34px;height:34px;border-radius:10px;background:#2E7D32;color:#fff;font-family:'Fredoka One',cursive;display:flex;align-items:center;justify-content:center;">2</div>
+        <div style="font-size:13.5px;color:#1a1a2e;">Read each sentence — click the correct verb 🖱️</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:14px 18px;border:0.5px solid #E0DDD8;display:flex;align-items:center;gap:12px;">
+        <div style="width:34px;height:34px;border-radius:10px;background:#2E7D32;color:#fff;font-family:'Fredoka One',cursive;display:flex;align-items:center;justify-content:center;">3</div>
+        <div style="font-size:13.5px;color:#1a1a2e;">Check your answers — we'll review together! ✅</div>
+      </div>
+
+      <div style="background:#FFFBEA;border-radius:12px;padding:12px 16px;border-left:4px solid #FFD700;margin-top:10px;">
+        <div style="font-size:12px;color:#7A5C00;line-height:1.6;">💡 <strong>Remember:</strong> after <em>didn't</em> and <em>Did</em>, use the <strong>base verb</strong>!</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border:2px solid #A5D6A7;box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#2E7D32;margin-bottom:14px;">Example sentences</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#F1F8E9;border-radius:10px;padding:10px 14px;font-size:13.5px;color:#1a1a2e;">Yesterday I <span style="background:#FFE066;padding:2px 10px;border-radius:8px;font-weight:800;">ate</span> pizza for dinner. 🍕</div>
+        <div style="background:#F1F8E9;border-radius:10px;padding:10px 14px;font-size:13.5px;color:#1a1a2e;">She <span style="background:#FFCDD2;padding:2px 10px;border-radius:8px;font-weight:800;">didn't go</span> to work last Friday.</div>
+        <div style="background:#F1F8E9;border-radius:10px;padding:10px 14px;font-size:13.5px;color:#1a1a2e;"><span style="background:#BBDEFB;padding:2px 10px;border-radius:8px;font-weight:800;">Did</span> you <span style="background:#BBDEFB;padding:2px 10px;border-radius:8px;font-weight:800;">see</span> the new movie? 🎬</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: SPEAKING / FREER PRACTICE ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(206,147,216,0.15);"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(15,110,86,0.12);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;gap:18px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#CE93D8;font-weight:700;">Speaking · Your turn</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:46px;color:#fff;line-height:1.1;">Tell me a <span style="color:#FFE066;">story!</span> 🎙️</div>
+
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:20px 24px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#FFE066;font-weight:700;margin-bottom:10px;">Topic:</div>
+      <div style="font-size:18px;color:#fff;line-height:1.6;">Think about a <strong style="color:#FFE066;">memorable trip</strong> or <strong style="color:#FFE066;">special day</strong> from your past. Tell your partner about it!</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#9FE1CB;margin-bottom:10px;">Try to answer:</div>
+      <div style="font-size:13px;color:#CECBF6;line-height:2;">
+        🗺️ Where did you go?<br>
+        📅 When did it happen?<br>
+        👥 Who did you go with?<br>
+        🎯 What did you do?<br>
+        😊 How did you feel?
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <span style="background:rgba(255,255,255,0.08);display:inline-block;border-radius:30px;padding:10px 24px;font-size:13px;color:#a0a0c0;">You have <strong style="color:#FFE066;">5 minutes</strong> 🗣️</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:720px;display:flex;align-items:center;justify-content:center;padding:40px 48px 40px 20px;">
+    <div style="width:100%;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7F77DD;margin-bottom:18px;text-align:center;">Useful expressions 💬</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,224,102,0.3);border-radius:14px;padding:16px 18px;"><div style="font-size:11px;color:#FFE066;font-weight:800;margin-bottom:6px;">START</div><div style="font-size:14px;color:#fff;font-style:italic;line-height:1.6;">"Last year, I..."<br>"A few years ago..."<br>"When I was younger..."</div></div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(159,225,203,0.3);border-radius:14px;padding:16px 18px;"><div style="font-size:11px;color:#9FE1CB;font-weight:800;margin-bottom:6px;">SEQUENCE</div><div style="font-size:14px;color:#fff;font-style:italic;line-height:1.6;">"First, I..."<br>"Then, we..."<br>"After that, ..."<br>"In the end, ..."</div></div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(206,147,216,0.3);border-radius:14px;padding:16px 18px;"><div style="font-size:11px;color:#CE93D8;font-weight:800;margin-bottom:6px;">EXPRESS FEELINGS</div><div style="font-size:14px;color:#fff;font-style:italic;line-height:1.6;">"It was amazing!"<br>"I had a great time."<br>"I really enjoyed it."</div></div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(244,143,177,0.3);border-radius:14px;padding:16px 18px;"><div style="font-size:11px;color:#F48FB1;font-weight:800;margin-bottom:6px;">ASK YOUR PARTNER</div><div style="font-size:14px;color:#fff;font-style:italic;line-height:1.6;">"Did you...?"<br>"What did you do?"<br>"Where did you go?"<br>"How was it?"</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
