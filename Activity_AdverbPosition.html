@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adverbs of Frequency — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; min-height: 100vh; padding: 36px 18px 70px; }
+.wrap { max-width: 880px; margin: 0 auto; }
+
+.topcard { background: linear-gradient(135deg,#0a1628,#1a1a2e,#2a1810); border-radius: 22px; padding: 32px 40px; color:#fff; position:relative; overflow:hidden; margin-bottom: 22px; }
+.topcard::before { content:''; position:absolute; top:-70px; right:-50px; width:220px; height:220px; border-radius:50%; background:rgba(255,112,67,0.18); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#FFAB91; font-weight:700; margin-bottom:6px; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:30px; line-height:1.1; }
+.topcard h1 span { color:#FFE066; }
+.topcard p { font-size:14px; color:#a0a0c0; margin-top:8px; }
+
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { flex:1; min-width:180px; background:#fff; border:0.5px solid #E0DDD8; border-radius:14px; padding:12px 14px; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:10px; }
+.tab:hover { background:#FAF8F4; }
+.tab.active { background:#1a1a2e; border-color:#1a1a2e; }
+.tab.active .tab-num { background:#FFE066; color:#1a1a2e; }
+.tab.active .tab-label { color:#fff; }
+.tab.done .tab-num { background:#2E7D32; color:#fff; }
+.tab-num { width:28px; height:28px; min-width:28px; border-radius:8px; background:#F2F0EB; color:#666; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:14px; }
+.tab-label { font-size:13px; font-weight:800; color:#1a1a2e; line-height:1.2; }
+
+.panel { display:none; background:#fff; border-radius:22px; padding:34px 40px; border:0.5px solid #E0DDD8; box-shadow:0 8px 36px rgba(0,0,0,0.07); }
+.panel.active { display:block; }
+.panel h2 { font-family:'Fredoka One',cursive; font-size:24px; margin-bottom:6px; }
+.panel .sub { font-size:14px; color:#666; line-height:1.6; margin-bottom:22px; padding:12px 16px; border-radius:12px; }
+
+/* PART 1 — slot insertion */
+.q1 { background:#FAF8F4; border-radius:14px; padding:18px 20px; border:0.5px solid #EDE9E2; margin-bottom:14px; }
+.q1-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.q1-num { font-family:'Fredoka One',cursive; color:#E64A19; font-size:18px; }
+.adv-chip { background:#1565C0; color:#fff; font-weight:800; font-size:13px; padding:5px 16px; border-radius:20px; letter-spacing:0.5px; }
+.q1-sent { font-size:18px; color:#1a1a2e; line-height:2.2; display:flex; flex-wrap:wrap; align-items:center; gap:2px; }
+.slot { display:inline-block; width:18px; height:26px; border-radius:6px; border:2px dashed #B0BEC5; cursor:pointer; vertical-align:middle; transition:all 0.12s; margin:0 2px; }
+.slot:hover { border-color:#1565C0; background:#E3F2FD; }
+.slot.filled { width:auto; padding:2px 12px; border-style:solid; border-color:#1565C0; background:#E3F2FD; color:#1565C0; font-weight:800; font-size:14px; }
+.slot.correct { border-color:#2E7D32 !important; background:#E8F5E9 !important; color:#1B5E20 !important; border-style:solid; }
+.slot.wrong { border-color:#C62828 !important; background:#FFEBEE !important; color:#C62828 !important; border-style:solid; }
+.slot.show-correct { border-color:#2E7D32 !important; background:#E8F5E9 !important; color:#1B5E20 !important; border-style:solid; width:auto; padding:2px 12px; font-weight:800; font-size:14px; }
+.word { font-size:18px; }
+
+/* PART 2 — MCQ */
+.q2 { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:14px; }
+.q2-label { font-size:12px; font-weight:800; color:#888; letter-spacing:1px; margin-bottom:10px; }
+.q2-opt { display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #E0DDD8; border-radius:10px; padding:12px 16px; margin-bottom:8px; font-size:15px; color:#1a1a2e; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#E64A19; background:#FFF8F4; }
+.q2-opt.sel { border-color:#E64A19; background:#FFF3E0; border-width:2px; }
+.q2-opt.correct { border-color:#2E7D32 !important; background:#E8F5E9 !important; color:#1B5E20 !important; font-weight:700; }
+.q2-opt.wrong { border-color:#C62828 !important; background:#FFEBEE !important; color:#C62828 !important; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 24px; border-radius:12px; cursor:pointer; border:none; transition:all 0.12s; }
+.btn-primary { background:#1a1a2e; color:#fff; }
+.btn-primary:hover { background:#2C2C50; }
+.btn-secondary { background:#F2F0EB; color:#666; border:0.5px solid #E0DDD8; }
+.btn-secondary:hover { background:#E8E5DF; }
+.score { font-size:14px; color:#555; }
+.score.good { color:#2E7D32; font-weight:800; }
+.score.partial { color:#E65100; font-weight:800; }
+.score.bad { color:#C62828; font-weight:800; }
+
+@media (max-width:680px){ .panel{padding:24px 20px;} .q1-sent,.word{font-size:16px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topcard">
+    <div class="tag">Grammar Practice · B1</div>
+    <h1>Adverbs of <span>Frequency</span></h1>
+    <p>Where does the adverb go? And which sentence is correct? Two parts — check your answers as you go.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">Where does it go? 📍</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">Which is correct? ✅</div></div>
+  </div>
+
+  <!-- ════ PART 1 ════ -->
+  <div class="panel active" id="panel-0">
+    <h2 style="color:#1565C0;">Part 1 — Put the adverb in the right place 📍</h2>
+    <div class="sub" style="background:#E3F2FD;color:#0D47A1;">Click the small box ▫ where the adverb should go. Remember: <strong>before</strong> a normal verb, but <strong>after</strong> the verb <em>be</em>! Click again to move it.</div>
+    <div id="p1"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP1()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP1()">Reset</button>
+      <span class="score" id="score1"></span>
+    </div>
+  </div>
+
+  <!-- ════ PART 2 ════ -->
+  <div class="panel" id="panel-1">
+    <h2 style="color:#E64A19;">Part 2 — Which sentence is correct? ✅</h2>
+    <div class="sub" style="background:#FFF3E0;color:#BF360C;">Choose the correct sentence. Watch out for adverb position, past verbs, and question forms!</div>
+    <div id="p2"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP2()">Reset</button>
+      <span class="score" id="score2"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+/* ===== PART 1 ===== */
+/* slot index s means: position BEFORE words[s]; slot == words.length means at the very end */
+const P1 = [
+  {adv:'always',    words:['She','drinks','coffee','in the morning.'], correct:1},
+  {adv:'never',     words:['They','are','late.'],                       correct:2},
+  {adv:'usually',   words:['We','went','to the beach.'],                correct:1},
+  {adv:'often',     words:['He','is','very tired.'],                    correct:2},
+  {adv:'sometimes', words:['I','watch','TV at night.'],                 correct:1},
+  {adv:'rarely',    words:['My parents','visited','us.'],               correct:1}
+];
+let p1pick = {};   /* qIndex -> chosen slot */
+let p1checked = false;
+
+function renderP1(){
+  const c = document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((q,qi)=>{
+    const box = document.createElement('div'); box.className='q1';
+    const top = document.createElement('div'); top.className='q1-top';
+    top.innerHTML = `<span class="q1-num">${qi+1}.</span> <span style="font-size:13px;color:#888;">put this adverb:</span> <span class="adv-chip">${q.adv}</span>`;
+    box.appendChild(top);
+
+    const sent = document.createElement('div'); sent.className='q1-sent';
+    const nSlots = q.words.length + 1;
+    for(let s=0;s<nSlots;s++){
+      const slot = document.createElement('span');
+      const chosen = p1pick[qi]===s;
+      slot.className = 'slot' + (chosen?' filled':'');
+      slot.textContent = chosen ? q.adv : '';
+      if(!p1checked){
+        slot.onclick = ()=>{ p1pick[qi] = (p1pick[qi]===s)?undefined:s; renderP1(); };
+      }
+      sent.appendChild(slot);
+      if(s < q.words.length){
+        const w = document.createElement('span'); w.className='word'; w.textContent = ' ' + q.words[s] + ' ';
+        sent.appendChild(w);
+      }
+    }
+    box.appendChild(sent);
+    c.appendChild(box);
+  });
+}
+function checkP1(){
+  p1checked = true;
+  let correct=0;
+  const boxes = document.querySelectorAll('#p1 .q1');
+  P1.forEach((q,qi)=>{
+    const slots = boxes[qi].querySelectorAll('.slot');
+    const pick = p1pick[qi];
+    if(pick===q.correct){ slots[pick].classList.add('correct'); correct++; }
+    else {
+      if(pick!==undefined && slots[pick]) slots[pick].classList.add('wrong');
+      const cs = slots[q.correct]; cs.classList.add('show-correct'); cs.textContent = q.adv;
+    }
+  });
+  const s=document.getElementById('score1');
+  s.textContent = `${correct} / ${P1.length} correct` + (correct===P1.length?' — perfect placement! 🎯':'');
+  s.className='score '+(correct===P1.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1pick={}; p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+/* ===== PART 2 ===== */
+const P2 = [
+  {opts:['Did you went to the party?','Did you go to the party?'], correct:1},
+  {opts:['We always was happy.','We were always happy.'], correct:1},
+  {opts:['I usually drink tea.','I drink usually tea.'], correct:0},
+  {opts:['She never is late.','She is never late.'], correct:1},
+  {opts:['They didn\u2019t never come.','They never came.'], correct:1},
+  {opts:['We often went camping.','We went often camping.'], correct:0}
+];
+let p2pick = {};
+let p2checked = false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,qi)=>{
+    const box=document.createElement('div'); box.className='q2';
+    const lab=document.createElement('div'); lab.className='q2-label'; lab.textContent='Sentence '+(qi+1);
+    box.appendChild(lab);
+    q.opts.forEach((o,oi)=>{
+      const b=document.createElement('button');
+      b.className='q2-opt'+(p2pick[qi]===oi?' sel':'');
+      b.textContent=o;
+      if(!p2checked) b.onclick=()=>{ p2pick[qi]=oi; renderP2(); };
+      box.appendChild(b);
+    });
+    c.appendChild(box);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0;
+  const boxes=document.querySelectorAll('#p2 .q2');
+  P2.forEach((q,qi)=>{
+    const opts=boxes[qi].querySelectorAll('.q2-opt');
+    opts.forEach((o,oi)=>{
+      if(oi===q.correct) o.classList.add('correct');
+      else if(p2pick[qi]===oi) o.classList.add('wrong');
+    });
+    if(p2pick[qi]===q.correct) correct++;
+  });
+  const s=document.getElementById('score2');
+  s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' — excellent! 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2pick={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+renderP1(); renderP2();
+</script>
+</body>
+</html>
