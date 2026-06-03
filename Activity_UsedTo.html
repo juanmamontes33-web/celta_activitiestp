@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>used to — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; min-height: 100vh; padding: 36px 18px 70px; }
+.wrap { max-width: 880px; margin: 0 auto; }
+
+.topcard { background: linear-gradient(135deg,#1a1208,#1a1a2e,#0d2620); border-radius: 22px; padding: 32px 40px; color:#fff; position:relative; overflow:hidden; margin-bottom: 22px; }
+.topcard::before { content:''; position:absolute; top:-70px; right:-50px; width:220px; height:220px; border-radius:50%; background:rgba(200,123,48,0.18); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#E0A86B; font-weight:700; margin-bottom:6px; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:30px; line-height:1.1; }
+.topcard h1 span { color:#FFC078; }
+.topcard p { font-size:14px; color:#a0a0c0; margin-top:8px; }
+
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { flex:1; min-width:200px; background:#fff; border:0.5px solid #E0DDD8; border-radius:14px; padding:12px 14px; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:10px; }
+.tab:hover { background:#FAF8F4; }
+.tab.active { background:#1a1a2e; border-color:#1a1a2e; }
+.tab.active .tab-num { background:#FFC078; color:#1a1a2e; }
+.tab.active .tab-label { color:#fff; }
+.tab.done .tab-num { background:#2E7D32; color:#fff; }
+.tab-num { width:28px; height:28px; min-width:28px; border-radius:8px; background:#F2F0EB; color:#666; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:14px; }
+.tab-label { font-size:13px; font-weight:800; color:#1a1a2e; line-height:1.2; }
+
+.panel { display:none; background:#fff; border-radius:22px; padding:34px 40px; border:0.5px solid #E0DDD8; box-shadow:0 8px 36px rgba(0,0,0,0.07); }
+.panel.active { display:block; }
+.panel h2 { font-family:'Fredoka One',cursive; font-size:24px; margin-bottom:6px; }
+.panel .sub { font-size:14px; color:#666; line-height:1.6; margin-bottom:22px; padding:12px 16px; border-radius:12px; }
+
+/* PART 1 */
+.q { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:12px; font-size:16px; color:#1a1a2e; line-height:1.8; }
+.q .num { font-family:'Fredoka One',cursive; color:#8A5A22; margin-right:6px; }
+.q .cue { color:#888; font-style:italic; font-size:14px; }
+.opts { display:inline-flex; gap:8px; margin:0 4px; flex-wrap:wrap; }
+.opt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:5px 14px; border-radius:20px; border:1.5px solid #C8A06A; background:#fff; color:#8A5A22; cursor:pointer; transition:all 0.12s; }
+.opt:hover { background:#F3E7D3; }
+.opt.sel { background:#8A5A22; color:#fff; border-color:#8A5A22; }
+.opt.correct { background:#E8F5E9 !important; border-color:#2E7D32 !important; color:#1B5E20 !important; }
+.opt.wrong { background:#FFEBEE !important; border-color:#C62828 !important; color:#C62828 !important; }
+
+/* PART 2 MCQ */
+.q2 { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:14px; }
+.q2-label { font-size:12px; font-weight:800; color:#888; letter-spacing:1px; margin-bottom:10px; }
+.q2-opt { display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #E0DDD8; border-radius:10px; padding:12px 16px; margin-bottom:8px; font-size:15px; color:#1a1a2e; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#1565C0; background:#F5FAFF; }
+.q2-opt.sel { border-color:#1565C0; background:#E3F2FD; border-width:2px; }
+.q2-opt.correct { border-color:#2E7D32 !important; background:#E8F5E9 !important; color:#1B5E20 !important; font-weight:700; }
+.q2-opt.wrong { border-color:#C62828 !important; background:#FFEBEE !important; color:#C62828 !important; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 24px; border-radius:12px; cursor:pointer; border:none; transition:all 0.12s; }
+.btn-primary { background:#1a1a2e; color:#fff; }
+.btn-primary:hover { background:#2C2C50; }
+.btn-secondary { background:#F2F0EB; color:#666; border:0.5px solid #E0DDD8; }
+.btn-secondary:hover { background:#E8E5DF; }
+.score { font-size:14px; color:#555; }
+.score.good { color:#2E7D32; font-weight:800; }
+.score.partial { color:#E65100; font-weight:800; }
+.score.bad { color:#C62828; font-weight:800; }
+
+@media (max-width:680px){ .panel{padding:24px 20px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topcard">
+    <div class="tag">Grammar Practice · B1</div>
+    <h1>Talking about the past with <span>used to</span></h1>
+    <p>Past habits and how things have changed. Two parts — check your answers as you go.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">used to / didn't use to ✍️</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">Which is correct? ✅</div></div>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="panel active" id="panel-0">
+    <h2 style="color:#8A5A22;">Part 1 — used to or didn't use to? ✍️</h2>
+    <div class="sub" style="background:#F3E7D3;color:#8A5A22;">Read the clue and choose the correct form. <strong>used to</strong> = it was true before · <strong>didn't use to</strong> = it was NOT true before.</div>
+    <div id="p1"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP1()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP1()">Reset</button>
+      <span class="score" id="score1"></span>
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="panel" id="panel-1">
+    <h2 style="color:#1565C0;">Part 2 — Which sentence is correct? ✅</h2>
+    <div class="sub" style="background:#E3F2FD;color:#0D47A1;">Watch the disappearing <strong>"d"</strong>! After <em>didn't</em> and <em>Did</em>, we write <strong>use to</strong>. And always use the <strong>base verb</strong>.</div>
+    <div id="p2"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP2()">Reset</button>
+      <span class="score" id="score2"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+/* ===== PART 1 ===== */
+const P1 = [
+  {pre:"When he was young, he ", verb:"have", post:" long hair, but now he is bald.", ans:"used to", cue:"(he had it before → not now)"},
+  {pre:"I ", verb:"like", post:" coffee, but these days I drink it every morning.", ans:"didn't use to", cue:"(not true before → true now)"},
+  {pre:"They ", verb:"live", post:" in the countryside before they moved to the city.", ans:"used to", cue:"(true before)"},
+  {pre:"She ", verb:"play", post:" video games — her family had no console.", ans:"didn't use to", cue:"(not true before)"},
+  {pre:"We ", verb:"visit", post:" our grandparents every single summer.", ans:"used to", cue:"(a repeated past habit)"},
+  {pre:"I ", verb:"be", post:" afraid of dogs, but now I have three of them!", ans:"used to", cue:"(true before → not now)"}
+];
+let p1sel={}; let p1checked=false;
+function renderP1(){
+  const c=document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML=`<span class="num">${i+1}.</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts';
+    ['used to','didn\u2019t use to'].forEach(o=>{
+      const norm = o.replace('\u2019',"'");
+      const b=document.createElement('span');
+      b.className='opt'+(p1sel[i]===norm?' sel':'');
+      b.textContent=o;
+      b.onclick=()=>{ if(p1checked) return; p1sel[i]=norm; renderP1(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    div.insertAdjacentHTML('beforeend', ` <strong>${q.verb}</strong>${q.post} <span class="cue">${q.cue}</span>`);
+    c.appendChild(div);
+  });
+}
+function checkP1(){
+  p1checked=true; let correct=0;
+  const qs=document.querySelectorAll('#p1 .q');
+  P1.forEach((q,i)=>{
+    qs[i].querySelectorAll('.opt').forEach(o=>{
+      const norm=o.textContent.replace('\u2019',"'");
+      if(norm===q.ans) o.classList.add('correct');
+      else if(o.classList.contains('sel')) o.classList.add('wrong');
+    });
+    if(p1sel[i]===q.ans) correct++;
+  });
+  const s=document.getElementById('score1');
+  s.textContent=`${correct} / ${P1.length} correct`+(correct===P1.length?' — well done! 🎉':'');
+  s.className='score '+(correct===P1.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1sel={}; p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+/* ===== PART 2 ===== */
+const P2 = [
+  {opts:['I didn\u2019t used to like it.','I didn\u2019t use to like it.'], correct:1},
+  {opts:['Did you use to play the piano?','Did you used to play the piano?'], correct:0},
+  {opts:['She used to lived here.','She used to live here.'], correct:1},
+  {opts:['We used to went to the beach.','We used to go to the beach.'], correct:1},
+  {opts:['He didn\u2019t use to smoke.','He didn\u2019t used to smoke.'], correct:0},
+  {opts:['I use to play football when I was young.','I used to play football when I was young.'], correct:1}
+];
+let p2sel={}; let p2checked=false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,qi)=>{
+    const box=document.createElement('div'); box.className='q2';
+    const lab=document.createElement('div'); lab.className='q2-label'; lab.textContent='Sentence '+(qi+1);
+    box.appendChild(lab);
+    q.opts.forEach((o,oi)=>{
+      const b=document.createElement('button');
+      b.className='q2-opt'+(p2sel[qi]===oi?' sel':'');
+      b.textContent=o;
+      if(!p2checked) b.onclick=()=>{ p2sel[qi]=oi; renderP2(); };
+      box.appendChild(b);
+    });
+    c.appendChild(box);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0;
+  const boxes=document.querySelectorAll('#p2 .q2');
+  P2.forEach((q,qi)=>{
+    const opts=boxes[qi].querySelectorAll('.q2-opt');
+    opts.forEach((o,oi)=>{
+      if(oi===q.correct) o.classList.add('correct');
+      else if(p2sel[qi]===oi) o.classList.add('wrong');
+    });
+    if(p2sel[qi]===q.correct) correct++;
+  });
+  const s=document.getElementById('score2');
+  s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' — excellent! 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+renderP1(); renderP2();
+</script>
+</body>
+</html>
