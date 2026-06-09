@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get to Know You! — Conversation Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: radial-gradient(circle at 30% 10%, #1f1b4d, #0a0a14 60%);
+  color: #fff; min-height: 100vh; padding: 28px 18px 50px;
+  overflow-x: hidden;
+}
+
+/* ANIMATED BACKGROUND */
+.bg { position: fixed; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.bg b { position: absolute; bottom: -70px; will-change: transform; animation-name: rise; animation-timing-function: linear; animation-iteration-count: infinite; }
+@keyframes rise { 0%{transform:translateY(0) rotate(0)} 100%{transform:translateY(-118vh) rotate(380deg)} }
+
+.wrap { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+
+.header { text-align: center; margin-bottom: 18px; }
+.header h1 { font-family: 'Fredoka One', cursive; font-size: 40px; line-height: 1.1; text-shadow: 0 4px 18px rgba(0,0,0,0.4); }
+.header h1 .y { color: #FFE066; }
+.header .sub { font-size: 14px; color: #b6b6d4; margin-top: 6px; }
+
+/* HOW TO */
+.how { background: rgba(127,119,221,0.12); border:1px solid rgba(127,119,221,0.35); border-radius: 18px; padding: 18px 22px; margin-bottom: 20px; backdrop-filter: blur(4px); }
+.how h2 { font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #CFCBF6; margin-bottom: 10px; }
+.how ol { margin: 0; padding-left: 0; list-style: none; counter-reset: step; }
+.how li { position: relative; padding-left: 38px; margin-bottom: 9px; font-size: 14px; line-height: 1.5; color: #e6e6f5; counter-increment: step; }
+.how li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #7F77DD; color: #fff; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.how li:last-child { margin-bottom: 0; }
+
+/* NAMES SETUP */
+.setup { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px 20px; margin-bottom: 20px; backdrop-filter: blur(4px); }
+.setup label { display:block; font-size: 13px; font-weight: 800; color: #9FE1CB; margin-bottom: 8px; }
+.setup input { width:100%; background: rgba(0,0,0,0.3); border:1.5px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 11px 14px; color:#fff; font-family:'Nunito',sans-serif; font-size:14px; }
+.setup input:focus { outline:none; border-color:#9FE1CB; }
+.setup .hint { font-size: 12px; color:#8f8fb0; margin-top: 6px; }
+
+/* CARD */
+.deck { text-align:center; }
+.turn { font-family:'Fredoka One',cursive; font-size: 20px; color:#FFE066; min-height: 28px; margin-bottom: 12px; }
+.card { background: linear-gradient(150deg,#23234f,#15152e); border:1px solid rgba(255,224,102,0.35); border-top: 5px solid #FFE066; border-radius: 22px; padding: 40px 34px; min-height: 200px; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow: 0 16px 44px rgba(0,0,0,0.45); }
+.card .deco { font-size: 40px; margin-bottom: 14px; }
+.card .q { font-size: 25px; font-weight: 800; line-height: 1.45; }
+.card.idle .q { color:#9a9ac0; font-weight: 700; font-size: 20px; }
+.pop { animation: pop .38s ease; }
+@keyframes pop { from { transform: scale(.92); opacity:.25; } to { transform: scale(1); opacity:1; } }
+
+.draw-btn { margin-top: 22px; font-family:'Fredoka One',cursive; font-size: 22px; color:#1a1a2e; background:#FFE066; border:none; border-radius:16px; padding: 15px 46px; cursor:pointer; transition: all .12s; box-shadow:0 6px 0 #c9af2e; }
+.draw-btn:hover { background:#ffd633; }
+.draw-btn:active { transform: translateY(4px); box-shadow:0 2px 0 #c9af2e; }
+.counter { margin-top: 14px; font-size: 13px; color:#8f8fb0; min-height: 18px; }
+</style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND ICONS -->
+<div class="bg" aria-hidden="true">
+  <b style="left:4%;font-size:36px;opacity:.13;animation-duration:24s;animation-delay:-2s;">🌍</b>
+  <b style="left:11%;font-size:22px;opacity:.10;animation-duration:18s;animation-delay:-9s;">✨</b>
+  <b style="left:18%;font-size:30px;opacity:.12;animation-duration:27s;animation-delay:-14s;">💬</b>
+  <b style="left:25%;font-size:24px;opacity:.10;animation-duration:20s;animation-delay:-5s;">⭐</b>
+  <b style="left:33%;font-size:34px;opacity:.13;animation-duration:30s;animation-delay:-20s;">🎈</b>
+  <b style="left:40%;font-size:26px;opacity:.11;animation-duration:22s;animation-delay:-11s;">🔮</b>
+  <b style="left:48%;font-size:38px;opacity:.12;animation-duration:26s;animation-delay:-3s;">🚀</b>
+  <b style="left:55%;font-size:24px;opacity:.10;animation-duration:19s;animation-delay:-16s;">🎲</b>
+  <b style="left:62%;font-size:30px;opacity:.12;animation-duration:28s;animation-delay:-7s;">🎯</b>
+  <b style="left:69%;font-size:34px;opacity:.13;animation-duration:23s;animation-delay:-13s;">🏆</b>
+  <b style="left:76%;font-size:22px;opacity:.10;animation-duration:21s;animation-delay:-1s;">📚</b>
+  <b style="left:82%;font-size:32px;opacity:.12;animation-duration:29s;animation-delay:-18s;">🎭</b>
+  <b style="left:88%;font-size:26px;opacity:.11;animation-duration:17s;animation-delay:-6s;">🔥</b>
+  <b style="left:94%;font-size:36px;opacity:.13;animation-duration:25s;animation-delay:-12s;">🌟</b>
+  <b style="left:30%;font-size:20px;opacity:.09;animation-duration:16s;animation-delay:-4s;">⚖️</b>
+  <b style="left:65%;font-size:20px;opacity:.09;animation-duration:31s;animation-delay:-22s;">⏳</b>
+</div>
+
+<div class="wrap">
+
+  <div class="header">
+    <h1>Get to Know <span class="y">Each Other</span> 💬</h1>
+    <div class="sub">Conversation cards · perfect for pairs or groups of three</div>
+  </div>
+
+  <div class="how">
+    <h2>🧑‍🤝‍🧑 In your breakout room</h2>
+    <ol>
+      <li>One person shares their screen — or just look at this together.</li>
+      <li>Type everyone's names below (optional) so the card knows whose turn it is.</li>
+      <li>Press <strong>Draw a question</strong>. The person it names answers — say as much as you can!</li>
+      <li>The others react, agree or disagree, and ask a follow-up question.</li>
+      <li>Press <strong>Draw</strong> again to pass it to the next person. Keep going until your teacher calls you back! 🎉</li>
+    </ol>
+  </div>
+
+  <div class="setup">
+    <label for="names">Players (optional)</label>
+    <input id="names" type="text" placeholder="e.g. Ana, Marco, Sofía" autocomplete="off">
+    <div class="hint">Separate names with commas. Leave empty to just take turns.</div>
+  </div>
+
+  <div class="deck">
+    <div class="turn" id="turn"></div>
+    <div class="card idle" id="card">
+      <div class="deco" id="deco">🎴</div>
+      <div class="q" id="q">Press "Draw a question" to start!</div>
+    </div>
+    <button class="draw-btn" onclick="draw()">Draw a question 🎴</button>
+    <div class="counter" id="counter"></div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  "If you could live anywhere in the world for a year, where would you go — and why?",
+  "What's something you've completely changed your mind about?",
+  "What skill would you love to master, and what's stopping you?",
+  "If you could give your younger self one piece of advice, what would it be?",
+  "What's an unpopular opinion you secretly hold?",
+  "What's the best risk you've ever taken?",
+  "What does \u201csuccess\u201d really mean to you?",
+  "If you could have dinner with anyone — past or present — who would it be?",
+  "What did you believe as a child that makes you laugh now?",
+  "What's a small thing that makes a big difference to your day?",
+  "Would you rather have more free time or more money? Why?",
+  "Where do you see yourself in ten years — or do you prefer not to plan?",
+  "What's a film or book that changed the way you see things?",
+  "Is there a trend or piece of technology you just don't get the appeal of?",
+  "What's the most useful thing you've learned outside of school?",
+  "If money were no object, how would you spend your time?",
+  "What's something you're glad you tried, even though it scared you?",
+  "Which matters more: being right, or being kind? Why?",
+  "What's a small habit that has genuinely improved your life?",
+  "If you could instantly become an expert in one subject, what would it be?"
+];
+const DECO = ["🌍","🔮","🎯","⏳","🔥","🎲","🏆","🎭","📚","🌟","⚖️","🚀","🎬","💡","🧭","💭","🌱","🤝","✨","🎓"];
+
+let turnIndex = 0, answered = 0;
+const recent = [];
+const cardEl = document.getElementById('card');
+
+function nextQuestion() {
+  const max = Math.min(6, QUESTIONS.length - 1);
+  let i;
+  do { i = Math.floor(Math.random() * QUESTIONS.length); } while (recent.includes(i));
+  recent.push(i);
+  if (recent.length > max) recent.shift();
+  return i;
+}
+
+function draw() {
+  const i = nextQuestion();
+  cardEl.classList.remove('idle');
+  document.getElementById('deco').textContent = DECO[i % DECO.length];
+  document.getElementById('q').textContent = QUESTIONS[i];
+
+  // turn label
+  const names = document.getElementById('names').value.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+  const turnEl = document.getElementById('turn');
+  if (names.length) {
+    turnEl.textContent = '🗣️ ' + names[turnIndex % names.length] + ', your turn!';
+    turnIndex++;
+  } else {
+    turnEl.textContent = '🗣️ Next person — your turn!';
+  }
+
+  // pop animation
+  cardEl.classList.remove('pop'); void cardEl.offsetWidth; cardEl.classList.add('pop');
+
+  answered++;
+  document.getElementById('counter').textContent = 'Questions answered: ' + answered;
+}
+</script>
+</body>
+</html>
