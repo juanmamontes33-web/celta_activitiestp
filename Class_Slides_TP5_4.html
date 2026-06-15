@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Celebrity Worship — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 96px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 30px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 17px; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(83,74,183,0.18);"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,224,102,0.08);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:620px;display:flex;flex-direction:column;justify-content:center;padding:64px;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#7F77DD;font-weight:700;margin-bottom:18px;">Speaking · In the news</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:62px;color:#fff;line-height:1.08;margin-bottom:16px;">Are you a<br><span style="color:#FFE066;">celeb</span> worshipper? ⭐</div>
+    <div style="font-size:18px;color:#a0a0c0;line-height:1.7;">Today we'll read a real news story,<br><strong style="color:#fff;">summarise it in our own words</strong>,<br>and discuss the questions it raises.</div>
+  </div>
+
+  <div style="position:absolute;right:60px;top:0;bottom:0;width:560px;display:flex;align-items:center;justify-content:center;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,224,102,0.3);border-radius:18px;padding:26px 22px;text-align:center;"><div style="font-size:44px;margin-bottom:8px;">📰</div><div style="font-size:14px;color:#FFE066;font-weight:800;">Read</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(159,225,203,0.3);border-radius:18px;padding:26px 22px;text-align:center;"><div style="font-size:44px;margin-bottom:8px;">📝</div><div style="font-size:14px;color:#9FE1CB;font-weight:800;">Prepare</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(144,202,249,0.3);border-radius:18px;padding:26px 22px;text-align:center;"><div style="font-size:44px;margin-bottom:8px;">💬</div><div style="font-size:14px;color:#90CAF9;font-weight:800;">Discuss</div></div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(244,143,177,0.3);border-radius:18px;padding:26px 22px;text-align:center;"><div style="font-size:44px;margin-bottom:8px;">🔁</div><div style="font-size:14px;color:#F48FB1;font-weight:800;">Again — better!</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: LEAD-IN — CALENDAR ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(83,74,183,0.18);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:520px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#7F77DD;font-weight:700;margin-bottom:14px;">Let's talk</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:46px;color:#fff;line-height:1.12;margin-bottom:26px;">A big month for <span style="color:#FFE066;">fame</span> 🗓️</div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,224,102,0.4);border-radius:18px;padding:24px 28px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#FFE066;font-weight:700;margin-bottom:12px;">Let’s discuss together</div>
+      <div style="font-size:18px;color:#E0E0FF;line-height:1.7;">Look at this month's calendar. Which of these events would you actually follow?<br><br>Is there any famous person whose news you <em>always</em> check?</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:56px;top:0;bottom:0;width:660px;display:flex;align-items:center;">
+    <div style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#fff;">JUNE</div>
+        <div style="font-size:12px;color:#8f8fb0;">This month</div>
+      </div>
+      <table style="width:100%;border-collapse:separate;border-spacing:7px;"><tr><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">M</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">T</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">W</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">T</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">F</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">S</td><td style="text-align:center;font-size:11px;color:#7F77DD;font-weight:800;padding-bottom:6px;">S</td></tr><tr><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">1</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">2</td><td style="background:rgba(244,143,177,0.18);border:1px solid #F48FB1;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#F48FB1;font-weight:700;">3<br>🎬 Premiere</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">4</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">5</td><td style="background:rgba(255,224,102,0.16);border:1px solid #FFE066;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#FFE066;font-weight:700;">6<br>🏆 Final</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">7</td></tr><tr><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">8</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">9</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">10</td><td style="background:rgba(144,202,249,0.16);border:1px solid #90CAF9;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#90CAF9;font-weight:700;">11<br>🎵 Awards</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">12</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">13</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">14</td></tr><tr><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">15</td><td style="background:rgba(159,225,203,0.16);border:1px solid #9FE1CB;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#9FE1CB;font-weight:700;">16<br>💍 Wedding</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">17</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">18</td><td style="background:rgba(206,147,216,0.16);border:1px solid #CE93D8;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#CE93D8;font-weight:700;">19<br>🎤 Concert</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">20</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">21</td></tr><tr><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">22</td><td style="background:rgba(255,183,77,0.16);border:1px solid #FFB74D;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#FFB74D;font-weight:700;">23<br>📺 TV finale</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">24</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">25</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">26</td><td style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 4px;text-align:center;font-size:12px;color:#9a9ac0;">27</td><td style="background:rgba(239,108,0,0.16);border:1px solid #FFB74D;border-radius:8px;padding:6px 3px;text-align:center;font-size:10px;color:#FFB74D;font-weight:700;">28<br>⚽ Derby</td></tr></table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 3: THE ARTICLE ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFE9E2;border-bottom:2px solid #FFAB91;">
+    <div class="header-icon" style="background:#D84315;">📰</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Are you a celeb worshipper?</h2>
+      <p>Adapted from the Daily Mail · by James Chapman</p>
+    </div>
+    <div class="timer-pill" style="background:#D84315;">Read 📖</div>
+  </div>
+
+  <div style="padding:24px 56px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px;height:600px;">
+    <div style="background:#fff;border-radius:18px;padding:30px 34px;border:0.5px solid #E0DDD8;box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+      <div style="font-size:15.5px;color:#1a1a2e;line-height:1.85;">
+        Do you wake up thinking about David Beckham, or wonder what Brad Pitt has for breakfast? If so, you might suffer from <strong>"Celebrity Worship Syndrome" (CWS)</strong> — a recently identified psychological condition. According to psychologists at the University of Leicester, <strong>around a third of people</strong> are so obsessed with someone famous that the obsession affects their daily life.
+        <br><br>
+        One theory is that in a society dominated by TV, where extended families and communities are weaker, <strong>celebrities have taken the place of relatives, neighbours and friends</strong>.
+        <br><br>
+        The study of around 700 people aged 18 to 60 identified <strong>three types</strong> of celebrity worshipper. People with the <strong>mild</strong> form (22%) were sociable extroverts whose worst symptom was talking endlessly about their favourite star. A <strong>moderate</strong> group (12%) felt an intense personal identification with their idol. The most <strong>serious</strong> group — around 2% — were solitary and impulsive, believed their celebrity truly knew them, and were prepared to lie, or even die, for their hero.
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;justify-content:center;">
+      <div style="background:#fff;border-radius:16px;padding:20px 22px;border-top:5px solid #66BB6A;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:30px;">🙂</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#2E7D32;margin:4px 0;">Mild — 22%</div>
+        <div style="font-size:12.5px;color:#555;line-height:1.5;">Sociable; talks endlessly about their star</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 22px;border-top:5px solid #FFB300;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:30px;">😍</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#F57F17;margin:4px 0;">Moderate — 12%</div>
+        <div style="font-size:12.5px;color:#555;line-height:1.5;">Intense personal identification with their idol</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 22px;border-top:5px solid #E53935;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:30px;">🚨</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#C62828;margin:4px 0;">Serious — 2%</div>
+        <div style="font-size:12.5px;color:#555;line-height:1.5;">Solitary, impulsive; would lie or even die for their hero</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 4: GET READY TO TALK (content prep) ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">📝</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">Get ready to talk</h2>
+      <p>Make quick notes — you'll use them to SPEAK, not to read aloud!</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">5 min ⏱️</div>
+  </div>
+
+  <div style="padding:30px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:600px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:#fff;border-radius:14px;padding:18px 22px;border:0.5px solid #E0DDD8;box-shadow:0 3px 12px rgba(0,0,0,0.05);display:flex;gap:14px;align-items:center;">
+        <div style="width:38px;height:38px;min-width:38px;border-radius:10px;background:#2E7D32;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:18px;color:#fff;">1</div>
+        <div style="font-size:15px;color:#1a1a2e;line-height:1.5;">Note the <strong>main point</strong> of the article</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 22px;border:0.5px solid #E0DDD8;box-shadow:0 3px 12px rgba(0,0,0,0.05);display:flex;gap:14px;align-items:center;">
+        <div style="width:38px;height:38px;min-width:38px;border-radius:10px;background:#2E7D32;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:18px;color:#fff;">2</div>
+        <div style="font-size:15px;color:#1a1a2e;line-height:1.5;">Note the <strong>key facts</strong> — who, what, how many</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 22px;border:0.5px solid #E0DDD8;box-shadow:0 3px 12px rgba(0,0,0,0.05);display:flex;gap:14px;align-items:center;">
+        <div style="width:38px;height:38px;min-width:38px;border-radius:10px;background:#2E7D32;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:18px;color:#fff;">3</div>
+        <div style="font-size:15px;color:#1a1a2e;line-height:1.5;">Note <strong>one detail that surprised you</strong></div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 22px;border:0.5px solid #E0DDD8;box-shadow:0 3px 12px rgba(0,0,0,0.05);display:flex;gap:14px;align-items:center;">
+        <div style="width:38px;height:38px;min-width:38px;border-radius:10px;background:#F57F17;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:18px;color:#fff;">4</div>
+        <div style="font-size:15px;color:#1a1a2e;line-height:1.5;">Prepare <strong>ONE question or opinion</strong> the article raises for you 💭</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:18px;padding:28px 30px;border:2px dashed #A5D6A7;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#2E7D32;margin-bottom:14px;">Remember</div>
+      <div style="font-size:16px;color:#333;line-height:2;">
+        ✏️ <strong>Notes</strong>, not full sentences<br>
+        🗣️ You'll tell it <strong>in your own words</strong><br>
+        🙈 The article will be <strong>hidden</strong> when you speak<br>
+        💭 Think: <em>what does this story make YOU wonder?</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5a: DISCOVER — MATCH THE PHRASE ═══ -->
+<div class="slide" style="background:#FAFAFF;">
+  <div class="slide-header" style="background:#EDE7F6;border-bottom:2px solid #B39DDB;">
+    <div class="header-icon" style="background:#534AB7;">🔎</div>
+    <div class="header-text">
+      <h2 style="color:#4527A0;">What's each phrase for?</h2>
+      <p>With your partner, match each phrase to the job it does. Then we'll check together!</p>
+    </div>
+    <div class="timer-pill" style="background:#534AB7;">Pairs · 2 min ⏱️</div>
+  </div>
+  <div style="padding:26px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:600px;align-items:center;">
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #534AB7;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#534AB7;margin-bottom:16px;">The phrases</div>
+      <div style="font-size:14px;color:#1a1a2e;line-height:2.2;">
+        <strong>1.</strong> "The main point the article is making is that…"<br>
+        <strong>2.</strong> "According to the article, …"<br>
+        <strong>3.</strong> "The article claims that…"<br>
+        <strong>4.</strong> "It raises the question of whether…"<br>
+        <strong>5.</strong> "What interests me is whether…"<br>
+        <strong>6.</strong> "I'd be interested to know what others think about…"
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #00897B;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#00897B;margin-bottom:16px;">Its job…</div>
+      <div style="font-size:13.5px;color:#1a1a2e;line-height:2.0;">
+        <strong>a.</strong> You open a question for discussion<br>
+        <strong>b.</strong> You state the most important idea<br>
+        <strong>c.</strong> You politely invite others' opinions<br>
+        <strong>d.</strong> You report it, but hint you doubt it<br>
+        <strong>e.</strong> You signal it's the article's idea, not yours<br>
+        <strong>f.</strong> You give your own personal angle
+      </div>
+      <div style="margin-top:16px;background:#E0F2F1;border-radius:10px;padding:10px 14px;font-size:12.5px;color:#00695C;">💡 Open the matching link in the chat and do it together!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5b: USEFUL LANGUAGE (CHECK) ═══ -->
+<div class="slide" style="background:#F0F9FF;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #BBDEFB;">
+    <div class="header-icon" style="background:#1565C0;">✅</div>
+    <div class="header-text">
+      <h2 style="color:#0D47A1;">Let's check — and say them well!</h2>
+      <p>How do we say these naturally? Where's the stress?</p>
+    </div>
+    <div class="timer-pill" style="background:#1565C0;">Practise 🗣️</div>
+  </div>
+
+  <div style="padding:24px 56px;display:grid;grid-template-columns:1fr 1fr;gap:26px;height:600px;">
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #1565C0;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1565C0;margin-bottom:18px;">📰 Summarising the article</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#E3F2FD;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#0D47A1;font-weight:700;font-style:italic;">"The <u>main</u> <u>point</u> the article is making is that…"</div>
+        </div>
+        <div style="background:#E3F2FD;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#0D47A1;font-weight:700;font-style:italic;">"According to the article, …"</div>
+          <div style="font-size:12px;color:#5a7ba6;margin-top:6px;">the article's idea — not yours!</div>
+        </div>
+        <div style="background:#E3F2FD;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#0D47A1;font-weight:700;font-style:italic;">"The article <u>claims</u> that…"</div>
+          <div style="font-size:12px;color:#5a7ba6;margin-top:6px;">claims = maybe you have your doubts… 🤨</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #7B1FA2;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#7B1FA2;margin-bottom:18px;">💭 Questions arising from it</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:#F3E5F5;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#4A148C;font-weight:700;font-style:italic;">"It raises the question of <u>whether</u>…"</div>
+        </div>
+        <div style="background:#F3E5F5;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#4A148C;font-weight:700;font-style:italic;">"What <u>interests</u> me is whether…"</div>
+          <div style="font-size:12px;color:#8e6ba8;margin-top:6px;">your personal angle on the story</div>
+        </div>
+        <div style="background:#F3E5F5;border-radius:12px;padding:16px 20px;">
+          <div style="font-size:16px;color:#4A148C;font-weight:700;font-style:italic;">"I'd be interested to know what other people think about…"</div>
+          <div style="font-size:12px;color:#8e6ba8;margin-top:6px;">a polite way to pass the turn 🤝</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 6: SPEAKING TASK ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFD180;">
+    <div class="header-icon" style="background:#E65100;">🗣️</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Time to talk!</h2>
+      <p>Summarise the story in your own words, then discuss the questions it raises</p>
+    </div>
+    <div class="timer-pill" style="background:#E65100;">Breakout rooms 🚪</div>
+  </div>
+
+  <div style="padding:26px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:600px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-left:6px solid #E65100;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#BF360C;margin-bottom:8px;">Round 1 🚪</div>
+        <div style="font-size:14px;color:#333;line-height:1.7;">Take turns: <strong>summarise the article</strong> in your own words using the phrases. Then share your question — <em>"It raises the question of whether…"</em> — and discuss it!</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-left:6px solid #F57F17;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#E65100;margin-bottom:8px;">Round 2 🚪 New partner!</div>
+        <div style="font-size:14px;color:#333;line-height:1.7;">Same story — but this time <strong>smoother, faster, better phrases</strong>. Then discuss: which of the three types do you know in real life? 👀</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-left:6px solid #FFB300;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#F57F17;margin-bottom:8px;">Round 3 🚪 (if time)</div>
+        <div style="font-size:14px;color:#333;line-height:1.7;">New partner. Summary in <strong>under a minute</strong>! Then: is social media making celebrity worship worse? 📱</div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:18px;padding:28px 30px;border:2px dashed #FFD180;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:14px;">Watch me first 👀 — then the rules</div>
+      <div style="font-size:16px;color:#333;line-height:2.1;">
+        🙈 Article <strong>hidden</strong> — notes only<br>
+        💬 Use the <strong>phrases</strong> on screen<br>
+        👂 Listen, react, <strong>ask follow-ups</strong><br>
+        🤝 <em>"I'd be interested to know what you think…"</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: WRAP-UP ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(255,224,102,0.10);"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(83,74,183,0.18);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:60px 56px;gap:22px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#CE93D8;font-weight:700;">Let's wrap up</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:44px;color:#fff;line-height:1.15;">So… harmless fun<br>or a <span style="color:#FFE066;">real problem</span>? 🤔</div>
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:22px 26px;">
+      <div style="font-size:17px;color:#fff;line-height:1.7;">What's your honest reaction to the article — is celebrity worship harmless, or something to worry about?</div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:56px;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;gap:18px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#9FE1CB;">Language spotlight 🔍</div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:14px;padding:20px 24px;border-left:4px solid #9FE1CB;">
+      <div style="font-size:15px;color:#CECBF6;line-height:1.8;font-style:italic;">Let's look at some of the language I heard while you were talking…<br><br>Can you improve these sentences? ✍️</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:14px;padding:16px 24px;">
+      <div style="font-size:13px;color:#a0a0c0;line-height:1.8;">💚 Some of it was great — let's celebrate it<br>🛠️ Some of it we can polish together</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 8: DEC — FIND & FIX ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-90px;left:-90px;width:340px;height:340px;border-radius:50%;background:rgba(159,225,203,0.10);"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(244,143,177,0.10);"></div>
+
+  <div style="position:absolute;top:0;left:0;right:0;padding:46px 64px 0;">
+    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9FE1CB;font-weight:700;margin-bottom:8px;">With your partner</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:40px;color:#fff;line-height:1.1;">Find & fix 🛠️</div>
+    <div style="font-size:16px;color:#a0a0c0;margin-top:10px;">Two of these have a mistake. One is already correct — careful, it might look wrong! Find the mistakes and fix them.</div>
+  </div>
+
+  <div style="position:absolute;top:210px;left:0;right:0;padding:0 64px;display:flex;flex-direction:column;gap:20px;">
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">1</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"According to me, celebrity worship is a real problem."</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">2</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"The article claim that a third of people are obsessed."</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">3</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"It raises the question of whether celebrities are bad role models."</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

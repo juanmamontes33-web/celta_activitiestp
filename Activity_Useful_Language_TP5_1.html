@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Useful Language — Match the phrase to its job</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0a0a14; color: #fff; min-height: 100vh; padding: 32px 20px 60px;
+  background-image: radial-gradient(circle at 20% 8%, rgba(83,74,183,0.10), transparent 42%), radial-gradient(circle at 85% 70%, rgba(123,31,162,0.08), transparent 42%);
+}
+.wrap { max-width: 880px; margin: 0 auto; }
+.banner { background: linear-gradient(135deg,#1a1a2e,#23234a); border-radius: 22px; padding: 28px 34px; margin-bottom: 22px; border:1px solid rgba(255,255,255,0.08); }
+.banner h1 { font-family:'Fredoka One',cursive; font-size: 30px; line-height:1.12; }
+.banner h1 .y { color:#FFE066; }
+.banner p { font-size: 14px; color:#b0b0c8; margin-top: 8px; line-height:1.5; }
+.cols { display:grid; grid-template-columns: 1fr; gap: 14px; }
+.row { background: rgba(255,255,255,0.04); border:1.5px solid rgba(255,255,255,0.1); border-radius:16px; padding: 16px 18px; }
+.phrase { font-size: 16px; font-weight:800; margin-bottom: 12px; line-height:1.4; }
+.phrase .n { display:inline-flex; width:26px;height:26px;border-radius:50%; background:#534AB7; color:#fff; font-size:13px; align-items:center;justify-content:center; margin-right:10px; vertical-align:middle; }
+.opts { display:flex; flex-wrap:wrap; gap:8px; }
+.opt { border:1.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:9px 14px; font-size:13px; font-weight:700; cursor:pointer; transition:all .12s; background:rgba(255,255,255,0.03); color:#c8c8d8; font-family:'Nunito',sans-serif; text-align:left; }
+.opt:hover { background: rgba(255,255,255,0.08); }
+.opt.sel { background: rgba(255,224,102,0.18); border-color:#FFE066; color:#fff; }
+.row.correct { border-color:#66BB6A; }
+.row.correct .opt.sel { background: rgba(102,187,106,0.25); border-color:#66BB6A; color:#A5D6A7; }
+.row.wrong { border-color:#EF5350; }
+.row.wrong .opt.sel { background: rgba(239,83,80,0.2); border-color:#EF5350; color:#EF9A9A; }
+.row.wrong .opt.ans { background: rgba(102,187,106,0.16); border-color:#66BB6A; color:#A5D6A7; }
+.cat { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin: 20px 0 10px; }
+.cat.sum { color:#90CAF9; } .cat.q { color:#CE93D8; }
+.footer { display:flex; align-items:center; gap:16px; margin-top:24px; flex-wrap:wrap; }
+.btn { font-family:'Nunito',sans-serif; font-size:14px; font-weight:800; padding:12px 28px; border-radius:12px; cursor:pointer; border:none; transition:all .12s; }
+.btn-primary { background:#FFE066; color:#1a1a2e; }
+.btn-primary:hover { background:#ffd633; }
+.btn-secondary { background: rgba(255,255,255,0.06); color:#c8c8d8; border:1px solid rgba(255,255,255,0.15); }
+.score { font-size:14px; font-weight:700; }
+.score.good { color:#A5D6A7; } .score.mid { color:#FFB74D; } .score.low { color:#EF9A9A; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="banner">
+    <h1>Useful language: <span class="y">what's each phrase for?</span> 🔎</h1>
+    <p>Work with a partner. Match each phrase to the job it does. Then click "Check" and compare with another pair.</p>
+  </div>
+
+  <div class="cat sum">📰 Summarising the article</div>
+  <div class="cols" id="sumCols"></div>
+
+  <div class="cat q">💭 Questions arising from it</div>
+  <div class="cols" id="qCols"></div>
+
+  <div class="footer">
+    <button class="btn btn-primary" onclick="check()">Check</button>
+    <button class="btn btn-secondary" onclick="resetAll()">Reset</button>
+    <span class="score" id="score"></span>
+  </div>
+</div>
+
+<script>
+const ITEMS = [
+  { cat:'sum', phrase:'The main point the article is making is that…', use:'You state the single most important idea.' },
+  { cat:'sum', phrase:'According to the article, …', use:'You signal the idea is the article\u2019s, not yours.' },
+  { cat:'sum', phrase:'The article claims that…', use:'You report it, but hint you might doubt it.' },
+  { cat:'q', phrase:'It raises the question of whether…', use:'You open a question for discussion.' },
+  { cat:'q', phrase:'What interests me is whether…', use:'You give your own personal angle.' },
+  { cat:'q', phrase:'I\u2019d be interested to know what other people think about…', use:'You politely invite others\u2019 opinions.' },
+];
+// shuffle the "use" options once for display, but keep a stable option list
+const USES = ITEMS.map(i => i.use);
+const shuffled = [...USES].sort(() => Math.random() - 0.5);
+const sel = {};
+let checked = false;
+
+function render() {
+  ['sum','q'].forEach(cat => {
+    const host = document.getElementById(cat === 'sum' ? 'sumCols' : 'qCols');
+    host.innerHTML = '';
+    ITEMS.forEach((it, idx) => {
+      if (it.cat !== cat) return;
+      const row = document.createElement('div');
+      row.className = 'row'; row.id = 'row' + idx;
+      const ph = document.createElement('div');
+      ph.className = 'phrase';
+      ph.innerHTML = '<span class="n">' + (idx+1) + '</span>' + it.phrase;
+      const opts = document.createElement('div');
+      opts.className = 'opts';
+      shuffled.forEach((u, ui) => {
+        const b = document.createElement('button');
+        b.className = 'opt' + (sel[idx] === u ? ' sel' : '');
+        b.textContent = u;
+        b.onclick = () => { if (checked) return; sel[idx] = u; render(); };
+        opts.appendChild(b);
+      });
+      row.appendChild(ph); row.appendChild(opts);
+      host.appendChild(row);
+    });
+  });
+  if (checked) applyResults();
+}
+function applyResults() {
+  let correct = 0;
+  ITEMS.forEach((it, idx) => {
+    const row = document.getElementById('row' + idx);
+    if (!row) return;
+    row.classList.remove('correct','wrong');
+    if (sel[idx] === undefined) return;
+    if (sel[idx] === it.use) { row.classList.add('correct'); correct++; }
+    else {
+      row.classList.add('wrong');
+      [...row.querySelectorAll('.opt')].forEach(b => { if (b.textContent === it.use) b.classList.add('ans'); });
+    }
+  });
+  const el = document.getElementById('score');
+  el.textContent = correct + ' / ' + ITEMS.length + ' correct' + (correct === ITEMS.length ? ' 🎉' : ' — green shows the right match');
+  el.className = 'score ' + (correct === ITEMS.length ? 'good' : (correct >= 3 ? 'mid' : 'low'));
+}
+function check() {
+  if (Object.keys(sel).length < ITEMS.length) {
+    const el = document.getElementById('score');
+    el.textContent = 'Match all six first!'; el.className = 'score mid'; return;
+  }
+  checked = true; render();
+}
+function resetAll() { for (const k in sel) delete sel[k]; checked = false; document.getElementById('score').textContent=''; render(); }
+render();
+
+/* ===== TEACHER-ONLY ANSWER KEY (hidden) ===== */
+/* Reveal/hide with the keyboard shortcut:  Ctrl + Shift + K   (Mac: Cmd + Shift + K) */
+/* Click once anywhere on the activity first so it has focus, then press the keys.    */
+(function(){
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(5,5,12,0.94);padding:24px;';
+  const card = document.createElement('div');
+  card.style.cssText = 'max-width:560px;width:100%;background:#15152a;border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:26px 30px;font-family:Nunito,sans-serif;color:#fff;';
+  let rows = ITEMS.map((it,i)=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:14px;"><b style="color:#FFE066;">${i+1}.</b> ${it.phrase}<br><span style="color:#A5D6A7;font-size:13px;">→ ${it.use}</span></div>`).join('');
+  card.innerHTML = '<div style="font-family:\'Fredoka One\',cursive;font-size:20px;margin-bottom:14px;color:#FFE066;">Answer key (teacher)</div>'+rows+'<div style="margin-top:16px;font-size:12px;color:#888;">Press Ctrl/Cmd + Shift + K again to hide.</div>';
+  overlay.appendChild(card);
+  overlay.addEventListener('click', ()=> overlay.style.display='none');
+  document.body.appendChild(overlay);
+  document.addEventListener('keydown', function(e){
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'K' || e.key === 'k')) {
+      e.preventDefault();
+      overlay.style.display = (overlay.style.display === 'none') ? 'flex' : 'none';
+    }
+  });
+})();
+
+</script>
+</body>
+</html>

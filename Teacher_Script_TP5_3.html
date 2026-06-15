@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teacher Script — TP5 Speaking Lesson</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; color: #1a1a2e; padding: 48px 24px; line-height: 1.7; }
+.page { max-width: 860px; margin: 0 auto; }
+.cover { background: #1a1a2e; border-radius: 22px; padding: 44px 52px; margin-bottom: 28px; position: relative; overflow: hidden; }
+.cover::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:rgba(83,74,183,0.2); }
+.cover::after { content:''; position:absolute; bottom:-60px; left:-60px; width:200px; height:200px; border-radius:50%; background:rgba(255,224,102,0.10); }
+.cover-tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#7F77DD; font-weight:700; margin-bottom:10px; position:relative; }
+.cover h1 { font-family:'Fredoka One',cursive; font-size:34px; color:#fff; margin-bottom:6px; position:relative; }
+.cover h1 span { color:#FFE066; }
+.cover-sub { font-size:14px; color:#a0a0c0; margin-bottom:24px; position:relative; }
+.cover-pills { display:flex; gap:10px; flex-wrap:wrap; position:relative; }
+.pill { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.section { background:#fff; border-radius:18px; padding:32px 40px; margin-bottom:20px; border:0.5px solid #E0DDD8; box-shadow:0 4px 16px rgba(0,0,0,0.05); }
+.section-tag { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:5px; }
+.section h2 { font-family:'Fredoka One',cursive; font-size:24px; margin-bottom:18px; }
+.stage-strip { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.stage-badge { font-family:'Fredoka One',cursive; font-size:12px; color:#fff; padding:4px 14px; border-radius:20px; white-space:nowrap; }
+.stage-time { font-size:12px; color:#888; font-weight:700; background:#F2F0EB; padding:3px 10px; border-radius:20px; }
+.stage-inter { font-size:12px; color:#888; font-weight:600; }
+.block { border-radius:12px; padding:18px 22px; margin-bottom:12px; }
+.block-label { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.block-label::after { content:''; flex:1; height:1px; background:currentColor; opacity:0.2; }
+.script { font-size:14px; line-height:2.05; }
+.script i { font-style:italic; color:#0F5C46; font-weight:600; }
+.script .dir { color:#666; font-size:13px; }
+.note { font-size:12px; line-height:1.7; background:#fff; border-radius:10px; padding:10px 14px; margin-top:10px; border:0.5px solid #E0DDD8; color:#555; }
+.tip { background:#FFFBEA; border-left:4px solid #FFD700; border-radius:0 10px 10px 0; padding:10px 14px; margin-top:10px; font-size:12px; color:#7A5C00; line-height:1.7; }
+.error-table { width:100%; border-collapse:collapse; margin-top:10px; }
+.error-table th { background:#1a1a2e; color:#fff; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:7px 12px; text-align:left; }
+.error-table td { padding:9px 12px; font-size:12.5px; border-bottom:0.5px solid #F0EDE8; vertical-align:top; }
+.error-table tr:last-child td { border-bottom:none; }
+.wrong { color:#C62828; }
+.correct { color:#0F6E56; font-weight:700; }
+@media print { body{background:white;padding:0;} .page{max-width:100%;} .section{page-break-inside:avoid;box-shadow:none;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div class="cover-tag">Speaking lesson · Fluency</div>
+  <h1>Teacher Script — <span>Are you a celeb worshipper?</span></h1>
+  <div class="cover-sub">Summarising an article &amp; discussing questions arising · task repetition · Zoom breakout rooms</div>
+  <div class="cover-pills">
+    <span class="pill" style="background:#534AB7;color:#fff;">45 min</span>
+    <span class="pill" style="background:#0F6E56;color:#fff;">Speaking · fluency</span>
+    <span class="pill" style="background:#D85A30;color:#fff;">5 stages</span>
+    <span class="pill" style="background:#FFE066;color:#1a1a2e;">Article p.91 / p.140</span>
+  </div>
+</div>
+
+<!-- STAGE 1 -->
+<div class="section">
+  <div class="section-tag" style="color:#7B1FA2;">Stage 1</div>
+  <h2 style="color:#7B1FA2;">🗓️ Lead-in — 4–5 minutes</h2>
+  <div class="stage-strip">
+    <span class="stage-badge" style="background:#7B1FA2;">4–5 min</span>
+    <span class="stage-inter">👥 T–Ss (open class)</span>
+  </div>
+  <div class="block" style="background:#F3E5F5;">
+    <div class="block-label" style="color:#7B1FA2;">🎙️ Teacher says</div>
+    <div class="script">
+      <i>"Good evening everyone, great to see you. Have a look at this."</i><br><br>
+      <span class="dir">[Show the calendar slide — this month's entertainment events.]</span><br><br>
+      <i>"This is this month's calendar — and as you can see, it's a big month for famous people: a film premiere, a music awards ceremony, a celebrity wedding, a cup final…"</i><br><br>
+      <span class="dir"><b>DEMO — model your own answer first</b> so students know exactly what to produce:</span><br>
+      <i>"For me? I always check football news — I follow my team every single day. And I admit I read about that celebrity wedding! So that's me. What about you?"</i><br><br>
+      <i>"Here's my question: which of these events would you actually follow? And be honest — is there any famous person whose news you always check? [Name], how about you?"</i><br><br>
+      <span class="dir">[Open class — nominate 2–3 Ss to answer the whole group, one after another. No breakout rooms; keep it quick and lively. React genuinely: "No way!" / "I'd never have guessed!" / "Anyone else a secret superfan?"]</span><br><br>
+      <i>"Interesting! Well, today we're going to read about people who take following celebrities much, much further…"</i>
+    </div>
+    <div class="tip">💡 Keep it tight — under 5 minutes. Model your own answer first (the demo), then nominate. The calendar is just a springboard; don't let the chat expand.</div>
+  </div>
+</div>
+
+<!-- STAGE 2 -->
+<div class="section">
+  <div class="section-tag" style="color:#2E7D32;">Stage 2</div>
+  <h2 style="color:#2E7D32;">📝 Content Preparation — 6–7 minutes</h2>
+  <div class="stage-strip">
+    <span class="stage-badge" style="background:#2E7D32;">6–7 min</span>
+    <span class="stage-inter">👥 T–Ss / S</span>
+  </div>
+  <div class="block" style="background:#E8F5E9;">
+    <div class="block-label" style="color:#2E7D32;">🎙️ Teacher says</div>
+    <div class="script">
+      <span class="dir">[Show the article slide.]</span><br><br>
+      <i>"This is a real article from a British newspaper: 'Are you a celeb worshipper?' It's about something psychologists call Celebrity Worship Syndrome."</i><br><br>
+      <i>"Here's the task. Read the article and get ready to TALK about it. Make three or four quick notes: the main point, the key facts — who, what, how many — and one detail that surprises you. And one more thing: prepare ONE question or opinion this article raises for you. Something it makes you wonder."</i><br><br>
+      <i>"Notes only — no full sentences. When you speak, the article will be hidden, so your notes are all you'll have."</i><br><br>
+      <span class="dir">[ICQs:]</span><br>
+      <i>"Notes or full sentences?"</i> <span class="dir">[Notes]</span><br>
+      <i>"Apart from the summary notes — what else do you prepare?"</i> <span class="dir">[One question or opinion it raises]</span><br><br>
+      <i>"Five minutes — go."</i><br><br>
+      <span class="dir">[Ss read & prepare individually. Monitor on mute; help only with blocking vocabulary. 1-minute warning before time.]</span>
+    </div>
+    <div class="tip">💡 This stage feeds Stage 4 — the notes and the "question arising" ARE the content of the speaking. If someone finishes early, push them: "What's a second question this raises for you?"</div>
+  </div>
+</div>
+
+<!-- STAGE 3 -->
+<div class="section">
+  <div class="section-tag" style="color:#1565C0;">Stage 3</div>
+  <h2 style="color:#1565C0;">💬 Language Preparation — MA(F)P — 7–8 minutes</h2>
+  <div class="stage-strip">
+    <span class="stage-badge" style="background:#1565C0;">7–8 min</span>
+    <span class="stage-inter">👥 S–S (discovery) → T–Ss</span>
+  </div>
+
+  <div class="block" style="background:#E3F2FD;">
+    <div class="block-label" style="color:#1565C0;">🎙️ Meaning — guided discovery in PAIRS (not teacher-fronted)</div>
+    <div class="script">
+      <span class="dir">[Show the "What's each phrase for?" slide and share the matching link in the chat.]</span><br><br>
+      <i>"Here are six phrases you can use in a moment — and six 'jobs' they do. With your partner, match each phrase to its job. Don't worry if you're not sure — have a go. Two minutes, in pairs."</i><br><br>
+      <span class="dir">[ICQ:]</span> <i>"Working alone or with your partner?"</i> <span class="dir">[Partner]</span><br><br>
+      <span class="dir">[Ss match in pairs (breakout or main-room pairs), one pair only — no switching. 2 min. Monitor.]</span><br><br>
+      <span class="dir"><b>OCFB — check the answers by ELICITING, not telling.</b> Go through the six, nominating pairs for their match, then check the key meaning/appropriacy points with quick CCQs:</span><br>
+      <i>"'The article claims that…' — which job? … And if I CLAIM something, do I fully believe it, or do I have doubts?"</i> <span class="dir">[Doubts — more sceptical than 'says']</span><br>
+      <i>"'According to the article' — whose idea is it, mine or the article's?"</i> <span class="dir">[The article's — so NOT 'according to me']</span><br>
+      <i>"'I'd be interested to know what others think' — am I giving my opinion, or asking for theirs?"</i> <span class="dir">[Asking for theirs — a polite way to pass the turn]</span><br>
+      <i>"'What interests me is whether…' — the article's idea, or MY personal angle?"</i> <span class="dir">[My angle]</span>
+    </div>
+    <div class="note"><b>Answer key:</b> 1→b (most important idea) · 2→e (the article's idea, not yours) · 3→d (report it, hint doubt) · 4→a (open a question) · 5→f (your personal angle) · 6→c (politely invite opinions). <i>Form is not analysed — these are taught as fixed chunks.</i></div>
+  </div>
+
+  <div class="block" style="background:#E3F2FD;">
+    <div class="block-label" style="color:#1565C0;">🎙️ Pronunciation — ELICIT model + features, THEN drill</div>
+    <div class="script">
+      <span class="dir">[For 2–3 key chunks, don't model first — draw it out of the students, then drill.]</span><br><br>
+      <strong>"The article claims that…"</strong><br>
+      <i>"How do you think we say this naturally — can someone try it?"</i> <span class="dir">[Elicit an attempt from 1–2 Ss.]</span><br>
+      <i>"Good — now where's the strongest stress?"</i> <span class="dir">[Elicit: CLAIMS]</span> <i>"And the end of 'claims' — what sound?"</i> <span class="dir">[Elicit /mz/]</span><br>
+      <i>"Great — all together: the article CLAIMS that… Repeat!"</i> <span class="dir">[Now drill: choral ×2 → 2 individuals.]</span><br><br>
+      <strong>"According to the article, …"</strong><br>
+      <i>"Try it for me — how does it sound?"</i> <span class="dir">[Elicit attempt.]</span> <i>"What happens to 'to' — is it strong or weak?"</i> <span class="dir">[Elicit: weak, /tə/]</span><br>
+      <i>"Yes — according-to-the, all linked. Repeat!"</i> <span class="dir">[Drill choral → individual.]</span><br><br>
+      <strong>"It raises the question of whether…"</strong><br>
+      <i>"Have a go… which word might be tricky?"</i> <span class="dir">[Elicit: 'whether'.]</span> <i>"How do we say it?"</i> <span class="dir">[Elicit /ˈweðə/ — watch L1 /beder/]</span><br>
+      <i>"Perfect — 'whether', and 'of' is weak /əv/. Repeat!"</i> <span class="dir">[Isolate /w/ and /ð/ if needed, then drill the chunk.]</span><br><br>
+      <i>"These six phrases stay on screen while you talk. Last check — will you read the article aloud, or summarise it with these phrases?"</i> <span class="dir">[Summarise]</span>
+    </div>
+    <div class="tip">💡 The order matters: <b>elicit the model → elicit the features (stress/weak forms) → drill.</b> Don't say it first — let them try, shape it, then drill. Keep the whole stage to 7–8 min.</div>
+  </div>
+</div>
+
+<!-- STAGE 4 -->
+<div class="section">
+  <div class="section-tag" style="color:#E65100;">Stage 4</div>
+  <h2 style="color:#E65100;">🗣️ Speaking ×2–3 — 10–15 minutes</h2>
+  <div class="stage-strip">
+    <span class="stage-badge" style="background:#E65100;">10–15 min</span>
+    <span class="stage-inter">👥 S–S · breakout rooms · new partner each round</span>
+  </div>
+  <div class="block" style="background:#FFF3E0;">
+    <div class="block-label" style="color:#E65100;">🎙️ Teacher says</div>
+    <div class="script">
+      <i>"Time to talk. Hide the article — notes only!"</i><br><br>
+      <span class="dir"><b>DEMO — model the whole task in ~30 seconds before opening rooms</b> so the output is crystal clear:</span><br>
+      <i>"Watch me first. 'The main point the article is making is that about a third of people are obsessed with a celebrity — and a small group, about two percent, would even lie or die for their hero. What interests me is whether social media has made this worse… Now I'd ask my partner: what do YOU think?'"</i><br><br>
+      <span class="dir">Then highlight the shape:</span> <i>"See what I did? Summary in my own words → a question it raises → I passed it to my partner. Your turn to do the same."</i><br><br>
+      <i>"In your breakout room: take turns. Summarise the story in your own words using the phrases, then share your question — 'It raises the question of whether…' — and discuss it together. React to your partner and ask follow-ups."</i><br><br>
+      <span class="dir">[ICQs:]</span> <i>"Article open or hidden?"</i> <span class="dir">[Hidden]</span> <i>"After the summary, what do you discuss?"</i> <span class="dir">[The questions it raises]</span><br><br>
+      <strong>Round 1 (~5 min)</strong> — <span class="dir">[Open breakout rooms in pairs. Monitor between rooms with mic off; NOTE good language + errors. Do not interrupt.]</span><br><br>
+      <span class="dir">[Close rooms.]</span> <i>"Nice work. Now — same story, NEW partner. The challenge this time: smoother, faster, better phrases. And a new angle: which of the three types — mild, moderate, serious — do you recognise in people you actually know?"</i><br><br>
+      <strong>Round 2 (~5 min)</strong> — <span class="dir">[Re-group so everyone has a new partner. Monitor and keep noting.]</span><br><br>
+      <span class="dir">[If time:]</span> <i>"One more round, one more partner! This time your summary in under a minute — and then tell me: is social media making all this worse?"</i><br><br>
+      <strong>Round 3 (~4 min)</strong> — <span class="dir">[New pairs again. Monitor.]</span>
+    </div>
+    <div class="tip">💡 The repetition IS the lesson — the second telling should be noticeably more fluent. Frame each round as a challenge, not a repeat. Keep your own talk minimal between rounds: regroup, one line of instruction, go.</div>
+  </div>
+</div>
+
+<!-- STAGE 5 -->
+<div class="section">
+  <div class="section-tag" style="color:#5D3A8A;">Stage 5</div>
+  <h2 style="color:#5D3A8A;">🔍 Content &amp; Language Feedback (DEC) — 6 minutes</h2>
+  <div class="stage-strip">
+    <span class="stage-badge" style="background:#5D3A8A;">6 min</span>
+    <span class="stage-inter">👥 T–Ss / S–S</span>
+  </div>
+  <div class="block" style="background:#EDE7F6;">
+    <div class="block-label" style="color:#5D3A8A;">🎙️ Teacher says</div>
+    <div class="script">
+      <i>"Welcome back everyone! First, the big question: honest reactions — is celebrity worship harmless fun, or a real problem? [Name]?"</i><br><br>
+      <span class="dir">[Nominate 2 Ss, ~2 min total. React to CONTENT, not language.]</span><br><br>
+      <i>"Now — while you were talking, I noted some of the language you used. Here are three sentences. Two of them have a mistake. One is already perfect — but be careful, it might look wrong! With your partner: find and fix the mistakes, and decide which one is correct. One minute."</i><br><br>
+      <span class="dir">[Show the final DEC slide with the 3 phrases. Ss work in pairs, 1 min. Monitor.]</span><br><br>
+      <span class="dir">[OCFB — elicit corrections phrase by phrase:]</span><br>
+      <i>"Number one — 'According to me, it's a real problem.' Is that right? … What should it be?"</i> <span class="dir">[Elicit: "In my opinion, …" — 'according to' is for an external source, not your own view.]</span><br>
+      <i>"Number two — 'The article claim that a third of people are obsessed.'"</i> <span class="dir">[Elicit: "claims" — third-person -s.]</span><br>
+      <i>"Number three — 'It raises the question of whether celebrities are bad role models.' Mistake or not?"</i> <span class="dir">[The trap! It is CORRECT. Confirm 'of whether' is right and praise anyone who left it alone.]</span><br><br>
+      <i>"Last thing — I want you to notice something. Your second summary was faster and smoother than your first. That's what fluency practice does. Great work today — see you next class!"</i>
+    </div>
+    <div class="note">
+      <b>DEC — answer key (for you):</b>
+      <table class="error-table">
+        <tr><th>On the slide</th><th>Verdict</th><th>Fix / why</th></tr>
+        <tr><td class="wrong">1. "According to me, it's a real problem."</td><td class="wrong">✘ wrong</td><td style="font-size:11px;"><span class="correct">"In my opinion, …"</span> — 'according to' = external source, not your own view (Spanish L1: <i>según yo</i>)</td></tr>
+        <tr><td class="wrong">2. "The article claim that a third of people are obsessed."</td><td class="wrong">✘ wrong</td><td style="font-size:11px;"><span class="correct">"The article claims that…"</span> — third-person -s</td></tr>
+        <tr><td class="correct">3. "It raises the question of whether celebrities are bad role models."</td><td class="correct">✔ correct</td><td style="font-size:11px;">The trap — 'the question <b>of whether</b>' is right; nothing to change</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TIMING -->
+<div class="section">
+  <div class="section-tag" style="color:#1a1a2e;">Summary</div>
+  <h2 style="color:#1a1a2e;">⏱️ Timing at a glance</h2>
+  <table class="error-table">
+    <tr><th>Stage</th><th>Activity</th><th>Time</th><th>Interaction</th></tr>
+    <tr><td><b>1</b></td><td>Lead-in — entertainment calendar</td><td>4–5 min</td><td>T–Ss</td></tr>
+    <tr><td><b>2</b></td><td>Content Preparation — read + notes + question arising</td><td>6–7 min</td><td>T–Ss / S</td></tr>
+    <tr><td><b>3</b></td><td>Language Preparation — discover meaning in pairs, then elicit &amp; drill pron</td><td>7–8 min</td><td>S–S → T–Ss</td></tr>
+    <tr><td><b>4</b></td><td>Speaking ×2–3 — breakout rooms, new partner each round</td><td>10–15 min</td><td>S–S</td></tr>
+    <tr><td><b>5</b></td><td>Content &amp; Language FB (DEC)</td><td>6 min</td><td>T–Ss / S–S</td></tr>
+    <tr style="background:#1a1a2e;"><td colspan="2" style="color:#FFE066;font-weight:800;font-family:'Fredoka One',cursive;padding:8px 12px;">TOTAL</td><td style="color:#FFE066;font-weight:800;padding:8px 12px;">~40–45 min</td><td style="color:#a0a0c0;padding:8px 12px;"></td></tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>
