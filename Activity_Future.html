@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Machine — will &amp; going to</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; padding: 36px 18px 70px; color:#fff; }
+.wrap { max-width: 880px; margin: 0 auto; }
+
+.topcard { background: radial-gradient(120% 120% at 80% 0%, #1a1226, #0a0810 60%, #000); border-radius: 22px; padding: 30px 40px; position:relative; overflow:hidden; margin-bottom: 22px; border:1px solid rgba(255,255,255,0.06); }
+.topcard::before { content:''; position:absolute; top:-60px; left:-30px; width:200px; height:200px; border-radius:50%; background:rgba(167,139,250,0.16); filter:blur(20px); }
+.topcard::after { content:''; position:absolute; bottom:-60px; right:-30px; width:200px; height:200px; border-radius:50%; background:rgba(34,211,238,0.12); filter:blur(20px); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#A78BFA; font-weight:700; margin-bottom:6px; position:relative; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:28px; line-height:1.1; position:relative; }
+.topcard h1 span { color:#A78BFA; }
+.topcard p { font-size:14px; color:#9a9aa8; margin-top:8px; position:relative; }
+
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { flex:1; min-width:200px; background:#15151d; border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 14px; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:10px; }
+.tab:hover { background:#1d1d26; }
+.tab.active { background:#fff; border-color:#fff; }
+.tab.active .tab-num { background:#000; color:#A78BFA; }
+.tab.active .tab-label { color:#000; }
+.tab.done .tab-num { background:#A3E635; color:#000; }
+.tab-num { width:28px; height:28px; min-width:28px; border-radius:8px; background:#2a2a32; color:#bbb; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:14px; }
+.tab-label { font-size:13px; font-weight:800; color:#fff; line-height:1.2; }
+
+.panel { display:none; }
+.panel.active { display:block; }
+
+/* TAB 1 — machine */
+.stage { background:#101018; border-radius:22px; padding:30px 32px 34px; border:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; align-items:center; }
+.turnbar { display:flex; gap:12px; align-items:center; justify-content:center; margin-bottom:16px; }
+.pchip { display:flex; align-items:center; gap:8px; padding:8px 18px; border-radius:30px; font-weight:800; font-size:15px; border:2px solid transparent; background:#15151d; color:#9a9aa8; transition:all 0.2s; }
+.pchip .pdot { width:14px; height:14px; border-radius:50%; }
+.pchip.active { color:#fff; }
+.pchip.j.active { border-color:#22D3EE; box-shadow:0 0 18px rgba(34,211,238,0.4); }
+.pchip.v.active { border-color:#F472B6; box-shadow:0 0 18px rgba(244,114,182,0.4); }
+.counter { font-size:13px; font-weight:800; letter-spacing:1px; color:#888; text-transform:uppercase; margin-bottom:14px; }
+.ball { width:150px; height:150px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #2a2440, #120e1e 70%); border:2px solid rgba(167,139,250,0.5); box-shadow:0 0 40px rgba(167,139,250,0.25), inset 0 0 30px rgba(167,139,250,0.15); display:flex; align-items:center; justify-content:center; font-size:60px; margin-bottom:18px; }
+.ball.spin { animation:wobble 0.5s infinite; }
+@keyframes wobble { 0%,100%{transform:rotate(-4deg);} 50%{transform:rotate(4deg);} }
+.revealBtn { font-family:'Fredoka One',cursive; font-size:20px; color:#fff; background:linear-gradient(135deg,#A78BFA,#7C3AED); border:none; border-radius:16px; padding:14px 44px; cursor:pointer; box-shadow:0 6px 20px rgba(124,58,237,0.4); transition:transform 0.1s; margin-bottom:8px; }
+.revealBtn:hover { transform:translateY(-2px); }
+.revealBtn:disabled { background:#2a2a30; color:#666; box-shadow:none; transform:none; cursor:default; }
+.btn-reset { font-family:'Nunito'; font-size:13px; font-weight:700; padding:9px 18px; border-radius:12px; cursor:pointer; background:#1c1c24; color:#9a9aa8; border:1px solid rgba(255,255,255,0.12); margin-top:6px; }
+.prompt { width:100%; margin-top:18px; min-height:120px; border-radius:18px; border:2px solid #2a2a30; background:#15151d; padding:24px 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:all 0.2s; }
+.prompt .ptag { font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; padding:4px 14px; border-radius:20px; }
+.prompt .ptxt { font-size:22px; font-weight:800; line-height:1.4; max-width:660px; }
+.prompt .pwho { font-size:13px; color:#9a9aa8; margin-top:12px; }
+
+/* TAB 2 — check */
+.panelbox { background:#101018; border-radius:22px; padding:34px 40px; border:1px solid rgba(255,255,255,0.08); }
+.panelbox h2 { font-family:'Fredoka One',cursive; font-size:23px; margin-bottom:6px; color:#A3E635; }
+.panelbox .sub { font-size:14px; color:#d4f59a; line-height:1.6; margin-bottom:22px; padding:12px 16px; border-radius:12px; background:#1a2310; }
+.q { background:#16161e; border-radius:14px; padding:16px 20px; border:1px solid rgba(255,255,255,0.07); margin-bottom:12px; font-size:16px; color:#e8e8ee; line-height:1.9; }
+.q .num { font-family:'Fredoka One',cursive; margin-right:6px; color:#A3E635; }
+.q .cue { color:#9a9aa8; font-style:italic; font-size:14px; }
+.opts { display:inline-flex; gap:8px; margin:0 4px; flex-wrap:wrap; }
+.opt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:5px 14px; border-radius:20px; border:1.5px solid #3a3a44; background:#1c1c24; color:#cfcfda; cursor:pointer; transition:all 0.12s; }
+.opt:hover { background:#26263050; border-color:#555; }
+.opt.sel { background:#fff; color:#000; border-color:#fff; }
+.opt.correct { background:rgba(163,230,53,0.18) !important; border-color:#A3E635 !important; color:#BEF264 !important; }
+.opt.wrong { background:rgba(248,113,113,0.15) !important; border-color:#F87171 !important; color:#FCA5A5 !important; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:22px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 24px; border-radius:12px; cursor:pointer; border:none; }
+.btn-primary { background:#fff; color:#000; } .btn-primary:hover { background:#e0e0e0; }
+.btn-secondary { background:#1c1c24; color:#9a9aa8; border:1px solid rgba(255,255,255,0.12); }
+.score { font-size:14px; color:#c8c8d2; }
+.score.good { color:#A3E635; font-weight:800; }
+.score.partial { color:#FBBF24; font-weight:800; }
+.score.bad { color:#F87171; font-weight:800; }
+
+@media (max-width:600px){ .prompt .ptxt{font-size:18px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topcard">
+    <div class="tag">Speaking Game · B1</div>
+    <h1>The <span>Future Machine</span> 🔮</h1>
+    <p>Reveal a future question and answer out loud — then check your will / going to!</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">🔮 Speak about the future</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">✅ will or going to?</div></div>
+  </div>
+
+  <!-- TAB 1 -->
+  <div class="panel active" id="panel-0">
+    <div class="stage">
+      <div class="turnbar">
+        <div class="pchip j active" id="chip-j"><span class="pdot" style="background:#22D3EE"></span>Juan</div>
+        <span style="color:#555;font-weight:800;">&amp;</span>
+        <div class="pchip v" id="chip-v"><span class="pdot" style="background:#F472B6"></span>Valeria</div>
+      </div>
+      <div class="counter" id="counter">0 / 12 revealed</div>
+      <div class="ball" id="ball">🔮</div>
+      <button class="revealBtn" id="revealBtn" onclick="reveal()">REVEAL!</button>
+      <button class="btn-reset" onclick="resetMachine()">↺ Reset</button>
+      <div class="prompt" id="prompt">
+        <div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press REVEAL!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div class="panel" id="panel-1">
+    <div class="panelbox">
+      <h2>will or going to?</h2>
+      <div class="sub">📅 a plan / evidence → <strong>going to</strong> · ⚡ a decision now / opinion → <strong>will</strong>. Choose the natural one!</div>
+      <div id="p2"></div>
+      <div class="footer">
+        <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
+        <button class="btn btn-secondary" onclick="resetP2()">Reset</button>
+        <span class="score" id="score2"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+
+/* ===== TAB 1: machine ===== */
+const PROMPTS = [
+  {t:'plan', x:"What are you going to do this weekend? 📅"},
+  {t:'plan', x:"Tell us about a big plan you have for this year. ✈️"},
+  {t:'plan', x:"What are you going to do right after this class? 🚪"},
+  {t:'plan', x:"What are you going to eat tonight? 🍽️"},
+  {t:'pred', x:"Will robots do most jobs in 20 years? What do you think? 🤖"},
+  {t:'pred', x:"Predict the weather for tomorrow. ☀️🌧️"},
+  {t:'pred', x:"What do you think the world will be like in 2050? 🌍"},
+  {t:'pred', x:"Make a fun prediction about your partner's future! 🔮"},
+  {t:'dec', x:"Your friend feels sad. What will you say or do to help? 🫂"},
+  {t:'dec', x:"It's your partner's birthday tomorrow — make a promise! 🎁"},
+  {t:'pred', x:"Where do you think you'll be living in 5 years? 🏡"},
+  {t:'plan', x:"What are you going to do on your next holiday? 🏝️"}
+];
+const TAG = {plan:{l:'Plan 📅 (going to)',c:'#FBBF24'}, pred:{l:'Prediction 🔮 (will)',c:'#22D3EE'}, dec:{l:'Decision / Promise ⚡ (will)',c:'#A78BFA'}};
+const NAMES = {j:'Juan', v:'Valeria'};
+let active = PROMPTS.map((_,i)=>i);
+let used=0, cur='j', busy=false, over=false;
+
+function setTurn(p){
+  cur=p;
+  document.getElementById('chip-j').classList.toggle('active',p==='j');
+  document.getElementById('chip-v').classList.toggle('active',p==='v');
+}
+function reveal(){
+  if(busy||over) return;
+  busy=true;
+  document.getElementById('revealBtn').disabled=true;
+  const ball=document.getElementById('ball'); ball.classList.add('spin');
+  const target=active[Math.floor(Math.random()*active.length)];
+  const pr=document.getElementById('prompt');
+  let ticks=0;
+  const iv=setInterval(()=>{
+    const r=PROMPTS[Math.floor(Math.random()*PROMPTS.length)];
+    pr.innerHTML='<div class="ptxt" style="color:#cfcfda;">'+r.x+'</div>';
+    if(++ticks>9){ clearInterval(iv); ball.classList.remove('spin'); land(target); }
+  },90);
+}
+function land(i){
+  const p=PROMPTS[i], tag=TAG[p.t];
+  active=active.filter(x=>x!==i); used++;
+  document.getElementById('counter').textContent=used+' / 12 revealed';
+  const pr=document.getElementById('prompt');
+  pr.style.borderColor=tag.c; pr.style.boxShadow='0 0 28px '+tag.c+'22';
+  if(active.length===0){
+    over=true;
+    document.getElementById('revealBtn').disabled=true;
+    document.getElementById('revealBtn').textContent='All done! 🎉';
+    pr.innerHTML='<div class="ptag" style="background:'+tag.c+'22;color:'+tag.c+'">'+tag.l+'</div><div class="ptxt">'+p.x+'</div><div class="pwho">🎉 You answered all 12 — great speaking!</div>';
+    busy=false; return;
+  }
+  setTurn(cur==='j'?'v':'j');
+  pr.innerHTML='<div class="ptag" style="background:'+tag.c+'22;color:'+tag.c+'">'+tag.l+'</div><div class="ptxt">'+p.x+'</div><div class="pwho">Next: '+NAMES[cur]+'\u2019s turn to reveal</div>';
+  document.getElementById('revealBtn').disabled=false;
+  busy=false;
+}
+function resetMachine(){
+  active=PROMPTS.map((_,i)=>i); used=0; cur='j'; busy=false; over=false;
+  setTurn('j');
+  document.getElementById('counter').textContent='0 / 12 revealed';
+  document.getElementById('revealBtn').disabled=false;
+  document.getElementById('revealBtn').textContent='REVEAL!';
+  const pr=document.getElementById('prompt');
+  pr.style.borderColor='#2a2a30'; pr.style.boxShadow='none';
+  pr.innerHTML='<div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press REVEAL!</div>';
+}
+
+/* ===== TAB 2: will or going to ===== */
+const P2 = [
+  {pre:"Look at those dark clouds! It ", post:" rain.", cue:"(evidence)", opts:["'s going to","will"], ans:"'s going to"},
+  {pre:"(The phone rings) Oh, I ", post:" answer it!", cue:"(decide now)", opts:["'m going to","'ll"], ans:"'ll"},
+  {pre:"I've decided — I ", post:" study French next year.", cue:"(a plan)", opts:["'m going to","'ll"], ans:"'m going to"},
+  {pre:"I think our team ", post:" win tomorrow.", cue:"(opinion)", opts:["is going to","will"], ans:"will"},
+  {pre:"We've booked the flights. We ", post:" visit Peru in June.", cue:"(a plan)", opts:["'re going to","'ll"], ans:"'re going to"},
+  {pre:"That bag looks heavy. I ", post:" help you!", cue:"(offer now)", opts:["'m going to","'ll"], ans:"'ll"}
+];
+let p2sel={}; let p2checked=false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML=`<span class="num">${i+1}.</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts';
+    q.opts.forEach(o=>{
+      const b=document.createElement('span');
+      b.className='opt'+(p2sel[i]===o?' sel':'');
+      b.textContent=o;
+      b.onclick=()=>{ if(p2checked) return; p2sel[i]=o; renderP2(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    div.insertAdjacentHTML('beforeend', `${q.post} <span class="cue">${q.cue}</span>`);
+    c.appendChild(div);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0;
+  const qs=document.querySelectorAll('#p2 .q');
+  P2.forEach((q,i)=>{
+    qs[i].querySelectorAll('.opt').forEach(o=>{
+      if(o.textContent===q.ans) o.classList.add('correct');
+      else if(o.classList.contains('sel')) o.classList.add('wrong');
+    });
+    if(p2sel[i]===q.ans) correct++;
+  });
+  const s=document.getElementById('score2');
+  s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' — nicely done! 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad'));
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+renderP2();
+</script>
+</body>
+</html>
