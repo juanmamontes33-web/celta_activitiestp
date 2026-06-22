@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two witnesses — Discover the language</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0a0a0f;
+  background-image: radial-gradient(circle at 15% 5%, rgba(83,74,183,0.10), transparent 40%),
+                    radial-gradient(circle at 85% 80%, rgba(0,137,123,0.08), transparent 42%);
+  color: #e8e8f0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 40px 20px 80px; gap: 26px;
+}
+.card { background: #14141f; border-radius: 22px; padding: 36px 44px; max-width: 820px; width: 100%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.sec-num { display:inline-flex; width:30px; height:30px; border-radius:50%; color:#0a0a0f; font-family:'Fredoka One',cursive;
+  font-size:15px; align-items:center; justify-content:center; margin-right:10px; vertical-align:middle; }
+h1 { font-family: 'Fredoka One', cursive; font-size: 28px; color: #ffffff; margin-bottom: 12px; line-height: 1.15; }
+.task { font-size: 14.5px; line-height: 1.7; margin-bottom: 24px; padding: 14px 18px; border-radius: 12px; }
+.task strong { font-weight: 800; }
+
+/* ---- Section 1: Reading ---- */
+.convo { background: #0a0a12; border:1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 24px 28px; }
+.line { display: flex; gap: 12px; margin-bottom: 13px; align-items: baseline; }
+.line:last-child { margin-bottom: 0; }
+.who { font-family: 'Fredoka One', cursive; font-size: 13px; min-width: 50px; flex-shrink: 0; }
+.mara { color: #FF9DB6; } .dan { color: #7FB4FF; }
+.say { font-size: 15px; color: #d8d8e8; line-height: 1.65; }
+.q-strip { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
+.q { flex: 1; min-width: 230px; background: rgba(255,176,77,0.10); border-radius: 12px; padding: 15px 18px; border: 1.5px solid rgba(255,176,77,0.45); }
+.q-num { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #FFB74D; margin-bottom: 6px; }
+.q-text { font-size: 15px; color: #f0f0f8; font-weight: 700; line-height: 1.4; }
+
+/* ---- shared chips / drag ---- */
+.bank { border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; border: 1.5px solid; }
+.bank-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.bank-chips, .drop-zone { display: flex; flex-wrap: wrap; gap: 9px; min-height: 42px; }
+.drag-chip { font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:700; padding:9px 15px; border-radius:22px;
+  cursor:grab; user-select:none; background:#1e1e2e; color:#e8e8f0; border:1.5px solid #4a4a6a;
+  box-shadow:0 2px 8px rgba(0,0,0,0.4); transition:transform .1s; touch-action:none; }
+.drag-chip:active { cursor:grabbing; } .drag-chip.dragging { opacity:.4; transform:scale(.97); }
+.reset-row { display:flex; align-items:center; gap:16px; margin-top:18px; }
+.reset-btn { font-family:'Nunito',sans-serif; font-size:13px; font-weight:700; padding:9px 20px; border-radius:11px;
+  cursor:pointer; border:1px solid rgba(255,255,255,0.15); background:#1e1e2e; color:#b8b8d0; }
+.reset-btn:hover { background:#2a2a3e; }
+
+/* ---- Section 2: Sort ---- */
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.dropcol { border-radius:16px; padding:16px 18px; border:2px dashed transparent; min-height:170px; transition:border-color .12s, background .12s; }
+.dropcol.telling { background:rgba(0,191,165,0.10); border-color:rgba(0,191,165,0.25); }
+.dropcol.comparing { background:rgba(149,117,255,0.10); border-color:rgba(149,117,255,0.25); }
+.dropcol.telling.over { border-color:#00BFA5; background:rgba(0,191,165,0.18); }
+.dropcol.comparing.over { border-color:#9575FF; background:rgba(149,117,255,0.18); }
+.col-title { font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px; }
+.tell-title { color:#26d8bb; } .comp-title { color:#b39dff; }
+.drop-zone { min-height:110px; align-content:flex-start; }
+
+/* ---- Section 3: Meaning ---- */
+.m-list { display:flex; flex-direction:column; gap:12px; }
+.m-row { display:flex; gap:14px; align-items:stretch; background:rgba(127,180,255,0.07); border:1.5px solid rgba(127,180,255,0.25); border-radius:14px; padding:14px 16px; transition:border-color .12s, background .12s; }
+.m-row.over { border-color:#7FB4FF; background:rgba(127,180,255,0.15); }
+.m-sentence { flex:1; font-size:14px; color:#e0e0ee; line-height:1.55; display:block; }
+.m-sentence b { color:#7FB4FF; }
+.m-drop { width:140px; min-width:140px; border-left:2px dashed rgba(127,180,255,0.3); padding-left:14px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+.mean-chip { font-size:13px; font-weight:800; padding:8px 14px; border-radius:11px; cursor:grab; user-select:none;
+  background:#13243b; border:1.5px solid #2a5a9e; color:#9fc6ff; box-shadow:0 2px 8px rgba(0,0,0,0.4); touch-action:none; }
+.mean-chip.dragging { opacity:.4; }
+
+/* ---- Section 4: Form (dark, drag into slots) ---- */
+.form-dark { background:#070709; border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:22px 24px; }
+.form-bank-title { font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#9aa0c0; margin-bottom:12px; }
+.form-bank { display:flex; flex-wrap:wrap; gap:9px; min-height:42px; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,0.1); }
+.fchip { font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:700; padding:9px 15px; border-radius:10px; cursor:grab; user-select:none; box-shadow:0 2px 6px rgba(0,0,0,0.4); touch-action:none; border:1.5px solid; }
+.fchip:active { cursor:grabbing; } .fchip.dragging { opacity:.4; }
+.fchip.k-person { background:#13243b; color:#7fb4ff; border-color:#2a5a9e; }
+.fchip.k-action { background:#11281a; color:#8ddf9e; border-color:#2e7d4a; }
+.fchip.k-rest   { background:#241433; color:#cba3ee; border-color:#6a3a9e; }
+.form-line { display:flex; flex-wrap:wrap; gap:8px; align-items:center; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:13px 16px; margin-bottom:10px; }
+.fixed-tok { background:#FFE066; color:#1a1a2e; border-radius:9px; padding:8px 13px; font-weight:800; font-size:14px; white-space:nowrap; }
+.fixed-tok em { font-style:italic; }
+.slot { min-width:115px; min-height:38px; border-radius:9px; border:2px dashed; display:flex; align-items:center; justify-content:center; padding:4px 10px; font-size:12px; font-weight:700; transition:border-color .12s, background .12s; }
+.slot.s-person { border-color:#2a5a9e; color:#5a7fb0; } .slot.s-person.over { border-color:#7fb4ff; background:rgba(127,180,255,0.12); }
+.slot.s-action { border-color:#2e7d4a; color:#5a9e70; } .slot.s-action.over { border-color:#8ddf9e; background:rgba(141,223,158,0.12); }
+.slot.s-rest   { border-color:#6a3a9e; color:#9a70c0; } .slot.s-rest.over { border-color:#cba3ee; background:rgba(203,163,238,0.12); }
+.slot .fchip { cursor:grab; box-shadow:none; }
+.slot-label { opacity:0.7; }
+.form-hint { margin-top:16px; background:rgba(255,224,102,0.10); border-left:4px solid #FFE066; border-radius:0 10px 10px 0; padding:12px 16px; font-size:13.5px; color:#FFE08A; line-height:1.6; }
+
+@media (max-width:640px){
+  .card{padding:26px 20px;} h1{font-size:24px;} .cols{grid-template-columns:1fr;}
+  .m-row{flex-direction:column;} .m-drop{width:100%;min-width:0;border-left:none;border-top:2px dashed rgba(127,180,255,0.3);padding-left:0;padding-top:10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ SECTION 1 — READING (GIST) ════════ -->
+<div class="card">
+  <div class="tag" style="color:#FFB74D;"><span class="sec-num" style="background:#FF8A3D;">1</span>Reading</div>
+  <h1>Two witnesses, two stories</h1>
+  <div class="task" style="background:rgba(255,138,61,0.10);border-left:4px solid #FF8A3D;color:#FFCBA0;">
+    <strong style="color:#BF360C;">Read the conversation.</strong> Don't worry about every word — just get the main idea, then answer the two questions.
+  </div>
+  <div class="convo">
+    <div class="line"><span class="who mara">Mara:</span><span class="say">Did you hear about the crash outside the café yesterday?</span></div>
+    <div class="line"><span class="who dan">Dan:</span><span class="say">A bit — but I've heard two completely different versions, actually.</span></div>
+    <div class="line"><span class="who mara">Mara:</span><span class="say">Same here! So, according to the waiter, a cyclist was just riding past when a car door suddenly opened right in front of him.</span></div>
+    <div class="line"><span class="who dan">Dan:</span><span class="say">Right. And all of a sudden the cyclist flew over the handlebars and landed on the pavement.</span></div>
+    <div class="line"><span class="who mara">Mara:</span><span class="say">Exactly. The waiter claimed that the driver wasn't even looking.</span></div>
+    <div class="line"><span class="who dan">Dan:</span><span class="say">But the old lady at the bus stop told a completely different story. She was absolutely certain that the cyclist was going way too fast.</span></div>
+    <div class="line"><span class="who mara">Mara:</span><span class="say">Hmm. So whose fault was it?</span></div>
+    <div class="line"><span class="who dan">Dan:</span><span class="say">Honestly? Nobody knows. In the end, the cyclist stood up, picked up his bike and just walked away.</span></div>
+    <div class="line"><span class="who mara">Mara:</span><span class="say">Lucky him! Two witnesses — and two completely different stories.</span></div>
+  </div>
+  <div class="q-strip">
+    <div class="q"><div class="q-num">Question 1</div><div class="q-text">What happened outside the café?</div></div>
+    <div class="q"><div class="q-num">Question 2</div><div class="q-text">Why can't Mara and Dan agree on the story?</div></div>
+  </div>
+</div>
+
+<!-- ════════ SECTION 2 — SORT THE PHRASES ════════ -->
+<div class="card">
+  <div class="tag" style="color:#b39dff;"><span class="sec-num" style="background:#9575FF;">2</span>Sort the phrases</div>
+  <h1>Telling… or comparing?</h1>
+  <div class="task" style="background:rgba(149,117,255,0.10);border-left:4px solid #9575FF;color:#cfc2ff;">
+    <strong>Drag each phrase</strong> into the right group. Which ones <strong style="color:#00897B;">TELL the story</strong>, and which ones <strong style="color:#534AB7;">COMPARE the two versions?</strong> Talk with your partner — why?
+  </div>
+  <div class="bank" id="sortBankBox" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.12);">
+    <div class="bank-title" style="color:#9aa0c0;">📦 Phrases — drag from here</div>
+    <div class="bank-chips" id="sortBank"></div>
+  </div>
+  <div class="cols">
+    <div class="dropcol telling" data-g="telling"><div class="col-title tell-title">📖 Telling a story</div><div class="drop-zone" id="z-telling"></div></div>
+    <div class="dropcol comparing" data-g="comparing"><div class="col-title comp-title">⚖️ Comparing versions</div><div class="drop-zone" id="z-comparing"></div></div>
+  </div>
+  <div class="reset-row"><button class="reset-btn" onclick="resetSort()">↺ Reset</button></div>
+</div>
+
+<!-- ════════ SECTION 3 — MEANING (IN CONTEXT) ════════ -->
+<div class="card">
+  <div class="tag" style="color:#7FB4FF;"><span class="sec-num" style="background:#4d94ff;">3</span>Meaning</div>
+  <h1>What does each phrase mean?</h1>
+  <div class="task" style="background:rgba(127,180,255,0.10);border-left:4px solid #4d94ff;color:#bcd9ff;">
+    Each line is a sentence <strong>from the conversation</strong> (the phrase is in <b style="color:#7FB4FF;">blue</b>). <strong>Drag a meaning</strong> from the bank to the sentence it matches. Discuss with your partner.
+  </div>
+  <div class="bank" id="meanBankBox" style="background:rgba(127,180,255,0.08);border-color:rgba(127,180,255,0.3);">
+    <div class="bank-title" style="color:#7FB4FF;">📦 Meanings — drag from here</div>
+    <div class="bank-chips" id="meanBank"></div>
+  </div>
+  <div class="m-list" id="meanList"></div>
+  <div class="reset-row"><button class="reset-btn" onclick="resetMean()">↺ Reset</button></div>
+</div>
+
+<!-- ════════ SECTION 4 — FORM ════════ -->
+<div class="card">
+  <div class="tag" style="color:#FFD54F;"><span class="sec-num" style="background:#FFC107;">4</span>Form</div>
+  <h1>How are these phrases built?</h1>
+  <div class="task" style="background:rgba(255,193,7,0.10);border-left:4px solid #FFC107;color:#ffe6a0;">
+    The <strong>fixed start</strong> (in <span style="background:#FFE066;color:#1a1a2e;padding:1px 8px;border-radius:6px;font-weight:800;">yellow</span>) is already there — it never changes. <strong>Drag the missing parts</strong> into the empty slots: the <span style="color:#7FB4FF;font-weight:800;">person/thing</span>, the <span style="color:#8ddf9e;font-weight:800;">action</span>, and <span style="color:#cba3ee;font-weight:800;">the rest</span>. Work with your partner.
+  </div>
+  <div class="form-dark">
+    <div class="form-bank-title">📦 Drag these into the slots</div>
+    <div class="form-bank" id="formBank"></div>
+    <div id="formRows"></div>
+  </div>
+  <div class="form-hint">💬 Talk to your partner: the yellow start never changes — but what ALWAYS comes after it?</div>
+  <div class="reset-row"><button class="reset-btn" onclick="resetForm()">↺ Reset</button></div>
+</div>
+
+<script>
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function attachDrag(el,id){
+  el.setAttribute('draggable','true');
+  el.addEventListener('dragstart',e=>{ el.classList.add('dragging'); e.dataTransfer.setData('text/plain',id); });
+  el.addEventListener('dragend',()=>el.classList.remove('dragging'));
+}
+
+/* ===== SECTION 2: SORT ===== */
+const PHRASES = [
+  { id:'s1', text:'"He was just …-ing when…"' },
+  { id:'s2', text:'"All of a sudden…"' },
+  { id:'s3', text:'"In the end / Eventually…"' },
+  { id:'s4', text:'"According to…"' },
+  { id:'s5', text:'"He/She claimed that…"' },
+  { id:'s6', text:'"He/She was absolutely certain that…"' },
+];
+function buildSort(){
+  const bank=document.getElementById('sortBank'); bank.innerHTML='';
+  shuffle([...PHRASES]).forEach(p=>{ const c=document.createElement('div'); c.className='drag-chip'; c.id=p.id; c.textContent=p.text; attachDrag(c,p.id); bank.appendChild(c); });
+  document.getElementById('z-telling').innerHTML=''; document.getElementById('z-comparing').innerHTML='';
+}
+function wireDrop(col, zoneId){
+  const zone=document.getElementById(zoneId);
+  col.addEventListener('dragover',e=>{e.preventDefault();col.classList.add('over');});
+  col.addEventListener('dragleave',()=>col.classList.remove('over'));
+  col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('over');
+    const chip=document.getElementById(e.dataTransfer.getData('text/plain')); if(chip) zone.appendChild(chip); });
+}
+function resetSort(){ buildSort(); }
+
+/* ===== SECTION 3: MEANING IN CONTEXT ===== */
+/* sentence = line from the conversation; meaning = plain gloss to match */
+const MEAN = [
+  { id:'mn1', sentence:'"a cyclist <b>was just riding</b> past <b>when</b> a car door opened"', meaning:'already happening → interrupted' },
+  { id:'mn2', sentence:'"<b>All of a sudden</b> the cyclist flew over the handlebars"',        meaning:'quick &amp; unexpected' },
+  { id:'mn3', sentence:'"<b>In the end</b>, the cyclist stood up and walked away"',            meaning:'the final result' },
+  { id:'mn4', sentence:'"<b>According to</b> the waiter, a cyclist was riding past"',           meaning:'someone else\u2019s account' },
+  { id:'mn5', sentence:'"The waiter <b>claimed that</b> the driver wasn\u2019t even looking"',   meaning:'said it — maybe not true' },
+  { id:'mn6', sentence:'"She <b>was absolutely certain that</b> the cyclist was too fast"',     meaning:'100% sure' },
+];
+function buildMean(){
+  const bank=document.getElementById('meanBank'); bank.innerHTML='';
+  shuffle([...MEAN]).forEach(m=>{ const c=document.createElement('div'); c.className='mean-chip'; c.id=m.id; c.innerHTML=m.meaning; attachDrag(c,m.id); bank.appendChild(c); });
+  const list=document.getElementById('meanList'); list.innerHTML='';
+  MEAN.forEach(m=>{
+    const row=document.createElement('div'); row.className='m-row';
+    const sent=document.createElement('div'); sent.className='m-sentence'; sent.innerHTML=m.sentence;
+    const drop=document.createElement('div'); drop.className='m-drop';
+    row.appendChild(sent); row.appendChild(drop);
+    row.addEventListener('dragover',e=>{e.preventDefault();row.classList.add('over');});
+    row.addEventListener('dragleave',()=>row.classList.remove('over'));
+    row.addEventListener('drop',e=>{ e.preventDefault(); row.classList.remove('over');
+      const chip=document.getElementById(e.dataTransfer.getData('text/plain')); if(chip) drop.appendChild(chip); });
+    list.appendChild(row);
+  });
+}
+function resetMean(){ buildMean(); }
+
+/* ===== SECTION 4: FORM (fixed start shown; drag person/action/rest into slots) ===== */
+const FORM_ITEMS = [
+  { fixed:'He was just <em>riding</em> when',  person:'a door',      action:'opened',     rest:null },
+  { fixed:'All of a sudden',                   person:'the cyclist', action:'flew',       rest:'over the bars' },
+  { fixed:'In the end',                        person:'the cyclist', action:'walked',     rest:'away' },
+  { fixed:'According to the waiter,',          person:'the driver',  action:'wasn\u2019t', rest:'looking' },
+  { fixed:'He claimed that',                   person:'the driver',  action:'wasn\u2019t', rest:'looking' },
+  { fixed:'She was absolutely certain that',   person:'the cyclist', action:'was going',  rest:'too fast' },
+];
+let fchipSeq = 0;
+function makeFchip(kind, text){
+  const c=document.createElement('span');
+  c.className='fchip k-'+kind; c.textContent=text;
+  c.id='fc'+(fchipSeq++); c.dataset.kind=kind;
+  attachDrag(c,c.id);
+  return c;
+}
+function buildForm(){
+  const bank=document.getElementById('formBank'); bank.innerHTML='';
+  const host=document.getElementById('formRows'); host.innerHTML='';
+  const chips=[];
+  // build rows with fixed start + empty slots
+  FORM_ITEMS.forEach((it,ri)=>{
+    const row=document.createElement('div'); row.className='form-line';
+    const fx=document.createElement('span'); fx.className='fixed-tok'; fx.innerHTML=it.fixed;
+    row.appendChild(fx);
+    const plus=document.createElement('span'); plus.style.cssText='color:#555;font-size:16px;'; plus.textContent='+'; row.appendChild(plus);
+    [['person','s-person','person / thing'],['action','s-action','action'],['rest','s-rest','the rest']].forEach(([kind,scls,label])=>{
+      if(it[kind]===null) return;
+      const slot=document.createElement('div'); slot.className='slot '+scls; slot.dataset.kind=kind;
+      const lbl=document.createElement('span'); lbl.className='slot-label'; lbl.textContent=label; slot.appendChild(lbl);
+      slot.addEventListener('dragover',e=>{e.preventDefault();slot.classList.add('over');});
+      slot.addEventListener('dragleave',()=>slot.classList.remove('over'));
+      slot.addEventListener('drop',e=>{
+        e.preventDefault(); slot.classList.remove('over');
+        const chip=document.getElementById(e.dataTransfer.getData('text/plain'));
+        if(!chip) return;
+        // clear label, place chip (swap out any existing chip back to bank)
+        const existing=slot.querySelector('.fchip');
+        if(existing) document.getElementById('formBank').appendChild(existing);
+        const l=slot.querySelector('.slot-label'); if(l) l.remove();
+        slot.appendChild(chip);
+      });
+      row.appendChild(slot);
+      chips.push(makeFchip(kind, it[kind]));
+    });
+    host.appendChild(row);
+  });
+  // shuffle chips into the bank
+  shuffle(chips).forEach(c=>bank.appendChild(c));
+}
+function wireFormBank(){
+  const bank=document.getElementById('formBank');
+  bank.addEventListener('dragover',e=>e.preventDefault());
+  bank.addEventListener('drop',e=>{
+    e.preventDefault();
+    const chip=document.getElementById(e.dataTransfer.getData('text/plain'));
+    if(chip){
+      const oldSlot=chip.closest('.slot');
+      bank.appendChild(chip);
+      if(oldSlot && !oldSlot.querySelector('.fchip')){
+        const lbl=document.createElement('span'); lbl.className='slot-label';
+        lbl.textContent = oldSlot.dataset.kind==='person'?'person / thing':(oldSlot.dataset.kind==='action'?'action':'the rest');
+        oldSlot.appendChild(lbl);
+      }
+    }
+  });
+}
+function resetForm(){ buildForm(); }
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded',function(){
+  buildSort();
+  document.querySelectorAll('.dropcol').forEach(col=>{ wireDrop(col,'z-'+col.dataset.g); });
+  const sb=document.getElementById('sortBankBox'); sb.addEventListener('dragover',e=>e.preventDefault());
+  sb.addEventListener('drop',e=>{e.preventDefault(); const c=document.getElementById(e.dataTransfer.getData('text/plain')); if(c) document.getElementById('sortBank').appendChild(c);});
+
+  buildMean();
+  const mb=document.getElementById('meanBankBox'); mb.addEventListener('dragover',e=>e.preventDefault());
+  mb.addEventListener('drop',e=>{e.preventDefault(); const c=document.getElementById(e.dataTransfer.getData('text/plain')); if(c) document.getElementById('meanBank').appendChild(c);});
+
+  buildForm();
+  wireFormBank();
+});
+</script>
+</body>
+</html>

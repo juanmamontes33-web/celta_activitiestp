@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Teacher Script — Two Witnesses (Functional Language TP6)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; color: #1a1a2e; padding: 48px 24px; line-height: 1.7; }
+.page { max-width: 860px; margin: 0 auto; }
+.cover { background: #1a1a2e; border-radius: 22px; padding: 44px 52px; margin-bottom: 28px; position: relative; overflow: hidden; }
+.cover::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:rgba(216,90,48,0.2); }
+.cover-tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#F4A07F; font-weight:700; margin-bottom:10px; }
+.cover h1 { font-family:'Fredoka One',cursive; font-size:34px; color:#fff; margin-bottom:6px; }
+.cover h1 span { color:#FFE066; }
+.cover-sub { font-size:14px; color:#a0a0c0; margin-bottom:22px; }
+.cover-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+.section { background:#fff; border-radius:18px; padding:30px 38px; margin-bottom:20px; border:0.5px solid #E0DDD8; box-shadow:0 4px 16px rgba(0,0,0,0.05); }
+.section-tag { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:5px; }
+.section h2 { font-family:'Fredoka One',cursive; font-size:23px; margin-bottom:14px; }
+.stage-strip { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.stage-badge { font-family:'Fredoka One',cursive; font-size:12px; color:#fff; padding:4px 14px; border-radius:20px; }
+.stage-inter { font-size:12px; color:#888; font-weight:600; }
+.block { border-radius:12px; padding:18px 22px; margin-bottom:12px; }
+.block-label { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.block-label::after { content:''; flex:1; height:1px; background:currentColor; opacity:0.2; }
+.script { font-size:14px; line-height:2.0; }
+.script i { font-style:italic; color:#0F6E56; font-weight:600; }
+.dir { color:#777; font-size:12.5px; }
+.dir b { color:#555; }
+.script strong { color:#534AB7; }
+.note { font-size:12.5px; line-height:1.7; background:#fff; border-radius:10px; padding:12px 16px; margin-top:10px; border:0.5px solid #E0DDD8; color:#444; }
+.tip { background:#FFFBEA; border-left:4px solid #FFD700; border-radius:0 10px 10px 0; padding:10px 14px; margin-top:10px; font-size:12.5px; color:#7A5C00; line-height:1.7; }
+.answer-box { background:#E1F5EE; border-radius:10px; padding:12px 16px; margin:8px 0; font-size:13px; color:#085041; line-height:1.9; }
+.error-table { width:100%; border-collapse:collapse; margin-top:10px; }
+.error-table th { background:#1a1a2e; color:#fff; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:7px 12px; text-align:left; }
+.error-table td { padding:9px 12px; font-size:12.5px; border-bottom:0.5px solid #F0EDE8; vertical-align:top; }
+.wrong { color:#C62828; } .correct { color:#0F6E56; font-weight:700; }
+hr { border:none; border-top:0.5px solid #E0DDD8; margin:14px 0; }
+@media print { body{background:white;padding:0;} .section{page-break-inside:avoid;box-shadow:none;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div class="cover-tag">CELTA TP6 · Functional Language · B2</div>
+  <h1>Teacher Script — <span>Two Witnesses, Two Stories</span></h1>
+  <div class="cover-sub">Telling a story + comparing accounts · 6 chunks · 5 stages · Online Zoom · TP5 feedback applied ✓</div>
+  <div class="cover-pills">
+    <span class="pill" style="background:#534AB7;color:#fff;">45 min</span>
+    <span class="pill" style="background:#0F6E56;color:#fff;">Upper-Intermediate (B2)</span>
+    <span class="pill" style="background:#D85A30;color:#fff;">Functional language</span>
+    <span class="pill" style="background:#FFE066;color:#1a1a2e;">No controlled practice — freer only</span>
+  </div>
+</div>
+
+<!-- TP5 REMINDERS -->
+<div class="section" style="border-left:4px solid #FFD700;">
+  <div class="section-tag" style="color:#E65100;">⚠️ TP5 Feedback — Apply in every stage</div>
+  <h2 style="color:#E65100;">Five things to nail this time</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;"><div style="font-size:12px;font-weight:800;color:#E65100;margin-bottom:6px;">1. Be VISUAL with pronunciation 🗣️</div><div style="font-size:12px;color:#555;line-height:1.6;">Show stress + linking on screen. MODEL it clearly yourself before drilling. (Flagged twice!)</div></div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;"><div style="font-size:12px;font-weight:800;color:#E65100;margin-bottom:6px;">2. Ask more CCQs 🎯</div><div style="font-size:12px;color:#555;line-height:1.6;">Confirm meaning with yes/no CCQs for each chunk — don't just tell them.</div></div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;"><div style="font-size:12px;font-weight:800;color:#E65100;margin-bottom:6px;">3. React when monitoring 👂</div><div style="font-size:12px;color:#555;line-height:1.6;">Listen in BORs and bring real stories back into feedback. Show you heard them.</div></div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;"><div style="font-size:12px;font-weight:800;color:#E65100;margin-bottom:6px;">4. Scaffold the freer task 🪜</div><div style="font-size:12px;color:#555;line-height:1.6;">Strong demo + phrases on screen before they speak (no controlled stage to lean on).</div></div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;grid-column:1 / -1;"><div style="font-size:12px;font-weight:800;color:#E65100;margin-bottom:6px;">5. Ask follow-ups in feedback ➕</div><div style="font-size:12px;color:#555;line-height:1.6;">In OCFB, push for elaboration: "Why? What happened next? Who was right?"</div></div>
+  </div>
+</div>
+
+<!-- STAGE 1 -->
+<div class="section">
+  <div class="section-tag" style="color:#D85A30;">Stage 1</div>
+  <h2 style="color:#D85A30;">🎯 Lead-in — 4–5 minutes</h2>
+  <div class="stage-strip"><span class="stage-badge" style="background:#D85A30;">4–5 min</span><span class="stage-inter">👥 T–Ss (open class)</span></div>
+  <div class="block" style="background:#FFF3E0;">
+    <div class="block-label" style="color:#D85A30;">🎙️ Teacher says</div>
+    <div class="script">
+      <i>"Hi everyone! Quick question to start. Look at this — same street, same moment, two people watching."</i><br><br>
+      <span class="dir">[Show the title/lead-in slide with the two conflicting witness bubbles.]</span><br><br>
+      <span class="dir"><b>DEMO first — model a 20-second mini-story so they know what to share:</b></span><br>
+      <i>"Last week I saw a tiny accident — a man dropped his coffee all over a cyclist. I told my wife one thing… but the waiter told her something completely different! Same event, two stories."</i><br><br>
+      <i>"So — have you ever seen something happen, and then heard people describe it in totally different ways? What happened? [Name], how about you?"</i><br><br>
+      <span class="dir">[Nominate 2–3 Ss, open class. React genuinely: <strong>"No way!"</strong> / <strong>"So who was right?"</strong> Keep it brisk.]</span><br><br>
+      <i>"Great — today, two friends are trying to work out what REALLY happened outside a café. Let's read."</i>
+    </div>
+    <div class="tip">💡 Open class, not breakout — it's a 4-minute warmer. Model first, then nominate.</div>
+  </div>
+</div>
+
+<!-- STAGE 2 -->
+<div class="section">
+  <div class="section-tag" style="color:#E65100;">Stage 2</div>
+  <h2 style="color:#E65100;">📖 Context / Text — Gist read — 6–7 minutes</h2>
+  <div class="stage-strip"><span class="stage-badge" style="background:#E65100;">6–7 min</span><span class="stage-inter">👥 T–Ss / S / T–Ss</span></div>
+  <div class="block" style="background:#FFF3E0;">
+    <div class="block-label" style="color:#E65100;">🎙️ Teacher says</div>
+    <div class="script">
+      <i>"Open the link in the chat — Section 1. Read the conversation between Mara and Dan. Don't worry about every word — just the main idea. Two questions: What happened outside the café? And why can't they agree?"</i><br><br>
+      <span class="dir">[Show the READING INSTRUCTIONS slide (the two questions). Send the discovery link. ICQs — mechanics first:]</span><br>
+      <i>"Are you reading for every detail, or the main idea?"</i> <span class="dir">[Main idea]</span><br>
+      <i>"How many questions?"</i> <span class="dir">[Two]</span><br><br>
+      <span class="dir">[Ss read individually, ~3 min. Then quick pair-check (chat or open class).]</span><br><br>
+      <span class="dir">[Reveal the READING ANSWER-KEY slide. OCFB — nominate, and ASK FOLLOW-UPS:]</span><br>
+      <i>"[Name] — what happened?"</i> <span class="dir">[A cyclist crashed when a car door opened.]</span> <i>"And why can't Mara and Dan agree? Who did they hear it from?"</i> <span class="dir">[Two witnesses — the waiter and the old lady — told different versions.]</span>
+    </div>
+    <div class="tip">💡 Keep gist short — one read, two questions, quick OCFB. The text just sets up the language; don't over-analyse content here.</div>
+  </div>
+</div>
+
+<!-- STAGE 3 -->
+<div class="section">
+  <div class="section-tag" style="color:#1565C0;">Stage 3</div>
+  <h2 style="color:#1565C0;">🔎 Language Clarification — GD (MFP) — 13–14 minutes</h2>
+  <div class="stage-strip"><span class="stage-badge" style="background:#1565C0;">13–14 min</span><span class="stage-inter">👥 S–S (discovery) → T–Ss</span></div>
+
+  <div class="how-to" style="background:#EDE7F6;border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;color:#4527A0;line-height:1.7;">
+    <b>How to read this:</b> <span style="font-style:italic;color:#0F6E56;">green italic = say it out loud, word for word.</span> &nbsp;<span style="color:#777;">[grey] = what to do / the answer you're listening for.</span> &nbsp;The flow is always the same: <b>students discover in the activity → you reveal the answer slide → you ask the questions below and they answer.</b>
+  </div>
+
+  <!-- ===== SORT ===== -->
+  <div class="block" style="background:#F3E5F5;">
+    <div class="block-label" style="color:#7B1FA2;">🎙️ A · SORT THE PHRASES (Section 2 of the link)</div>
+    <div class="script">
+      <span class="dir">[Show the "Sort the phrases" INSTRUCTIONS slide — NOT the answer key yet. Make sure the link is in the chat.]</span><br><br>
+      <i>"Okay, look at the screen. You can see six phrases — these all come from the conversation you just read. Some of them we use to TELL a story, and some we use to COMPARE two different versions of a story. With your partner, drag each phrase into the correct group. You have two minutes."</i><br><br>
+      <span class="dir">[ICQ before they start:]</span> <i>"Are you working alone, or with your partner?"</i> <span class="dir">[With my partner]</span> &nbsp; <i>"How many minutes?"</i> <span class="dir">[Two]</span><br><br>
+      <i>"Great — off you go!"</i><br>
+      <span class="dir">[Ss sort in pairs, 2 min. Monitor silently — just see how they're doing, don't correct yet.]</span><br><br>
+      <span class="dir">[Bring them back. NOW change to the SORT ANSWER-KEY slide.]</span><br>
+      <i>"Okay, let's check together. Look at the screen — these three are for TELLING the story: 'was just …-ing when', 'all of a sudden', and 'in the end'. And these three are for COMPARING: 'according to', 'claimed that', and 'was absolutely certain that'. Did you get them right? Great."</i>
+    </div>
+  </div>
+
+  <!-- ===== MEANING ===== -->
+  <div class="block" style="background:#E3F2FD;">
+    <div class="block-label" style="color:#1565C0;">🎙️ B · MEANING (Section 3 of the link) — they match, then you check with CCQs</div>
+    <div class="script">
+      <span class="dir">[Show the "Match the meaning" INSTRUCTIONS slide. Keep the link open at Section 3.]</span><br><br>
+      <i>"Now Section three. This time, each line is a sentence from the conversation, and the phrase is in blue. On the right, drag the meaning that matches each sentence. Talk to your partner — why do you think it matches? You have three minutes."</i><br><br>
+      <span class="dir">[ICQ:]</span> <i>"Do you write a sentence, or drag a meaning?"</i> <span class="dir">[Drag a meaning]</span><br><br>
+      <i>"Perfect — go ahead!"</i><br>
+      <span class="dir">[Ss match in pairs, ~3 min. Monitor.]</span><br><br>
+      <span class="dir">[Bring them back. Change to the MEANING ANSWER-KEY slide. Now go phrase by phrase. <b>Say the phrase, ask the question, WAIT for them to answer, then confirm.</b> Don't answer your own questions.]</span><br><br>
+
+      <strong style="color:#00695C;">1 · "He was just riding when…"</strong><br>
+      <i>"Look at number one. 'The cyclist was just riding when the door opened.' Let me ask you — when the door opened, was he already riding, or did he start riding at that moment?"</i> <span class="dir">[WAIT → "Already riding."]</span><br>
+      <i>"Exactly. He was already riding. And then — did something interrupt him?"</i> <span class="dir">[WAIT → "Yes, the door."]</span><br>
+      <i>"Right! So we use this to show a longer action that was happening… and then — bang — something interrupts it. Good."</i><br><br>
+
+      <strong style="color:#00695C;">2 · "All of a sudden…"</strong><br>
+      <i>"Number two — 'all of a sudden the cyclist flew over the handlebars.' Did this happen slowly, or very quickly?"</i> <span class="dir">[WAIT → "Quickly."]</span><br>
+      <i>"And did anyone expect it?"</i> <span class="dir">[WAIT → "No."]</span><br>
+      <i>"Perfect. 'All of a sudden' means something quick and surprising. Nobody expected it."</i><br><br>
+
+      <strong style="color:#00695C;">3 · "In the end…"</strong><br>
+      <i>"Number three — 'in the end, the cyclist stood up and walked away.' Is this the BEGINNING of the story, or the final result?"</i> <span class="dir">[WAIT → "The final result."]</span><br>
+      <i>"Yes — it comes AFTER everything else. It's how the story finishes. Good."</i><br><br>
+
+      <strong style="color:#4527A0;">4 · "According to…"</strong><br>
+      <i>"Now the comparing phrases. Number four — 'according to the waiter, the cyclist was riding past.' Is this MY opinion, or is it someone else's?"</i> <span class="dir">[WAIT → "Someone else's — the waiter's."]</span><br>
+      <i>"Exactly. It's the waiter's version, not mine. So — can I say 'according to me, I'm hungry'?"</i> <span class="dir">[WAIT → "No!"]</span><br>
+      <i>"Right, we don't say 'according to me'. For my own opinion I say 'in MY opinion'. 'According to' is always for someone ELSE."</i><br><br>
+
+      <strong style="color:#4527A0;">5 · "…claimed that…"</strong><br>
+      <i>"Number five — 'the waiter claimed that the driver wasn't looking.' Do we KNOW that's one hundred percent true?"</i> <span class="dir">[WAIT → "No / we're not sure."]</span><br>
+      <i>"Good. He SAYS it… but maybe it's true, maybe it's not. When I say 'claimed', I'm telling you I'm not totally sure it's true."</i><br><br>
+
+      <strong style="color:#4527A0;">6 · "…was absolutely certain that…"</strong><br>
+      <i>"Last one — 'she was absolutely certain that the cyclist was too fast.' Was she a little bit sure, or completely sure?"</i> <span class="dir">[WAIT → "Completely sure."]</span><br>
+      <i>"Yes — one hundred percent, no doubt at all. 'Absolutely certain' is the strongest — she has zero doubt."</i><br><br>
+
+      <i>"Great work — you understand what they all mean. Now let's see how they're built."</i>
+    </div>
+    <div class="tip">💡 The golden rule: ask the question → <b>stop talking</b> → let them answer → THEN confirm. If you answer your own question, it stops being a CCQ. Two questions per phrase is plenty.</div>
+  </div>
+
+  <!-- ===== FORM ===== -->
+  <div class="block" style="background:#FFF8E1;">
+    <div class="block-label" style="color:#E65100;">🎙️ C · FORM (Section 4 of the link) — they label, then you check with FCQs</div>
+    <div class="script">
+      <span class="dir">[Show the "Notice the pattern" INSTRUCTIONS slide. The link is at Section 4 — the dark drag-the-parts task.]</span><br><br>
+      <i>"Last task before you speak. Look at Section four. The yellow part — the START of each phrase — is already there for you, because it never changes. Your job: drag the missing pieces into the empty boxes — the person or thing, the action, and the rest. Work with your partner. Three minutes."</i><br><br>
+      <span class="dir">[ICQ:]</span> <i>"Does the yellow part change?"</i> <span class="dir">[No — it's fixed]</span> &nbsp; <i>"What do you drag in?"</i> <span class="dir">[The person, the action, the rest]</span><br><br>
+      <i>"Perfect — go!"</i><br>
+      <span class="dir">[Ss label in pairs, ~3 min. Monitor — are they noticing the start is always fixed?]</span><br><br>
+      <span class="dir">[Bring them back. Change to the FORM ANSWER-KEY slide. Now elicit the pattern. <b>Use simple words — say "person or thing" and "action", NOT "subject", "verb" or "clause".</b>]</span><br><br>
+
+      <i>"Okay, let's look at the pattern together. Take 'He CLAIMED THAT…' — point at it. Does this start, 'he claimed that', change? Or is it always the same?"</i> <span class="dir">[WAIT → "Always the same / fixed."]</span><br>
+      <i>"Exactly — it's FIXED. We keep it exactly like that every time. Now, right after 'claimed that', what comes first — a person or thing, or an action?"</i> <span class="dir">[WAIT → "A person/thing — 'the driver'."]</span><br>
+      <i>"Good. And after the person?"</i> <span class="dir">[WAIT → "The action — 'wasn't looking'."]</span><br>
+      <i>"Perfect. So the pattern is always: the FIXED start… then a PERSON or thing… then an ACTION. Let's check it works for the others."</i><br><br>
+
+      <span class="dir">[Point to each on the answer-key slide and confirm quickly — same pattern every time:]</span><br>
+      <i>"'According to' — fixed — then a person, 'the waiter' — then the action. 'All of a sudden' — fixed — 'the cyclist' — 'flew'. 'In the end' — fixed — 'the cyclist' — 'walked'. 'She was absolutely certain that' — fixed — 'the cyclist' — 'was going'. See? Every single one: fixed start, then person, then action."</i><br><br>
+
+      <i>"So the good news — you don't build these word by word. You learn the START as one fixed chunk, and then you just add your own person and your own action. That's it."</i>
+    </div>
+    <div class="tip">💡 Keep the metalanguage simple: "fixed start → person/thing → action → the rest". Never say "subject", "verb", or "clause" — they'll get lost. The whole point is that the start is a FIXED chunk they can reuse.</div>
+  </div>
+
+  <!-- ===== PRONUNCIATION ===== -->
+  <div class="block" style="background:#E8F5E9;">
+    <div class="block-label" style="color:#2E7D32;">🎙️ D · PRONUNCIATION (your slide) — you model, they repeat</div>
+    <div class="script">
+      <span class="dir">[Show YOUR pronunciation slide (stress highlighted + linking arcs). For each phrase: <b>SAY IT first yourself, clearly and naturally — then "Repeat!" — then they say it together (choral) — then pick one or two students.</b> Point at the stress on the slide as you say it.]</span><br><br>
+
+      <strong style="color:#1B5E20;">1 · "he wəz just RIDing when"</strong> &nbsp;<span class="dir">/wəz dʒʌst/</span><br>
+      <i>"Listen to me first — 'he was just RIDing when'. Notice 'was' is very small and quick — /wəz/, not 'WOZ'. And the strong word is RIDing. … Now you: repeat!"</i> <span class="dir">[Choral. Then: "Just you, [name]?" → one or two individuals.]</span><br><br>
+
+      <strong style="color:#1B5E20;">2 · "all‿of‿a‿SUDDen"</strong> &nbsp;<span class="dir">/ˌɔːl əv ə ˈsʌdn/</span><br>
+      <i>"Listen — 'all of a SUDDen'. Hear how 'of a' almost disappears? all-of-a-SUDDen — it's all joined together, and the strong part is SUDD. … Repeat!"</i> <span class="dir">[Choral → individual. If it's messy, build it backwards: "SUDDen" → "a-SUDDen" → "of-a-SUDDen" → "all-of-a-SUDDen".]</span><br><br>
+
+      <strong style="color:#1B5E20;">3 · "in‿the‿END"</strong> &nbsp;<span class="dir">/ɪn ðiː ˈend/</span><br>
+      <i>"'In the END'. The strong word is END, and it's all linked — in-the-END. … Repeat!"</i> <span class="dir">[Choral → individual.]</span><br><br>
+
+      <strong style="color:#1B5E20;">4 · "aCORding‿to"</strong> &nbsp;<span class="dir">/əˈkɔːdɪŋ tə/</span><br>
+      <i>"'aCORding to'. The strong part is COR — a-COR-ding. And 'to' is tiny and quick — /tə/, joined on the end. Not 'TWO'. … Repeat!"</i> <span class="dir">[Choral → individual. Watch they don't say a strong 'TOO'.]</span><br><br>
+
+      <strong style="color:#1B5E20;">5 · "CLAIMED that"</strong> &nbsp;<span class="dir">/kleɪmd ðət/</span><br>
+      <i>"'CLAIMED that'. Careful — it's ONE sound at the end: 'claimed', not 'claim-ED', not two syllables. CLAIMED. … Repeat!"</i> <span class="dir">[Choral → individual. Listen for the /-md/ ending.]</span><br><br>
+
+      <strong style="color:#1B5E20;">6 · "absoLUTEly CERtain"</strong> &nbsp;<span class="dir">/ˌæbsəˈluːtli ˈsɜːtn/</span><br>
+      <i>"'absoLUTEly CERtain'. Two strong parts — absoLUTEly… CERtain. … Repeat!"</i> <span class="dir">[If long, do it in two halves: "absoLUTEly" → "CERtain" → join them. Then individual.]</span><br><br>
+
+      <i>"Excellent — that sounds really natural now. Okay, time to use all of this and tell some stories!"</i>
+    </div>
+    <div class="tip">💡 The order never changes: <b>you say it → "Repeat!" → everyone together → one or two on their own.</b> Always model with YOUR voice first — they copy you, not the slide. Point at the stress as you say it.</div>
+  </div>
+</div>
+
+<!-- STAGE 4 -->
+<div class="section">
+  <div class="section-tag" style="color:#0F6E56;">Stage 4</div>
+  <h2 style="color:#0F6E56;">💬 Freer Practice (× 2) — 13–15 minutes</h2>
+  <div class="stage-strip"><span class="stage-badge" style="background:#0F6E56;">13–15 min</span><span class="stage-inter">👥 T–Ss / S–S (breakout, new partner R2)</span></div>
+  <div class="block" style="background:#E8F5E9;">
+    <div class="block-label" style="color:#0F6E56;">🎙️ Teacher says</div>
+    <div class="script">
+      <span class="dir"><b>SCAFFOLD + DEMO — model the whole task (~30s) before opening rooms:</b></span><br>
+      <i>"Watch me first. Last year I was just walking home when, all of a sudden, a dog ran past with a sausage in its mouth! In the end the owner caught it. — And the comparing part: According to my neighbour, the dog was hers; but the butcher claimed that it was a street dog!"</i><br><br>
+      <span class="dir">[Point to each phrase on the slide as you use it. Then:]</span><br><br>
+      <strong>PLANNING — give them thinking time (1–2 min) before they speak:</strong> <i>"Before we go to rooms — take one minute. Think of YOUR story and write down just 4–5 key words you'll need. Not full sentences — just words. What happened, where, the surprise, the ending."</i><br>
+      <span class="dir">[ICQ:]</span> <i>"Full sentences, or just words?"</i> <span class="dir">[Just words]</span> <span class="dir">[Give 1–2 min of quiet thinking/writing time. This is the scaffold — weaker Ss especially need it to speak fluently.]</span><br><br>
+      <strong>Round 1 — Tell your story.</strong> <i>"In your breakout room: tell your partner about a time something dramatic or unexpected happened to YOU. Use the telling phrases on screen, and your key words. Partner — listen, and ask one or two questions. Five minutes!"</i><br>
+      <span class="dir">[ICQ:]</span> <i>"Your story, or your partner's?"</i> <span class="dir">[Mine]</span><br>
+      <span class="dir">[Open BORs. <b>MONITOR and REACT</b> — note good language + errors AND remember whose story is whose for feedback.]</span><br><br>
+      <strong>Round 2 — New partner, compare.</strong> <span class="dir">[Re-group so everyone has a NEW partner.]</span> <i>"Now tell your new partner about the stories you just heard — use the comparing phrases: 'According to Ana… She claimed that… but Luis was absolutely certain that…' Five minutes!"</i><br>
+      <span class="dir">[This creates an information gap — the new partner didn't hear the original stories. Monitor, keep noting language.]</span>
+    </div>
+    <div class="tip">💡 No controlled practice before this — so the demo, the 1–2 min planning time, and the phrases-on-screen ARE the scaffold. Don't skip the planning step; it's what Beto asked for. React to what you hear — you'll use it in feedback.</div>
+  </div>
+</div>
+
+<!-- STAGE 5 -->
+<div class="section">
+  <div class="section-tag" style="color:#5D3A8A;">Stage 5</div>
+  <h2 style="color:#5D3A8A;">✅ Content &amp; Language Feedback (DEC) — 6 minutes</h2>
+  <div class="stage-strip"><span class="stage-badge" style="background:#5D3A8A;">6 min</span><span class="stage-inter">👥 T–Ss / S–S</span></div>
+  <div class="block" style="background:#EDE7F6;">
+    <div class="block-label" style="color:#5D3A8A;">🎙️ Teacher says</div>
+    <div class="script">
+      <span class="dir"><b>As Ss talk in feedback, ANNOTATE their contributions on a shared slide/whiteboard</b> — jot key content + good phrases they used + a couple of errors. You'll feed these into the DEC.</span><br>
+      <i>"Welcome back! Some great stories in there."</i> <span class="dir">[<b>React to specific ones you heard while monitoring:</b>]</span> <i>"Ana — I loved yours. Tell everyone — what were the two versions? … And who do you think was really right?"</i><br>
+      <span class="dir">[Nominate 1–2 Ss, ask FOLLOW-UPS to push elaboration, annotating as they speak. ~2 min.]</span><br><br>
+      <i>"Now — look at the board. Here are some sentences I noticed while you were talking. Two have a mistake; one is already perfect — careful, it might look wrong! With your partner: find and fix the mistakes, and decide which one is correct. One minute."</i><br><br>
+      <span class="dir">[Show the Find &amp; Fix slide. Ss work in pairs, 1 min. Then OCFB — elicit:]</span><br>
+      <i>"Number one — 'According to me, the dog was fast.'"</i> <span class="dir">[Elicit: "In my opinion…" — 'according to' is for a source, not yourself.]</span><br>
+      <i>"Number two — 'He was walk home when the car stopped.'"</i> <span class="dir">[Elicit: "was walking" — needs -ing.]</span><br>
+      <i>"Number three — 'She was absolutely certain that he was lying.'"</i> <span class="dir">[The trap — it's CORRECT! Praise anyone who left it.]</span><br><br>
+      <i>"Excellent work today. Your stories were great and the comparing phrases are sounding really natural. See you next time!"</i>
+    </div>
+    <div class="answer-box">
+      <b>DEC answer key 🔑</b><br>
+      1. "According to me…" ✘ → <span class="correct">"In my opinion…"</span> (according to = a source, not yourself; L1 <i>según yo</i>)<br>
+      2. "He was walk…" ✘ → <span class="correct">"He was walking…"</span> (was + …-ing)<br>
+      3. "She was absolutely certain that…" ✔ <span class="correct">CORRECT</span> — the trap, nothing to change
+    </div>
+    <div class="tip">💡 TP5 fixes here: REACT to real stories from monitoring + ask follow-up questions to help Ss elaborate.</div>
+  </div>
+</div>
+
+<!-- TIMING -->
+<div class="section">
+  <div class="section-tag" style="color:#1a1a2e;">Summary</div>
+  <h2 style="color:#1a1a2e;">⏱️ Timing at a glance</h2>
+  <table class="error-table">
+    <tr><th>Stage</th><th>Activity</th><th>Time</th><th>Interaction</th></tr>
+    <tr><td><b>1</b></td><td>Lead-in — conflicting-witness warmer (T demo)</td><td>4–5 min</td><td>T–Ss</td></tr>
+    <tr><td><b>2</b></td><td>Context — gist read of the conversation</td><td>6–7 min</td><td>T–Ss / S / T–Ss</td></tr>
+    <tr><td><b>3</b></td><td>Clarification — GD sort, CCQs, form, VISUAL pron</td><td>13–14 min</td><td>S–S → T–Ss</td></tr>
+    <tr><td><b>4</b></td><td>Freer practice ×2 — tell, then compare (new partner)</td><td>13–15 min</td><td>T–Ss / S–S</td></tr>
+    <tr><td><b>5</b></td><td>Content FB + DEC (find &amp; fix)</td><td>6 min</td><td>T–Ss / S–S</td></tr>
+    <tr style="background:#1a1a2e;"><td colspan="2" style="color:#FFE066;font-weight:800;font-family:'Fredoka One',cursive;padding:8px 12px;">TOTAL</td><td style="color:#FFE066;font-weight:800;padding:8px 12px;">~45 min</td><td style="color:#a0a0c0;padding:8px 12px;">No controlled practice — freer only</td></tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Two Witnesses — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 100px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 28px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 16px; }
+.chip { display:inline-block; padding:6px 16px; border-radius:22px; font-size:15px; font-weight:800; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(216,90,48,0.16);"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(83,74,183,0.16);"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:60px;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#F4A07F;font-weight:700;margin-bottom:18px;">Speaking · Storytelling</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:60px;color:#fff;line-height:1.05;margin-bottom:16px;">Two witnesses,<br>two <span style="color:#FFE066;">stories</span> 👀</div>
+    <div style="font-size:17px;color:#a0a0c0;line-height:1.7;">Today we'll <strong style="color:#fff;">tell dramatic stories</strong> — and<br>compare what really happened.</div>
+  </div>
+  <div style="position:absolute;right:60px;top:0;bottom:0;width:620px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" width="520" height="520" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="260" cy="260" r="230" fill="rgba(255,255,255,0.04)"/>
+      <!-- speech bubbles in conflict -->
+      <g>
+        <rect x="60" y="120" width="220" height="120" rx="22" fill="#90CAF9"/>
+        <polygon points="120,240 150,240 110,285" fill="#90CAF9"/>
+        <text x="170" y="170" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="20" fill="#0a1628">"He was too fast!"</text>
+        <text x="170" y="205" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="700" font-size="14" fill="#0a1628">— the old lady</text>
+      </g>
+      <g>
+        <rect x="250" y="300" width="230" height="120" rx="22" fill="#FFB3C7"/>
+        <polygon points="420,300 450,300 460,260" fill="#FFB3C7"/>
+        <text x="365" y="350" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="20" fill="#3a0a1a">"The door opened!"</text>
+        <text x="365" y="385" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="700" font-size="14" fill="#3a0a1a">— the waiter</text>
+      </g>
+      <text x="260" y="475" text-anchor="middle" font-size="46">🚲💥</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: LEAD-IN ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#0a1628,#1a1a2e,#16213e);">
+  <div style="position:absolute;top:-60px;right:380px;width:240px;height:240px;border-radius:50%;background:rgba(216,90,48,0.16);"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;padding:60px 56px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#F4A07F;font-weight:700;margin-bottom:14px;">Let's talk</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:50px;color:#fff;line-height:1.1;margin-bottom:28px;">Did you see<br>what <span style="color:#FFE066;">happened?</span> 🤔</div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,224,102,0.4);border-radius:18px;padding:24px 28px;">
+      <div style="font-size:19px;color:#fff;line-height:1.7;">Have you ever <strong style="color:#FFE066;">seen something happen</strong> — and then heard people describe it in <strong style="color:#FFE066;">totally different ways?</strong></div>
+      <div style="font-size:15px;color:#a0a0c0;margin-top:12px;font-style:italic;">What happened? Who was right?</div>
+    </div>
+    <div style="margin-top:18px;font-size:14px;color:#F4A07F;">👀 I'll go first…</div>
+  </div>
+  <div style="position:absolute;right:70px;top:0;bottom:0;width:560px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 460 460" width="460" height="460" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="230" cy="230" r="200" fill="rgba(83,74,183,0.06)"/>
+      <text x="230" y="200" text-anchor="middle" font-size="120">🗣️</text>
+      <text x="120" y="320" text-anchor="middle" font-size="64">👁️</text>
+      <text x="340" y="320" text-anchor="middle" font-size="64">👁️</text>
+      <text x="230" y="400" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="22" fill="#7F77DD">Same event… different stories</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 1: READING ═══════════ -->
+<!-- 1a INSTRUCTIONS -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFD180;">
+    <div class="header-icon" style="background:#E65100;">1️⃣</div>
+    <div class="header-text"><h2 style="color:#BF360C;">Read the conversation</h2><p>Section 1 · Reading for the main idea</p></div>
+    <div class="timer-pill" style="background:#E65100;">Read · 3 min ⏱️</div>
+  </div>
+  <div style="padding:34px 56px;display:grid;grid-template-columns:1fr 1fr;gap:34px;height:596px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:12px;">What to do</div>
+        <div style="font-size:18px;color:#1a1a2e;line-height:1.7;">Open the link in the chat. <strong>Read the conversation</strong> on your own — just for the main idea.</div>
+      </div>
+      <div style="background:#FFF3E0;border-radius:12px;padding:16px 20px;border-left:4px solid #FFD700;font-size:15px;color:#7A5C00;line-height:1.6;">💡 Don't worry about every word!</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;border:2px solid #FFD180;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:8px;">Question 1</div>
+        <div style="font-size:17px;color:#1a1a2e;font-weight:700;line-height:1.4;">What happened outside the café?</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;border:2px solid #FFD180;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:8px;">Question 2</div>
+        <div style="font-size:17px;color:#1a1a2e;font-weight:700;line-height:1.4;">Why can't Mara and Dan agree?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1b ANSWER KEY -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">✅</div>
+    <div class="header-text"><h2 style="color:#1B5E20;">Reading — answers</h2><p>Section 1 · How did you do?</p></div>
+    <div class="timer-pill" style="background:#2E7D32;">Check ✅</div>
+  </div>
+  <div style="padding:40px 56px;display:flex;flex-direction:column;gap:22px;height:596px;justify-content:center;">
+    <div style="background:#fff;border-radius:16px;padding:26px 30px;box-shadow:0 4px 14px rgba(0,0,0,0.06);border-left:6px solid #2E7D32;">
+      <div style="font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#2E7D32;margin-bottom:8px;">1 · What happened?</div>
+      <div style="font-size:19px;color:#1a1a2e;line-height:1.5;">A cyclist crashed when a car door opened in front of him.</div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:26px 30px;box-shadow:0 4px 14px rgba(0,0,0,0.06);border-left:6px solid #2E7D32;">
+      <div style="font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#2E7D32;margin-bottom:8px;">2 · Why can't they agree?</div>
+      <div style="font-size:19px;color:#1a1a2e;line-height:1.5;">Two witnesses — the waiter and the old lady — told completely different versions.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 2: SORT ═══════════ -->
+<!-- 2a INSTRUCTIONS -->
+<div class="slide" style="background:#FAFAFF;">
+  <div class="slide-header" style="background:#EDE7F6;border-bottom:2px solid #B39DDB;">
+    <div class="header-icon" style="background:#534AB7;">2️⃣</div>
+    <div class="header-text"><h2 style="color:#4527A0;">Sort the phrases</h2><p>Section 2 · Telling… or comparing?</p></div>
+    <div class="timer-pill" style="background:#534AB7;">Pairs · 2 min ⏱️</div>
+  </div>
+  <div style="padding:32px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:596px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#534AB7;margin-bottom:12px;">What to do</div>
+        <div style="font-size:17px;color:#1a1a2e;line-height:1.7;">With your partner, <strong>drag the six phrases</strong> into two groups:</div>
+        <div style="display:flex;gap:10px;margin-top:14px;">
+          <span style="background:#E0F2F1;color:#00897B;border-radius:10px;padding:8px 16px;font-weight:800;font-size:14px;">📖 Telling</span>
+          <span style="background:#EDE7F6;color:#534AB7;border-radius:10px;padding:8px 16px;font-weight:800;font-size:14px;">⚖️ Comparing</span>
+        </div>
+      </div>
+      <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;border-left:4px solid #FFD700;font-size:14px;color:#7A5C00;line-height:1.6;">💡 Not sure? Have a go — we'll check together!</div>
+    </div>
+    <div style="background:#1a1a2e;border-radius:18px;padding:26px 30px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFE066;margin-bottom:14px;">👀 Example</div>
+      <div style="font-size:16px;color:#ECECF6;line-height:1.9;">
+        <span style="background:#fff;color:#1a1a2e;border-radius:18px;padding:5px 14px;font-weight:700;font-size:15px;">"All of a sudden…"</span><br><br>
+        Does this <strong style="color:#9FE1CB;">tell the story</strong> or <strong style="color:#B39DDB;">compare versions?</strong><br><br>
+        👉 It <strong style="color:#9FE1CB;">tells the story!</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2b ANSWER KEY -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">✅</div>
+    <div class="header-text"><h2 style="color:#1B5E20;">Sort — answers</h2><p>Section 2 · Did you sort them right?</p></div>
+    <div class="timer-pill" style="background:#2E7D32;">Check ✅</div>
+  </div>
+  <div style="padding:26px 56px;display:grid;grid-template-columns:1fr 1fr;gap:28px;height:596px;align-items:center;">
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border-top:6px solid #00897B;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#00897B;margin-bottom:16px;">📖 Telling a story</div>
+      <div style="font-size:17px;color:#1a1a2e;line-height:2.4;">"He was just <em>-ing</em> when…"<br>"All of a sudden…"<br>"In the end / Eventually…"</div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border-top:6px solid #534AB7;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#534AB7;margin-bottom:16px;">⚖️ Comparing versions</div>
+      <div style="font-size:17px;color:#1a1a2e;line-height:2.4;">"According to…"<br>"He/She claimed that…"<br>"He/She was absolutely certain that…"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 3: MEANING ═══════════ -->
+<!-- 3a INSTRUCTIONS -->
+<div class="slide" style="background:#F0F9FF;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #BBDEFB;">
+    <div class="header-icon" style="background:#1565C0;">3️⃣</div>
+    <div class="header-text"><h2 style="color:#0D47A1;">Match the meaning</h2><p>Section 3 · What does each phrase mean?</p></div>
+    <div class="timer-pill" style="background:#1565C0;">Pairs · 3 min ⏱️</div>
+  </div>
+  <div style="padding:32px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:596px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1565C0;margin-bottom:12px;">What to do</div>
+        <div style="font-size:17px;color:#1a1a2e;line-height:1.7;">Each line is a sentence <strong>from the conversation</strong>. <strong>Drag a meaning</strong> to the sentence it matches.</div>
+      </div>
+      <div style="background:#E3F2FD;border-radius:12px;padding:14px 18px;border-left:4px solid #1565C0;font-size:14px;color:#0D47A1;line-height:1.6;">💬 Talk with your partner — why do you think so?</div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#1565C0;margin-bottom:14px;">👀 Example</div>
+      <div style="font-size:15px;color:#1a1a2e;line-height:1.7;">"The cyclist <b style="color:#1565C0;">was just riding</b> <b style="color:#1565C0;">when</b> the door opened."<br><br>
+      <span style="background:#E3F2FD;color:#0D47A1;border-radius:10px;padding:6px 12px;font-weight:800;font-size:14px;">already happening → interrupted</span> ✅</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3b ANSWER KEY -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">✅</div>
+    <div class="header-text"><h2 style="color:#1B5E20;">Meaning — answers</h2><p>Section 3 · All six</p></div>
+    <div class="timer-pill" style="background:#2E7D32;">Check ✅</div>
+  </div>
+  <div style="padding:20px 48px;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;height:596px;align-content:center;">
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #00897B;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#00695C;">"was just …-ing when…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;">already happening → <strong>interrupted</strong> ⏱️💥</div>
+    </div>
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #00897B;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#00695C;">"All of a sudden…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;"><strong>quick &amp; unexpected</strong> ⚡</div>
+    </div>
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #00897B;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#00695C;">"In the end…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;">the <strong>final result</strong> 🏁</div>
+    </div>
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #534AB7;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#4527A0;">"According to…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;"><strong>someone else's</strong> account — not mine 🗣️</div>
+    </div>
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #534AB7;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#4527A0;">"…claimed that…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;">said it — <strong>maybe not true</strong> 🤨</div>
+    </div>
+    <div style="background:#fff;border-radius:13px;padding:14px 18px;border-left:5px solid #534AB7;box-shadow:0 3px 11px rgba(0,0,0,0.05);">
+      <div style="font-size:15px;font-weight:800;color:#4527A0;">"…was absolutely certain that…"</div>
+      <div style="font-size:13px;color:#444;margin-top:3px;"><strong>100% sure</strong> ✅✅</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION 4: FORM ═══════════ -->
+<!-- 4a INSTRUCTIONS -->
+<div class="slide" style="background:#FFFDF5;">
+  <div class="slide-header" style="background:#FFF8E1;border-bottom:2px solid #FFE082;">
+    <div class="header-icon" style="background:#F9A825;">4️⃣</div>
+    <div class="header-text"><h2 style="color:#E65100;">Notice the pattern</h2><p>Section 4 · How are the phrases built?</p></div>
+    <div class="timer-pill" style="background:#F9A825;">Pairs · 3 min ⏱️</div>
+  </div>
+  <div style="padding:32px 56px;display:grid;grid-template-columns:1fr 1fr;gap:30px;height:596px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:12px;">What to do</div>
+        <div style="font-size:17px;color:#1a1a2e;line-height:1.7;"><strong>Tap a colour, then tap the parts</strong> of each sentence to label them.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+          <span style="background:#1a1a2e;color:#FFE066;border-radius:9px;padding:6px 12px;font-weight:700;font-size:13px;">⬛ fixed start</span>
+          <span style="background:#E3F2FD;color:#1565C0;border-radius:9px;padding:6px 12px;font-weight:700;font-size:13px;">🟦 person/thing</span>
+          <span style="background:#E8F5E9;color:#2E7D32;border-radius:9px;padding:6px 12px;font-weight:700;font-size:13px;">🟩 action</span>
+          <span style="background:#F3E5F5;color:#7B1FA2;border-radius:9px;padding:6px 12px;font-weight:700;font-size:13px;">🟪 the rest</span>
+        </div>
+      </div>
+      <div style="background:#FFF8E1;border-radius:12px;padding:14px 18px;border-left:4px solid #FFD700;font-size:14px;color:#7A5C00;line-height:1.6;">💬 What is ALWAYS the same? What changes?</div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#E65100;margin-bottom:14px;">👀 Example</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;">
+        <span style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px;">He claimed that</span>
+        <span style="background:#E3F2FD;color:#1565C0;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px;">the driver</span>
+        <span style="background:#E8F5E9;color:#2E7D32;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px;">wasn't</span>
+        <span style="background:#F3E5F5;color:#7B1FA2;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px;">looking</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4b ANSWER KEY -->
+<div class="slide" style="background:#FFFDF5;">
+  <div class="slide-header" style="background:#FFF8E1;border-bottom:2px solid #FFE082;">
+    <div class="header-icon" style="background:#2E7D32;">✅</div>
+    <div class="header-text"><h2 style="color:#1B5E20;">Form — answers</h2><p>Section 4 · Fixed start + person/thing → action → the rest</p></div>
+    <div class="timer-pill" style="background:#2E7D32;">Check ✅</div>
+  </div>
+  <div style="padding:16px 48px;display:flex;flex-direction:column;gap:9px;height:596px;justify-content:center;">
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">He was just <em>…-ing</em> when</div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">a door</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">opened</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">All of a sudden</div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">the cyclist</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">flew</span>
+      <span style="background:#F3E5F5;color:#7B1FA2;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">over the bars</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">In the end</div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">the cyclist</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">walked</span>
+      <span style="background:#F3E5F5;color:#7B1FA2;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">away</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">According to + <span style="color:#80CBC4;">person</span></div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">the driver</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">wasn't</span>
+      <span style="background:#F3E5F5;color:#7B1FA2;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">looking</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">He claimed that</div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">the driver</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">wasn't</span>
+      <span style="background:#F3E5F5;color:#7B1FA2;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">looking</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:11px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#1a1a2e;color:#FFE066;border-radius:8px;padding:6px 11px;font-weight:800;font-size:12.5px;white-space:nowrap;min-width:185px;">She was absolutely certain that</div>
+      <div style="font-size:16px;color:#bbb;">+</div>
+      <span style="background:#E3F2FD;color:#1565C0;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">the cyclist</span>
+      <span style="background:#E8F5E9;color:#2E7D32;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">was going</span>
+      <span style="background:#F3E5F5;color:#7B1FA2;border-radius:6px;padding:5px 10px;font-weight:700;font-size:12.5px;">too fast</span>
+    </div>
+    <div style="display:flex;gap:18px;justify-content:center;margin-top:4px;font-size:12px;font-weight:700;">
+      <span style="color:#1a1a2e;">⬛ fixed start</span><span style="color:#1565C0;">🟦 person/thing</span><span style="color:#2E7D32;">🟩 action</span><span style="color:#7B1FA2;">🟪 the rest</span>
+    </div>
+  </div>
+</div>
+
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">🗣️</div>
+    <div class="header-text"><h2 style="color:#1B5E20;">Say it naturally!</h2><p>Listen, notice the stress and the links — then repeat.</p></div>
+    <div class="timer-pill" style="background:#2E7D32;">Repeat 🗣️</div>
+  </div>
+  <div style="padding:18px 48px;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;height:596px;align-content:center;">
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;">he <span style="color:#999;">wəz</span> just <span style="background:#FFE066;padding:1px 7px;border-radius:5px;">RID</span>·ing when</div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/wəz dʒʌst/ — weak <b>was</b>; stress the -ING verb</div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;">all<span style="color:#2E7D32;">‿</span>of<span style="color:#2E7D32;">‿</span>a <span style="background:#FFE066;padding:1px 7px;border-radius:5px;">SUD</span>·den</div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/ˌɔːl əv ə ˈsʌdn/ — weak <b>of/a</b>, all linked</div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;">in<span style="color:#2E7D32;">‿</span>the<span style="color:#2E7D32;">‿</span><span style="background:#FFE066;padding:1px 7px;border-radius:5px;">END</span></div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/ɪn ðiː ˈend/ — weak <b>the</b>; stress END</div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;">a·<span style="background:#FFE066;padding:1px 7px;border-radius:5px;">COR</span>·ding<span style="color:#2E7D32;">‿</span>to</div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/əˈkɔːdɪŋ tə/ — weak <b>to</b>, never "TO" /tuː/</div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;"><span style="background:#FFE066;padding:1px 7px;border-radius:5px;">CLAIMED</span> <span style="color:#999;">ðət</span></div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/kleɪmd ðət/ — one syllable /-md/; weak <b>that</b></div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:15px 22px;box-shadow:0 3px 11px rgba(0,0,0,0.06);">
+      <div style="font-size:21px;color:#1a1a2e;font-weight:700;">abso·<span style="background:#FFE066;padding:1px 7px;border-radius:5px;">LUTE</span>·ly <span style="background:#FFE066;padding:1px 7px;border-radius:5px;">CER</span>·tain</div>
+      <div style="font-size:12.5px;color:#777;margin-top:6px;font-family:monospace;">/ˌæbsəˈluːtli ˈsɜːtn/ — two stresses</div>
+    </div>
+
+    <div style="grid-column:1 / -1;background:#E8F5E9;border-radius:12px;padding:13px 20px;border-left:4px solid #2E7D32;font-size:13.5px;color:#1B5E20;">
+      🎧 Listen first → notice the <b>stress</b> and the <b>links</b> ‿ → repeat together → then on your own.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: FREER PRACTICE ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(216,90,48,0.14);"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(83,74,183,0.16);"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;gap:18px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#F4A07F;font-weight:700;">Your turn to talk</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:42px;color:#fff;line-height:1.15;">Tell &amp; compare 💬</div>
+    <div style="background:rgba(0,137,123,0.18);border:1.5px solid rgba(159,225,203,0.5);border-radius:16px;padding:18px 22px;">
+      <div style="font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#9FE1CB;margin-bottom:8px;">Round 1 · Tell your story</div>
+      <div style="font-size:16px;color:#fff;line-height:1.6;">Tell your partner about a time something <strong style="color:#FFE066;">dramatic or unexpected</strong> happened to you.</div>
+      <div style="font-size:13px;color:#9FE1CB;margin-top:8px;font-style:italic;">Use: "was just …-ing when" · "all of a sudden" · "in the end"</div>
+    </div>
+    <div style="background:rgba(83,74,183,0.22);border:1.5px solid rgba(179,157,219,0.5);border-radius:16px;padding:18px 22px;">
+      <div style="font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#B39DDB;margin-bottom:8px;">Round 2 · New partner · Compare</div>
+      <div style="font-size:16px;color:#fff;line-height:1.6;">Tell your new partner about the stories you <strong style="color:#FFE066;">just heard</strong>.</div>
+      <div style="font-size:13px;color:#B39DDB;margin-top:8px;font-style:italic;">Use: "According to…" · "claimed that…" · "was absolutely certain that…"</div>
+    </div>
+  </div>
+  <div style="position:absolute;right:60px;top:0;bottom:0;width:580px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
+    <div style="background:rgba(255,255,255,0.06);border-radius:18px;padding:26px 32px;width:480px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFE066;margin-bottom:14px;">Watch me first 👀</div>
+      <div style="font-size:15px;color:#ECECF6;line-height:1.85;font-style:italic;">
+        "Last year I <span style="color:#9FE1CB;">was just walking</span> home <span style="color:#9FE1CB;">when, all of a sudden,</span> a dog ran past with a sausage in its mouth! <span style="color:#9FE1CB;">In the end</span> the owner caught it.<br><br>
+        <span style="color:#B39DDB;">According to</span> my neighbour, the dog was hers — but the butcher <span style="color:#B39DDB;">claimed that</span> it was a street dog!"
+      </div>
+    </div>
+    <div style="background:rgba(255,224,102,0.12);border:1.5px solid rgba(255,224,102,0.5);border-radius:16px;padding:18px 24px;width:480px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFE066;margin-bottom:8px;">✍️ First — plan! (1–2 min)</div>
+      <div style="font-size:15px;color:#fff;line-height:1.6;">Write <strong style="color:#FFE066;">4–5 key words</strong> for your story — not full sentences. What happened? The surprise? The ending?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 8: DEC — FIND & FIX ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-90px;left:-90px;width:340px;height:340px;border-radius:50%;background:rgba(159,225,203,0.10);"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(244,143,177,0.10);"></div>
+  <div style="position:absolute;top:0;left:0;right:0;padding:46px 64px 0;">
+    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9FE1CB;font-weight:700;margin-bottom:8px;">With your partner</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:40px;color:#fff;line-height:1.1;">Find &amp; fix 🛠️</div>
+    <div style="font-size:16px;color:#a0a0c0;margin-top:10px;">Two of these have a mistake. One is already correct — careful, it might look wrong!</div>
+  </div>
+  <div style="position:absolute;top:210px;left:0;right:0;padding:0 64px;display:flex;flex-direction:column;gap:20px;">
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">1</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"According to me, the dog was really fast."</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">2</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"He was walk home when the car stopped."</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);border-radius:16px;padding:24px 30px;display:flex;align-items:center;gap:20px;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;background:#534AB7;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:20px;color:#fff;">3</div>
+      <div style="font-size:21px;color:#fff;font-weight:700;font-style:italic;">"She was absolutely certain that he was lying."</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
