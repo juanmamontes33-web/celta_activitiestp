@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Future Continuous — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0d1016; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(135% 110% at 88% -10%, #28303f 0%, #1a1f2b 45%, #12151d 100%);
+  color:#EAE7DF; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+/* shared editorial bits */
+.kick { display:flex; align-items:center; gap:14px; font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#9097A4; font-weight:800; }
+.kick::before { content:''; width:34px; height:2px; background:#D9A441; }
+.foot { position:absolute; left:64px; right:64px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#5C6473; border-top:1px solid rgba(255,255,255,0.09); padding-top:13px; }
+.foot b { color:#D9A441; }
+.idx { position:absolute; top:34px; right:60px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; letter-spacing:3px; color:#3a4252; }
+.ghost { position:absolute; font-family:'Fredoka One',cursive; color:rgba(255,255,255,0.028); line-height:0.8; pointer-events:none; }
+.disp { font-family:'Fredoka One',cursive; color:#F1EFE8; }
+.teal { color:#5ED0CC; } .gold { color:#E3B45A; } .rose { color:#E89A9A; }
+.panel { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:18px; }
+.hl-t { background:rgba(94,208,204,0.15); color:#8BE5E1; border-radius:6px; padding:1px 7px; font-weight:700; }
+.hl-g { background:rgba(227,180,90,0.15); color:#EFC872; border-radius:6px; padding:1px 7px; font-weight:700; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ░░ 01 · TITLE ░░ -->
+<div class="slide">
+  <div class="ghost" style="font-size:300px; bottom:-70px; left:-30px;">FC</div>
+  <div style="position:absolute; left:64px; top:60px;"><div class="kick">Grammar · B1 · Juan &amp; Valeria · Online</div></div>
+
+  <div style="position:absolute; left:64px; top:215px; width:760px;">
+    <div style="font-family:'Fredoka One',cursive; font-size:74px; line-height:1.02; color:#F1EFE8;">This time<br>tomorrow,<br>I<span class="teal">'ll be flying</span></div>
+    <div style="margin-top:26px; font-size:18px; color:#A8AEBA; line-height:1.6; max-width:540px;">The <strong style="color:#EAE7DF;">Future Continuous</strong> — an action caught <span class="gold">in progress</span> at a single moment in the future.</div>
+    <div style="margin-top:26px; display:inline-flex; align-items:center; gap:16px; border:1px solid rgba(255,255,255,0.14); border-radius:40px; padding:12px 26px;">
+      <span style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:18px;">will be</span>
+      <span style="color:#56607a;">+</span>
+      <span style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:18px;">verb-ing</span>
+    </div>
+  </div>
+
+  <!-- flight arc -->
+  <svg style="position:absolute; right:30px; top:140px;" width="430" height="430" viewBox="0 0 430 430">
+    <circle cx="300" cy="215" r="190" fill="none" stroke="rgba(94,208,204,0.10)" stroke-width="1"/>
+    <circle cx="300" cy="215" r="130" fill="none" stroke="rgba(94,208,204,0.13)" stroke-width="1"/>
+    <circle cx="300" cy="215" r="70" fill="none" stroke="rgba(94,208,204,0.16)" stroke-width="1"/>
+    <path d="M70 360 Q200 120 410 90" fill="none" stroke="#5ED0CC" stroke-width="2.5" stroke-dasharray="3,9" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="70" cy="360" r="5" fill="#E3B45A"/>
+    <text x="392" y="98" font-size="34">✈️</text>
+  </svg>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>01</b> / 11</span></div>
+</div>
+
+<!-- ░░ 02 · LEAD-IN ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">LEAD-IN</div>
+  <div class="ghost" style="font-size:240px; top:-30px; right:40px;">?</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Warm up · speak</div></div>
+
+  <div style="position:absolute; left:64px; top:150px; right:64px;">
+    <div class="disp" style="font-size:40px; margin-bottom:40px;">Imagine the exact moment… 🕗</div>
+
+    <div style="display:flex; gap:30px; align-items:flex-start; margin-bottom:30px;">
+      <div style="font-family:'Fredoka One'; font-size:54px; color:#5ED0CC; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(94,208,204,0.4); padding-left:24px;">
+        <div style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"What will you be doing at <span class="teal">8 o'clock tonight</span>?"</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:30px; align-items:flex-start;">
+      <div style="font-family:'Fredoka One'; font-size:54px; color:#E3B45A; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(227,180,90,0.4); padding-left:24px;">
+        <div style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"And at <span class="gold">this time tomorrow</span>?"</div>
+      </div>
+    </div>
+
+    <div style="margin-top:46px; font-size:15px; color:#8A92A0;">🔁 &nbsp;Juan ↔ Valeria — ask each other. What will you be <strong style="color:#C9CED8;">in the middle of</strong> doing?</div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>02</b> / 11</span></div>
+</div>
+
+<!-- ░░ 03 · PRESENTATION (boarding pass) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">READING</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Read · tomorrow's adventure</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:150px;">
+    <!-- ticket -->
+    <div style="display:flex; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); box-shadow:0 18px 50px rgba(0,0,0,0.4);">
+      <div style="width:160px; background:linear-gradient(160deg,#1d6b68,#114f4d); padding:28px 22px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
+        <div>
+          <div style="font-size:10px; letter-spacing:2px; color:#9fe6e2; font-weight:800;">BOARDING</div>
+          <div style="font-family:'Fredoka One'; font-size:30px; color:#fff; line-height:1; margin-top:4px;">PASS</div>
+        </div>
+        <div style="font-size:34px;">✈️</div>
+        <div style="font-size:11px; color:#bdeeeb; letter-spacing:1px;">SEAT · 9B<br>GATE · B1</div>
+        <div style="position:absolute; right:-1px; top:0; bottom:0; width:2px; background-image:linear-gradient(#0d1016 50%, transparent 50%); background-size:2px 14px;"></div>
+      </div>
+      <div style="flex:1; background:rgba(255,255,255,0.04); padding:30px 38px;">
+        <div style="font-family:'Fredoka One'; font-size:22px; color:#5ED0CC; margin-bottom:16px;">My big trip 🌍</div>
+        <div style="font-size:18.5px; color:#E2E0D8; line-height:2.05;">
+          This time tomorrow, I <span class="hl-t">'ll be flying</span> to Madrid. At 3pm, I <span class="hl-t">'ll be walking</span> around the old city. And at 9pm? I <span class="hl-t">'ll be eating</span> tapas with friends! 🍤 So while you <span class="hl-g">'re working</span> here, I <span class="hl-t">'ll be enjoying</span> the sunshine. ☀️
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:14px;">
+      <span style="font-size:13px; color:#8BE5E1; font-weight:700;">▩ will be + -ing &nbsp;<span style="color:#5C6473;">(in progress)</span></span>
+      <span style="font-size:13px; color:#EFC872; font-weight:700;">▩ while you're working &nbsp;<span style="color:#5C6473;">(present)</span></span>
+    </div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>03</b> / 11</span></div>
+</div>
+
+<!-- ░░ 04 · NOTICE (anatomy) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">NOTICE</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">The shape of it</div></div>
+
+  <div style="position:absolute; left:0; right:0; top:255px; text-align:center;">
+    <div style="font-size:17px; color:#8A92A0; margin-bottom:30px;">Three little words build the whole tense:</div>
+    <div style="font-family:'Fredoka One'; font-size:46px; color:#F1EFE8;">
+      I <span style="position:relative; color:#5ED0CC;">will<span style="position:absolute; left:0; right:0; top:64px; font-family:Nunito; font-size:13px; color:#5ED0CC; font-weight:800; letter-spacing:1px;">future</span></span>
+      <span style="position:relative; color:#E3B45A;">be<span style="position:absolute; left:0; right:0; top:64px; font-family:Nunito; font-size:13px; color:#E3B45A; font-weight:800; letter-spacing:1px;">link</span></span>
+      <span style="position:relative; color:#E89A9A;">flying<span style="position:absolute; left:0; right:0; top:64px; font-family:Nunito; font-size:13px; color:#E89A9A; font-weight:800; letter-spacing:1px;">-ing action</span></span>
+    </div>
+    <div style="margin-top:96px; font-size:18px; color:#A8AEBA;">…to Madrid, <span style="color:#EAE7DF; font-weight:700;">this time tomorrow.</span></div>
+  </div>
+
+  <div style="position:absolute; left:64px; right:64px; bottom:88px; display:flex; gap:50px; justify-content:center;">
+    <div style="font-size:14px; color:#8A92A0;">❓ Will the flight be <span style="color:#C9CEDF;">in progress</span> at that moment?</div>
+    <div style="font-size:14px; color:#8A92A0;">❓ Already happening — or just starting?</div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>04</b> / 11</span></div>
+</div>
+
+<!-- ░░ 05 · MEANING (hero timeline) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">MEANING</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">In the middle of it</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:140px;">
+    <div class="disp" style="font-size:34px; line-height:1.3;">At 8pm tonight, I<span class="teal">'ll be having</span> dinner. 🍽️</div>
+    <div style="font-size:16px; color:#8A92A0; margin-top:8px;">Not starting at 8 — already eating <em>at</em> 8.</div>
+  </div>
+
+  <svg style="position:absolute; left:50px; top:300px;" width="1180" height="150" viewBox="0 0 1180 150">
+    <line x1="40" y1="80" x2="1140" y2="80" stroke="#39414f" stroke-width="2.5"/>
+    <polygon points="1140,80 1124,72 1124,88" fill="#39414f"/>
+    <g stroke="#5ED0CC" stroke-width="7" fill="none" stroke-linecap="round">
+      <path d="M420 80 Q480 46 540 80 Q600 114 660 80 Q720 46 780 80"/>
+    </g>
+    <line x1="600" y1="40" x2="600" y2="120" stroke="#E3B45A" stroke-width="2.5" stroke-dasharray="3,4"/>
+    <circle cx="600" cy="80" r="7" fill="#E3B45A"/>
+    <text x="600" y="28" text-anchor="middle" font-size="17" fill="#E3B45A" font-family="Space Grotesk" font-weight="700">8 PM</text>
+    <text x="380" y="74" text-anchor="end" font-size="13" fill="#6B7484" font-family="Nunito" font-weight="700">start</text>
+    <text x="800" y="74" font-size="13" fill="#6B7484" font-family="Nunito" font-weight="700">finish</text>
+    <text x="600" y="138" text-anchor="middle" font-size="14" fill="#8BE5E1" font-family="Nunito" font-weight="800">…in the middle of dinner</text>
+  </svg>
+
+  <div style="position:absolute; left:64px; bottom:84px; font-size:15px; color:#8A92A0;">🇪🇸 like <em style="color:#C9CEDF;">"estaré cenando"</em> — estar + gerundio, but in the future.</div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>05</b> / 11</span></div>
+</div>
+
+<!-- ░░ 06 · FORM (equation blocks) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">FORM</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Build it · same for everyone</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:185px; display:flex; align-items:stretch; gap:18px;">
+    <div class="panel" style="flex:1; padding:30px 20px; text-align:center;">
+      <div style="font-size:11px; letter-spacing:2px; color:#8A92A0; font-weight:800;">FUTURE</div>
+      <div style="font-family:'Fredoka One'; font-size:42px; color:#5ED0CC; margin-top:10px;">will</div>
+    </div>
+    <div style="display:flex; align-items:center; font-size:30px; color:#56607a;">+</div>
+    <div class="panel" style="flex:1; padding:30px 20px; text-align:center;">
+      <div style="font-size:11px; letter-spacing:2px; color:#8A92A0; font-weight:800;">LINK</div>
+      <div style="font-family:'Fredoka One'; font-size:42px; color:#E3B45A; margin-top:10px;">be</div>
+    </div>
+    <div style="display:flex; align-items:center; font-size:30px; color:#56607a;">+</div>
+    <div class="panel" style="flex:1.3; padding:30px 20px; text-align:center;">
+      <div style="font-size:11px; letter-spacing:2px; color:#8A92A0; font-weight:800;">ACTION</div>
+      <div style="font-family:'Fredoka One'; font-size:42px; color:#E89A9A; margin-top:10px;">verb-ing</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; left:64px; right:64px; top:400px; display:flex; gap:18px;">
+    <div class="panel" style="flex:1; padding:20px 28px; font-size:16px; color:#D6D4CC; line-height:1.7;">❓ <span class="teal">Will</span> you <span class="gold">be</span> working tomorrow?<br>➖ I <span class="rose">won't be</span> working on Sunday.</div>
+    <div class="panel" style="flex:1; padding:20px 28px; font-size:15px; color:#A8AEBA; line-height:1.7;">⛔ Never drop the <span class="rose">be</span> →<br><s style="color:#E89A9A;">"I'll working"</s> &nbsp;becomes&nbsp; <span style="color:#8BE5E1;">"I'll be working"</span> ✓</div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>06</b> / 11</span></div>
+</div>
+
+<!-- ░░ 07 · TIME MARKERS (index list) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">SIGNALS</div>
+  <div class="ghost" style="font-size:230px; bottom:-50px; right:30px;">⏱</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">When · point to the moment</div></div>
+
+  <div style="position:absolute; left:64px; top:160px; width:660px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><span style="font-size:24px; color:#F1EFE8; font-weight:700;">this time tomorrow</span><span style="font-size:13px; color:#5ED0CC; font-family:'Space Grotesk';">01</span></div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><span style="font-size:24px; color:#F1EFE8; font-weight:700;">at 8 o'clock / at midnight</span><span style="font-size:13px; color:#5ED0CC; font-family:'Space Grotesk';">02</span></div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><span style="font-size:24px; color:#F1EFE8; font-weight:700;">while you're sleeping</span><span style="font-size:13px; color:#E3B45A; font-family:'Space Grotesk';">03</span></div>
+    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><span style="font-size:24px; color:#F1EFE8; font-weight:700;">when you arrive</span><span style="font-size:13px; color:#E3B45A; font-family:'Space Grotesk';">04</span></div>
+  </div>
+
+  <div class="panel" style="position:absolute; right:64px; top:200px; width:380px; padding:26px 28px;">
+    <div style="font-size:12px; letter-spacing:2px; color:#E3B45A; font-weight:800; margin-bottom:14px;">⚠ AFTER while / when</div>
+    <div style="font-size:18px; color:#E2E0D8; line-height:1.7;">use the <span class="gold">present</span>, not <em>will</em>:</div>
+    <div style="margin-top:14px; font-size:19px; color:#fff; line-height:1.5;">"When you <span class="gold">arrive</span>, I<span class="teal">'ll be waiting</span>." 🚪</div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>07</b> / 11</span></div>
+</div>
+
+<!-- ░░ 08 · PRONUNCIATION ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">SOUND</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Say it smoothly</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:160px; display:flex; gap:22px;">
+    <div class="panel" style="flex:1; padding:34px; text-align:center;">
+      <div style="font-family:'Fredoka One'; font-size:40px; color:#5ED0CC;">I'll be</div>
+      <div style="font-family:'Space Grotesk'; font-size:22px; color:#A8AEBA; margin-top:14px;">/aɪl bi/</div>
+      <div style="font-size:13px; color:#6B7484; margin-top:6px;">quick &amp; soft — almost one word</div>
+    </div>
+    <div class="panel" style="flex:1; padding:34px; text-align:center;">
+      <div style="font-family:'Fredoka One'; font-size:40px; color:#E89A9A;">won't be</div>
+      <div style="font-family:'Space Grotesk'; font-size:22px; color:#A8AEBA; margin-top:14px;">/wəʊnt bi/</div>
+      <div style="font-size:13px; color:#6B7484; margin-top:6px;">= will not be</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; left:64px; right:64px; top:400px; border-top:1px solid rgba(255,255,255,0.09); padding-top:26px;">
+    <div style="font-size:12px; letter-spacing:2px; color:#E3B45A; font-weight:800; margin-bottom:16px;">↻ DRILL — repeat after me</div>
+    <div style="font-size:21px; color:#EAE7DF; line-height:1.9;">"This time tomorrow, I<span class="teal">'ll be</span> flying." &nbsp;·&nbsp; "I <span class="rose">won't be</span> sleeping at 10." &nbsp;·&nbsp; "She<span class="teal">'ll be</span> waiting."</div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>08</b> / 11</span></div>
+</div>
+
+<!-- ░░ 09 · PRACTICE (big index) ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">PRACTICE</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Your turn · open the link</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:175px;">
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);">
+      <div style="font-family:'Fredoka One'; font-size:48px; color:#5ED0CC; width:80px;">01</div>
+      <div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">Choose the form</div><div style="font-size:14px; color:#8A92A0;">what's in progress at that moment? ✍️</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);">
+      <div style="font-family:'Fredoka One'; font-size:48px; color:#E3B45A; width:80px;">02</div>
+      <div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">Which is correct?</div><div style="font-size:14px; color:#8A92A0;">spot the missing <em>be</em> or <em>-ing</em> ✅</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);">
+      <div style="font-family:'Fredoka One'; font-size:48px; color:#E89A9A; width:80px;">03</div>
+      <div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">In progress?</div><div style="font-size:14px; color:#8A92A0;">what's true at that exact moment 🧠</div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>09</b> / 11</span></div>
+</div>
+
+<!-- ░░ 10 · SPEAKING ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">SPEAK</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">A day in your future</div></div>
+
+  <div style="position:absolute; left:64px; right:64px; top:160px; display:flex; gap:22px;">
+    <div class="panel" style="flex:1; padding:30px 32px; border-top:3px solid #5ED0CC;">
+      <div style="font-family:'Fredoka One'; font-size:20px; color:#5ED0CC; margin-bottom:8px;">Round 1 — your perfect day</div>
+      <div style="font-size:16px; color:#D6D4CC; line-height:1.95;">What will you be doing at:<br>🌅 <strong>8am</strong> &nbsp; ☀️ <strong>1pm</strong> &nbsp; 🌆 <strong>6pm</strong> &nbsp; 🌙 <strong>10pm</strong>?<br><span style="font-size:13px; color:#8A92A0;">"At 1pm I'll be lying on a beach!" 🏖️</span></div>
+    </div>
+    <div class="panel" style="flex:1; padding:30px 32px; border-top:3px solid #E89A9A;">
+      <div style="font-family:'Fredoka One'; font-size:20px; color:#E89A9A; margin-bottom:8px;">Round 2 — guess your partner</div>
+      <div style="font-size:16px; color:#D6D4CC; line-height:1.95;">"What will you be doing at <strong>7am tomorrow</strong>?"<br>"And during our <strong>next class</strong>?" 😄<br><span style="font-size:13px; color:#8A92A0;">Guess first — then check if you're right!</span></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>10</b> / 11</span></div>
+</div>
+
+<!-- ░░ 11 · WRAP-UP ░░ -->
+<div class="slide">
+  <div class="idx" style="color:#3a4252;">REVIEW</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Find &amp; fix · then one moment each</div></div>
+
+  <div style="position:absolute; left:64px; top:155px; width:680px;">
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">01</span><span style="font-size:19px; color:#D6D4CC; font-style:italic;">"At 8pm I'll working."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">02</span><span style="font-size:19px; color:#D6D4CC; font-style:italic;">"Will you using the car tomorrow?"</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">03</span><span style="font-size:19px; color:#D6D4CC; font-style:italic;">"She'll be travel next week."</span></div>
+  </div>
+
+  <div class="panel" style="position:absolute; right:64px; top:160px; width:400px; padding:28px; border-left:3px solid #5ED0CC;">
+    <div style="font-size:13px; letter-spacing:2px; color:#5ED0CC; font-weight:800; margin-bottom:12px;">TODAY</div>
+    <div style="font-size:16px; color:#E2E0D8; line-height:1.7;">Actions caught <strong style="color:#fff;">in progress</strong> at a future moment — <span class="teal">will be + -ing</span>. Lovely work, both of you! 🌟</div>
+  </div>
+
+  <div style="position:absolute; left:64px; bottom:78px; font-size:17px; color:#A8AEBA;">✈️ &nbsp;Last one: <em style="color:#EAE7DF;">"This time tomorrow, I'll be …?"</em></div>
+
+  <div class="foot"><span>Future Continuous</span><span class="pg"><b>11</b> / 11</span></div>
+</div>
+
+</body>
+</html>
