@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are We Addicted to Our Screens? — Reading Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #211f36 0%, #15131f 48%, #0c0b12 100%); min-height:100vh; padding:40px 18px 80px; color:#E8E8EE; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8B92A0; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#8B7CF6; }
+
+/* article */
+.article { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:34px 40px; margin-bottom:26px; }
+.article .masthead { display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:20px; }
+.article .masthead .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.article .masthead .logo span { color:#A78BFA; }
+.article .masthead .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#8B92A0; }
+.article h1 { font-family:'Lora',serif; font-weight:600; font-size:34px; line-height:1.15; color:#F6F5FA; margin-bottom:6px; }
+.article .byline { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:#FB7185; text-transform:uppercase; margin-bottom:22px; }
+.article p { font-family:'Lora',serif; font-size:17.5px; line-height:1.85; color:#DAD9E2; margin-bottom:16px; }
+.article p .pn { font-family:'Space Grotesk'; font-size:12px; color:#565C6B; font-weight:700; margin-right:8px; vertical-align:2px; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 18px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6D8E0; }
+.tab.active { border-bottom-color:#8B7CF6; }
+.tab.active .tab-num { color:#A78BFA; } .tab.active .tab-label { color:#F3F2F8; }
+.tab.done .tab-num { color:#7FD68A; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#565C6B; }
+.tab-label { font-size:13px; font-weight:800; color:#8B92A0; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A8AEBC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E2E2EA; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#565C6B; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D6D8E0; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#8B7CF6; background:rgba(139,124,246,0.06); }
+.opt.sel { border-color:#8B7CF6; background:rgba(139,124,246,0.12); border-width:2px; }
+.opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.opt.wrong { border-color:#FB7185 !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.vrow { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.vrow .vw { font-family:'Lora',serif; font-style:italic; font-size:17px; color:#C4B5FD; flex:1; }
+.vrow select { font-family:'Nunito'; font-weight:700; font-size:14px; background:#22203180; border:1.5px solid #3a3650; border-radius:10px; padding:9px 12px; color:#E8E8EE; cursor:pointer; min-width:240px; }
+.vrow select:focus { outline:none; border-color:#8B7CF6; }
+.vrow select.ok { border-color:#7FD68A; color:#A8E8AE; } .vrow select.no { border-color:#FB7185; color:#FBA5B4; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#8B7CF6; color:#0d0c16; } .btn-p:hover { background:#a394f8; }
+.btn-s { background:transparent; color:#8B92A0; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#8B7CF6; color:#fff; }
+.score { font-size:14px; color:#A8AEBC; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E3B45A; font-weight:800; } .score.bad { color:#FBA5B4; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Reading · B2 · Technology &amp; Social Media</div>
+
+  <!-- ARTICLE -->
+  <div class="article">
+    <div class="masthead"><div class="logo">THE <span>SCROLL</span></div><div class="rt">⏱ ~3 min read</div></div>
+    <h1>Are We Addicted to Our Screens?</h1>
+    <div class="byline">Digital Culture</div>
+    <p><span class="pn">1</span>Think about the first thing you did this morning. For millions of people, the answer is simple: they reached for their phone before they even got out of bed. Checking notifications has become an automatic habit — and that is no accident.</p>
+    <p><span class="pn">2</span>Social media apps are carefully designed to keep us coming back. Every time we open them, we never know exactly what we'll find: a funny video, a message from a friend, or a photo that makes us laugh. This unpredictable reward is the same mechanism that makes gambling so addictive. The more we scroll, the more our brains expect that little hit of pleasure.</p>
+    <p><span class="pn">3</span>Tech companies are well aware of this. Features like "infinite scroll" and the red notification dot are not there by chance; they are designed to capture our attention and hold on to it for as long as possible. After all, in what experts call "the attention economy", our time is the product being sold to advertisers.</p>
+    <p><span class="pn">4</span>The effects are not all negative. Social media helps us stay in touch with people far away, discover new ideas, and build communities around shared interests. For many, it is a source of support and creativity. However, a growing number of users are starting to push back. "Digital detox" weekends, screen-time limits and apps that block other apps are becoming increasingly popular, especially among young people who grew up online.</p>
+    <p><span class="pn">5</span>Perhaps the real question is not whether technology is good or bad, but whether we are the ones in control. The next time your phone lights up, ask yourself: am I choosing to look — or is the app choosing for me?</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Specific info</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Detail &amp; inference</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Vocabulary</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#A78BFA;">Task 1 — Gist 🎯</div>
+    <div class="sub" style="border-color:#8B7CF6; color:#c4b5fd;">Read the whole article quickly. What is the writer's <strong>main point</strong>? Choose one.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#56C2F0;">Task 2 — Specific information 🔎</div>
+    <div class="sub" style="border-color:#56C2F0; color:#9ad9f5;">Scan the text and find the exact answers. Be ready to say <em>where</em> you found each one.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#FB7185;">Task 3 — Detail &amp; inference 🧠</div>
+    <div class="sub" style="border-color:#FB7185; color:#fba5b4;">Some answers are not written directly — work them out from clues in the text.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(2)">Check</button><button class="btn btn-s" onclick="reset2()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#A78BFA;">Task 4 — Vocabulary from context 🔍</div>
+    <div class="sub" style="border-color:#8B7CF6; color:#c4b5fd;">Find each phrase in the text. Use the words around it to choose the best meaning.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(3)">Check</button><button class="btn btn-s" onclick="reset3()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+const MCQ = {
+  0:[ {q:"What is the writer's main point?", opts:["Social media is completely harmful and everyone should stop using it.","Apps are designed to capture our attention, so we should be aware of who is in control.","Technology companies break the law by selling personal data."], ans:1} ],
+  1:[
+    {q:"What do many people do before getting out of bed?", opts:["Eat breakfast","Reach for / check their phone","Read a book"], ans:1},
+    {q:"Which activity does the writer compare social media to?", opts:["Shopping","Gambling","Driving"], ans:1},
+    {q:"Which two features are mentioned as designed to keep us scrolling?", opts:["\u201CInfinite scroll\u201D and the red notification dot","Dark mode and emojis","Adverts and games"], ans:0},
+    {q:"In the \u201Cattention economy\u201D, what is sold to advertisers?", opts:["Our photos","Our time / attention","Our money"], ans:1},
+    {q:"Who is starting to push back the most?", opts:["Tech companies","Advertisers","Young people who grew up online"], ans:2}
+  ],
+  2:[
+    {q:"Why does the writer mention gambling?", opts:["To say that gambling is illegal","To show apps use the same addictive \u201Cunpredictable reward\u201D","To compare the price of apps and casinos"], ans:1},
+    {q:"\u201CThe red notification dot is not there by chance\u201D suggests it…", opts:["appears randomly","was designed on purpose","is a mistake in the app"], ans:1},
+    {q:"Does the writer think social media is entirely negative?", opts:["Yes, completely negative","No — the writer also mentions benefits","The writer gives no opinion"], ans:1},
+    {q:"What is the writer's overall attitude?", opts:["Angry, and against all technology","Balanced, but warns us to be aware","Completely positive about apps"], ans:1},
+    {q:"What does the final question suggest?", opts:["Our phones are broken","We may not be fully in control of our habits","We should buy a newer phone"], ans:1}
+  ]
+};
+let sel={0:{},1:{},2:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{
+      const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checked[t]) return; sel[t][qi]=oi; renderMCQ(t); };
+      ob.appendChild(b);
+    });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+
+/* Task 4 vocab match */
+const VWORDS = [
+  {w:"by chance", ans:"by accident, not on purpose"},
+  {w:"stay in touch", ans:"keep contact with people"},
+  {w:"digital detox", ans:"a break from phones and social media"},
+  {w:"capture our attention", ans:"get and hold our focus"},
+  {w:"a growing number", ans:"more and more people"}
+];
+const MEANINGS = ["by accident, not on purpose","keep contact with people","a break from phones and social media","get and hold our focus","more and more people"];
+let vsel={};
+function renderVocab(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  VWORDS.forEach((v,i)=>{
+    const row=document.createElement('div'); row.className='vrow';
+    let opts='<option value="">— choose meaning —</option>'+MEANINGS.map(m=>`<option value="${m}">${m}</option>`).join('');
+    row.innerHTML=`<span class="vw">"${v.w}"</span><select id="v${i}" onchange="vchange(${i},this.value)">${opts}</select>`;
+    c.appendChild(row);
+  });
+}
+function vchange(i,val){ vsel[i]=val; }
+
+let checked={0:false,1:false,2:false,3:false};
+function check(t){
+  checked[t]=true;
+  if(t===3){
+    let correct=0;
+    VWORDS.forEach((v,i)=>{ const s=document.getElementById('v'+i); const ok=s.value===v.ans;
+      s.classList.remove('ok','no'); s.classList.add(ok?'ok':'no'); s.disabled=true; if(ok) correct++; });
+    showScore('s3',correct,VWORDS.length,3); return;
+  }
+  let correct=0;
+  const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{
+    qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); });
+    if(sel[t][qi]===m.ans) correct++;
+  });
+  showScore('s'+t,correct,MCQ[t].length,t);
+}
+function showScore(id,correct,total,t){
+  const s=document.getElementById(id);
+  s.textContent=`${correct} / ${total} correct`+(correct===total?' 🎉':'');
+  s.className='score '+(correct===total?'good':(correct>=Math.ceil(total/2)?'partial':'bad'));
+  if(correct===total) markDone(t);
+}
+function reset0(){ checked[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checked[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+function reset2(){ checked[2]=false; sel[2]={}; document.getElementById('s2').textContent=''; renderMCQ(2); }
+function reset3(){ checked[3]=false; vsel={}; document.getElementById('s3').textContent=''; renderVocab(); }
+
+renderMCQ(0); renderMCQ(1); renderMCQ(2); renderVocab();
+</script>
+</body>
+</html>
