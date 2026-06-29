@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What Happened? — TP7 Class Slides (Past Modals of Deduction)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0a0a12; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block; box-shadow:0 24px 64px rgba(0,0,0,0.55); }
+.kick { font-size:11px; letter-spacing:4px; text-transform:uppercase; font-weight:800; }
+.fred { font-family:'Fredoka One',cursive; }
+.hdr { width:100%; height:96px; display:flex; align-items:center; padding:0 56px; gap:18px; }
+.hicon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+.hdr h2 { font-family:'Fredoka One',cursive; font-size:28px; line-height:1; }
+.hdr p { font-size:13px; color:#777; margin-top:4px; }
+.pill { margin-left:auto; color:#fff; padding:8px 22px; border-radius:30px; font-family:'Fredoka One',cursive; font-size:16px; }
+.clue { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:14px 18px; display:flex; gap:12px; align-items:center; }
+.clue .e { font-size:26px; }
+.clue .t { font-size:14px; color:#d8d8ea; }
+.sent { background:rgba(255,255,255,0.06); border-radius:14px; padding:16px 22px; font-size:23px; color:#fff; }
+@media print { body{background:#fff;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 1 · TITLE -->
+<div class="slide" style="background:radial-gradient(900px 600px at 80% -10%,#241a3e,#0a0a12 60%);">
+  <div style="position:absolute;top:-120px;right:-80px;width:440px;height:440px;border-radius:50%;background:rgba(124,77,255,0.16);"></div>
+  <div style="position:absolute;bottom:-90px;left:-70px;width:320px;height:320px;border-radius:50%;background:rgba(0,191,165,0.12);"></div>
+  <div style="position:absolute;left:64px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center;">
+    <div class="kick" style="color:#9B8CFF;margin-bottom:18px;">Grammar · Upper-Intermediate · TP7</div>
+    <div class="fred" style="font-size:74px;color:#fff;line-height:1.02;">What <span style="color:#FFD54F;">Happened?</span></div>
+    <div style="font-size:20px;color:#b9b9d4;line-height:1.6;margin:16px 0 30px;">Making <strong style="color:#fff;">deductions about the past</strong><br>— how sure are we?</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <span class="sent" style="font-size:16px;padding:9px 16px;color:#90CAF9;">must have</span>
+      <span class="sent" style="font-size:16px;padding:9px 16px;color:#FFD54F;">might / may / could have</span>
+      <span class="sent" style="font-size:16px;padding:9px 16px;color:#FF8A80;">couldn&rsquo;t have</span>
+    </div>
+  </div>
+  <div style="position:absolute;right:70px;top:0;bottom:0;width:440px;display:flex;align-items:center;justify-content:center;">
+    <div style="font-size:300px;filter:drop-shadow(0 12px 40px rgba(124,77,255,0.4));">🕵️</div>
+  </div>
+</div>
+
+<!-- 2 · LEAD-IN -->
+<div class="slide" style="background:radial-gradient(800px 600px at 15% 0%,#2a1530,#0a0a12 60%);">
+  <div class="hdr">
+    <div class="hicon" style="background:#7C4DFF;">🔎</div>
+    <div><h2 style="color:#fff;">The Scene</h2><p style="color:#9a9ab0;">Lead-in</p></div>
+    <div class="pill" style="background:#7C4DFF;">Look &amp; guess 💬</div>
+  </div>
+  <div style="padding:18px 56px;display:grid;grid-template-columns:1.1fr 1fr;gap:34px;height:600px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:13px;">
+      <div class="clue"><span class="e">☕</span><span class="t">A cup of coffee — <strong>cold</strong> on the desk</span></div>
+      <div class="clue"><span class="e">💻</span><span class="t">A laptop still on, with a <strong>half-finished email</strong></span></div>
+      <div class="clue"><span class="e">📱</span><span class="t">His phone on the table — <strong>completely dead</strong></span></div>
+      <div class="clue"><span class="e">🧥</span><span class="t">His <strong>coat and keys are gone</strong></span></div>
+      <div class="clue"><span class="e">🚪</span><span class="t">The door was locked — <strong>from the outside</strong></span></div>
+    </div>
+    <div style="background:rgba(124,77,255,0.12);border:1.5px solid rgba(155,140,255,0.5);border-radius:22px;padding:34px 30px;text-align:center;">
+      <div class="kick" style="color:#9B8CFF;margin-bottom:16px;">One question</div>
+      <div style="font-size:30px;color:#fff;line-height:1.4;font-weight:800;">Look at this scene.<br><span style="color:#FFD54F;">What do you think<br>happened here?</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 · GIST -->
+<div class="slide" style="background:#0d1420;">
+  <div class="hdr" style="background:#13233a;">
+    <div class="hicon" style="background:#1E88E5;">🎧</div>
+    <div><h2 style="color:#fff;">First Read — Gist</h2><p style="color:#9a9ab0;">Read fast! Don&rsquo;t worry about every word.</p></div>
+    <div class="pill" style="background:#1E88E5;">2 min ⏱️</div>
+  </div>
+  <div style="padding:34px 56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;height:604px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="fred" style="font-size:28px;color:#64B5F6;">What to do</div>
+      <div style="font-size:18px;color:#cfd8e6;line-height:1.7;">📎 Open the link in the chat and read <strong style="color:#fff;">“The Mystery of Flat 4B”</strong> quickly.<br><br>Answer <strong style="color:#fff;">one</strong> general question, then we check together.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border:2px solid #1E88E5;border-radius:20px;padding:28px;">
+      <div class="kick" style="color:#64B5F6;margin-bottom:14px;">Question</div>
+      <div style="font-size:20px;color:#fff;font-weight:800;margin-bottom:18px;">What was the REAL explanation for Daniel&rsquo;s disappearance?</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;color:#cfd8e6;">
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:11px 16px;">A) He was kidnapped</div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:11px 16px;">B) He went on holiday</div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:11px 16px;">C) He moved house</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · INTENSIVE -->
+<div class="slide" style="background:#0c1a14;">
+  <div class="hdr" style="background:#123524;">
+    <div class="hicon" style="background:#2E7D32;">🔍</div>
+    <div><h2 style="color:#fff;">Second Read — Detail</h2><p style="color:#9a9ab0;">Read again, carefully.</p></div>
+    <div class="pill" style="background:#2E7D32;">Carefully 🎧</div>
+  </div>
+  <div style="padding:40px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:26px;">
+    <div style="font-size:26px;color:#fff;font-weight:800;text-align:center;">Who is <span style="color:#A5D6A7;">SURE</span> and who is <span style="color:#FFD54F;">GUESSING</span>?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(165,214,167,0.4);border-radius:16px;padding:22px;text-align:center;">
+        <div style="font-size:34px;">👵</div>
+        <div style="color:#A5D6A7;font-weight:800;margin:8px 0;">Mrs Patterson</div>
+        <div style="font-size:13px;color:#bcd;">What does she think? How sure is she?</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,213,79,0.4);border-radius:16px;padding:22px;text-align:center;">
+        <div style="font-size:34px;">👨‍🔧</div>
+        <div style="color:#FFD54F;font-weight:800;margin:8px 0;">The manager</div>
+        <div style="font-size:13px;color:#bcd;">What does he think? How sure is he?</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,138,128,0.4);border-radius:16px;padding:22px;text-align:center;">
+        <div style="font-size:34px;">👴</div>
+        <div style="color:#FF8A80;font-weight:800;margin:8px 0;">Mr Díaz</div>
+        <div style="font-size:13px;color:#bcd;">What does he think? How sure is he?</div>
+      </div>
+    </div>
+    <div style="background:rgba(46,125,50,0.15);border-radius:12px;padding:13px 20px;font-size:14px;color:#A5D6A7;text-align:center;">💡 Underline the words that show how sure each person is (use the pen!). Then compare with your partner in breakout rooms. 🤝</div>
+  </div>
+</div>
+
+<!-- 5 · MEANING (DISCOVER) -->
+<div class="slide" style="background:#15101f;">
+  <div class="hdr" style="background:#241733;">
+    <div class="hicon" style="background:#7C4DFF;">🧠</div>
+    <div><h2 style="color:#fff;">How sure? — The Certainty Line</h2><p style="color:#9a9ab0;">Discover · Meaning</p></div>
+    <div class="pill" style="background:#7C4DFF;">Decide, then pair 🤝</div>
+  </div>
+  <div style="padding:40px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:40px;">
+    <div style="font-size:19px;color:#cfd8e6;text-align:center;line-height:1.6;">Put the three sentences on the line. Where does each one go?</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <span class="sent" style="font-size:18px;">“He <b style="color:#90CAF9;">must have left</b> in a hurry.”</span>
+      <span class="sent" style="font-size:18px;">“He <b style="color:#FFD54F;">might have gone</b> on holiday.”</span>
+      <span class="sent" style="font-size:18px;">“He <b style="color:#FF8A80;">couldn&rsquo;t have gone</b> far.”</span>
+    </div>
+    <div style="position:relative;height:90px;margin:0 30px;">
+      <div style="position:absolute;top:44px;left:0;right:0;height:5px;border-radius:3px;background:linear-gradient(90deg,#FF8A80,#FFD54F,#90CAF9);"></div>
+      <div style="position:absolute;top:0;left:0;font-size:15px;color:#FF8A80;font-weight:800;">I&rsquo;m SURE it did<br>NOT happen ❌</div>
+      <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:15px;color:#FFD54F;font-weight:800;text-align:center;">Not sure —<br>maybe? 🤷</div>
+      <div style="position:absolute;top:0;right:0;font-size:15px;color:#90CAF9;font-weight:800;text-align:right;">I&rsquo;m almost SURE<br>it happened ✅</div>
+    </div>
+  </div>
+</div>
+
+<!-- 5a · MEANING ANSWER KEY -->
+<div class="slide" style="background:#15101f;">
+  <div class="hdr" style="background:#241733;">
+    <div class="hicon" style="background:#7C4DFF;">✅</div>
+    <div><h2 style="color:#fff;">The Certainty Line — Answers</h2><p style="color:#9a9ab0;">Check · Meaning</p></div>
+    <div class="pill" style="background:#7C4DFF;">Answer key 🔑</div>
+  </div>
+  <div style="padding:40px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:36px;">
+    <div style="position:relative;height:150px;margin:0 30px;">
+      <div style="position:absolute;top:74px;left:0;right:0;height:5px;border-radius:3px;background:linear-gradient(90deg,#FF8A80,#FFD54F,#90CAF9);"></div>
+      <div style="position:absolute;top:0;left:0;text-align:center;width:200px;">
+        <span class="sent" style="font-size:16px;color:#FF8A80;display:inline-block;">couldn&rsquo;t have</span>
+        <div style="font-size:13px;color:#FF8A80;margin-top:8px;">sure it did NOT happen</div>
+      </div>
+      <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);text-align:center;width:230px;">
+        <span class="sent" style="font-size:16px;color:#FFD54F;display:inline-block;">might / may / could have</span>
+        <div style="font-size:13px;color:#FFD54F;margin-top:8px;">possible — I&rsquo;m not sure</div>
+      </div>
+      <div style="position:absolute;top:0;right:0;text-align:center;width:200px;">
+        <span class="sent" style="font-size:16px;color:#90CAF9;display:inline-block;">must have</span>
+        <div style="font-size:13px;color:#90CAF9;margin-top:8px;">almost sure it happened</div>
+      </div>
+    </div>
+    <div style="background:rgba(124,77,255,0.12);border-radius:14px;padding:16px 24px;font-size:16px;color:#d8d2f0;text-align:center;line-height:1.6;">All three are <strong style="color:#fff;">guesses</strong> based on <strong style="color:#fff;">evidence</strong> — not facts we know for certain.</div>
+  </div>
+</div>
+
+<!-- 6 · FORM (DISCOVER) -->
+<div class="slide" style="background:#1b1408;">
+  <div class="hdr" style="background:#2e2410;">
+    <div class="hicon" style="background:#F9A825;">🔧</div>
+    <div><h2 style="color:#fff;">What&rsquo;s the pattern?</h2><p style="color:#9a9ab0;">Discover · Form</p></div>
+    <div class="pill" style="background:#F9A825;color:#1a1a1a;">Build, then pair 🤝</div>
+  </div>
+  <div style="padding:48px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
+    <div style="font-size:20px;color:#f3e4c0;text-align:center;">Look at the three sentences. <strong style="color:#fff;">What is the SAME in all of them?</strong></div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:center;">
+      <span class="sent" style="font-size:22px;">He <b style="color:#90CAF9;">must</b> <b style="color:#FFD54F;">have</b> <b style="color:#A5D6A7;">left</b>.</span>
+      <span class="sent" style="font-size:22px;">He <b style="color:#90CAF9;">might</b> <b style="color:#FFD54F;">have</b> <b style="color:#A5D6A7;">gone</b>.</span>
+      <span class="sent" style="font-size:22px;">He <b style="color:#90CAF9;">couldn&rsquo;t</b> <b style="color:#FFD54F;">have</b> <b style="color:#A5D6A7;">gone</b>.</span>
+    </div>
+    <div style="display:flex;justify-content:center;gap:14px;font-size:20px;color:#888;">
+      <span style="border:2px dashed #555;border-radius:10px;padding:8px 20px;color:#bbb;">?</span>
+      <span style="align-self:center;">+</span>
+      <span style="border:2px dashed #555;border-radius:10px;padding:8px 20px;color:#bbb;">?</span>
+      <span style="align-self:center;">+</span>
+      <span style="border:2px dashed #555;border-radius:10px;padding:8px 20px;color:#bbb;">?</span>
+    </div>
+  </div>
+</div>
+
+<!-- 6a · FORM ANSWER KEY -->
+<div class="slide" style="background:#1b1408;">
+  <div class="hdr" style="background:#2e2410;">
+    <div class="hicon" style="background:#F9A825;">✅</div>
+    <div><h2 style="color:#fff;">The Pattern — Answer</h2><p style="color:#9a9ab0;">Check · Form</p></div>
+    <div class="pill" style="background:#F9A825;color:#1a1a1a;">Answer key 🔑</div>
+  </div>
+  <div style="padding:48px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:34px;align-items:center;">
+    <div style="display:flex;gap:16px;align-items:center;font-size:26px;">
+      <span style="background:#1565C0;color:#fff;border-radius:12px;padding:14px 26px;font-weight:800;">modal</span>
+      <span style="color:#888;">+</span>
+      <span style="background:#F9A825;color:#1a1a1a;border-radius:12px;padding:14px 26px;font-weight:800;">have</span>
+      <span style="color:#888;">+</span>
+      <span style="background:#2E7D32;color:#fff;border-radius:12px;padding:14px 26px;font-weight:800;">past participle (V3)</span>
+    </div>
+    <div style="font-size:15px;color:#aaa;">must / might / may / could / couldn&rsquo;t &nbsp;·&nbsp; left, gone, had, been…</div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px 26px;font-size:16px;color:#e8e8f0;text-align:center;max-width:760px;">
+      <b style="color:#FFD54F;">have</b> = an <b>auxiliary</b> (a helper verb — no meaning of &ldquo;possess&rdquo; here) &nbsp;·&nbsp; after it &rarr; the <b style="color:#A5D6A7;">past participle</b> (3rd form: gone, left, had, been)
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+      <div style="background:rgba(46,125,50,0.16);border:1px solid #2E7D32;border-radius:14px;padding:16px 24px;font-size:16px;color:#A5D6A7;">✅ <strong>have</strong> never changes (never <i>has</i>)</div>
+      <div style="background:rgba(198,40,40,0.16);border:1px solid #C62828;border-radius:14px;padding:16px 24px;font-size:16px;color:#FF8A80;">❌ NOT &ldquo;must <i>of</i>&rdquo; · NOT &ldquo;must <i>went</i>&rdquo;</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7 · PRONUNCIATION ELICIT -->
+<div class="slide" style="background:radial-gradient(800px 600px at 50% -10%,#0c2e2a,#06100f 60%);">
+  <div class="hdr">
+    <div class="hicon" style="background:#00BFA5;">🎙️</div>
+    <div><h2 style="color:#fff;">Listen to me…</h2><p style="color:#9a9ab0;">Discover · Pronunciation</p></div>
+    <div class="pill" style="background:#00BFA5;color:#04201c;">Your ears! 👂</div>
+  </div>
+  <div style="padding:36px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:30px;">
+    <div style="display:flex;flex-direction:column;gap:16px;align-items:center;">
+      <span class="sent" style="font-size:25px;">He must have left in a hurry.</span>
+      <span class="sent" style="font-size:25px;">He might have gone on holiday.</span>
+      <span class="sent" style="font-size:25px;">He couldn&rsquo;t have gone far.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:880px;margin:0 auto;width:100%;">
+      <div style="background:rgba(0,191,165,0.12);border:1.5px solid rgba(0,191,165,0.5);border-radius:16px;padding:20px 26px;text-align:center;">
+        <div class="kick" style="color:#5FE0CE;margin-bottom:8px;">Question 1</div>
+        <div style="font-size:21px;color:#fff;font-weight:800;">Where am I <span style="color:#FFD54F;">stressing</span>?</div>
+      </div>
+      <div style="background:rgba(0,191,165,0.12);border:1.5px solid rgba(0,191,165,0.5);border-radius:16px;padding:20px 26px;text-align:center;">
+        <div class="kick" style="color:#5FE0CE;margin-bottom:8px;">Question 2</div>
+        <div style="font-size:21px;color:#fff;font-weight:800;">What happens to <span style="color:#FFD54F;">&ldquo;have&rdquo;</span>?</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:14px;color:#7fcabd;">🔊 Teacher says each sentence naturally 2–3 times. Students listen and tell the teacher.</div>
+  </div>
+</div>
+
+<!-- 7a · PRONUNCIATION REVEAL -->
+<div class="slide" style="background:radial-gradient(800px 600px at 50% -10%,#0c2e2a,#06100f 60%);">
+  <div class="hdr">
+    <div class="hicon" style="background:#00BFA5;">✅</div>
+    <div><h2 style="color:#fff;">…what did you hear?</h2><p style="color:#9a9ab0;">Check &amp; drill · Pronunciation</p></div>
+    <div class="pill" style="background:#00BFA5;color:#04201c;">Answer key 🔑</div>
+  </div>
+  <div style="padding:30px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:center;">
+      <div class="sent" style="font-size:23px;">He <b style="color:#FFD54F;">MUST</b>&rsquo;ve <b style="color:#FFD54F;">LEFT</b> in a hurry. &nbsp; <span style="color:#5FE0CE;font-size:18px;">/məst<b>əv</b>/</span></div>
+      <div class="sent" style="font-size:23px;">He <b style="color:#FFD54F;">MIGHT</b>&rsquo;ve <b style="color:#FFD54F;">GONE</b> on holiday. &nbsp; <span style="color:#5FE0CE;font-size:18px;">/maɪt<b>əv</b>/</span></div>
+      <div class="sent" style="font-size:23px;">He <b style="color:#FFD54F;">COULDN&rsquo;T</b>&rsquo;ve <b style="color:#FFD54F;">GONE</b> far. &nbsp; <span style="color:#5FE0CE;font-size:18px;">/kʊdənt<b>əv</b>/</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:6px auto 0;width:100%;">
+      <div style="background:rgba(255,213,79,0.12);border-radius:14px;padding:16px 22px;font-size:15px;color:#FFE9A8;">⬆️ <strong>Stress</strong> the modal + the main verb. The little words disappear.</div>
+      <div style="background:rgba(0,191,165,0.12);border-radius:14px;padding:16px 22px;font-size:15px;color:#9fe7da;">🔉 <strong>have → /əv/</strong> (&ldquo;must&rsquo;ve&rdquo;). We write <i>have</i>, but we say <i>/əv/</i> — never &ldquo;must of&rdquo;.</div>
+    </div>
+    <div style="text-align:center;font-size:14px;color:#7fcabd;">🗣️ Drill: <i>left → must&rsquo;ve left → He must&rsquo;ve left.</i> &nbsp; Choral ×3 → individuals.</div>
+  </div>
+</div>
+
+<!-- 8 · CONTROLLED PRACTICE -->
+<div class="slide" style="background:#0d1420;">
+  <div class="hdr" style="background:#13233a;">
+    <div class="hicon" style="background:#1E88E5;">✍️</div>
+    <div><h2 style="color:#fff;">Controlled Practice</h2><p style="color:#9a9ab0;">Read the evidence — choose the modal.</p></div>
+    <div class="pill" style="background:#1E88E5;">3 min ⏱️</div>
+  </div>
+  <div style="padding:40px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="clue"><span class="e">1️⃣</span><span class="t">📎 Scroll to <b style="color:#90CAF9;">Task 5</b> in your activity (same link).</span></div>
+      <div class="clue"><span class="e">2️⃣</span><span class="t">6 sentences — read the clue, choose <b style="color:#90CAF9;">must have</b> / <b style="color:#FFD54F;">might have</b> / <b style="color:#FF8A80;">couldn&rsquo;t have</b>.</span></div>
+      <div class="clue"><span class="e">3️⃣</span><span class="t"><strong>Compare with your partner first</strong>, then check. 🤝</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border:2px solid #1E88E5;border-radius:16px;padding:20px 26px;">
+      <div class="kick" style="color:#64B5F6;margin-bottom:8px;">Example</div>
+      <div style="font-size:18px;color:#fff;">“The ground is wet this morning. It <b style="color:#90CAF9;">must have rained</b> during the night.”</div>
+    </div>
+  </div>
+</div>
+
+<!-- 9 · FREER PRACTICE -->
+<div class="slide" style="background:radial-gradient(800px 600px at 80% 0%,#241a3e,#0a0a12 60%);">
+  <div style="position:absolute;top:-90px;left:-70px;width:320px;height:320px;border-radius:50%;background:rgba(124,77,255,0.14);"></div>
+  <div style="position:absolute;left:64px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+    <div class="kick" style="color:#9B8CFF;">Freer practice · Your turn</div>
+    <div class="fred" style="font-size:46px;color:#fff;line-height:1.1;">Solve the <span style="color:#FFD54F;">mysteries!</span> 🕵️</div>
+    <div style="font-size:17px;color:#c4c4dc;line-height:1.6;">In pairs, make <strong style="color:#fff;">as many guesses as you can</strong>. Use the certainty line!</div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:16px 20px;font-size:14px;color:#d8d2f0;line-height:2;font-style:italic;">
+      “She <b style="color:#90CAF9;">must have</b>…”<br>“He <b style="color:#FFD54F;">might have</b>…”<br>“They <b style="color:#FF8A80;">couldn&rsquo;t have</b>…”
+    </div>
+    <span style="background:rgba(255,255,255,0.08);align-self:flex-start;border-radius:30px;padding:9px 22px;font-size:14px;color:#b9b9d4;">Breakout rooms · <strong style="color:#FFD54F;">5 minutes</strong> 🤝</span>
+  </div>
+  <div style="position:absolute;right:56px;top:0;bottom:0;width:580px;display:flex;flex-direction:column;justify-content:center;gap:16px;">
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:20px 24px;"><div style="font-size:30px;">📵</div><div style="font-size:16px;color:#fff;margin-top:6px;">Your friend didn&rsquo;t come to class and isn&rsquo;t answering.</div></div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:20px 24px;"><div style="font-size:30px;">💡</div><div style="font-size:16px;color:#fff;margin-top:6px;">The lights were on in the empty house at 3 a.m.</div></div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:20px 24px;"><div style="font-size:30px;">☂️</div><div style="font-size:16px;color:#fff;margin-top:6px;">There&rsquo;s a wet umbrella by the door — but it didn&rsquo;t rain.</div></div>
+  </div>
+</div>
+
+<!-- 10 · DEC + CLOSE -->
+<div class="slide" style="background:#0a0a12;">
+  <div class="hdr">
+    <div class="hicon" style="background:#C62828;">🛠️</div>
+    <div><h2 style="color:#fff;">Let&rsquo;s fix these together</h2><p style="color:#9a9ab0;">Delayed Error Correction</p></div>
+    <div class="pill" style="background:#C62828;">2 min</div>
+  </div>
+  <div style="padding:36px 56px;height:604px;display:flex;flex-direction:column;justify-content:center;gap:16px;">
+    <div style="font-size:16px;color:#bbb;text-align:center;margin-bottom:6px;">Are these correct? How do we say them?</div>
+    <div style="display:flex;flex-direction:column;gap:13px;max-width:840px;margin:0 auto;width:100%;">
+      <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:15px 22px;font-size:19px;color:#FF8A80;">“He must <u>left</u> in a hurry.”</div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:15px 22px;font-size:19px;color:#FF8A80;">“She must <u>of</u> forgotten.”</div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:15px 22px;font-size:19px;color:#FF8A80;">“He couldn&rsquo;t have <u>went</u> far.”</div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:15px 22px;font-size:19px;color:#FF8A80;">“They might <u>has</u> arrived.”</div>
+    </div>
+    <div style="text-align:center;margin-top:14px;font-size:15px;color:#9a9ab0;">Great deducing today, detectives! 🕵️ See you next class.</div>
+  </div>
+</div>
+
+</body>
+</html>

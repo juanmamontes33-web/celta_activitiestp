@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mystery of Flat 4B — Student Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:#0a0a12;color:#e8e8f0;padding:84px 18px 90px;line-height:1.6;}
+.wrap{max-width:840px;margin:0 auto;position:relative;z-index:1;}
+.fred{font-family:'Fredoka One',cursive;}
+.kick{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:800;color:#9B8CFF;}
+h1{font-family:'Fredoka One',cursive;font-size:38px;color:#fff;margin:10px 0 6px;line-height:1.1;}
+.sub{font-size:15px;color:#b9b9d4;margin-bottom:26px;}
+.card{background:#11111f;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:26px 30px;margin-bottom:22px;}
+.sec-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+.story{font-size:16px;color:#dcdce8;line-height:1.95;}
+.story p{margin-bottom:14px;}
+.story .q{color:#fff;}
+.q-title{font-size:18px;color:#fff;font-weight:800;margin-bottom:14px;}
+.opt{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:13px 18px;margin-bottom:10px;cursor:pointer;font-size:15px;color:#dcdce8;transition:all .12s;display:flex;gap:12px;align-items:center;}
+.opt:hover{background:rgba(255,255,255,0.09);border-color:rgba(155,140,255,0.5);}
+.opt .k{width:26px;height:26px;border-radius:50%;background:#1E88E5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;}
+.opt.sel{border-color:#9B8CFF;background:rgba(124,77,255,0.18);}
+.opt.correct{border-color:#2E7D32;background:rgba(46,125,50,0.22);}
+.opt.wrong{border-color:#C62828;background:rgba(198,40,40,0.18);}
+.btn{font-family:'Nunito';font-weight:800;font-size:14px;border:none;border-radius:12px;padding:11px 26px;cursor:pointer;color:#fff;transition:all .12s;}
+.fb{font-size:14px;font-weight:700;margin-top:12px;min-height:20px;}
+.fb.ok{color:#A5D6A7;}.fb.no{color:#FF8A80;}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,0.04);border-radius:12px;padding:12px 16px;margin-bottom:10px;}
+.row .who{font-weight:800;min-width:120px;}
+.chip{font-size:13px;font-weight:700;padding:6px 13px;border-radius:20px;border:1.5px solid;cursor:pointer;transition:all .12s;background:transparent;}
+.c-sure{border-color:#90CAF9;color:#90CAF9;}
+.c-maybe{border-color:#FFD54F;color:#FFD54F;}
+.c-no{border-color:#FF8A80;color:#FF8A80;}
+.chip.sel span{color:#0a0a12;}
+.chip.sel.c-sure{background:#90CAF9;}.chip.sel.c-maybe{background:#FFD54F;}.chip.sel.c-no{background:#FF8A80;}
+.chip.correct{background:#2E7D32 !important;border-color:#2E7D32 !important;}.chip.correct span{color:#fff !important;}
+.chip.wrong{background:#C62828 !important;border-color:#C62828 !important;opacity:.6;}.chip.wrong span{color:#fff !important;}
+.note{background:rgba(124,77,255,0.10);border:1px solid rgba(155,140,255,0.3);border-radius:12px;padding:13px 18px;font-size:13.5px;color:#cfc7f0;margin-top:14px;}
+.line-wrap{position:relative;margin:30px 6px 10px;}
+.line{height:5px;border-radius:3px;background:linear-gradient(90deg,#FF8A80,#FFD54F,#90CAF9);}
+.line-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;font-weight:800;}
+.zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:18px;}
+.zone{min-height:78px;border:2px dashed rgba(255,255,255,0.18);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:6px;}
+.zone h4{font-size:12px;letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:4px;}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.scard{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 13px;font-size:13px;cursor:pointer;transition:all .12s;}
+.scard:hover{border-color:#9B8CFF;}
+.blanks{display:flex;flex-direction:column;gap:12px;}
+.blanks .frame{display:flex;gap:8px;align-items:center;font-size:17px;flex-wrap:wrap;}
+.m{color:#90CAF9;font-weight:700;}.may{color:#FFD54F;font-weight:700;}.cant{color:#FF8A80;font-weight:700;}
+.slot{display:inline-block;min-width:120px;border-bottom:2px dashed #777;text-align:center;color:#FFD54F;font-weight:800;padding:2px 8px;cursor:pointer;}
+.slot.filled{border-bottom-style:solid;}
+/* controlled practice */
+.cp-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:18px 22px;margin-bottom:14px;}
+.cp-num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#1E88E5;color:#fff;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-right:8px;}
+.cp-ev{font-size:12.5px;color:#9a9ab0;font-style:italic;margin-bottom:7px;}
+.cp-sent{font-size:17px;color:#fff;margin-bottom:12px;}
+.cp-opts{display:flex;gap:8px;flex-wrap:wrap;}
+.cp-opt{font-size:13.5px;font-weight:700;padding:7px 15px;border-radius:22px;border:1.5px solid rgba(255,255,255,0.18);background:transparent;color:#dcdce8;cursor:pointer;transition:all .12s;}
+.cp-opt:hover{border-color:#9B8CFF;}
+.cp-opt.sel{background:rgba(124,77,255,0.22);border-color:#9B8CFF;color:#fff;}
+.cp-opt.correct{background:#2E7D32;border-color:#2E7D32;color:#fff;}
+.cp-opt.wrong{background:#C62828;border-color:#C62828;color:#fff;opacity:.65;}
+.cp-why{font-size:12.5px;margin-top:9px;min-height:0;}
+/* ===== ANNOTATION TOOLBAR ===== */
+#annoCanvas{position:absolute;top:0;left:0;z-index:40;pointer-events:none;}
+#tools{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:6px;align-items:center;background:#16162a;border:1px solid rgba(255,255,255,0.12);border-radius:40px;padding:7px 10px;box-shadow:0 8px 28px rgba(0,0,0,0.5);}
+.tbtn{border:none;background:rgba(255,255,255,0.06);color:#cfcfe0;width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;}
+.tbtn:hover{background:rgba(255,255,255,0.14);}
+.tbtn.on{background:#7C4DFF;color:#fff;}
+.swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,0.25);}
+.swatch.on{border-color:#fff;transform:scale(1.15);}
+.tsep{width:1px;height:26px;background:rgba(255,255,255,0.15);margin:0 3px;}
+.thint{position:fixed;top:62px;left:50%;transform:translateX(-50%);z-index:100;font-size:11px;color:#9a9ab0;background:rgba(22,22,42,0.9);padding:4px 12px;border-radius:20px;}
+</style>
+</head>
+<body>
+
+<!-- annotation layer -->
+<canvas id="annoCanvas"></canvas>
+<div id="tools">
+  <button class="tbtn" id="bDraw" title="Draw on / off" onclick="toggleDraw()">✏️</button>
+  <div class="tsep"></div>
+  <button class="tbtn" id="bPen" title="Pen" onclick="setMode('pen')">🖊️</button>
+  <button class="tbtn" id="bHi" title="Highlighter" onclick="setMode('highlight')">🖍️</button>
+  <button class="tbtn" id="bEr" title="Eraser" onclick="setMode('erase')">🧽</button>
+  <div class="tsep"></div>
+  <div class="swatch" style="background:#FFD54F" onclick="setColor(this,'#FFD54F')"></div>
+  <div class="swatch" style="background:#FF8A80" onclick="setColor(this,'#FF8A80')"></div>
+  <div class="swatch" style="background:#90CAF9" onclick="setColor(this,'#90CAF9')"></div>
+  <div class="swatch" style="background:#A5D6A7" onclick="setColor(this,'#A5D6A7')"></div>
+  <div class="tsep"></div>
+  <button class="tbtn" id="bClear" title="Clear all" onclick="clearAnno()">🗑️</button>
+</div>
+<div class="thint" id="thint">✏️ tap the pencil to draw / underline · tap again to use the tasks</div>
+
+<div class="wrap">
+  <div class="kick">Grammar · Upper-Intermediate · TP7</div>
+  <h1>The Mystery of <span style="color:#FFD54F;">Flat 4B</span> 🕵️</h1>
+  <div class="sub">Read the story, then work through the tasks. Use the pen at the top to underline anything you like. We&rsquo;ll check the discovery steps together in class.</div>
+
+  <!-- TEXT (no pre-marking) -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(124,77,255,0.2);color:#9B8CFF;">📖 The Story</span>
+    <div class="story">
+      <p>Last Tuesday, Mrs Patterson finally knocked on the door of Flat 4B. Daniel, the quiet man who lived there, hadn&rsquo;t been seen for three days. His curtains were shut, his post was piling up on the mat, and a cat was crying in the hallway.</p>
+      <p>When the building manager unlocked the door, the flat told a strange story. Daniel&rsquo;s laptop was still switched on, with a half-finished email glowing on the screen. A cup of coffee sat cold on the desk. His coat and keys were missing, but his phone lay on the kitchen table, completely dead. The front door had been locked &mdash; from the outside.</p>
+      <p>The neighbours had plenty of theories.</p>
+      <p class="q">&ldquo;He must have left in a hurry,&rdquo; said Mrs Patterson. &ldquo;Nobody leaves a half-written email behind on purpose.&rdquo;</p>
+      <p class="q">The manager wasn&rsquo;t so sure. &ldquo;He might have gone on holiday,&rdquo; he suggested. &ldquo;Or he may have had some kind of family emergency.&rdquo;</p>
+      <p class="q">But old Mr Díaz from 4A shook his head. &ldquo;He couldn&rsquo;t have gone far without his phone,&rdquo; he said quietly. &ldquo;He could have had an accident &mdash; something&rsquo;s wrong here.&rdquo;</p>
+      <p>Three days later, Daniel posted a photo on Instagram &mdash; from a beach in Thailand. The cat, it turned out, wasn&rsquo;t even his.</p>
+    </div>
+  </div>
+
+  <!-- GIST -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(30,136,229,0.2);color:#64B5F6;">🎧 Task 1 · Gist — read fast!</span>
+    <div class="q-title">What was the REAL explanation for Daniel&rsquo;s disappearance?</div>
+    <div id="gist"></div>
+    <button class="btn" style="background:#1E88E5;" onclick="checkGist()">Check</button>
+    <div class="fb" id="gistFb"></div>
+  </div>
+
+  <!-- INTENSIVE -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(46,125,50,0.2);color:#A5D6A7;">🔍 Task 2 · Detail — who&rsquo;s sure, who&rsquo;s guessing?</span>
+    <div class="q-title">Underline the words each neighbour uses, then choose how sure they are. (Pair task in breakout rooms.)</div>
+    <div id="intensive"></div>
+    <button class="btn" style="background:#2E7D32;" onclick="checkIntensive()">Check</button>
+    <div class="fb" id="intFb"></div>
+  </div>
+
+  <!-- GD: MEANING -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(124,77,255,0.2);color:#9B8CFF;">🧠 Task 3 · Discover — the certainty line</span>
+    <div class="q-title">Click a sentence, then click where it belongs on the line. (On your own first, then compare with your partner.)</div>
+    <div class="line-wrap"><div class="line"></div>
+      <div class="line-labels"><span style="color:#FF8A80;">sure it did NOT happen</span><span style="color:#FFD54F;">not sure</span><span style="color:#90CAF9;">almost sure it happened</span></div>
+    </div>
+    <div class="zones">
+      <div class="zone" data-z="no"><h4 style="color:#FF8A80;">❌ sure NOT</h4></div>
+      <div class="zone" data-z="maybe"><h4 style="color:#FFD54F;">🤷 not sure</h4></div>
+      <div class="zone" data-z="yes"><h4 style="color:#90CAF9;">✅ almost sure</h4></div>
+    </div>
+    <div class="bank" id="sortBank"></div>
+    <div class="note">💡 No answer key here on purpose — make your best guess. We&rsquo;ll build the rule together on screen.</div>
+  </div>
+
+  <!-- GD: FORM -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(249,168,37,0.2);color:#FFD54F;">🔧 Task 4 · Discover — the form</span>
+    <div class="q-title">Look at the three sentences. What is the SAME in all of them? Build the rule. (On your own first, then compare with your partner.)</div>
+    <div class="blanks">
+      <div class="frame">He <b class="m">must</b> <b class="may">have</b> <b style="color:#A5D6A7;">left</b>. &nbsp; He <b class="m">might</b> <b class="may">have</b> <b style="color:#A5D6A7;">gone</b>. &nbsp; He <b class="cant">couldn&rsquo;t</b> <b class="may">have</b> <b style="color:#A5D6A7;">gone</b>.</div>
+      <div class="frame" style="margin-top:8px;">Rule: <span class="slot" data-f="modal" onclick="fillSlot(this)">?</span> + <span class="slot" data-f="have" onclick="fillSlot(this)">?</span> + <span class="slot" data-f="pp" onclick="fillSlot(this)">?</span></div>
+      <div class="bank" id="formBank"></div>
+    </div>
+    <div class="note">💡 Tip: which word never changes? What KIND of word is &ldquo;have&rdquo; here — a main verb, or a helper (auxiliary)? And what form is the verb that comes after it?</div>
+  </div>
+
+  <!-- CONTROLLED PRACTICE (merged) -->
+  <div class="card">
+    <span class="sec-tag" style="background:rgba(30,136,229,0.2);color:#64B5F6;">✍️ Task 5 · Controlled practice</span>
+    <div class="q-title">Read the evidence. Choose the modal that matches how sure you are.</div>
+    <div class="note" style="background:rgba(30,136,229,0.10);border-color:rgba(100,181,246,0.3);color:#bcd;margin-top:0;margin-bottom:16px;">⬅️ strong evidence → <b class="m">must have</b> &nbsp;·&nbsp; maybe → <b class="may">might have</b> &nbsp;·&nbsp; impossible → <b class="cant">couldn&rsquo;t have</b> &nbsp; · &nbsp; Compare with your partner <strong>before</strong> you check.</div>
+    <div id="cpItems"></div>
+    <button class="btn" style="background:#1E88E5;" onclick="checkCP()">Check answers</button>
+    <button class="btn" style="background:rgba(255,255,255,0.08);color:#cfcfe0;" onclick="resetCP()">Reset</button>
+    <div class="fb" id="cpScore" style="display:inline-block;margin-left:10px;margin-top:0;"></div>
+  </div>
+
+</div>
+
+<script>
+/* ================= ANNOTATION ================= */
+const cv=document.getElementById('annoCanvas');const ctx=cv.getContext('2d');
+let drawOn=false,mode='highlight',color='#FFD54F',drawing=false;
+function fitCanvas(){const w=document.documentElement.scrollWidth,h=document.documentElement.scrollHeight;const img=ctx.getImageData?null:null;cv.width=w;cv.height=h;}
+function toggleDraw(){drawOn=!drawOn;cv.style.pointerEvents=drawOn?'auto':'none';document.getElementById('bDraw').classList.toggle('on',drawOn);document.getElementById('thint').textContent=drawOn?'✏️ draw / underline anywhere · tap pencil again to use the tasks':'✏️ tap the pencil to draw / underline · tap again to use the tasks';}
+function setMode(m){mode=m;document.getElementById('bPen').classList.toggle('on',m==='pen');document.getElementById('bHi').classList.toggle('on',m==='highlight');document.getElementById('bEr').classList.toggle('on',m==='erase');if(!drawOn)toggleDraw();}
+function setColor(el,c){color=c;document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('on'));el.classList.add('on');if(mode==='erase')setMode('pen');}
+function clearAnno(){ctx.clearRect(0,0,cv.width,cv.height);}
+function pos(e){return {x:e.pageX,y:e.pageY};}
+function start(e){if(!drawOn)return;drawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);draw(e);}
+function draw(e){if(!drawing||!drawOn)return;e.preventDefault();const p=pos(e);
+ ctx.lineCap='round';ctx.lineJoin='round';
+ if(mode==='erase'){ctx.globalCompositeOperation='destination-out';ctx.lineWidth=22;ctx.strokeStyle='rgba(0,0,0,1)';}
+ else if(mode==='highlight'){ctx.globalCompositeOperation='source-over';ctx.lineWidth=15;ctx.strokeStyle=color;ctx.globalAlpha=0.35;}
+ else{ctx.globalCompositeOperation='source-over';ctx.lineWidth=3;ctx.strokeStyle=color;ctx.globalAlpha=1;}
+ ctx.lineTo(p.x,p.y);ctx.stroke();ctx.globalAlpha=1;}
+function end(){drawing=false;}
+cv.addEventListener('pointerdown',start);cv.addEventListener('pointermove',draw);window.addEventListener('pointerup',end);
+window.addEventListener('load',()=>{fitCanvas();setColor(document.querySelector('.swatch'),'#FFD54F');document.getElementById('bHi').classList.add('on');});
+let rT;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(fitCanvas,200);});
+
+/* ================= GIST ================= */
+const gistOpts=[['A','He was kidnapped'],['B','He went on holiday'],['C','He moved house']];
+let gistSel=null,gistDone=false;
+function renderGist(){const c=document.getElementById('gist');c.innerHTML='';gistOpts.forEach(([k,t])=>{const d=document.createElement('div');d.className='opt'+(gistSel===k?' sel':'');d.innerHTML='<span class="k">'+k+'</span>'+t;d.onclick=()=>{if(gistDone)return;gistSel=k;renderGist();};c.appendChild(d);});}
+function checkGist(){if(!gistSel){fbset('gistFb','Pick an answer first!','no');return;}gistDone=true;const c=document.getElementById('gist');[...c.children].forEach((d,i)=>{const k=gistOpts[i][0];if(k==='B')d.classList.add('correct');else if(k===gistSel)d.classList.add('wrong');});gistSel==='B'?fbset('gistFb','✅ Right! The Instagram photo from Thailand gives it away.','ok'):fbset('gistFb','❌ Not quite — look at the very last paragraph again.','no');}
+
+/* ================= INTENSIVE ================= */
+const people=[['Mrs Patterson','sure','👵'],['The manager','maybe','👨‍🔧'],['Mr Díaz','no','👴']];
+const intSel={};let intDone=false;
+function renderInt(){const c=document.getElementById('intensive');c.innerHTML='';people.forEach(([name,ans,em])=>{const r=document.createElement('div');r.className='row';r.innerHTML='<span class="who">'+em+' '+name+'</span>';
+ [['sure','c-sure','sure it happened'],['maybe','c-maybe','not sure / guessing'],['no','c-no','sure it did NOT happen']].forEach(([v,cls,lbl])=>{const b=document.createElement('button');b.className='chip '+cls+(intSel[name]===v?' sel':'');b.innerHTML='<span>'+lbl+'</span>';b.onclick=()=>{if(intDone)return;intSel[name]=v;renderInt();};r.appendChild(b);});c.appendChild(r);});}
+function checkIntensive(){if(Object.keys(intSel).length<3){fbset('intFb','Answer all three first!','no');return;}intDone=true;const c=document.getElementById('intensive');[...c.children].forEach((r,i)=>{const ans=people[i][1];[...r.querySelectorAll('.chip')].forEach((b,j)=>{const v=['sure','maybe','no'][j];if(v===ans)b.classList.add('correct');else if(intSel[people[i][0]]===v)b.classList.add('wrong');});});let n=people.filter(([nm,a])=>intSel[nm]===a).length;fbset('intFb',(n===3?'✅ ':'')+n+' / 3 correct.'+(n<3?' Re-read each person\u2019s exact words.':' Mrs Patterson = sure, manager = guessing, Mr Díaz = sure it didn\u2019t.'),n===3?'ok':'no');}
+
+/* ================= SORT (no key) ================= */
+const sentences=[['s1','&ldquo;He must have left in a hurry.&rdquo;'],['s2','&ldquo;He might have gone on holiday.&rdquo;'],['s3','&ldquo;He couldn&rsquo;t have gone far.&rdquo;']];
+let pickedSent=null;const placed={};
+function renderSort(){const b=document.getElementById('sortBank');b.innerHTML='';sentences.forEach(([id,t])=>{if(placed[id])return;const d=document.createElement('div');d.className='scard';d.style.borderColor=pickedSent===id?'#9B8CFF':'';d.innerHTML=t;d.onclick=()=>{pickedSent=pickedSent===id?null:id;renderSort();};b.appendChild(d);});}
+document.querySelectorAll('.zone').forEach(z=>{z.onclick=()=>{if(!pickedSent)return;const id=pickedSent;Object.keys(placed).forEach(k=>{if(placed[k]===z)delete placed[k];});placed[id]=z;pickedSent=null;
+ document.querySelectorAll('.zone').forEach(zz=>{[...zz.querySelectorAll('.scard')].forEach(e=>e.remove());});
+ Object.entries(placed).forEach(([sid,zone])=>{const t=sentences.find(s=>s[0]===sid)[1];const d=document.createElement('div');d.className='scard';d.innerHTML=t;d.onclick=(ev)=>{ev.stopPropagation();delete placed[sid];renderSort();d.remove();};zone.appendChild(d);});
+ renderSort();};});
+
+/* ================= FORM build ================= */
+const formWords=['modal','have','past participle'];
+let pickedWord=null;
+function renderFormBank(){const b=document.getElementById('formBank');b.innerHTML='';formWords.forEach(w=>{const used=[...document.querySelectorAll('.slot')].some(s=>s.dataset.val===w);if(used)return;const d=document.createElement('div');d.className='scard';d.style.borderColor=pickedWord===w?'#FFD54F':'';d.textContent=w;d.onclick=()=>{pickedWord=pickedWord===w?null:w;renderFormBank();};b.appendChild(d);});}
+function fillSlot(el){if(!pickedWord)return;el.textContent=pickedWord;el.dataset.val=pickedWord;el.classList.add('filled');pickedWord=null;renderFormBank();}
+
+/* ================= CONTROLLED PRACTICE ================= */
+const CP=[
+ {ev:'The ground is wet this morning ☔',pre:'It',post:'rained during the night.',ans:'must have',why:'Strong evidence → almost sure it happened.'},
+ {ev:'She\u2019s not answering her phone 📵',pre:'She',post:'left it at home — or she\u2019s just busy.',ans:'might have',why:'Only a possibility — not sure.'},
+ {ev:'He was with me all evening 👬',pre:'He',post:'stolen the car.',ans:"couldn't have",why:'It was impossible → sure it did NOT happen.'},
+ {ev:'Three empty pizza boxes on the table 🍕',pre:'They',post:'been really hungry!',ans:'must have',why:'The evidence makes you almost certain.'},
+ {ev:'I can\u2019t find my keys anywhere 🔑',pre:'I',post:'dropped them in the park.',ans:'might have',why:'One of several possibilities — a guess.'},
+ {ev:'The exam was easy and Tom studied for weeks 📚',pre:'He',post:'failed.',ans:"couldn't have",why:'Given the evidence, failing was impossible.'},
+];
+const CPO=['must have','might have',"couldn't have"];
+const cpSel={};let cpDone=false;
+function renderCP(){const c=document.getElementById('cpItems');c.innerHTML='';CP.forEach((it,i)=>{const d=document.createElement('div');d.className='cp-item';
+ d.innerHTML='<div class="cp-ev">'+it.ev+'</div><div class="cp-sent"><span class="cp-num">'+(i+1)+'</span>'+it.pre+' <span class="slot'+(cpSel[i]?' filled':'')+'">'+(cpSel[i]||'?')+'</span> '+it.post+'</div>';
+ const o=document.createElement('div');o.className='cp-opts';CPO.forEach(opt=>{const b=document.createElement('button');b.className='cp-opt'+(cpSel[i]===opt?' sel':'');b.textContent=opt;b.onclick=()=>{if(cpDone)return;cpSel[i]=opt;renderCP();};o.appendChild(b);});d.appendChild(o);
+ const w=document.createElement('div');w.className='cp-why';w.id='cpwhy'+i;d.appendChild(w);c.appendChild(d);});}
+function checkCP(){if(Object.keys(cpSel).length<CP.length){const s=document.getElementById('cpScore');s.textContent=Object.keys(cpSel).length+' / '+CP.length+' done — finish them all!';s.className='fb no';s.style.display='inline-block';return;}cpDone=true;let n=0;document.querySelectorAll('.cp-item').forEach((d,i)=>{d.querySelectorAll('.cp-opt').forEach(b=>{if(b.textContent===CP[i].ans)b.classList.add('correct');else if(b.textContent===cpSel[i])b.classList.add('wrong');});const ok=cpSel[i]===CP[i].ans;if(ok)n++;const w=document.getElementById('cpwhy'+i);w.textContent=(ok?'✅ ':'❌ ')+CP[i].why;w.style.color=ok?'#A5D6A7':'#FF8A80';});const s=document.getElementById('cpScore');s.textContent=n+' / '+CP.length+' correct'+(n===CP.length?' 🎉':'');s.className='fb '+(n===CP.length?'ok':'no');s.style.display='inline-block';}
+function resetCP(){for(const k in cpSel)delete cpSel[k];cpDone=false;document.getElementById('cpScore').textContent='';renderCP();}
+
+function fbset(id,txt,cls){const e=document.getElementById(id);e.innerHTML=txt;e.className='fb '+cls;}
+renderGist();renderInt();renderSort();renderFormBank();renderCP();
+</script>
+</body>
+</html>
