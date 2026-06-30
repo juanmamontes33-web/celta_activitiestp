@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media & Teenage Health — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #1b2336 0%, #131a26 48%, #0b0d14 100%); min-height:100vh; padding:40px 18px 80px; color:#E8E8EE; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8B92A0; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#56C2F0; }
+
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(86,194,240,0.15); border:1px solid rgba(86,194,240,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Lora',serif; font-weight:600; font-size:24px; color:#F6F5FA; line-height:1.2; }
+.video .vsub { font-size:13px; color:#8B92A0; margin-top:4px; font-family:'Space Grotesk'; letter-spacing:0.5px; }
+.video a { display:inline-block; margin-top:10px; font-size:14px; font-weight:800; color:#0d0c16; background:#56C2F0; padding:9px 20px; border-radius:30px; text-decoration:none; }
+.video a:hover { background:#76d0f5; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 18px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6D8E0; }
+.tab.active { border-bottom-color:#56C2F0; }
+.tab.active .tab-num { color:#56C2F0; } .tab.active .tab-label { color:#F3F2F8; }
+.tab.done .tab-num { color:#7FD68A; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#565C6B; }
+.tab-label { font-size:13px; font-weight:800; color:#8B92A0; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A8AEBC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E2E2EA; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#565C6B; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D6D8E0; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#56C2F0; background:rgba(86,194,240,0.06); }
+.opt.sel { border-color:#56C2F0; background:rgba(86,194,240,0.12); border-width:2px; }
+.opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.opt.wrong { border-color:#FB7185 !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.vrow { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.vrow .vw { font-family:'Lora',serif; font-style:italic; font-size:17px; color:#9AD9F5; flex:1; }
+.vrow select { font-family:'Nunito'; font-weight:700; font-size:14px; background:#1a273380; border:1.5px solid #34465a; border-radius:10px; padding:9px 12px; color:#E8E8EE; cursor:pointer; min-width:240px; }
+.vrow select:focus { outline:none; border-color:#56C2F0; }
+.vrow select.ok { border-color:#7FD68A; color:#A8E8AE; } .vrow select.no { border-color:#FB7185; color:#FBA5B4; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#56C2F0; color:#0b0d14; } .btn-p:hover { background:#76d0f5; }
+.btn-s { background:transparent; color:#8B92A0; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#56C2F0; color:#fff; }
+.score { font-size:14px; color:#A8AEBC; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E3B45A; font-weight:800; } .score.bad { color:#FBA5B4; font-weight:800; }
+
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#8B92A0; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15px; line-height:1.8; color:#B8BCC8; margin-top:14px; }
+details.tr .lbl { color:#56C2F0; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · Technology &amp; Social Media</div>
+
+  <!-- VIDEO -->
+  <div class="video">
+    <div class="vico">🎧</div>
+    <div class="vmeta">
+      <h1>Social media and teenage health</h1>
+      <div class="vsub">BBC 6 MINUTE ENGLISH · ~6 MIN · WATCH FIRST, THEN DO THE TASKS</div>
+      <a href="https://www.youtube.com/watch?v=g8q-Nq-ajx8" target="_blank" rel="noopener">▶ Open on YouTube</a>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Facts &amp; numbers</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Detail &amp; inference</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Vocabulary</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#56C2F0;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#56C2F0; color:#9ad9f5;">Listen once for the general idea. Don't worry about details yet.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#A78BFA;">Task 2 — Facts &amp; numbers (second listen) 🔢</div>
+    <div class="sub" style="border-color:#A78BFA; color:#c4b5fd;">Read the questions first, then listen again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#FB7185;">Task 3 — Detail &amp; inference (third listen) 🧠</div>
+    <div class="sub" style="border-color:#FB7185; color:#fba5b4;">Some answers are not said directly — work them out from what you hear.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(2)">Check</button><button class="btn btn-s" onclick="reset2()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#56C2F0;">Task 4 — Vocabulary 🔍</div>
+    <div class="sub" style="border-color:#56C2F0; color:#9ad9f5;">Match each word from the programme to its meaning.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(3)">Check</button><button class="btn btn-s" onclick="reset3()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <!-- TEACHER TRANSCRIPT -->
+  <details class="tr">
+    <summary>📄 Transcript — teacher reference / post-listening</summary>
+    <p><span class="lbl">Neil:</span> Hello. This is 6 Minute English from BBC Learning English. I'm Neil. <span class="lbl">Beth:</span> What are you doing? Get off your phone! …And I'm Beth. Are you addicted to social media? With so many apps out there — Snapchat, TikTok, and the latest, Threads — it's easy to spend a lot more time on your phone than ever before.</p>
+    <p>There are plenty of studies looking at how social media affects mental health, with some saying it can be as addictive as gambling. Research in the US found that adolescents who spend more than three hours a day on social media have double the risk of developing depression and anxiety. An adolescent is someone aged 10 to 19, between childhood and adulthood. The US is in the process of regulating social media apps for teenagers; some scientists think the UK should do the same.</p>
+    <p>Surveys reveal social media makes teens feel worse about their body image, and 64% of teens say they are regularly exposed to hate-based content. <span class="lbl">Quiz:</span> What percentage of 13–24 year-olds use Snapchat — 70%, 80% or 90%? (Answer at the end: 90%.)</p>
+    <p>Professor Devi Sridhar (Chair of global public health, University of Edinburgh) on BBC World Service's <em>Inside Science</em>: young girls are being "fed" content about eating disorders in an addictive way; the algorithm keeps giving them that content because it keeps them on their phones — and the apps' revenue comes from advertising. To be "fed" content = to be given it automatically. Algorithms = a complex set of rules that prioritise and personalise the content a user sees. Revenue = the money a company earns.</p>
+    <p>She adds that the "onus" (the responsibility) has been put on parents to find solutions — debates with your child are "a losing battle" (a fight you cannot win) because social media is their entire social network. <span class="lbl">Answer:</span> 90% of 13–24 year-olds use Snapchat.</p>
+  </details>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+const MCQ = {
+  0:[
+    {q:"What is the programme mainly about?", opts:["How to design better social media apps","How social media affects teenagers' health, and why","The history of Snapchat and TikTok"], ans:1},
+    {q:"Overall, the programme suggests that social media…", opts:["is completely safe for teenagers","can be harmful to teenagers' mental health","should be banned for everyone"], ans:1}
+  ],
+  1:[
+    {q:"Which three apps are mentioned?", opts:["Snapchat, TikTok and Threads","Facebook, WhatsApp and X","Instagram, YouTube and Reddit"], ans:0},
+    {q:"Some studies say social media can be as addictive as…", opts:["coffee","gambling","shopping"], ans:1},
+    {q:"Teens on social media more than ___ hours a day have double the risk of depression and anxiety.", opts:["two","three","five"], ans:1},
+    {q:"An \u201Cadolescent\u201D is a person aged…", opts:["5 to 10","10 to 19","13 to 24"], ans:1},
+    {q:"What percentage of 13\u201324 year-olds use Snapchat?", opts:["70%","80%","90%"], ans:2},
+    {q:"What percentage of teens say they are regularly exposed to hate-based content?", opts:["44%","54%","64%"], ans:2}
+  ],
+  2:[
+    {q:"Why is the content so addictive?", opts:["The algorithm keeps showing similar content the user likes, to keep them on the app","The apps are free to download","Teenagers have a lot of free time"], ans:0},
+    {q:"Where does social media's revenue mainly come from?", opts:["Selling phones","Advertising","Charging users a monthly fee"], ans:1},
+    {q:"What does the expert suggest the platforms care about most?", opts:["Users' mental health","Making money","Teaching teenagers"], ans:1},
+    {q:"According to Professor Sridhar, who has been given the responsibility (the \u201Conus\u201D) to find solutions?", opts:["Governments","The social media companies","Parents and concerned adults"], ans:2},
+    {q:"Why is it \u201Ca losing battle\u201D for parents?", opts:["Phones are too expensive","Social media is the teenager's entire social network","Teenagers don't use social media"], ans:1}
+  ]
+};
+let sel={0:{},1:{},2:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{
+      const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checked[t]) return; sel[t][qi]=oi; renderMCQ(t); };
+      ob.appendChild(b);
+    });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+
+const VWORDS = [
+  {w:"to be fed content", ans:"to be given content automatically by the app"},
+  {w:"the onus", ans:"the responsibility or duty"},
+  {w:"a losing battle", ans:"a fight you cannot win"},
+  {w:"to regulate", ans:"to control something with rules or laws"}
+];
+const MEANINGS = ["to be given content automatically by the app","the responsibility or duty","a fight you cannot win","to control something with rules or laws"];
+let vsel={};
+function renderVocab(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  VWORDS.forEach((v,i)=>{
+    const row=document.createElement('div'); row.className='vrow';
+    let opts='<option value="">— choose meaning —</option>'+MEANINGS.map(m=>`<option value="${m}">${m}</option>`).join('');
+    row.innerHTML=`<span class="vw">"${v.w}"</span><select id="v${i}" onchange="vchange(${i},this.value)">${opts}</select>`;
+    c.appendChild(row);
+  });
+}
+function vchange(i,val){ vsel[i]=val; }
+
+let checked={0:false,1:false,2:false,3:false};
+function check(t){
+  checked[t]=true;
+  if(t===3){
+    let correct=0;
+    VWORDS.forEach((v,i)=>{ const s=document.getElementById('v'+i); const ok=s.value===v.ans;
+      s.classList.remove('ok','no'); s.classList.add(ok?'ok':'no'); s.disabled=true; if(ok) correct++; });
+    showScore('s3',correct,VWORDS.length,3); return;
+  }
+  let correct=0;
+  const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{
+    qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); });
+    if(sel[t][qi]===m.ans) correct++;
+  });
+  showScore('s'+t,correct,MCQ[t].length,t);
+}
+function showScore(id,correct,total,t){
+  const s=document.getElementById(id);
+  s.textContent=`${correct} / ${total} correct`+(correct===total?' 🎉':'');
+  s.className='score '+(correct===total?'good':(correct>=Math.ceil(total/2)?'partial':'bad'));
+  if(correct===total) markDone(t);
+}
+function reset0(){ checked[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checked[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+function reset2(){ checked[2]=false; sel[2]={}; document.getElementById('s2').textContent=''; renderMCQ(2); }
+function reset3(){ checked[3]=false; vsel={}; document.getElementById('s3').textContent=''; renderVocab(); }
+
+renderMCQ(0); renderMCQ(1); renderMCQ(2); renderVocab();
+</script>
+</body>
+</html>
