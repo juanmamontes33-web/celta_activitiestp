@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Still Need a Degree? — Reading Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #2c281f 0%, #1e1a14 48%, #130f0a 100%); min-height:100vh; padding:40px 18px 80px; color:#ECE8E0; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9A938A; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#E0A458; }
+
+.article { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:34px 40px; margin-bottom:26px; }
+.article .masthead { display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:20px; }
+.article .masthead .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.article .masthead .logo span { color:#E8B96A; }
+.article .masthead .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#9A938A; }
+.article h1 { font-family:'Lora',serif; font-weight:600; font-size:33px; line-height:1.15; color:#F8F4EB; margin-bottom:6px; }
+.article .byline { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:#5CC0A0; text-transform:uppercase; margin-bottom:22px; }
+.article p { font-family:'Lora',serif; font-size:17.5px; line-height:1.85; color:#DDD8CD; margin-bottom:16px; }
+.article p .pn { font-family:'Space Grotesk'; font-size:12px; color:#6B6459; font-weight:700; margin-right:8px; vertical-align:2px; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 18px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#DDD8CD; }
+.tab.active { border-bottom-color:#E0A458; }
+.tab.active .tab-num { color:#E8B96A; } .tab.active .tab-label { color:#F8F4EB; }
+.tab.done .tab-num { color:#7FD68A; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6B6459; }
+.tab-label { font-size:13px; font-weight:800; color:#9A938A; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#B8B0A2; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E7E2D8; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6459; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#DDD8CD; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#E0A458; background:rgba(224,164,88,0.06); }
+.opt.sel { border-color:#E0A458; background:rgba(224,164,88,0.12); border-width:2px; }
+.opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.opt.wrong { border-color:#E0806A !important; background:rgba(224,128,106,0.1) !important; color:#EDA890 !important; }
+
+.vrow { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.vrow .vw { font-family:'Lora',serif; font-style:italic; font-size:17px; color:#EDC988; flex:1; }
+.vrow select { font-family:'Nunito'; font-weight:700; font-size:14px; background:#241f1780; border:1.5px solid #4a4335; border-radius:10px; padding:9px 12px; color:#ECE8E0; cursor:pointer; min-width:250px; }
+.vrow select:focus { outline:none; border-color:#E0A458; }
+.vrow select.ok { border-color:#7FD68A; color:#A8E8AE; } .vrow select.no { border-color:#E0806A; color:#EDA890; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#E0A458; color:#14110c; } .btn-p:hover { background:#e8b96a; }
+.btn-s { background:transparent; color:#9A938A; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#E0A458; color:#fff; }
+.score { font-size:14px; color:#B8B0A2; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E8B96A; font-weight:800; } .score.bad { color:#EDA890; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Reading · B2 · Work &amp; Study</div>
+
+  <!-- ARTICLE -->
+  <div class="article">
+    <div class="masthead"><div class="logo">THE <span>DESK</span></div><div class="rt">⏱ ~3 min read</div></div>
+    <h1>Do You Still Need a Degree?</h1>
+    <div class="byline">Careers &amp; Education</div>
+    <p><span class="pn">1</span>For decades, the path to a good job seemed obvious: study hard at school, go to university, get a degree, and the career would follow. But is that still true today?</p>
+    <p><span class="pn">2</span>University is expensive. In many countries, students leave with a qualification but also with years of debt from tuition fees. Meanwhile, some of the world's most successful entrepreneurs — from tech founders to designers — never finished their degrees at all. Stories like these have made many young people wonder whether three or four years at university are really worth it.</p>
+    <p><span class="pn">3</span>At the same time, the job market is changing fast. Employers increasingly say they care less about where you studied and more about what you can actually do. "Soft skills" like communication, teamwork and problem-solving are now in high demand, and these are not always taught in a lecture hall. A growing number of companies have dropped their degree requirements completely, focusing instead on practical experience.</p>
+    <p><span class="pn">4</span>This has opened the door to alternatives. Apprenticeships let people earn a salary while they train on the job. Online courses allow anyone with an internet connection to pick up a new skill in weeks rather than years. Many programmers, marketers and photographers today are entirely self-taught.</p>
+    <p><span class="pn">5</span>Of course, a degree still matters in many fields. You would not want a self-taught surgeon operating on you! For doctors, lawyers and engineers, formal qualifications are essential and always will be.</p>
+    <p><span class="pn">6</span>Perhaps the real lesson is that learning no longer stops when we leave school. Whether at university, in an apprenticeship, or online at midnight, the people who succeed are the ones who never stop learning.</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Specific info</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Detail &amp; inference</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Vocabulary</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#E8B96A;">Task 1 — Gist 🎯</div>
+    <div class="sub" style="border-color:#E0A458; color:#edc988;">Read the whole article quickly. What is the writer's <strong>main point</strong>?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5CC0A0;">Task 2 — Specific information 🔎</div>
+    <div class="sub" style="border-color:#5CC0A0; color:#88d4bb;">Scan the text and find the exact answers. Be ready to say <em>where</em> you found each one.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#E0A07E;">Task 3 — Detail &amp; inference 🧠</div>
+    <div class="sub" style="border-color:#E0A07E; color:#edb79a;">Some answers are not written directly — work them out from clues in the text.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(2)">Check</button><button class="btn btn-s" onclick="reset2()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#E8B96A;">Task 4 — Vocabulary from context 🔍</div>
+    <div class="sub" style="border-color:#E0A458; color:#edc988;">Find each phrase in the text. Use the words around it to choose the best meaning.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(3)">Check</button><button class="btn btn-s" onclick="reset3()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+const MCQ = {
+  0:[ {q:"What is the writer's main point?", opts:["University is a waste of time and no one should go.","A degree still helps, but skills and continuous learning matter more than ever.","Only doctors and lawyers need to study."], ans:1} ],
+  1:[
+    {q:"Besides a qualification, what do many students leave university with?", opts:["A guaranteed job","Debt from tuition fees","A free laptop"], ans:1},
+    {q:"Which kind of skills are \u201Cin high demand\u201D?", opts:["Soft skills like communication and teamwork","Only technical computer skills","Sports skills"], ans:0},
+    {q:"What have a growing number of companies dropped completely?", opts:["Their salaries","Their degree requirements","Their offices"], ans:1},
+    {q:"What lets people earn a salary while they train?", opts:["Apprenticeships","University lectures","Exams"], ans:0},
+    {q:"Which jobs does the writer say always need formal qualifications?", opts:["Programmers and photographers","Doctors, lawyers and engineers","Designers and marketers"], ans:1}
+  ],
+  2:[
+    {q:"Why does the writer mention successful entrepreneurs who never finished their degrees?", opts:["To show that you can succeed without a degree","To say that university is illegal","To recommend dropping out of school"], ans:0},
+    {q:"Why does the writer mention a \u201Cself-taught surgeon\u201D?", opts:["To praise self-teaching for everything","To show (with humour) that some jobs really do need formal qualifications","To say surgeons don't study"], ans:1},
+    {q:"Does the writer think university is useless?", opts:["Yes, completely useless","No \u2014 it still matters in many fields","The writer says nothing about it"], ans:1},
+    {q:"What is the writer's overall attitude?", opts:["Strongly against all universities","Balanced \u2014 it depends on the field, and learning never stops","Only positive about degrees"], ans:1},
+    {q:"What does the final sentence mainly suggest?", opts:["Success comes from never stopping learning","Success comes only from a university degree","Midnight is the best time to study"], ans:0}
+  ]
+};
+let sel={0:{},1:{},2:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{
+      const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checked[t]) return; sel[t][qi]=oi; renderMCQ(t); };
+      ob.appendChild(b);
+    });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+
+const VWORDS = [
+  {w:"self-taught", ans:"having learned something by yourself, without a teacher"},
+  {w:"in high demand", ans:"wanted by many people or companies"},
+  {w:"on the job", ans:"while working / at work"},
+  {w:"the job market", ans:"the world of available jobs and workers"}
+];
+const MEANINGS = ["having learned something by yourself, without a teacher","wanted by many people or companies","while working / at work","the world of available jobs and workers"];
+let vsel={};
+function renderVocab(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  VWORDS.forEach((v,i)=>{
+    const row=document.createElement('div'); row.className='vrow';
+    let opts='<option value="">— choose meaning —</option>'+MEANINGS.map(m=>`<option value="${m}">${m}</option>`).join('');
+    row.innerHTML=`<span class="vw">"${v.w}"</span><select id="v${i}" onchange="vchange(${i},this.value)">${opts}</select>`;
+    c.appendChild(row);
+  });
+}
+function vchange(i,val){ vsel[i]=val; }
+
+let checked={0:false,1:false,2:false,3:false};
+function check(t){
+  checked[t]=true;
+  if(t===3){
+    let correct=0;
+    VWORDS.forEach((v,i)=>{ const s=document.getElementById('v'+i); const ok=s.value===v.ans;
+      s.classList.remove('ok','no'); s.classList.add(ok?'ok':'no'); s.disabled=true; if(ok) correct++; });
+    showScore('s3',correct,VWORDS.length,3); return;
+  }
+  let correct=0;
+  const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{
+    qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); });
+    if(sel[t][qi]===m.ans) correct++;
+  });
+  showScore('s'+t,correct,MCQ[t].length,t);
+}
+function showScore(id,correct,total,t){
+  const s=document.getElementById(id);
+  s.textContent=`${correct} / ${total} correct`+(correct===total?' 🎉':'');
+  s.className='score '+(correct===total?'good':(correct>=Math.ceil(total/2)?'partial':'bad'));
+  if(correct===total) markDone(t);
+}
+function reset0(){ checked[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checked[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+function reset2(){ checked[2]=false; sel[2]={}; document.getElementById('s2').textContent=''; renderMCQ(2); }
+function reset3(){ checked[3]=false; vsel={}; document.getElementById('s3').textContent=''; renderVocab(); }
+
+renderMCQ(0); renderMCQ(1); renderMCQ(2); renderVocab();
+</script>
+</body>
+</html>
