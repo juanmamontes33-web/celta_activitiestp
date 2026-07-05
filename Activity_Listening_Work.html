@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is the Future of Work? — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #222b26 0%, #191d17 48%, #0f120c 100%); min-height:100vh; padding:40px 18px 80px; color:#ECE8E0; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9A938A; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#5CC0A0; }
+
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(92,192,160,0.15); border:1px solid rgba(92,192,160,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Lora',serif; font-weight:600; font-size:24px; color:#F8F4EB; line-height:1.2; }
+.video .vsub { font-size:13px; color:#9A938A; margin-top:4px; font-family:'Space Grotesk'; letter-spacing:0.5px; }
+.video a { display:inline-block; margin-top:10px; font-size:14px; font-weight:800; color:#12140d; background:#5CC0A0; padding:9px 20px; border-radius:30px; text-decoration:none; }
+.video a:hover { background:#7ad4b6; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 18px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#DDD8CD; }
+.tab.active { border-bottom-color:#5CC0A0; }
+.tab.active .tab-num { color:#6FCFAE; } .tab.active .tab-label { color:#F8F4EB; }
+.tab.done .tab-num { color:#7FD68A; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6B6459; }
+.tab-label { font-size:13px; font-weight:800; color:#9A938A; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#B8B0A2; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E7E2D8; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6459; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#DDD8CD; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#5CC0A0; background:rgba(92,192,160,0.06); }
+.opt.sel { border-color:#5CC0A0; background:rgba(92,192,160,0.12); border-width:2px; }
+.opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.opt.wrong { border-color:#E0806A !important; background:rgba(224,128,106,0.1) !important; color:#EDA890 !important; }
+
+.vrow { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.vrow .vw { font-family:'Lora',serif; font-style:italic; font-size:17px; color:#8FDCC1; flex:1; }
+.vrow select { font-family:'Nunito'; font-weight:700; font-size:14px; background:#1a201780; border:1.5px solid #3e4a3f; border-radius:10px; padding:9px 12px; color:#ECE8E0; cursor:pointer; min-width:250px; }
+.vrow select:focus { outline:none; border-color:#5CC0A0; }
+.vrow select.ok { border-color:#7FD68A; color:#A8E8AE; } .vrow select.no { border-color:#E0806A; color:#EDA890; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#5CC0A0; color:#12140d; } .btn-p:hover { background:#7ad4b6; }
+.btn-s { background:transparent; color:#9A938A; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#5CC0A0; color:#fff; }
+.score { font-size:14px; color:#B8B0A2; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E8B96A; font-weight:800; } .score.bad { color:#EDA890; font-weight:800; }
+
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#9A938A; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15px; line-height:1.8; color:#C4BEB2; margin-top:14px; }
+details.tr .lbl { color:#6FCFAE; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · The Future of Work</div>
+
+  <div class="video">
+    <div class="vico">🎧</div>
+    <div class="vmeta">
+      <h1>What is the future of work?</h1>
+      <div class="vsub">BBC 6 MINUTE ENGLISH · ~6 MIN · WATCH FIRST, THEN DO THE TASKS</div>
+      <a href="https://www.youtube.com/watch?v=s1HxJVusR2w" target="_blank" rel="noopener">▶ Open on YouTube</a>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Facts &amp; numbers</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Detail &amp; inference</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Vocabulary</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#6FCFAE;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#5CC0A0; color:#8fdcc1;">Listen once for the general idea. Don't worry about details yet.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#E8B96A;">Task 2 — Facts &amp; numbers (second listen) 🔢</div>
+    <div class="sub" style="border-color:#E8B96A; color:#edc988;">Read the questions first, then listen again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#E0A07E;">Task 3 — Detail &amp; inference (third listen) 🧠</div>
+    <div class="sub" style="border-color:#E0A07E; color:#edb79a;">Some answers are not said directly — work them out from what you hear.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(2)">Check</button><button class="btn btn-s" onclick="reset2()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#6FCFAE;">Task 4 — Vocabulary 🔍</div>
+    <div class="sub" style="border-color:#5CC0A0; color:#8fdcc1;">Match each phrase from the programme to its meaning.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(3)">Check</button><button class="btn btn-s" onclick="reset3()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📄 Transcript — teacher reference / post-listening</summary>
+    <p><span class="lbl">Neil &amp; Beth:</span> In the 1930s, people predicted "smell-o-vision" (a TV you can smell) and a miracle pill that cures all diseases — these never came true. Tech billionaire Elon Musk recently predicted that AI will eventually mean no one will have to work. Other predictions: robots will take over most jobs, and everyone will work from home.</p>
+    <p>During Covid, one prediction came true — millions were forced to work from home. Another idea is the "four-day working week", where employees work four days for the same money as five. <span class="lbl">Quiz:</span> of 60 companies in a 2023 four-day-week trial, how many planned to keep it — 52%, 72% or 92%?</p>
+    <p><span class="lbl">Prof Brendan Burchell (University of Cambridge)</span>, on BBC World Service's <em>The Real Story</em> with Shaun Ley, says we should be sceptical and take predictions "with a pinch of salt": the "track record" of economists and social scientists at predicting big changes in working time isn't good — such predictions haven't "come to pass", even if we're heading slowly in that direction.</p>
+    <p>Another expert, Andrew, is <em>not</em> a "dystopian" — he doesn't think AI will "get rid of" all jobs. He predicts AI will replace some jobs (those workers will need support), but new jobs will "crop up" (appear unexpectedly). That's exactly why the future is hard to predict.</p>
+    <p><span class="lbl">Answer:</span> a whopping <strong>92%</strong> of the companies planned to keep the four-day week — it was popular with bosses and workers alike.</p>
+  </details>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+const MCQ = {
+  0:[
+    {q:"What is the programme mainly about?", opts:["Predictions about the future of work","How to write a good CV","The history of robots"], ans:0},
+    {q:"Overall, what do the speakers and experts suggest about predictions?", opts:["They always come true","We should be careful \u2014 the future is hard to predict","Only Elon Musk is ever right"], ans:1}
+  ],
+  1:[
+    {q:"What did people in the 1930s predict?", opts:["Flying cars and robots","\u201CSmell-o-vision\u201D and a pill that cures all diseases","The internet and smartphones"], ans:1},
+    {q:"What did Elon Musk predict AI will eventually mean?", opts:["No one will have to work","Everyone will earn more money","Robots will feel emotions"], ans:0},
+    {q:"Which prediction actually came true during Covid?", opts:["Robots took most jobs","Millions were forced to work from home","The four-day week became law"], ans:1},
+    {q:"In a \u201Cfour-day working week\u201D, employees work four days for\u2026", opts:["half the money","the same money as five days","no money at all"], ans:1},
+    {q:"Of the 60 companies in the 2023 trial, what percentage planned to keep the four-day week?", opts:["52%","72%","92%"], ans:2},
+    {q:"Which university is Professor Brendan Burchell from?", opts:["Oxford","Cambridge","Edinburgh"], ans:1}
+  ],
+  2:[
+    {q:"Why does Professor Burchell say we should be sceptical of predictions?", opts:["Because the \u201Ctrack record\u201D of such predictions is not good","Because he doesn't like technology","Because AI is always wrong"], ans:0},
+    {q:"Is the expert Andrew a \u201Cdystopian\u201D?", opts:["Yes \u2014 he thinks AI will destroy everything","No \u2014 he doesn't think AI will get rid of all jobs","He doesn't say"], ans:1},
+    {q:"According to Andrew, what will happen to jobs?", opts:["AI will replace every job","AI will replace some jobs, but new jobs will crop up","Nothing will change at all"], ans:1},
+    {q:"Why is the future of work so hard to predict?", opts:["Because the future is unexpected \u2014 new jobs appear suddenly","Because no one studies it","Because robots keep it secret"], ans:0},
+    {q:"Why did 92% of the companies keep the four-day week?", opts:["A law forced them to","It was popular with both bosses and workers","It saved no money"], ans:1}
+  ]
+};
+let sel={0:{},1:{},2:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{
+      const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checked[t]) return; sel[t][qi]=oi; renderMCQ(t); };
+      ob.appendChild(b);
+    });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+
+const VWORDS = [
+  {w:"to come to pass", ans:"to happen / take place"},
+  {w:"to crop up", ans:"to appear or happen unexpectedly"},
+  {w:"to get rid of", ans:"to remove something you no longer want"},
+  {w:"to give (it) a go", ans:"to try something"}
+];
+const MEANINGS = ["to happen / take place","to appear or happen unexpectedly","to remove something you no longer want","to try something"];
+let vsel={};
+function renderVocab(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  VWORDS.forEach((v,i)=>{
+    const row=document.createElement('div'); row.className='vrow';
+    let opts='<option value="">— choose meaning —</option>'+MEANINGS.map(m=>`<option value="${m}">${m}</option>`).join('');
+    row.innerHTML=`<span class="vw">"${v.w}"</span><select id="v${i}" onchange="vchange(${i},this.value)">${opts}</select>`;
+    c.appendChild(row);
+  });
+}
+function vchange(i,val){ vsel[i]=val; }
+
+let checked={0:false,1:false,2:false,3:false};
+function check(t){
+  checked[t]=true;
+  if(t===3){
+    let correct=0;
+    VWORDS.forEach((v,i)=>{ const s=document.getElementById('v'+i); const ok=s.value===v.ans;
+      s.classList.remove('ok','no'); s.classList.add(ok?'ok':'no'); s.disabled=true; if(ok) correct++; });
+    showScore('s3',correct,VWORDS.length,3); return;
+  }
+  let correct=0;
+  const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{
+    qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); });
+    if(sel[t][qi]===m.ans) correct++;
+  });
+  showScore('s'+t,correct,MCQ[t].length,t);
+}
+function showScore(id,correct,total,t){
+  const s=document.getElementById(id);
+  s.textContent=`${correct} / ${total} correct`+(correct===total?' 🎉':'');
+  s.className='score '+(correct===total?'good':(correct>=Math.ceil(total/2)?'partial':'bad'));
+  if(correct===total) markDone(t);
+}
+function reset0(){ checked[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checked[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+function reset2(){ checked[2]=false; sel[2]={}; document.getElementById('s2').textContent=''; renderMCQ(2); }
+function reset3(){ checked[3]=false; vsel={}; document.getElementById('s3').textContent=''; renderVocab(); }
+
+renderMCQ(0); renderMCQ(1); renderMCQ(2); renderVocab();
+</script>
+</body>
+</html>
