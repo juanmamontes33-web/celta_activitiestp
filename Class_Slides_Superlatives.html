@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Superlatives Part 1 — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0d1016; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(135% 110% at 88% -10%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%);
+  color:#EAE7DF; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#9097A4; font-weight:700; }
+.kick::before { content:''; width:34px; height:2px; background:#E3B45A; }
+.foot { position:absolute; left:64px; right:64px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#5C6473; border-top:1px solid rgba(255,255,255,0.09); padding-top:13px; }
+.foot b { color:#E3B45A; }
+.idx { position:absolute; top:34px; right:60px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; letter-spacing:3px; color:#3e3b52; }
+.ghost { position:absolute; font-family:'Space Grotesk'; font-weight:700; color:rgba(255,255,255,0.03); line-height:0.8; pointer-events:none; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F1EFE8; letter-spacing:-1px; }
+.serif { font-family:'Lora',serif; }
+.teal { color:#5ED0CC; } .gold { color:#E3B45A; } .rose { color:#E89A9A; }
+.panel { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:16px; }
+.hl-g { background:rgba(227,180,90,0.15); color:#EFC872; border-radius:6px; padding:1px 7px; font-weight:700; }
+.hl-t { background:rgba(94,208,204,0.15); color:#8BE5E1; border-radius:6px; padding:1px 7px; font-weight:700; }
+.tipbox { background:rgba(227,180,90,0.08); border:1px solid rgba(227,180,90,0.25); border-radius:12px; padding:14px 20px; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div class="ghost" style="font-size:200px; bottom:-30px; left:-20px;">#1</div>
+  <div style="position:absolute; left:64px; top:60px;"><div class="kick">Grammar · B1 → B2 · Health &amp; Lifestyle · Online</div></div>
+  <div style="position:absolute; left:64px; top:205px; width:840px;">
+    <div class="disp" style="font-size:62px; line-height:1.03;">The <span class="teal">healthiest</span>,<br>the <span class="gold">best</span>, the worst 🏆</div>
+    <div style="margin-top:20px; font-size:19px; color:#A8AEBA; line-height:1.6; max-width:600px;">Superlatives — how we say something is <span class="gold">the most</span> (or the least) of all.</div>
+    <div style="margin-top:20px; display:inline-flex; align-items:center; gap:14px; border:1px solid rgba(255,255,255,0.14); border-radius:40px; padding:12px 26px;">
+      <span style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:18px;">the … -est</span>
+      <span style="color:#56607a;">/</span>
+      <span style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:18px;">the most …</span>
+    </div>
+    <div style="margin-top:18px; display:inline-flex; align-items:center; gap:12px; background:rgba(94,208,204,0.1); border:1px solid rgba(94,208,204,0.3); border-radius:30px; padding:8px 18px;">
+      <span style="color:#5ED0CC; font-weight:800; font-size:12px;">✓ COMPARATIVES DONE</span>
+      <span style="color:#A8AEBA; font-size:13px;">healthier than → the healthiest</span>
+    </div>
+  </div>
+  <svg style="position:absolute; right:100px; top:250px;" width="300" height="240" viewBox="0 0 300 240">
+    <rect x="105" y="60" width="90" height="150" rx="8" fill="rgba(227,180,90,0.15)" stroke="#E3B45A" stroke-width="2"/>
+    <text x="150" y="120" text-anchor="middle" font-size="40">💧</text>
+    <text x="150" y="160" text-anchor="middle" font-size="34" fill="#E3B45A" font-family="Space Grotesk" font-weight="700">1</text>
+    <rect x="15" y="120" width="82" height="90" rx="8" fill="rgba(94,208,204,0.1)" stroke="#5ED0CC" stroke-width="1.5"/>
+    <text x="56" y="165" text-anchor="middle" font-size="30">🥤</text>
+    <text x="56" y="195" text-anchor="middle" font-size="22" fill="#5ED0CC" font-family="Space Grotesk" font-weight="700">2</text>
+    <rect x="203" y="140" width="82" height="70" rx="8" fill="rgba(232,154,154,0.1)" stroke="#E89A9A" stroke-width="1.5"/>
+    <text x="244" y="180" text-anchor="middle" font-size="28">🥤</text>
+    <text x="244" y="205" text-anchor="middle" font-size="20" fill="#E89A9A" font-family="Space Grotesk" font-weight="700">3</text>
+    <text x="150" y="235" text-anchor="middle" font-size="13" fill="#EFC872" font-family="Nunito" font-weight="800">water = the healthiest 🏆</text>
+  </svg>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>01</b> / 10</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div class="ghost" style="font-size:200px; top:-10px; right:40px;">?</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Warm up · speak</div></div>
+  <div style="position:absolute; left:64px; top:190px; right:64px;">
+    <div class="disp" style="font-size:40px; margin-bottom:50px;">Your health top &amp; bottom 🥗</div>
+    <div style="display:flex; gap:30px; align-items:flex-start; margin-bottom:38px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:52px; color:#5ED0CC; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(94,208,204,0.4); padding-left:24px;"><div class="serif" style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"What's the <span class="teal">healthiest</span> thing you eat or drink?"</div></div>
+    </div>
+    <div style="display:flex; gap:30px; align-items:flex-start;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:52px; color:#E89A9A; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(232,154,154,0.4); padding-left:24px;"><div class="serif" style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"What's the <span class="rose">worst</span> habit for your health?"</div></div>
+    </div>
+    <div style="margin-top:50px; font-size:15px; color:#8A92A0;">🔁 &nbsp;Juan ↔ Valeria — you're already using superlatives: <em>the healthiest, the worst!</em></div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>02</b> / 10</span></div>
+</div>
+
+<!-- 03 MEANING -->
+<div class="slide">
+  <div class="idx">MEANING</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Comparative vs superlative</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:150px;">
+    <div style="display:flex; gap:18px; margin-bottom:24px;">
+      <div class="panel" style="flex:1; padding:24px 28px; border-top:3px solid #5ED0CC;">
+        <div style="font-size:12px; color:#5ED0CC; font-weight:800; letter-spacing:1px;">2 THINGS → COMPARATIVE</div>
+        <div class="serif" style="font-size:22px; color:#F1EFE8; margin-top:10px; line-height:1.5;">"Coffee is <span class="hl-t">healthier than</span> cola."</div>
+        <div style="font-size:14px; color:#8A92A0; margin-top:8px;">→ comparing two drinks.</div>
+      </div>
+      <div class="panel" style="flex:1; padding:24px 28px; border-top:3px solid #E3B45A;">
+        <div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px;">3+ / THE WHOLE GROUP → SUPERLATIVE</div>
+        <div class="serif" style="font-size:22px; color:#F1EFE8; margin-top:10px; line-height:1.5;">"Water is <span class="hl-g">the healthiest</span> drink."</div>
+        <div style="font-size:14px; color:#8A92A0; margin-top:8px;">→ number 1 of all drinks. 🏆</div>
+      </div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 A superlative picks the <strong>top</strong> (or bottom) of a group — and it always needs <strong class="teal">the</strong>.</div></div>
+    <div style="margin-top:16px; font-size:14px; color:#8A92A0;">❓ "the healthiest drink" — comparing two, or all of them? <span style="color:#8BE5E1;">All</span> &nbsp;·&nbsp; ❓ Is anything healthier? <span style="color:#8BE5E1;">No — it's #1</span></div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>03</b> / 10</span></div>
+</div>
+
+<!-- 04 FORM 1 -->
+<div class="slide">
+  <div class="idx">FORM · 1</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Short adjectives · the … -est</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:150px;">
+    <div style="font-size:17px; color:#A8AEBA; margin-bottom:18px;">Short adjectives → <span class="teal">the</span> + adjective + <span class="teal">-est</span>:</div>
+    <div class="panel" style="padding:22px 30px;">
+      <div class="serif" style="font-size:22px; color:#F1EFE8; line-height:1.9;">cheap → <span class="teal">the cheapest</span> &nbsp;·&nbsp; fast → <span class="teal">the fastest</span> &nbsp;·&nbsp; old → <span class="teal">the oldest</span></div>
+    </div>
+    <div style="margin-top:20px; font-size:15px; color:#8A92A0; margin-bottom:12px;">⚠ Same spelling rules as comparatives:</div>
+    <div style="display:flex; gap:16px;">
+      <div class="panel" style="flex:1; padding:18px 22px;"><div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px; margin-bottom:8px;">-e → -st</div><div class="serif" style="font-size:18px; color:#EAE7DF;">nice → the nicest<br>large → the largest</div></div>
+      <div class="panel" style="flex:1; padding:18px 22px;"><div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px; margin-bottom:8px;">double consonant</div><div class="serif" style="font-size:18px; color:#EAE7DF;">big → the bi<span class="gold">gg</span>est<br>fit → the fi<span class="gold">tt</span>est</div></div>
+      <div class="panel" style="flex:1; padding:18px 22px;"><div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px; margin-bottom:8px;">-y → -iest 🩺</div><div class="serif" style="font-size:18px; color:#EAE7DF;">healthy → the health<span class="gold">iest</span><br>easy → the eas<span class="gold">iest</span></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>04</b> / 10</span></div>
+</div>
+
+<!-- 05 FORM 2 -->
+<div class="slide">
+  <div class="idx">FORM · 2</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Long adjectives, irregulars &amp; "the least"</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:148px;">
+    <div style="font-size:16px; color:#A8AEBA; margin-bottom:12px;">Long adjectives → <span class="gold">the most</span> + adjective:</div>
+    <div class="panel" style="padding:18px 28px; margin-bottom:18px;">
+      <div class="serif" style="font-size:20px; color:#F1EFE8; line-height:1.7;">important → <span class="gold">the most</span> important &nbsp;·&nbsp; effective → <span class="gold">the most</span> effective</div>
+    </div>
+    <div style="display:flex; gap:14px; margin-bottom:16px;">
+      <div class="panel" style="flex:1; padding:16px; text-align:center;"><div class="serif" style="font-size:18px; color:#EAE7DF;">good → <span class="rose">the best</span></div></div>
+      <div class="panel" style="flex:1; padding:16px; text-align:center;"><div class="serif" style="font-size:18px; color:#EAE7DF;">bad → <span class="rose">the worst</span></div></div>
+      <div class="panel" style="flex:1; padding:16px; text-align:center;"><div class="serif" style="font-size:18px; color:#EAE7DF;">far → <span class="rose">the furthest</span></div></div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 <strong>the least</strong> = the opposite of the most: "Fast food is <span class="teal">the least healthy</span> option on the menu."</div></div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>05</b> / 10</span></div>
+</div>
+
+<!-- 06 PRONUNCIATION -->
+<div class="slide">
+  <div class="idx">SOUND</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Say it naturally</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:150px;">
+    <div style="display:flex; gap:16px; margin-bottom:20px;">
+      <div class="panel" style="flex:1; padding:22px; text-align:center;"><div style="font-size:12px; color:#5ED0CC; font-weight:800; letter-spacing:1px;">-EST = /ɪst/</div><div class="serif" style="font-size:22px; color:#EAE7DF; margin-top:10px;">healthiest /ˈhelθiɪst/</div><div style="font-size:13px; color:#8A92A0; margin-top:4px;">weak ending — don't over-stress it</div></div>
+      <div class="panel" style="flex:1; padding:22px; text-align:center;"><div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px;">the = /ðə/</div><div class="serif" style="font-size:22px; color:#EAE7DF; margin-top:10px;">the most /ðə məʊst/</div><div style="font-size:13px; color:#8A92A0; margin-top:4px;">soft "th" 👅 — quick and weak</div></div>
+      <div class="panel" style="flex:1; padding:22px; text-align:center;"><div style="font-size:12px; color:#E89A9A; font-weight:800; letter-spacing:1px;">STRESS</div><div class="serif" style="font-size:22px; color:#EAE7DF; margin-top:10px;">the <span class="rose">HEALTH</span>iest</div><div style="font-size:13px; color:#8A92A0; margin-top:4px;">on the adjective root</div></div>
+    </div>
+    <div class="panel" style="padding:22px 30px; border-left:3px solid #E3B45A;">
+      <div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:2px; margin-bottom:12px;">↻ DRILL — repeat</div>
+      <div class="serif" style="font-size:23px; color:#F1EFE8; line-height:1.8;">"Water is <strong class="teal">the HEALTH</strong>iest drink." · "Sleep is <strong class="gold">the most imPOR</strong>tant habit."</div>
+    </div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>06</b> / 10</span></div>
+</div>
+
+<!-- 07 READ ALOUD -->
+<div class="slide">
+  <div class="idx">READ ALOUD</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Read in pairs · superlatives + pronunciation</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:145px; display:flex; gap:18px;">
+    <div class="panel" style="flex:1; padding:22px 26px;">
+      <div style="font-family:'Space Grotesk'; font-size:13px; color:#5ED0CC; font-weight:700; letter-spacing:1px; margin-bottom:14px;">💬 Getting fit</div>
+      <div class="serif" style="font-size:16px; color:#E2E0D8; line-height:1.95;">
+        <strong class="teal">A:</strong> What's <u>the best</u> exercise for beginners?<br>
+        <strong class="gold">B:</strong> Walking! It's <u>the easiest</u> and <u>the cheapest</u> — no gym needed.<br>
+        <strong class="teal">A:</strong> And swimming is one of <u>the healthiest</u>, isn't it?<br>
+        <strong class="gold">B:</strong> Yes. But for me, sleep is <u>the most important</u> thing of all.<br>
+        <strong class="teal">A:</strong> And <u>the worst</u> habit?<br>
+        <strong class="gold">B:</strong> Sugar — <u>the least healthy</u> thing in my diet!
+      </div>
+    </div>
+    <div class="panel" style="flex:1; padding:22px 26px;">
+      <div style="font-family:'Space Grotesk'; font-size:13px; color:#E3B45A; font-weight:700; letter-spacing:1px; margin-bottom:14px;">💬 At the café</div>
+      <div class="serif" style="font-size:16px; color:#E2E0D8; line-height:1.95;">
+        <strong class="teal">A:</strong> This smoothie is <u>the most delicious</u> drink on the menu!<br>
+        <strong class="gold">B:</strong> And it's <u>the healthiest</u>, too. 🥤<br>
+        <strong class="teal">A:</strong> What's <u>the worst</u> choice here?<br>
+        <strong class="gold">B:</strong> The chocolate cake — <u>the tastiest</u>, but <u>the least healthy</u>! 🍫
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; left:64px; right:64px; bottom:78px;"><div style="font-size:14px; color:#8A92A0;">🎯 Swap roles and read again. Keep <span class="gold">the</span> /ðə/ weak, <span class="teal">-est</span> soft — stress the <span class="rose">adjective</span>.</div></div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>07</b> / 10</span></div>
+</div>
+
+<!-- 08 PRACTICE -->
+<div class="slide">
+  <div class="idx">PRACTICE</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Your turn · open the link</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:175px;">
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:48px; color:#5ED0CC; width:80px;">01</div><div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">Make the superlative</div><div style="font-size:14px; color:#8A92A0;">the -est or the most…? + spelling 🩺</div></div></div>
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:48px; color:#E3B45A; width:80px;">02</div><div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">Choose the correct sentence</div><div style="font-size:14px; color:#8A92A0;">spot "most healthy", "most healthiest", missing "the" ✅</div></div></div>
+    <div style="display:flex; align-items:center; gap:28px; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:48px; color:#E89A9A; width:80px;">03</div><div><div style="font-size:22px; color:#F1EFE8; font-weight:700;">Complete the conversation</div><div style="font-size:14px; color:#8A92A0;">a health chat, in superlatives 💬</div></div></div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>08</b> / 10</span></div>
+</div>
+
+<!-- 09 SPEAKING -->
+<div class="slide">
+  <div class="idx">SPEAK</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Freer practice · your healthiest life</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:160px; display:flex; gap:22px;">
+    <div class="panel" style="flex:1; padding:28px 32px; border-top:3px solid #E3B45A;">
+      <div style="font-family:'Space Grotesk'; font-size:18px; color:#E3B45A; font-weight:700; margin-bottom:12px;">Round 1 — your top &amp; bottom</div>
+      <div style="font-size:16px; color:#D6D4CC; line-height:1.95;">What's…<br>🥗 the healthiest thing in your diet?<br>😴 the most important habit for you?<br>🍫 the worst thing you eat?<br><span style="font-size:13px; color:#8A92A0;">"For me, ___ is the ___."</span></div>
+    </div>
+    <div class="panel" style="flex:1; padding:28px 32px; border-top:3px solid #5ED0CC;">
+      <div style="font-family:'Space Grotesk'; font-size:18px; color:#5ED0CC; font-weight:700; margin-bottom:12px;">Round 2 — the best of…</div>
+      <div style="font-size:16px; color:#D6D4CC; line-height:1.95;">Agree on the best answer:<br>the best exercise? the healthiest breakfast?<br>the easiest way to reduce stress?<br><span style="font-size:13px; color:#8A92A0;">Give reasons — use because!</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>09</b> / 10</span></div>
+</div>
+
+<!-- 10 WRAP-UP / FIX-IT -->
+<div class="slide">
+  <div class="idx">REVIEW</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Find &amp; fix · the classic mistakes</div></div>
+  <div style="position:absolute; left:64px; top:155px; width:680px;">
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">01</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"Water is the most healthy drink."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">02</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"Sleep is the most importantest habit."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">03</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"This is best gym in town."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">04</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"Sugar is the baddest food for teeth."</span></div>
+  </div>
+  <div class="panel" style="position:absolute; right:64px; top:160px; width:400px; padding:28px; border-left:3px solid #E3B45A;">
+    <div style="font-size:13px; letter-spacing:2px; color:#E3B45A; font-weight:800; margin-bottom:12px;">TODAY</div>
+    <div style="font-size:16px; color:#E2E0D8; line-height:1.7;">Short adj → <span class="teal">the -est</span>. Long adj → <span class="gold">the most</span>. Always <strong style="color:#fff;">the</strong>! 🏆</div>
+    <div style="margin-top:14px; font-size:13px; color:#8A92A0; line-height:1.6;">🇪🇸 Not always <em>el más</em> — don't say "the most healthy"!</div>
+  </div>
+  <div style="position:absolute; left:64px; bottom:78px; font-size:15px; color:#A8AEBA;">✏️ &nbsp;Fix each one aloud. Next time: <em style="color:#EAE7DF;">"the … I've ever …"</em> (Part 2)!</div>
+  <div class="foot"><span>Superlatives · Part 1</span><span><b>10</b> / 10</span></div>
+</div>
+
+</body>
+</html>
