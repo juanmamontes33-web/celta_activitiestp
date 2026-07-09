@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparatives — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(135% 90% at 85% -5%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%); min-height:100vh; padding:40px 18px 70px; color:#EAE7DF; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9097A4; font-weight:800; margin-bottom:14px; }
+.kick::before { content:''; width:32px; height:2px; background:#E3B45A; }
+.head h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:#F1EFE8; letter-spacing:-1px; }
+.head h1 span { color:#E3B45A; }
+.head p { font-size:14px; color:#9097A4; margin-top:10px; }
+.tabs { display:flex; gap:0; margin:26px 0; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:14px 20px; cursor:pointer; display:flex; align-items:center; gap:10px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6D4CC; }
+.tab.active { border-bottom-color:#E3B45A; }
+.tab.active .tab-num { color:#E3B45A; } .tab.active .tab-label { color:#F1EFE8; }
+.tab.done .tab-num { color:#9FE6A6; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:18px; color:#5C6473; }
+.tab-label { font-size:13.5px; font-weight:800; color:#8A92A0; letter-spacing:0.3px; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:22px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A8AEBA; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.gap { display:flex; align-items:center; gap:12px; padding:13px 4px; border-bottom:1px solid rgba(255,255,255,0.07); font-size:16px; color:#E2E0D8; flex-wrap:wrap; }
+.gap .num { font-family:'Space Grotesk'; font-weight:700; color:#5C6473; }
+.gap .adj { font-family:'Lora',serif; font-style:italic; color:#8BE5E1; min-width:120px; }
+.gap .arrow { color:#56607a; }
+.gap input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:10px; padding:7px 14px; color:#fff; width:210px; }
+.gap input:focus { outline:none; border-color:#5ED0CC; }
+.gap input.ok { border-color:#7FD68A; background:rgba(120,210,130,0.12); color:#A8E8AE; }
+.gap input.no { border-color:#E89A9A; background:rgba(232,154,154,0.1); color:#F0B6B6; }
+.gap .fix { font-size:13px; color:#7FD68A; display:none; }
+.gap .fix.show { display:inline; }
+
+.q2 { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q2-label { font-size:12px; font-weight:800; color:#6B7484; letter-spacing:1px; margin-bottom:10px; }
+.q2-opt { display:block; width:100%; text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:12px; padding:13px 18px; margin-bottom:8px; font-size:15px; color:#E2E0D8; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#E3B45A; background:rgba(227,180,90,0.06); }
+.q2-opt.sel { border-color:#E3B45A; background:rgba(227,180,90,0.1); border-width:2px; }
+.q2-opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.q2-opt.wrong { border-color:#E89A9A !important; background:rgba(232,154,154,0.1) !important; color:#F0B6B6 !important; }
+
+.convo { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.09); border-radius:16px; padding:22px 28px; margin-bottom:8px; }
+.cline { font-family:'Lora',serif; font-size:17px; color:#E2E0D8; line-height:2.5; }
+.cline .sp { font-family:'Nunito'; font-weight:800; font-style:normal; }
+.cline .sp.a { color:#5ED0CC; } .cline .sp.b { color:#E3B45A; }
+.cline .cadj { font-family:'Nunito'; font-size:12px; font-style:normal; color:#8A92A0; }
+.cline input { font-family:'Nunito'; font-weight:700; font-size:14px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:8px; padding:4px 10px; color:#fff; width:150px; }
+.cline input:focus { outline:none; border-color:#5ED0CC; }
+.cline input.ok { border-color:#7FD68A; background:rgba(120,210,130,0.12); color:#A8E8AE; }
+.cline input.no { border-color:#E89A9A; background:rgba(232,154,154,0.1); color:#F0B6B6; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:26px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-primary { background:#E3B45A; color:#1a1d2a; } .btn-primary:hover { background:#edc879; }
+.btn-secondary { background:transparent; color:#9097A4; border:1px solid rgba(255,255,255,0.15); } .btn-secondary:hover { border-color:#E3B45A; color:#fff; }
+.score { font-size:14px; color:#A8AEBA; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E3B45A; font-weight:800; } .score.bad { color:#F0B6B6; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Grammar Practice · B1 → B2 · Comparatives</div>
+    <h1>Bigger, better, <span>faster</span> 🚀</h1>
+    <p>Short adjective → -er. Long adjective → more. Always + than. Three parts — check as you go.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Make the comparative</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Choose the correct one</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Complete the conversation</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#E3B45A;">Make the comparative ✍️</div>
+    <div class="sub" style="border-color:#E3B45A; color:#efc872;">Write the comparative form. Watch the spelling — and use <em>more</em> for long adjectives!</div>
+    <div id="p1"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP1()">Check answers</button><button class="btn btn-secondary" onclick="resetP1()">Reset</button><span class="score" id="score1"></span></div>
+  </div>
+
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5ED0CC;">Choose the correct sentence ✅</div>
+    <div class="sub" style="border-color:#5ED0CC; color:#9fe6e2;">One sentence in each pair is correct. Watch for "more big", "more taller", "gooder" and "than / that".</div>
+    <div id="p2"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP2()">Check answers</button><button class="btn btn-secondary" onclick="resetP2()">Reset</button><span class="score" id="score2"></span></div>
+  </div>
+
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#E89A9A;">Complete the conversation 💬</div>
+    <div class="sub" style="border-color:#E89A9A; color:#f0b6b6;">Put each adjective in brackets into the comparative. Then read the conversation aloud!</div>
+    <div id="p3"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP3()">Check answers</button><button class="btn btn-secondary" onclick="resetP3()">Reset</button><span class="score" id="score3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' '); }
+
+/* PART 1 */
+const P1 = [
+  {adj:"cheap", accept:["cheaper"]},
+  {adj:"big", accept:["bigger"]},
+  {adj:"happy", accept:["happier"]},
+  {adj:"expensive", accept:["more expensive"]},
+  {adj:"good", accept:["better"]},
+  {adj:"easy", accept:["easier"]},
+  {adj:"hot", accept:["hotter"]},
+  {adj:"modern", accept:["more modern"]},
+  {adj:"far", accept:["further","farther"]},
+  {adj:"interesting", accept:["more interesting"]}
+];
+function renderP1(){
+  const c=document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='gap';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="adj">${g.adj}</span><span class="arrow">→</span><input id="g${i}" autocomplete="off"><span class="fix" id="gf${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let p1checked=false;
+function checkP1(){
+  p1checked=true; let correct=0;
+  P1.forEach((g,i)=>{
+    const inp=document.getElementById('g'+i); const val=norm(inp.value);
+    const ok=g.accept.map(norm).includes(val);
+    inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true;
+    const fx=document.getElementById('gf'+i);
+    if(ok){ correct++; } else { fx.textContent='→ '+g.accept[0]; fx.classList.add('show'); }
+  });
+  const s=document.getElementById('score1'); s.textContent=`${correct} / ${P1.length} correct`+(correct===P1.length?' 🎉':'');
+  s.className='score '+(correct===P1.length?'good':(correct>=5?'partial':'bad')); if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+/* PART 2 */
+const P2 = [
+  {opts:["This car is more fast than that one.","This car is faster than that one."], correct:1},
+  {opts:["My house is bigger than yours.","My house is more bigger than yours."], correct:0},
+  {opts:["Today is gooder than yesterday.","Today is better than yesterday."], correct:1},
+  {opts:["She is more intelligent than her brother.","She is intelligenter than her brother."], correct:0},
+  {opts:["This book is more interesting that the film.","This book is more interesting than the film."], correct:1},
+  {opts:["Coffee is cheaper than tea here.","Coffee is more cheap than tea here."], correct:0}
+];
+let p2sel={}; let p2checked=false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,qi)=>{
+    const box=document.createElement('div'); box.className='q2';
+    box.innerHTML=`<div class="q2-label">PAIR ${String(qi+1).padStart(2,'0')}</div>`;
+    q.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='q2-opt'+(p2sel[qi]===oi?' sel':''); b.textContent=o; if(!p2checked) b.onclick=()=>{ p2sel[qi]=oi; renderP2(); }; box.appendChild(b); });
+    c.appendChild(box);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0; const boxes=document.querySelectorAll('#p2 .q2');
+  P2.forEach((q,qi)=>{ const opts=boxes[qi].querySelectorAll('.q2-opt'); opts.forEach((o,oi)=>{ if(oi===q.correct) o.classList.add('correct'); else if(p2sel[qi]===oi) o.classList.add('wrong'); }); if(p2sel[qi]===q.correct) correct++; });
+  const s=document.getElementById('score2'); s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad')); if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+/* PART 3 — complete the conversation */
+const P3 = [
+  {sp:'a', pre:"Which laptop should I buy?"},
+  {sp:'b', pre:"Well, this one is ", adj:"cheap", accept:["cheaper"], post:" than that one."},
+  {sp:'a', pre:"But that one is ", adj:"fast", accept:["faster"], post:", and it has a ", adj2:"good", accept2:["better"], post2:" screen."},
+  {sp:'b', pre:"True, but it's ", adj:"expensive", accept:["more expensive"], post:" and much ", adj2:"heavy", accept2:["heavier"], post2:"."},
+  {sp:'a', pre:"You're right. The cheaper one is ", adj:"light", accept:["lighter"], post:" and ", adj2:"easy", accept2:["easier"], post2:" to carry!"}
+];
+function renderP3(){
+  const c=document.getElementById('p3'); c.innerHTML='';
+  const box=document.createElement('div'); box.className='convo';
+  P3.forEach((line,i)=>{
+    const div=document.createElement('div'); div.className='cline';
+    let html=`<span class="sp ${line.sp}">${line.sp.toUpperCase()}:</span> ${line.pre||''}`;
+    if(line.adj){ html+=`<input id="c${i}a" autocomplete="off"> <span class="cadj">(${line.adj})</span>`; }
+    if(line.post) html+=line.post;
+    if(line.adj2){ html+=`<input id="c${i}b" autocomplete="off"> <span class="cadj">(${line.adj2})</span>`; }
+    if(line.post2) html+=line.post2;
+    div.innerHTML=html; box.appendChild(div);
+  });
+  c.appendChild(box);
+}
+let p3checked=false;
+function checkP3(){
+  p3checked=true; let correct=0, total=0;
+  P3.forEach((line,i)=>{
+    if(line.adj){ total++; const inp=document.getElementById('c'+i+'a'); const ok=line.accept.map(norm).includes(norm(inp.value)); inp.classList.add(ok?'ok':'no'); inp.disabled=true; if(ok) correct++; }
+    if(line.adj2){ total++; const inp=document.getElementById('c'+i+'b'); const ok=line.accept2.map(norm).includes(norm(inp.value)); inp.classList.add(ok?'ok':'no'); inp.disabled=true; if(ok) correct++; }
+  });
+  const s=document.getElementById('score3'); s.textContent=`${correct} / ${total} correct`+(correct===total?' — now read it aloud! 🎉':'');
+  s.className='score '+(correct===total?'good':(correct>=Math.ceil(total/2)?'partial':'bad')); if(correct===total) markDone(2);
+}
+function resetP3(){ p3checked=false; document.getElementById('score3').textContent=''; renderP3(); }
+
+renderP1(); renderP2(); renderP3();
+</script>
+</body>
+</html>
