@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Tenses — Final Exam</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(135% 80% at 85% -5%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%); min-height:100vh; padding:40px 18px 80px; color:#EAE7DF; }
+.wrap { max-width:900px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9097A4; font-weight:800; margin-bottom:14px; }
+.kick::before { content:''; width:32px; height:2px; background:#E3B45A; }
+
+/* intro */
+.intro { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:22px; padding:38px 44px; margin-bottom:26px; position:relative; overflow:hidden; }
+.intro::after { content:'EXAM'; position:absolute; right:30px; bottom:-30px; font-family:'Fredoka One'; font-size:140px; color:rgba(255,255,255,0.03); }
+.intro h1 { font-family:'Fredoka One',cursive; font-size:36px; color:#F1EFE8; line-height:1.08; position:relative; }
+.intro h1 span { color:#E3B45A; }
+.intro .lead { font-size:15.5px; color:#B8BDC8; line-height:1.7; margin-top:14px; max-width:680px; position:relative; }
+.meta { display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; position:relative; }
+.mchip { border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:12px 18px; }
+.mchip .l { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8A92A0; font-weight:800; }
+.mchip .v { font-size:17px; font-weight:800; color:#F1EFE8; margin-top:3px; }
+.mchip .v.t { color:#5ED0CC; } .mchip .v.g { color:#E3B45A; }
+
+.partbar { display:flex; align-items:center; gap:16px; margin:34px 0 18px; }
+.partbar .pn { font-family:'Fredoka One'; font-size:13px; color:#1a1d2a; background:#E3B45A; padding:6px 14px; border-radius:20px; }
+.partbar h2 { font-family:'Fredoka One',cursive; font-size:24px; color:#F1EFE8; }
+.partbar .time { margin-left:auto; font-size:13px; color:#8A92A0; font-weight:800; letter-spacing:1px; }
+
+.task { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:28px 32px; margin-bottom:18px; }
+.task .th { display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+.task .tnum { font-family:'Space Grotesk'; font-weight:700; font-size:20px; color:#5ED0CC; }
+.task .ttitle { font-family:'Fredoka One'; font-size:18px; color:#F1EFE8; }
+.task .tinstr { font-size:13.5px; color:#9097A4; margin-bottom:20px; line-height:1.6; }
+
+/* gap fill */
+.gap { padding:11px 4px; border-bottom:1px solid rgba(255,255,255,0.06); font-size:16px; color:#E2E0D8; line-height:2; }
+.gap .num { font-family:'Space Grotesk'; font-weight:700; color:#5C6473; margin-right:10px; }
+.gap input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:10px; padding:6px 12px; color:#fff; width:170px; margin:0 4px; }
+.gap input:focus { outline:none; border-color:#5ED0CC; }
+.gap input.ok { border-color:#7FD68A; background:rgba(120,210,130,0.12); color:#A8E8AE; }
+.gap input.no { border-color:#E89A9A; background:rgba(232,154,154,0.1); color:#F0B6B6; }
+.gap .verb { color:#E3B45A; font-style:italic; font-size:14px; }
+.gap .fix { font-size:13px; color:#7FD68A; margin-left:8px; display:none; }
+.gap .fix.show { display:inline; }
+
+/* match (dropdown) */
+.mrow { display:flex; align-items:center; gap:14px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+.mrow .num { font-family:'Space Grotesk'; font-weight:700; color:#5C6473; }
+.mrow .sent { flex:1; font-size:15.5px; color:#E2E0D8; }
+.mrow select { font-family:'Nunito'; font-weight:700; font-size:14px; background:#22242f; border:1.5px solid #3a4250; border-radius:10px; padding:8px 12px; color:#EAE7DF; cursor:pointer; min-width:200px; }
+.mrow select:focus { outline:none; border-color:#5ED0CC; }
+.mrow select.ok { border-color:#7FD68A; color:#A8E8AE; } .mrow select.no { border-color:#E89A9A; color:#F0B6B6; }
+
+/* mcq */
+.mcq { padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+.mcq .qt { font-size:15.5px; color:#E2E0D8; margin-bottom:10px; }
+.mcq .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#5C6473; margin-right:8px; }
+.mopts { display:flex; gap:8px; flex-wrap:wrap; }
+.mopt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:7px 16px; border-radius:30px; border:1.5px solid #3a4250; background:rgba(255,255,255,0.03); color:#C2C7D0; cursor:pointer; }
+.mopt:hover { border-color:#5ED0CC; color:#fff; }
+.mopt.sel { background:#5ED0CC; color:#0d1016; border-color:#5ED0CC; }
+.mopt.ok { background:rgba(120,210,130,0.16) !important; border-color:#7FD68A !important; color:#A8E8AE !important; }
+.mopt.no { background:rgba(232,154,154,0.14) !important; border-color:#E89A9A !important; color:#F0B6B6 !important; }
+
+/* submit + result */
+.submit { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin:26px 0; }
+.btn { font-family:'Nunito'; font-size:15px; font-weight:800; padding:13px 32px; border-radius:30px; cursor:pointer; border:none; }
+.btn-go { background:#5ED0CC; color:#0d1016; } .btn-go:hover { background:#7adcd8; }
+.btn-rs { background:transparent; color:#9097A4; border:1px solid rgba(255,255,255,0.15); } .btn-rs:hover { border-color:#5ED0CC; color:#fff; }
+.result { display:none; border-radius:18px; padding:26px 32px; margin-bottom:10px; border:1px solid; }
+.result.show { display:block; }
+.result h3 { font-family:'Fredoka One'; font-size:26px; margin-bottom:6px; }
+.result p { font-size:15px; color:#C2C7D0; line-height:1.6; }
+.result .big { font-family:'Space Grotesk'; font-weight:700; font-size:40px; }
+
+/* speaking */
+.spk { background:rgba(94,208,204,0.05); border:1px solid rgba(94,208,204,0.2); border-radius:18px; padding:28px 32px; }
+.spk .sq { display:flex; gap:16px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.spk .sq:last-child { border-bottom:none; }
+.spk .sqn { font-family:'Fredoka One'; font-size:26px; color:#5ED0CC; line-height:1; width:42px; flex-shrink:0; }
+.spk .sqt { font-size:16.5px; color:#E2E0D8; line-height:1.55; }
+.spk .sqt .tag { display:inline-block; font-size:11px; font-weight:800; letter-spacing:1px; color:#E3B45A; text-transform:uppercase; margin-left:6px; }
+.note { font-size:13px; color:#8A92A0; line-height:1.7; margin-top:18px; padding-left:16px; border-left:2px solid #E3B45A; }
+.foot { text-align:center; margin-top:34px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#5C6473; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="kick">English Course · B1 · Final Assessment</div>
+    <h1>English Tenses — <span>Final Exam</span></h1>
+    <div class="lead">This exam reviews every tense we have studied — <strong>past, present and future</strong>. There are two parts. Read each instruction carefully and do your best. Good luck! 🍀</div>
+    <div class="meta">
+      <div class="mchip"><div class="l">Part 1 · Theory</div><div class="v t">20 minutes</div></div>
+      <div class="mchip"><div class="l">Part 2 · Speaking</div><div class="v">5 questions</div></div>
+      <div class="mchip"><div class="l">Pass mark</div><div class="v g">70%</div></div>
+      <div class="mchip"><div class="l">Part 1 total</div><div class="v">20 points</div></div>
+    </div>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="partbar"><span class="pn">PART 1</span><h2>Theory — Grammar</h2><span class="time">⏱ 20 minutes · 20 points</span></div>
+
+  <!-- TASK 1: gap fill -->
+  <div class="task">
+    <div class="th"><span class="tnum">01</span><span class="ttitle">Fill in the blanks</span></div>
+    <div class="tinstr">Write the verb in brackets in the correct tense. (8 points)</div>
+    <div id="gaps"></div>
+  </div>
+
+  <!-- TASK 2: match -->
+  <div class="task">
+    <div class="th"><span class="tnum">02</span><span class="ttitle">Match each sentence to its tense</span></div>
+    <div class="tinstr">Choose the tense used in each sentence from the menu. (6 points)</div>
+    <div id="match"></div>
+  </div>
+
+  <!-- TASK 3: mcq -->
+  <div class="task">
+    <div class="th"><span class="tnum">03</span><span class="ttitle">Choose the correct option</span></div>
+    <div class="tinstr">Select the option that completes each sentence correctly. (6 points)</div>
+    <div id="mcq"></div>
+  </div>
+
+  <div class="submit">
+    <button class="btn btn-go" onclick="grade()">Submit Part 1</button>
+    <button class="btn btn-rs" onclick="resetExam()">Clear answers</button>
+  </div>
+  <div class="result" id="result"></div>
+
+  <!-- PART 2 -->
+  <div class="partbar"><span class="pn" style="background:#5ED0CC;">PART 2</span><h2>Speaking — Fluency &amp; Tenses</h2><span class="time">🎤 ~10 minutes</span></div>
+  <div class="spk">
+    <div style="font-size:14px; color:#B8BDC8; line-height:1.7; margin-bottom:16px;">Answer each question out loud in full sentences. You are graded on <strong style="color:#5ED0CC;">fluency</strong> and the <strong style="color:#5ED0CC;">correct, varied use of tenses</strong> — so try to use a range of past, present and future forms.</div>
+    <div class="sq"><div class="sqn">1</div><div class="sqt">Tell me about a memorable trip or event from your past. What happened, and what were you doing at the time? <span class="tag">past tenses</span></div></div>
+    <div class="sq"><div class="sqn">2</div><div class="sqt">Describe your typical week. What do you usually do, and what are you working on these days? <span class="tag">present simple / continuous</span></div></div>
+    <div class="sq"><div class="sqn">3</div><div class="sqt">What is something you have achieved or learned recently? How long have you been doing it? <span class="tag">present perfect</span></div></div>
+    <div class="sq"><div class="sqn">4</div><div class="sqt">What are your plans for the next year, and what do you think will happen in the world? <span class="tag">going to / will</span></div></div>
+    <div class="sq"><div class="sqn">5</div><div class="sqt">Imagine your life in five years. What will you be doing, and what will you have achieved by then? <span class="tag">future continuous / perfect</span></div></div>
+    <div class="note">💡 Take a few seconds to think before each answer. Speaking naturally and keeping going matters as much as being perfectly accurate.</div>
+  </div>
+
+  <div class="foot">English Tenses Final Exam · Part 1 + Part 2</div>
+</div>
+
+<script>
+/* ===== TASK 1: GAP FILL ===== */
+const GAPS = [
+  {pre:"Right now, I", post:"(study) for my exam.", verb:"study", accept:["am studying","'m studying","i am studying","i'm studying"]},
+  {pre:"Yesterday, we", post:"(go) to the cinema.", verb:"go", accept:["went"]},
+  {pre:"She", post:"(live) in Paris since 2019.", verb:"live", accept:["has lived","'s lived","has been living"]},
+  {pre:"When I was a child, I", post:"(use to) play in the park.", verb:"use to", accept:["used to"]},
+  {pre:"While I was cooking, the phone", post:"(ring).", verb:"ring", accept:["rang"]},
+  {pre:"Look at the clouds! It", post:"(rain) soon.", verb:"rain", accept:["is going to rain","'s going to rain","is gonna rain"]},
+  {pre:"This time tomorrow, I", post:"(fly) to Madrid.", verb:"fly", accept:["will be flying","'ll be flying","will be flyin"]},
+  {pre:"By 2030, she", post:"(finish) her degree.", verb:"finish", accept:["will have finished","'ll have finished"]}
+];
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function renderGaps(){
+  const c=document.getElementById('gaps'); c.innerHTML='';
+  GAPS.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='gap';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span> ${g.pre} <input id="g${i}" autocomplete="off"> ${g.post} <span class="verb">(${g.verb})</span><span class="fix" id="gf${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+
+/* ===== TASK 2: MATCH ===== */
+const TENSES = ["Present Simple","Present Continuous","Past Simple","Past Continuous","Present Perfect","Future (will / going to)","Future Continuous","Future Perfect"];
+const MATCH = [
+  {s:"\u201CThey have just arrived at the airport.\u201D", ans:"Present Perfect"},
+  {s:"\u201CWe were watching TV when she called.\u201D", ans:"Past Continuous"},
+  {s:"\u201CI\u2019ll be working at 9pm tonight.\u201D", ans:"Future Continuous"},
+  {s:"\u201CHe usually takes the bus to work.\u201D", ans:"Present Simple"},
+  {s:"\u201CBy Friday, I\u2019ll have sent the report.\u201D", ans:"Future Perfect"},
+  {s:"\u201CThey bought a new car last week.\u201D", ans:"Past Simple"}
+];
+function renderMatch(){
+  const c=document.getElementById('match'); c.innerHTML='';
+  MATCH.forEach((m,i)=>{
+    const row=document.createElement('div'); row.className='mrow';
+    let opts='<option value="">— choose tense —</option>'+TENSES.map(t=>`<option value="${t}">${t}</option>`).join('');
+    row.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="sent">${m.s}</span><select id="m${i}">${opts}</select>`;
+    c.appendChild(row);
+  });
+}
+
+/* ===== TASK 3: MCQ ===== */
+const MCQ = [
+  {q:"If it rains tomorrow, we ___ at home.", opts:["will stay","stay","will staying"], ans:0},
+  {q:"I ___ that film three times. It\u2019s great!", opts:["saw","have seen","am seeing"], ans:1},
+  {q:"Listen! Someone ___ the piano.", opts:["plays","is playing","played"], ans:1},
+  {q:"She ___ meat. She\u2019s a vegetarian.", opts:["doesn\u2019t eat","isn\u2019t eating","didn\u2019t eat"], ans:0},
+  {q:"I\u2019ve decided — I ___ visit my family this weekend.", opts:["will","\u2019m going to","be going"], ans:1},
+  {q:"By the time you arrive, I ___ dinner.", opts:["will cook","cook","will have cooked"], ans:2}
+];
+let mcqSel={};
+function renderMcq(){
+  const c=document.getElementById('mcq'); c.innerHTML='';
+  MCQ.forEach((m,i)=>{
+    const d=document.createElement('div'); d.className='mcq';
+    const opts=m.opts.map((o,oi)=>`<span class="mopt" data-q="${i}" data-o="${oi}">${o}</span>`).join('');
+    d.innerHTML=`<div class="qt"><span class="num">${String(i+1).padStart(2,'0')}</span>${m.q}</div><div class="mopts">${opts}</div>`;
+    c.appendChild(d);
+  });
+  document.querySelectorAll('.mopt').forEach(el=>{
+    el.onclick=()=>{ if(graded) return; const q=el.dataset.q;
+      document.querySelectorAll(`.mopt[data-q="${q}"]`).forEach(x=>x.classList.remove('sel'));
+      el.classList.add('sel'); mcqSel[q]=parseInt(el.dataset.o); };
+  });
+}
+
+let graded=false;
+function grade(){
+  graded=true; let score=0;
+  // task 1
+  GAPS.forEach((g,i)=>{
+    const inp=document.getElementById('g'+i); const val=norm(inp.value);
+    const ok = g.accept.map(norm).includes(val);
+    inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true;
+    const fx=document.getElementById('gf'+i);
+    if(ok){ score++; } else { fx.textContent='→ '+g.accept[0]; fx.classList.add('show'); }
+  });
+  // task 2
+  MATCH.forEach((m,i)=>{
+    const sel=document.getElementById('m'+i); const ok = sel.value===m.ans;
+    sel.classList.remove('ok','no'); sel.classList.add(ok?'ok':'no'); sel.disabled=true;
+    if(ok) score++;
+  });
+  // task 3
+  MCQ.forEach((m,i)=>{
+    document.querySelectorAll(`.mopt[data-q="${i}"]`).forEach((el,oi)=>{
+      if(oi===m.ans) el.classList.add('ok');
+      else if(mcqSel[i]===oi) el.classList.add('no');
+    });
+    if(mcqSel[i]===m.ans) score++;
+  });
+  const total=GAPS.length+MATCH.length+MCQ.length;
+  const pct=Math.round(score/total*100);
+  const pass=pct>=70;
+  const r=document.getElementById('result');
+  r.style.borderColor = pass ? '#7FD68A' : '#E89A9A';
+  r.style.background = pass ? 'rgba(120,210,130,0.08)' : 'rgba(232,154,154,0.07)';
+  r.innerHTML = `<h3 style="color:${pass?'#A8E8AE':'#F0B6B6'};">${pass?'PASS ✓':'NOT YET ✗'}</h3>
+    <p><span class="big" style="color:${pass?'#A8E8AE':'#F0B6B6'};">${pct}%</span> &nbsp; (${score} / ${total} correct)</p>
+    <p style="margin-top:8px;">Pass mark is <strong>70%</strong>. ${pass?'Well done — on to the speaking part! 🎤':'Review the highlighted answers, then try Part 2 with your teacher.'}</p>`;
+  r.classList.add('show');
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+function resetExam(){
+  graded=false; mcqSel={};
+  renderGaps(); renderMatch(); renderMcq();
+  document.getElementById('result').classList.remove('show');
+}
+
+renderGaps(); renderMatch(); renderMcq();
+</script>
+</body>
+</html>

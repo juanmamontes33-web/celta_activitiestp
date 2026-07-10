@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Perfect — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(135% 90% at 85% -5%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%); min-height:100vh; padding:40px 18px 70px; color:#EAE7DF; }
+.wrap { max-width:880px; margin:0 auto; }
+.head { margin-bottom:26px; }
+.kick { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9097A4; font-weight:800; margin-bottom:14px; }
+.kick::before { content:''; width:32px; height:2px; background:#E3B45A; }
+.head h1 { font-family:'Fredoka One',cursive; font-size:34px; color:#F1EFE8; line-height:1.05; }
+.head h1 span { color:#E3B45A; }
+.head p { font-size:14px; color:#9097A4; margin-top:10px; }
+.tabs { display:flex; gap:0; margin-bottom:26px; border-bottom:1px solid rgba(255,255,255,0.1); }
+.tab { padding:14px 22px; cursor:pointer; display:flex; align-items:center; gap:10px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6D4CC; }
+.tab.active { border-bottom-color:#E3B45A; }
+.tab.active .tab-num { color:#E3B45A; } .tab.active .tab-label { color:#F1EFE8; }
+.tab.done .tab-num { color:#9FE6A6; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:18px; color:#5C6473; }
+.tab-label { font-size:13.5px; font-weight:800; color:#8A92A0; letter-spacing:0.5px; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Fredoka One',cursive; font-size:22px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A8AEBA; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:16px 0 16px 4px; border-bottom:1px solid rgba(255,255,255,0.07); font-size:16px; color:#E2E0D8; line-height:1.9; }
+.q .num { font-family:'Space Grotesk'; font-weight:700; margin-right:10px; color:#5C6473; }
+.q .cue { color:#7B8390; font-style:italic; font-size:14px; }
+.opts { display:inline-flex; gap:8px; margin:0 4px; flex-wrap:wrap; }
+.opt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:5px 14px; border-radius:30px; border:1.5px solid #3a4250; background:rgba(255,255,255,0.03); color:#C2C7D0; cursor:pointer; transition:all 0.12s; }
+.opt:hover { border-color:#E3B45A; color:#fff; }
+.opt.sel { background:#E3B45A; color:#1a1d2a; border-color:#E3B45A; }
+.opt.correct { background:rgba(120,210,130,0.16) !important; border-color:#7FD68A !important; color:#A8E8AE !important; }
+.opt.wrong { background:rgba(232,154,154,0.14) !important; border-color:#E89A9A !important; color:#F0B6B6 !important; }
+.q2 { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q2-label { font-size:12px; font-weight:800; color:#6B7484; letter-spacing:1px; margin-bottom:10px; }
+.q2-opt { display:block; width:100%; text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:12px; padding:13px 18px; margin-bottom:8px; font-size:15px; color:#E2E0D8; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#E3B45A; background:rgba(227,180,90,0.06); }
+.q2-opt.sel { border-color:#E3B45A; background:rgba(227,180,90,0.1); border-width:2px; }
+.q2-opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.q2-opt.wrong { border-color:#E89A9A !important; background:rgba(232,154,154,0.1) !important; color:#F0B6B6 !important; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:26px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; transition:all 0.12s; }
+.btn-primary { background:#E3B45A; color:#1a1d2a; }
+.btn-primary:hover { background:#edc879; }
+.btn-secondary { background:transparent; color:#9097A4; border:1px solid rgba(255,255,255,0.15); }
+.btn-secondary:hover { border-color:#E3B45A; color:#fff; }
+.score { font-size:14px; color:#A8AEBA; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E3B45A; font-weight:800; } .score.bad { color:#F0B6B6; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Grammar Practice · B1 · Future Perfect</div>
+    <h1><span>will have + V3</span> 🏁</h1>
+    <p>An action finished before a future point. Three parts — check as you go.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Choose the form</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Which is correct?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Done or not yet?</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#E3B45A;">Choose the form ✍️</div>
+    <div class="sub" style="border-color:#E3B45A; color:#efc872;">Finished <strong>before</strong> the deadline → <strong>will have + V3</strong>. Pick the right one.</div>
+    <div id="p1"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP1()">Check answers</button><button class="btn btn-secondary" onclick="resetP1()">Reset</button><span class="score" id="score1"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5ED0CC;">Which is correct? ✅</div>
+    <div class="sub" style="border-color:#5ED0CC; color:#9fe6e2;">Three parts: <strong>will + have + V3</strong>. Watch the past participle (gone, not went).</div>
+    <div id="p2"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP2()">Check answers</button><button class="btn btn-secondary" onclick="resetP2()">Reset</button><span class="score" id="score2"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#E89A9A;">Done or not yet? 🧠</div>
+    <div class="sub" style="border-color:#E89A9A; color:#f0b6b6;">At that future point, is the action already <strong>complete</strong>? Choose what's true.</div>
+    <div id="p3"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP3()">Check answers</button><button class="btn btn-secondary" onclick="resetP3()">Reset</button><span class="score" id="score3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+const P1 = [
+  {pre:"By 2030, I ", post:" my degree.", cue:"(finished before 2030)", opts:["'ll have finished","'ll finish"], ans:"'ll have finished"},
+  {pre:"By the time you arrive, she ", post:" dinner.", cue:"(already done)", opts:["'ll have cooked","'ll be cooking"], ans:"'ll have cooked"},
+  {pre:"By next month, we ", post:" enough money.", cue:"(by + deadline)", opts:["save","'ll have saved"], ans:"'ll have saved"},
+  {pre:"By Friday, I ", post:" the report.", cue:"(irregular V3)", opts:["'ll have sent","'ll have send"], ans:"'ll have sent"},
+  {pre:"By the time he's 40, he ", post:" 30 countries.", cue:"(completed by then)", opts:["visits","'ll have visited"], ans:"'ll have visited"},
+  {pre:"By the time you read this, I ", post:".", cue:"(irregular V3: leave)", opts:["'ll have left","'ll leave"], ans:"'ll have left"},
+  {pre:"Don't worry — by 9pm the film ", post:".", cue:"(over by 9)", opts:["'ll have ended","ends"], ans:"'ll have ended"},
+  {pre:"By next year, ", post:" you ", cue:"(question)", opts:["will / have graduated","do / graduate"], ans:"will / have graduated"}
+];
+let p1sel={}; let p1checked=false;
+function renderP1(){ const c=document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((q,i)=>{ const div=document.createElement('div'); div.className='q';
+    div.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts';
+    q.opts.forEach(o=>{ const b=document.createElement('span'); b.className='opt'+(p1sel[i]===o?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(p1checked) return; p1sel[i]=o; renderP1(); }; opts.appendChild(b); });
+    div.appendChild(opts); div.insertAdjacentHTML('beforeend', `${q.post} <span class="cue">${q.cue}</span>`); c.appendChild(div); });
+}
+function checkP1(){ p1checked=true; let correct=0; const qs=document.querySelectorAll('#p1 .q');
+  P1.forEach((q,i)=>{ qs[i].querySelectorAll('.opt').forEach(o=>{ if(o.textContent===q.ans) o.classList.add('correct'); else if(o.classList.contains('sel')) o.classList.add('wrong'); }); if(p1sel[i]===q.ans) correct++; });
+  const s=document.getElementById('score1'); s.textContent=`${correct} / ${P1.length} correct`+(correct===P1.length?' — perfect! 🎉':''); s.className='score '+(correct===P1.length?'good':(correct>=4?'partial':'bad')); if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1sel={}; p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+const P2 = [
+  {opts:["By 2030 I'll have finish.","By 2030 I'll have finished."], correct:1},
+  {opts:["Will you have gone by then?","Will you have went by then?"], correct:0},
+  {opts:["By Friday she'll have sent it.","By Friday she'll sent it."], correct:0},
+  {opts:["By next year we won't have moved.","By next year we won't moved."], correct:0},
+  {opts:["By the time you arrive, I'll have cooked.","By the time you will arrive, I'll have cooked."], correct:0},
+  {opts:["By 10, they'll have finish the work.","By 10, they'll have finished the work."], correct:1}
+];
+let p2sel={}; let p2checked=false;
+function renderP2(){ const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,qi)=>{ const box=document.createElement('div'); box.className='q2';
+    const lab=document.createElement('div'); lab.className='q2-label'; lab.textContent='SENTENCE '+String(qi+1).padStart(2,'0'); box.appendChild(lab);
+    q.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='q2-opt'+(p2sel[qi]===oi?' sel':''); b.textContent=o; if(!p2checked) b.onclick=()=>{ p2sel[qi]=oi; renderP2(); }; box.appendChild(b); });
+    c.appendChild(box); });
+}
+function checkP2(){ p2checked=true; let correct=0; const boxes=document.querySelectorAll('#p2 .q2');
+  P2.forEach((q,qi)=>{ const opts=boxes[qi].querySelectorAll('.q2-opt'); opts.forEach((o,oi)=>{ if(oi===q.correct) o.classList.add('correct'); else if(p2sel[qi]===oi) o.classList.add('wrong'); }); if(p2sel[qi]===q.correct) correct++; });
+  const s=document.getElementById('score2'); s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' — excellent! 🎉':''); s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad')); if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+const P3 = [
+  {s:"By 8pm, I'll have eaten.", opts:["Dinner is finished by 8pm","I'll start eating at 8pm"], ans:0},
+  {s:"By 2030, she'll have graduated.", opts:["She starts university in 2030","She finishes before/by 2030"], ans:1},
+  {s:"By the time you call, I'll have left.", opts:["I leave before you call","I leave after you call"], ans:0},
+  {s:"By Friday, we'll have finished.", opts:["The work continues after Friday","The work is complete by Friday"], ans:1},
+  {s:"By midnight, the shop will have closed.", opts:["It closes before midnight","It opens at midnight"], ans:0},
+  {s:"By next week, I'll have read the book.", opts:["I start it next week","I complete it before next week"], ans:1}
+];
+let p3sel={}; let p3checked=false;
+function renderP3(){ const c=document.getElementById('p3'); c.innerHTML='';
+  P3.forEach((q,qi)=>{ const box=document.createElement('div'); box.className='q2';
+    box.innerHTML=`<div style="font-size:17px;font-weight:700;color:#F1EFE8;margin-bottom:10px;">"${q.s}"</div>`;
+    q.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='q2-opt'+(p3sel[qi]===oi?' sel':''); b.textContent=o; if(!p3checked) b.onclick=()=>{ p3sel[qi]=oi; renderP3(); }; box.appendChild(b); });
+    c.appendChild(box); });
+}
+function checkP3(){ p3checked=true; let correct=0; const boxes=document.querySelectorAll('#p3 .q2');
+  P3.forEach((q,qi)=>{ const opts=boxes[qi].querySelectorAll('.q2-opt'); opts.forEach((o,oi)=>{ if(oi===q.ans) o.classList.add('correct'); else if(p3sel[qi]===oi) o.classList.add('wrong'); }); if(p3sel[qi]===q.ans) correct++; });
+  const s=document.getElementById('score3'); s.textContent=`${correct} / ${P3.length} correct`+(correct===P3.length?' — you understand it! 🎉':''); s.className='score '+(correct===P3.length?'good':(correct>=3?'partial':'bad')); if(correct===P3.length) markDone(2);
+}
+function resetP3(){ p3sel={}; p3checked=false; document.getElementById('score3').textContent=''; renderP3(); }
+
+renderP1(); renderP2(); renderP3();
+</script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Have You Ever…? — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 100px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 30px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 17px; }
+.step-card { background: #fff; border-radius: 14px; padding: 16px 20px; border: 0.5px solid #E0DDD8; box-shadow: 0 3px 12px rgba(0,0,0,0.05); display: flex; gap: 14px; align-items: center; }
+.step-num { width: 36px; height: 36px; min-width: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka One', cursive; font-size: 17px; color: #fff; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#06202a,#1a1a2e,#0a2a3a);">
+  <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(0,172,193,0.16);"></div>
+  <div style="position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,179,0,0.12);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:620px;display:flex;flex-direction:column;justify-content:center;padding:60px;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#4DD0E1;font-weight:700;margin-bottom:18px;">Grammar · B1 · Speaking</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:54px;color:#fff;line-height:1.05;margin-bottom:14px;">Have you<br><span style="color:#FFD54F;">ever…?</span> 🌍</div>
+    <div style="font-size:17px;color:#a0a0c0;line-height:1.7;margin-bottom:30px;">Today we talk about the <strong style="color:#fff;">experiences</strong> of<br>your whole life — from the past, up to <em style="color:#4DD0E1;">now</em>.</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div style="background:rgba(0,172,193,0.18);border:1px solid rgba(77,208,225,0.4);border-radius:14px;padding:14px 20px;"><div style="font-size:12px;color:#4DD0E1;font-weight:700;margin-bottom:3px;">PRESENT PERFECT</div><div style="font-size:14px;color:#fff;font-weight:800;">have / has + V3</div></div>
+      <div style="background:rgba(255,179,0,0.16);border:1px solid rgba(255,213,79,0.4);border-radius:14px;padding:14px 20px;"><div style="font-size:12px;color:#FFD54F;font-weight:700;margin-bottom:3px;">FOR EXPERIENCES</div><div style="font-size:14px;color:#fff;font-weight:800;">ever · never</div></div>
+    </div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:680px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" width="560" height="560">
+      <circle cx="280" cy="280" r="250" fill="rgba(0,172,193,0.05)"/>
+      <!-- globe -->
+      <circle cx="280" cy="280" r="170" fill="#0a2a3a" stroke="#4DD0E1" stroke-width="2"/>
+      <ellipse cx="280" cy="280" rx="170" ry="64" fill="none" stroke="#4DD0E1" stroke-width="1.5" opacity="0.5"/>
+      <ellipse cx="280" cy="280" rx="170" ry="120" fill="none" stroke="#4DD0E1" stroke-width="1.5" opacity="0.5"/>
+      <line x1="110" y1="280" x2="450" y2="280" stroke="#4DD0E1" stroke-width="1.5" opacity="0.5"/>
+      <ellipse cx="280" cy="280" rx="64" ry="170" fill="none" stroke="#4DD0E1" stroke-width="1.5" opacity="0.3"/>
+      <!-- continents blobs -->
+      <path d="M210 200 Q250 180 270 220 Q260 260 220 250 Q190 230 210 200Z" fill="#26A69A" opacity="0.9"/>
+      <path d="M300 240 Q350 230 360 280 Q340 320 300 300 Q285 270 300 240Z" fill="#26A69A" opacity="0.9"/>
+      <path d="M230 320 Q270 310 280 350 Q260 380 230 360 Q220 340 230 320Z" fill="#26A69A" opacity="0.9"/>
+      <!-- location pins -->
+      <g><circle cx="240" cy="215" r="9" fill="#FFD54F"/><circle cx="240" cy="215" r="3" fill="#1a1a2e"/></g>
+      <g><circle cx="330" cy="265" r="9" fill="#FF7043"/><circle cx="330" cy="265" r="3" fill="#1a1a2e"/></g>
+      <g><circle cx="250" cy="345" r="9" fill="#FFD54F"/><circle cx="250" cy="345" r="3" fill="#1a1a2e"/></g>
+      <!-- dotted flight path -->
+      <path d="M240 215 Q300 160 330 265" stroke="#FFD54F" stroke-width="2" fill="none" stroke-dasharray="4,5" opacity="0.7"/>
+      <text x="420" y="150" font-size="34">✈️</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: LEAD-IN ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#06202a,#1a1a2e,#0a2a3a);">
+  <div style="position:absolute;top:-60px;right:430px;width:240px;height:240px;border-radius:50%;background:rgba(0,172,193,0.16);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4DD0E1;font-weight:700;margin-bottom:14px;">Warm up · let's chat</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:42px;color:#fff;line-height:1.1;margin-bottom:24px;">Have you ever…? 🤔</div>
+
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,213,79,0.4);border-radius:18px;padding:18px 24px;margin-bottom:12px;">
+      <div style="font-size:17px;color:#E0E0FF;line-height:1.6;font-style:italic;">✈️ "Have you ever travelled to another country?"</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(77,208,225,0.4);border-radius:18px;padding:18px 24px;margin-bottom:12px;">
+      <div style="font-size:17px;color:#E0E0FF;line-height:1.6;font-style:italic;">🍽️ "Have you ever eaten something really strange?"</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,112,67,0.4);border-radius:18px;padding:18px 24px;">
+      <div style="font-size:17px;color:#E0E0FF;line-height:1.6;font-style:italic;">😱 "Have you ever done something a little crazy?"</div>
+    </div>
+    <div style="margin-top:18px;font-size:13px;color:#4DD0E1;font-style:italic;">💬 Tell me — I'll share my stories too!</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:680px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg" width="540" height="540">
+      <circle cx="270" cy="270" r="230" fill="rgba(0,172,193,0.05)"/>
+      <g><circle cx="160" cy="150" r="58" fill="rgba(255,213,79,0.12)" stroke="#FFD54F" stroke-width="1.5"/><text x="160" y="168" text-anchor="middle" font-size="44">🏔️</text></g>
+      <g><circle cx="380" cy="160" r="58" fill="rgba(77,208,225,0.12)" stroke="#4DD0E1" stroke-width="1.5"/><text x="380" y="178" text-anchor="middle" font-size="44">🦈</text></g>
+      <g><circle cx="150" cy="380" r="58" fill="rgba(255,112,67,0.12)" stroke="#FF7043" stroke-width="1.5"/><text x="150" y="398" text-anchor="middle" font-size="44">🪂</text></g>
+      <g><circle cx="390" cy="390" r="58" fill="rgba(255,213,79,0.12)" stroke="#FFD54F" stroke-width="1.5"/><text x="390" y="408" text-anchor="middle" font-size="44">🍣</text></g>
+      <g><circle cx="270" cy="270" r="64" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="270" y="290" text-anchor="middle" font-size="48">🌎</text></g>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 3: PRESENTATION TEXT ═══ -->
+<div class="slide" style="background:#F0FBFC;">
+  <div class="slide-header" style="background:#D8F3F7;border-bottom:2px solid #80DEEA;">
+    <div class="header-icon" style="background:#00838F;">📖</div>
+    <div class="header-text">
+      <h2 style="color:#006064;">Meet Marco — read about his life</h2>
+      <p>Read once. What kind of person is Marco? Don't worry about every word.</p>
+    </div>
+    <div class="timer-pill" style="background:#00838F;">Read 🕐</div>
+  </div>
+
+  <div style="padding:28px 70px;height:596px;display:flex;flex-direction:column;justify-content:center;">
+    <div style="background:#fff;border-radius:20px;padding:34px 44px;border:0.5px solid #80DEEA;box-shadow:0 8px 28px rgba(0,0,0,0.07);max-width:940px;margin:0 auto;">
+      <div style="font-family:'Fredoka One',cursive;font-size:24px;color:#006064;margin-bottom:16px;">🌍 Marco — A Life of Adventure</div>
+      <div style="font-size:17.5px;color:#1a1a2e;line-height:2;">
+        Marco is 35 years old and he <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">has had</span> an amazing life. He <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">has travelled</span> to more than 40 countries! He <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">has climbed</span> mountains in Nepal and he <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">has swum</span> with sharks in Australia. He <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">has eaten</span> insects in Thailand! But there are still things he <span style="background:#FFE7DD;border-radius:6px;padding:1px 6px;color:#C2410C;font-weight:700;">hasn't done</span>. He <span style="background:#FFE7DD;border-radius:6px;padding:1px 6px;color:#C2410C;font-weight:700;">has never been</span> to Antarctica, and he <span style="background:#FFE7DD;border-radius:6px;padding:1px 6px;color:#C2410C;font-weight:700;">has never learned</span> to fly a plane.<br><br>
+        "<span style="background:#FFF6D9;border-radius:6px;padding:1px 6px;color:#B8860B;font-weight:700;">Have you ever done</span> something scary?" people ask him. "Yes!" he says. "I <span style="background:#D8F3F7;border-radius:6px;padding:1px 6px;color:#006064;font-weight:700;">have jumped</span> from a plane with a parachute! 🪂"
+      </div>
+      <div style="margin-top:18px;display:flex;gap:12px;font-size:12.5px;flex-wrap:wrap;">
+        <span style="background:#D8F3F7;color:#006064;padding:5px 14px;border-radius:20px;font-weight:800;">🟦 has + V3 (experience)</span>
+        <span style="background:#FFE7DD;color:#C2410C;padding:5px 14px;border-radius:20px;font-weight:800;">🟧 hasn't / never (−)</span>
+        <span style="background:#FFF6D9;color:#B8860B;padding:5px 14px;border-radius:20px;font-weight:800;">🟨 Have you ever…? (?)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 4: GIST + NOTICE ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFD180;">
+    <div class="header-icon" style="background:#E65100;">🔍</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Did you understand?</h2>
+      <p>One big question — then look at the pattern.</p>
+    </div>
+    <div class="timer-pill" style="background:#E65100;">Check ✓</div>
+  </div>
+
+  <div style="padding:28px 56px;display:grid;grid-template-columns:1fr 1fr;gap:36px;height:596px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#BF360C;">What is the text about?</div>
+      <div style="background:#fff;border-radius:18px;padding:22px 26px;border:2px solid #FFD180;box-shadow:0 6px 20px rgba(0,0,0,0.07);">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:#f8f8f8;border-radius:10px;padding:12px 16px;font-size:15px;color:#555;border:1.5px solid #E0E0E0;display:flex;align-items:center;gap:12px;"><div style="width:26px;height:26px;border-radius:50%;background:#E65100;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:12px;color:#fff;">A</div>Marco's job 💼</div>
+          <div style="background:#E8F5E9;border-radius:10px;padding:12px 16px;font-size:15px;color:#1B5E20;border:1.5px solid #A5D6A7;display:flex;align-items:center;gap:12px;font-weight:700;"><div style="width:26px;height:26px;border-radius:50%;background:#2E7D32;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:12px;color:#fff;">B</div>The experiences of Marco's life ✓ 🌍</div>
+          <div style="background:#f8f8f8;border-radius:10px;padding:12px 16px;font-size:15px;color:#555;border:1.5px solid #E0E0E0;display:flex;align-items:center;gap:12px;"><div style="width:26px;height:26px;border-radius:50%;background:#E65100;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:12px;color:#fff;">C</div>Marco's plans for next year 📅</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#BF360C;">Look closer:</div>
+      <div style="background:#fff;border-radius:14px;padding:14px 20px;border:0.5px solid #FFD180;font-size:15px;color:#1a1a2e;line-height:1.6;">🔎 Every verb has two parts: <strong>has</strong> + another word (travelled, climbed, eaten…). What's that pattern?</div>
+      <div style="background:#fff;border-radius:14px;padding:14px 20px;border:0.5px solid #FFD180;font-size:15px;color:#1a1a2e;line-height:1.6;">❓ Do we know <strong>WHEN</strong> exactly Marco did these things?</div>
+      <div style="background:#FFF3E0;border-radius:12px;padding:14px 18px;border-left:4px solid #FFD700;font-size:14px;color:#7A5C00;line-height:1.6;">💡 We're not interested in <em>when</em> — only that it happened in his life. Let's discover why!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5: MEANING (discovery) ═══ -->
+<div class="slide" style="background:#F0F9FF;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #90CAF9;">
+    <div class="header-icon" style="background:#1565C0;">💡</div>
+    <div class="header-text">
+      <h2 style="color:#0D47A1;">What does it mean? — let's discover</h2>
+      <p>Look at the sentence. Answer the questions together.</p>
+    </div>
+    <div class="timer-pill" style="background:#1565C0;">Discover 🧭</div>
+  </div>
+
+  <div style="padding:24px 56px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+    <div style="background:#fff;border-radius:16px;padding:18px 28px;border:0.5px solid #90CAF9;box-shadow:0 4px 14px rgba(0,0,0,0.06);text-align:center;">
+      <div style="font-size:24px;color:#1a1a2e;font-weight:800;">Marco <span style="color:#006064;">has climbed</span> a mountain.</div>
+    </div>
+
+    <div style="background:#fff;border-radius:16px;padding:24px 40px;border:0.5px solid #90CAF9;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+      <svg viewBox="0 0 1000 120" width="100%" height="120">
+        <!-- shaded life-period -->
+        <rect x="60" y="48" width="820" height="34" rx="17" fill="rgba(0,131,143,0.10)"/>
+        <line x1="40" y1="65" x2="960" y2="65" stroke="#B0BEC5" stroke-width="3"/>
+        <polygon points="960,65 945,58 945,72" fill="#B0BEC5"/>
+        <text x="40" y="105" font-size="14" fill="#90A4AE" font-family="Nunito" font-weight="700">birth / past</text>
+        <text x="905" y="105" font-size="14" fill="#90A4AE" font-family="Nunito" font-weight="700">NOW</text>
+        <!-- experience point with ? -->
+        <circle cx="420" cy="65" r="10" fill="#00838F"/>
+        <text x="420" y="38" text-anchor="middle" font-size="22" fill="#00838F" font-family="Fredoka One,cursive">?</text>
+        <text x="500" y="38" text-anchor="middle" font-size="13" fill="#00838F" font-family="Nunito" font-weight="700">(sometime — we don't say when)</text>
+        <text x="710" y="58" text-anchor="middle" font-size="14" fill="#1565C0" font-family="Nunito" font-weight="800">part of his life until now</text>
+      </svg>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+      <div style="background:#E3F2FD;border-radius:12px;padding:14px 18px;border-left:4px solid #1565C0;font-size:14px;color:#0D47A1;line-height:1.5;">❓ Did it happen in his <strong>life</strong>?</div>
+      <div style="background:#E3F2FD;border-radius:12px;padding:14px 18px;border-left:4px solid #1565C0;font-size:14px;color:#0D47A1;line-height:1.5;">❓ Do we know <strong>exactly when</strong>?</div>
+      <div style="background:#E3F2FD;border-radius:12px;padding:14px 18px;border-left:4px solid #1565C0;font-size:14px;color:#0D47A1;line-height:1.5;">❓ Is <strong>when</strong> important — or just the experience?</div>
+    </div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:12px 18px;border-left:4px solid #FFD700;font-size:14px;color:#7A5C00;line-height:1.6;">🇪🇸 Like Spanish <em>"ha escalado una montaña"</em> — haber + participio = have + participle. The structure matches!</div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 6: FORM 1 ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">🔧</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">How do we build it? — have / has + V3</h2>
+      <p>Choose have or has, then add the past participle (the "3rd form").</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">Form 🔧</div>
+  </div>
+
+  <div style="padding:26px 56px;height:596px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#1B5E20;">➕ Affirmative</div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid #A5D6A7;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="display:flex;padding:13px 18px;border-bottom:1px solid #E8F5E9;"><div style="width:150px;font-weight:800;color:#2E7D32;">I / You / We / They</div><div style="color:#1a1a2e;"><strong style="color:#2E7D32;">have</strong> visited</div></div>
+        <div style="display:flex;padding:13px 18px;"><div style="width:150px;font-weight:800;color:#2E7D32;">He / She / It</div><div style="color:#1a1a2e;"><strong style="color:#2E7D32;">has</strong> visited</div></div>
+      </div>
+      <div style="background:#E8F5E9;border-radius:12px;padding:14px 18px;font-size:14px;color:#1B5E20;line-height:1.7;">⚡ <strong>Short forms:</strong> I<strong>'ve</strong> · you<strong>'ve</strong> · he<strong>'s</strong> · she<strong>'s</strong> · we<strong>'ve</strong> · they<strong>'ve</strong></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#1B5E20;">The 3 forms of a verb</div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid #A5D6A7;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="display:flex;background:#2E7D32;color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;"><div style="flex:1;padding:8px 14px;">base</div><div style="flex:1;padding:8px 14px;">past</div><div style="flex:1;padding:8px 14px;">participle (V3)</div></div>
+        <div style="display:flex;font-size:14px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:9px 14px;">visit</div><div style="flex:1;padding:9px 14px;">visited</div><div style="flex:1;padding:9px 14px;color:#2E7D32;font-weight:700;">visited</div></div>
+        <div style="display:flex;font-size:14px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:9px 14px;">eat</div><div style="flex:1;padding:9px 14px;">ate</div><div style="flex:1;padding:9px 14px;color:#2E7D32;font-weight:700;">eaten</div></div>
+        <div style="display:flex;font-size:14px;"><div style="flex:1;padding:9px 14px;">be</div><div style="flex:1;padding:9px 14px;">was/were</div><div style="flex:1;padding:9px 14px;color:#2E7D32;font-weight:700;">been</div></div>
+      </div>
+      <div style="background:#FFFBEA;border-left:4px solid #FFD700;border-radius:0 12px 12px 0;padding:12px 16px;font-size:13px;color:#7A5C00;line-height:1.6;">⚠️ Present perfect uses the <strong>3rd form</strong> (V3) — NOT the past form! Say "I have <strong>eaten</strong>", not <s>"I have ate"</s>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: FORM 2 — neg/question/ever/never ═══ -->
+<div class="slide" style="background:#FFF5F7;">
+  <div class="slide-header" style="background:#FCE4EC;border-bottom:2px solid #F48FB1;">
+    <div class="header-icon" style="background:#C2185B;">❓</div>
+    <div class="header-text">
+      <h2 style="color:#880E4F;">Questions & negatives — ever / never</h2>
+      <p>ever = at any time in your life · never = at no time in your life.</p>
+    </div>
+    <div class="timer-pill" style="background:#C2185B;">Form ❓</div>
+  </div>
+
+  <div style="padding:28px 56px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-top:6px solid #C2185B;border:0.5px solid #F48FB1;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#C2185B;letter-spacing:1px;margin-bottom:10px;">❓ QUESTION (with ever)</div>
+        <div style="font-size:19px;color:#1a1a2e;"><strong style="color:#C2185B;">Have</strong> you <strong style="color:#C2185B;">ever</strong> <strong>eaten</strong> sushi?</div>
+        <div style="font-size:13px;color:#888;margin-top:8px;">Have/Has + subject + ever + V3 ?</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-top:6px solid #5E35B1;border:0.5px solid #B39DDB;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#5E35B1;letter-spacing:1px;margin-bottom:10px;">✔️ SHORT ANSWERS</div>
+        <div style="font-size:17px;color:#1a1a2e;line-height:1.6;">Yes, I <strong style="color:#2E7D32;">have</strong>. / No, I <strong style="color:#C62828;">haven't</strong>.</div>
+        <div style="font-size:13px;color:#888;margin-top:8px;">Don't repeat the whole verb!</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-top:6px solid #C62828;border:0.5px solid #EF9A9A;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#C62828;letter-spacing:1px;margin-bottom:10px;">➖ NEGATIVE</div>
+        <div style="font-size:19px;color:#1a1a2e;">I <strong style="color:#C62828;">haven't</strong> <strong>been</strong> to China.</div>
+        <div style="font-size:13px;color:#888;margin-top:8px;">haven't / hasn't + V3</div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:20px 24px;border-top:6px solid #00838F;border:0.5px solid #80DEEA;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+        <div style="font-size:13px;font-weight:800;color:#00838F;letter-spacing:1px;margin-bottom:10px;">🚫 NEVER (already negative!)</div>
+        <div style="font-size:19px;color:#1a1a2e;">I <strong style="color:#00838F;">have never</strong> <strong>been</strong> to China.</div>
+        <div style="font-size:13px;color:#888;margin-top:8px;">have + never + V3 (no "not"!)</div>
+      </div>
+    </div>
+    <div style="background:#FCE4EC;border-radius:12px;padding:12px 18px;border-left:4px solid #C2185B;font-size:14px;color:#880E4F;line-height:1.6;">💡 "I haven't <strong>been</strong>" and "I have <strong>never been</strong>" mean the same — but never is stronger. Don't say <s>"I haven't never been"</s>!</div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 8: PAST PARTICIPLES ═══ -->
+<div class="slide" style="background:#FBF6EE;">
+  <div class="slide-header" style="background:#F3E7D3;border-bottom:2px solid #E0C9A0;">
+    <div class="header-icon" style="background:#B8773A;">🗂️</div>
+    <div class="header-text">
+      <h2 style="color:#8A5A22;">Past participles — the tricky bit!</h2>
+      <p>Regular ones are easy. Irregular ones you just have to learn.</p>
+    </div>
+    <div class="timer-pill" style="background:#B8773A;">V3 🗂️</div>
+  </div>
+
+  <div style="padding:24px 56px;height:596px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#2E7D32;">✅ Regular → just add -ed</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 20px;border:0.5px solid #A5D6A7;box-shadow:0 4px 14px rgba(0,0,0,0.06);font-size:16px;color:#1a1a2e;line-height:2.1;">
+        travel → travel<strong style="color:#2E7D32;">led</strong><br>
+        visit → visit<strong style="color:#2E7D32;">ed</strong><br>
+        play → play<strong style="color:#2E7D32;">ed</strong><br>
+        try → tr<strong style="color:#2E7D32;">ied</strong>
+      </div>
+      <div style="font-size:13px;color:#777;font-style:italic;">Same as the past simple — easy! 🙂</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#C62828;">⚠️ Irregular → memorise these!</div>
+      <div style="background:#fff;border-radius:14px;overflow:hidden;border:0.5px solid #E0C9A0;box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+        <div style="display:flex;font-size:14.5px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:7px 16px;">be → <strong style="color:#C62828;">been</strong></div><div style="flex:1;padding:7px 16px;">eat → <strong style="color:#C62828;">eaten</strong></div></div>
+        <div style="display:flex;font-size:14.5px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:7px 16px;">go → <strong style="color:#C62828;">gone</strong></div><div style="flex:1;padding:7px 16px;">see → <strong style="color:#C62828;">seen</strong></div></div>
+        <div style="display:flex;font-size:14.5px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:7px 16px;">do → <strong style="color:#C62828;">done</strong></div><div style="flex:1;padding:7px 16px;">have → <strong style="color:#C62828;">had</strong></div></div>
+        <div style="display:flex;font-size:14.5px;border-bottom:1px solid #F0EDE8;"><div style="flex:1;padding:7px 16px;">take → <strong style="color:#C62828;">taken</strong></div><div style="flex:1;padding:7px 16px;">write → <strong style="color:#C62828;">written</strong></div></div>
+        <div style="display:flex;font-size:14.5px;"><div style="flex:1;padding:7px 16px;">swim → <strong style="color:#C62828;">swum</strong></div><div style="flex:1;padding:7px 16px;">drink → <strong style="color:#C62828;">drunk</strong></div></div>
+      </div>
+    </div>
+
+    <div style="grid-column:1 / -1;background:#F3E7D3;border-radius:14px;padding:16px 24px;border-left:4px solid #B8773A;">
+      <div style="font-size:14px;color:#8A5A22;line-height:1.7;">🧭 <strong>been vs gone:</strong> "He has <strong>been</strong> to Paris" = he went and came back (experience ✓). "He has <strong>gone</strong> to Paris" = he's there now / on his way. For experiences, use <strong>been to</strong>!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 9: PRONUNCIATION ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-90px;right:-90px;width:340px;height:340px;border-radius:50%;background:rgba(0,172,193,0.16);"></div>
+  <div style="position:absolute;bottom:-70px;left:-70px;width:260px;height:260px;border-radius:50%;background:rgba(255,179,0,0.12);"></div>
+
+  <div style="position:absolute;inset:0;padding:54px 64px;display:flex;flex-direction:column;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4DD0E1;font-weight:700;margin-bottom:8px;">Pronunciation · listen & repeat</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:38px;color:#fff;margin-bottom:8px;">Squeeze it together! 🔊</div>
+    <div style="font-size:15px;color:#a0a0c0;margin-bottom:24px;">Native speakers use <strong style="color:#fff;">short forms</strong> and make "have" weak. Don't say every word slowly!</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px;">
+      <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(77,208,225,0.4);border-radius:18px;padding:22px 26px;">
+        <div style="font-size:13px;color:#4DD0E1;font-weight:800;letter-spacing:1px;margin-bottom:10px;">SHORT FORMS</div>
+        <div style="font-size:19px;color:#fff;line-height:1.9;">I've → <span style="color:#FFD54F;">/aɪv/</span><br>he's → <span style="color:#FFD54F;">/hiːz/</span><br>they've → <span style="color:#FFD54F;">/ðeɪv/</span></div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,213,79,0.4);border-radius:18px;padding:22px 26px;">
+        <div style="font-size:13px;color:#FFD54F;font-weight:800;letter-spacing:1px;margin-bottom:10px;">"Have you ever…?"</div>
+        <div style="font-size:24px;color:#fff;font-weight:800;">→ <span style="color:#FFD54F;">/həv juː ˈevə/</span></div>
+        <div style="font-size:15px;color:#CECBF6;margin-top:10px;">"have" is quiet, "EVER" is strong</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,172,193,0.12);border:1.5px solid rgba(77,208,225,0.4);border-radius:18px;padding:22px 28px;">
+      <div style="font-size:12px;color:#4DD0E1;font-weight:800;letter-spacing:1px;margin-bottom:12px;">DRILL — repeat after me:</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:19px;color:#fff;">
+        <div>🔁 "I've been to Mexico." &nbsp; <span style="font-size:13px;color:#9FA8DA;">/aɪv bɪn tə/</span></div>
+        <div>🔁 "Have you ever tried it?" &nbsp; <span style="font-size:13px;color:#9FA8DA;">/həv juː ˈevə traɪd/</span></div>
+        <div>🔁 "She's never seen snow." &nbsp; <span style="font-size:13px;color:#9FA8DA;">/ʃiːz ˈnevə siːn/</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 10: PRACTICE ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">⌨️</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">Your turn — open the activity!</h2>
+      <p>Open the link in the chat. We'll do the 3 parts together.</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">Practice ⌨️</div>
+  </div>
+
+  <div style="padding:40px 56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;height:596px;align-content:center;">
+    <div class="step-card"><div class="step-num" style="background:#2E7D32;">1</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>have or has?</strong> — pick the right one ✍️</div></div>
+    <div class="step-card"><div class="step-num" style="background:#B8773A;">2</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>Past participle</strong> — choose the V3 form 🗂️</div></div>
+    <div class="step-card"><div class="step-num" style="background:#1565C0;">3</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>Which is correct?</strong> — full sentences ✅</div></div>
+    <div style="grid-column:1 / -1;background:#E8F5E9;border-radius:14px;padding:16px 22px;border-left:4px solid #2E7D32;margin-top:6px;">
+      <div style="font-size:14px;color:#1B5E20;line-height:1.7;">💡 Try each one yourself first, then we check together and you tell me <strong>why</strong> 🤝</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 11: FREER (personalised interview) ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(0,172,193,0.15);"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,179,0,0.12);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:620px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;gap:16px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4DD0E1;font-weight:700;">Speaking · Your life</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:38px;color:#fff;line-height:1.15;">Life Interview 🎤</div>
+
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:20px 26px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#FFD54F;font-weight:700;margin-bottom:10px;">Have you ever…?</div>
+      <div style="font-size:16px;color:#fff;line-height:1.95;">
+        🌍 …travelled outside your country?<br>
+        🍽️ …eaten something really strange?<br>
+        🎤 …sung in front of people?<br>
+        🏆 …won a prize or competition?<br>
+        😱 …done something a bit dangerous?
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFD54F;margin-bottom:8px;">Answer like this 💬</div>
+      <div style="font-size:14px;color:#CECBF6;line-height:1.9;font-style:italic;">"Yes, I have! I've ___." &nbsp;/&nbsp; "No, I've never ___, but I'd love to!"</div>
+    </div>
+    <div style="font-size:13px;color:#4DD0E1;font-style:italic;">🗣️ Tell me the story — and ask ME a question too!</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:660px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" width="520" height="520">
+      <circle cx="260" cy="260" r="220" fill="rgba(0,172,193,0.05)"/>
+      <!-- passport -->
+      <rect x="150" y="120" width="220" height="290" rx="16" fill="#1B5E63"/>
+      <rect x="170" y="120" width="14" height="290" fill="#0d3d40"/>
+      <circle cx="280" cy="220" r="54" fill="none" stroke="#FFD54F" stroke-width="3"/>
+      <path d="M240 220 Q280 175 320 220 Q280 265 240 220Z" fill="none" stroke="#FFD54F" stroke-width="2"/>
+      <line x1="280" y1="166" x2="280" y2="274" stroke="#FFD54F" stroke-width="2"/>
+      <text x="280" y="320" text-anchor="middle" font-size="14" fill="#FFD54F" font-family="Nunito" font-weight="800">PASSPORT</text>
+      <text x="280" y="358" text-anchor="middle" font-size="13" fill="#80DEEA" font-family="Nunito" font-weight="700">You</text>
+      <!-- stamps -->
+      <g transform="rotate(-12 130 160)"><circle cx="130" cy="160" r="30" fill="none" stroke="#FF7043" stroke-width="3"/><text x="130" y="166" text-anchor="middle" font-size="12" fill="#FF7043" font-family="Nunito" font-weight="800">MEX</text></g>
+      <g transform="rotate(10 400 380)"><circle cx="400" cy="380" r="30" fill="none" stroke="#FFD54F" stroke-width="3"/><text x="400" y="386" text-anchor="middle" font-size="12" fill="#FFD54F" font-family="Nunito" font-weight="800">✈</text></g>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 12: WRAP-UP ═══ -->
+<div class="slide" style="background:#F0FBFC;">
+  <div class="slide-header" style="background:#D8F3F7;border-bottom:2px solid #80DEEA;">
+    <div class="header-icon" style="background:#00838F;">✅</div>
+    <div class="header-text">
+      <h2 style="color:#006064;">Before we finish…</h2>
+      <p>Are these correct? How do we fix them?</p>
+    </div>
+    <div class="timer-pill" style="background:#00838F;">Review ✅</div>
+  </div>
+
+  <div style="padding:30px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+    <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#006064;margin-bottom:4px;">Find and fix the mistake 🔎</div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #80DEEA;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">1. &nbsp;<em>"Have you ever went to Brazil?"</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #80DEEA;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">2. &nbsp;<em>"She has never saw the ocean."</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #80DEEA;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">3. &nbsp;<em>"Has you eaten breakfast today?"</em></div>
+
+    <div style="background:#D8F3F7;border-radius:14px;padding:18px 24px;border-left:4px solid #00838F;margin-top:8px;">
+      <div style="font-size:15px;color:#006064;line-height:1.7;">🎯 <strong>Today you learned to:</strong> talk about life experiences with <em>have/has + past participle</em>, ask <em>"Have you ever…?"</em>, use <em>ever / never</em>, and say it naturally with short forms! 🌟</div>
+    </div>
+    <div style="text-align:center;margin-top:4px;">
+      <span style="background:#fff;border:0.5px solid #80DEEA;display:inline-block;border-radius:30px;padding:10px 26px;font-size:14px;color:#006064;font-weight:700;">Next class — Present Perfect vs Past Simple! 👋</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

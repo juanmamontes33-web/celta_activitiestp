@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Present Perfect vs Past Simple — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #1a1a2e; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; margin: 32px auto; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.slide-header { width: 100%; height: 100px; display: flex; align-items: center; padding: 0 56px; gap: 18px; }
+.header-icon { width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.header-text h2 { font-family: 'Fredoka One', cursive; font-size: 30px; line-height: 1; }
+.header-text p { font-size: 13px; color: #666; margin-top: 3px; }
+.timer-pill { margin-left: auto; color: #fff; padding: 8px 22px; border-radius: 30px; font-family: 'Fredoka One', cursive; font-size: 17px; }
+.step-card { background: #fff; border-radius: 14px; padding: 16px 20px; border: 0.5px solid #E0DDD8; box-shadow: 0 3px 12px rgba(0,0,0,0.05); display: flex; gap: 14px; align-items: center; }
+.step-num { width: 36px; height: 36px; min-width: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka One', cursive; font-size: 17px; color: #fff; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1: TITLE ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#06222a,#1a1a2e,#2a1408);">
+  <div style="position:absolute;top:-120px;left:-80px;width:420px;height:420px;border-radius:50%;background:rgba(0,137,123,0.16);"></div>
+  <div style="position:absolute;bottom:-80px;right:-60px;width:340px;height:340px;border-radius:50%;background:rgba(230,81,0,0.14);"></div>
+
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:920px;text-align:center;">
+    <div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#80CBC4;font-weight:700;margin-bottom:22px;">Grammar · B1 · Speaking</div>
+    <div style="display:inline-flex;align-items:center;gap:30px;margin-bottom:26px;">
+      <div style="background:rgba(0,137,123,0.18);border:2px solid rgba(77,182,172,0.5);border-radius:22px;padding:26px 34px;">
+        <div style="font-family:'Fredoka One',cursive;font-size:34px;color:#4DB6AC;line-height:1.1;">Present<br>Perfect</div>
+        <div style="font-size:13px;color:#B2DFDB;margin-top:8px;">have / has + V3</div>
+      </div>
+      <div style="font-family:'Fredoka One',cursive;font-size:54px;color:#FFD54F;">⚖️</div>
+      <div style="background:rgba(230,81,0,0.18);border:2px solid rgba(255,138,76,0.5);border-radius:22px;padding:26px 34px;">
+        <div style="font-family:'Fredoka One',cursive;font-size:34px;color:#FF8A4C;line-height:1.1;">Past<br>Simple</div>
+        <div style="font-size:13px;color:#FFCCBC;margin-top:8px;">verb + -ed / V2</div>
+      </div>
+    </div>
+    <div style="font-size:18px;color:#a0a0c0;line-height:1.6;max-width:640px;margin:0 auto;">You can build both now. Today the big question:<br><strong style="color:#fff;">which one do I choose — and why?</strong> 🤔</div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 2: LEAD-IN ═══ -->
+<div class="slide" style="background:linear-gradient(135deg,#06222a,#1a1a2e,#2a1408);">
+  <div style="position:absolute;top:-60px;right:430px;width:240px;height:240px;border-radius:50%;background:rgba(0,137,123,0.16);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:620px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#80CBC4;font-weight:700;margin-bottom:14px;">Warm up · two questions</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:40px;color:#fff;line-height:1.1;margin-bottom:24px;">Notice the change… 🔄</div>
+
+    <div style="background:rgba(0,137,123,0.14);border:1.5px solid rgba(77,182,172,0.45);border-radius:18px;padding:20px 26px;margin-bottom:14px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#4DB6AC;font-weight:700;margin-bottom:8px;">First I ask…</div>
+      <div style="font-size:19px;color:#E0E0FF;line-height:1.6;font-style:italic;">"<strong style="color:#4DB6AC;">Have you ever</strong> travelled to another country?"</div>
+    </div>
+
+    <div style="background:rgba(230,81,0,0.14);border:1.5px solid rgba(255,138,76,0.45);border-radius:18px;padding:20px 26px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FF8A4C;font-weight:700;margin-bottom:8px;">Then I ask…</div>
+      <div style="font-size:19px;color:#E0E0FF;line-height:1.6;font-style:italic;">"Oh nice! <strong style="color:#FF8A4C;">When did</strong> you go? <strong style="color:#FF8A4C;">What did</strong> you do?"</div>
+    </div>
+    <div style="margin-top:20px;font-size:14px;color:#80CBC4;font-style:italic;">💬 Why does the tense change in the second question? Let's find out!</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:660px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" width="520" height="520">
+      <circle cx="260" cy="260" r="220" fill="rgba(0,137,123,0.05)"/>
+      <!-- two signposts -->
+      <rect x="120" y="180" width="150" height="70" rx="10" fill="#00897B"/>
+      <text x="195" y="212" text-anchor="middle" font-size="18" fill="#fff" font-family="Fredoka One,cursive">EVER?</text>
+      <text x="195" y="236" text-anchor="middle" font-size="12" fill="#B2DFDB" font-family="Nunito" font-weight="700">experience</text>
+      <rect x="190" y="248" width="12" height="120" fill="#5d4037"/>
+      <rect x="270" y="290" width="150" height="70" rx="10" fill="#E65100"/>
+      <text x="345" y="322" text-anchor="middle" font-size="18" fill="#fff" font-family="Fredoka One,cursive">WHEN?</text>
+      <text x="345" y="346" text-anchor="middle" font-size="12" fill="#FFCCBC" font-family="Nunito" font-weight="700">specific time</text>
+      <rect x="340" y="358" width="12" height="90" fill="#5d4037"/>
+      <text x="260" y="120" text-anchor="middle" font-size="44">🧭</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 3: PRESENTATION DIALOGUE ═══ -->
+<div class="slide" style="background:#F4F8F7;">
+  <div class="slide-header" style="background:#E0F0EE;border-bottom:2px solid #9CCCC6;">
+    <div class="header-icon" style="background:#00695C;">💬</div>
+    <div class="header-text">
+      <h2 style="color:#004D40;">A conversation — read it</h2>
+      <p>Two friends are talking about travel. Read once.</p>
+    </div>
+    <div class="timer-pill" style="background:#00695C;">Read 🕐</div>
+  </div>
+
+  <div style="padding:34px 80px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+    <div style="display:flex;gap:14px;align-items:flex-start;">
+      <div style="width:42px;height:42px;border-radius:12px;background:#00897B;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:18px;flex-shrink:0;">A</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;"><span style="background:#D8F0ED;border-radius:5px;padding:1px 5px;color:#00695C;font-weight:700;">Have you ever been</span> to London?</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-direction:row-reverse;">
+      <div style="width:42px;height:42px;border-radius:12px;background:#E65100;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:18px;flex-shrink:0;">B</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC9A;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">Yes, I have! I <span style="background:#FFE7DD;border-radius:5px;padding:1px 5px;color:#C2410C;font-weight:700;">went</span> there <strong>two years ago</strong>.</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;">
+      <div style="width:42px;height:42px;border-radius:12px;background:#00897B;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:18px;flex-shrink:0;">A</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">Nice! What <span style="background:#FFE7DD;border-radius:5px;padding:1px 5px;color:#C2410C;font-weight:700;">did you do</span> there?</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-direction:row-reverse;">
+      <div style="width:42px;height:42px;border-radius:12px;background:#E65100;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:18px;flex-shrink:0;">B</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #FFCC9A;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">I <span style="background:#FFE7DD;border-radius:5px;padding:1px 5px;color:#C2410C;font-weight:700;">visited</span> Big Ben and I <span style="background:#FFE7DD;border-radius:5px;padding:1px 5px;color:#C2410C;font-weight:700;">saw</span> a musical. <span style="background:#D8F0ED;border-radius:5px;padding:1px 5px;color:#00695C;font-weight:700;">Have you been</span> there?</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;">
+      <div style="width:42px;height:42px;border-radius:12px;background:#00897B;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka One';font-size:18px;flex-shrink:0;">A</div>
+      <div style="background:#fff;border-radius:14px;padding:16px 22px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">No, I <span style="background:#D8F0ED;border-radius:5px;padding:1px 5px;color:#00695C;font-weight:700;">haven't</span>, but I've always wanted to! 😄</div>
+    </div>
+
+    <div style="display:flex;gap:14px;margin-top:6px;justify-content:center;">
+      <span style="background:#D8F0ED;color:#00695C;padding:5px 16px;border-radius:20px;font-weight:800;font-size:13px;">🟩 Present Perfect</span>
+      <span style="background:#FFE7DD;color:#C2410C;padding:5px 16px;border-radius:20px;font-weight:800;font-size:13px;">🟧 Past Simple</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 4: NOTICE ═══ -->
+<div class="slide" style="background:#FFF8F0;">
+  <div class="slide-header" style="background:#FFF3E0;border-bottom:2px solid #FFD180;">
+    <div class="header-icon" style="background:#E65100;">🔍</div>
+    <div class="header-text">
+      <h2 style="color:#BF360C;">Look closer — why two tenses?</h2>
+      <p>The same conversation uses BOTH. When does each one appear?</p>
+    </div>
+    <div class="timer-pill" style="background:#E65100;">Notice 🔎</div>
+  </div>
+
+  <div style="padding:36px 64px;height:596px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #00897B;border:0.5px solid #9CCCC6;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#00695C;margin-bottom:14px;">🟩 "Have you ever been…"</div>
+      <div style="font-size:16px;color:#1a1a2e;line-height:1.8;">❓ Do we say <strong>WHEN</strong>?<br>❓ Is it about an <strong>experience</strong> in life?<br>❓ Is the time important?</div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:26px 30px;border-top:6px solid #E65100;border:0.5px solid #FFCC9A;box-shadow:0 6px 18px rgba(0,0,0,0.07);">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#BF360C;margin-bottom:14px;">🟧 "I went two years ago…"</div>
+      <div style="font-size:16px;color:#1a1a2e;line-height:1.8;">❓ Do we say <strong>WHEN</strong>?<br>❓ Is the time <strong>finished</strong>?<br>❓ Are we giving <strong>details</strong>?</div>
+    </div>
+    <div style="grid-column:1 / -1;background:#FFF3E0;border-radius:14px;padding:16px 24px;border-left:4px solid #FFD700;text-align:center;">
+      <div style="font-size:15px;color:#7A5C00;line-height:1.6;">💡 Same trip — but the tense changes the moment we add <strong>"two years ago"</strong>. Let's discover the rule!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 5: THE BIG CONTRAST ═══ -->
+<div class="slide" style="background:#F0F9FF;">
+  <div class="slide-header" style="background:#E3F2FD;border-bottom:2px solid #90CAF9;">
+    <div class="header-icon" style="background:#1565C0;">⚖️</div>
+    <div class="header-text">
+      <h2 style="color:#0D47A1;">The big difference — TIME</h2>
+      <p>It all comes down to one thing: do we say WHEN, or not?</p>
+    </div>
+    <div class="timer-pill" style="background:#1565C0;">Discover 🧭</div>
+  </div>
+
+  <div style="padding:26px 50px;height:596px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+
+    <!-- PP -->
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border:2px solid #80CBC4;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#00695C;margin-bottom:6px;">Present Perfect</div>
+      <div style="font-size:18px;color:#1a1a2e;font-weight:700;margin-bottom:16px;">I <span style="color:#00897B;">have been</span> to London.</div>
+      <svg viewBox="0 0 380 90" width="100%" height="90">
+        <rect x="20" y="34" width="300" height="26" rx="13" fill="rgba(0,137,123,0.12)"/>
+        <line x1="10" y1="47" x2="360" y2="47" stroke="#B0BEC5" stroke-width="2.5"/>
+        <polygon points="360,47 348,41 348,53" fill="#B0BEC5"/>
+        <circle cx="150" cy="47" r="8" fill="#00897B"/>
+        <text x="150" y="28" text-anchor="middle" font-size="18" fill="#00897B" font-family="Fredoka One">?</text>
+        <text x="335" y="78" text-anchor="middle" font-size="11" fill="#90A4AE" font-family="Nunito" font-weight="700">NOW</text>
+      </svg>
+      <div style="background:#E0F2F1;border-radius:10px;padding:12px 16px;margin-top:8px;font-size:14px;color:#00695C;line-height:1.6;">✔️ an <strong>experience</strong> · we DON'T say when · connected to <strong>now</strong></div>
+    </div>
+
+    <!-- PS -->
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border:2px solid #FFCC9A;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:20px;color:#BF360C;margin-bottom:6px;">Past Simple</div>
+      <div style="font-size:18px;color:#1a1a2e;font-weight:700;margin-bottom:16px;">I <span style="color:#E65100;">went</span> to London <strong>in 2022</strong>.</div>
+      <svg viewBox="0 0 380 90" width="100%" height="90">
+        <line x1="10" y1="47" x2="360" y2="47" stroke="#B0BEC5" stroke-width="2.5"/>
+        <polygon points="360,47 348,41 348,53" fill="#B0BEC5"/>
+        <circle cx="120" cy="47" r="9" fill="#E65100"/>
+        <line x1="120" y1="30" x2="120" y2="64" stroke="#E65100" stroke-width="2.5" stroke-dasharray="3,3"/>
+        <text x="120" y="24" text-anchor="middle" font-size="12" fill="#E65100" font-family="Nunito" font-weight="800">2022</text>
+        <text x="335" y="78" text-anchor="middle" font-size="11" fill="#90A4AE" font-family="Nunito" font-weight="700">NOW</text>
+      </svg>
+      <div style="background:#FFF3E0;border-radius:10px;padding:12px 16px;margin-top:8px;font-size:14px;color:#BF360C;line-height:1.6;">✔️ a <strong>finished</strong> action · we DO say when · a specific past time</div>
+    </div>
+
+    <div style="grid-column:1 / -1;background:#E3F2FD;border-radius:14px;padding:14px 24px;border-left:4px solid #1565C0;text-align:center;">
+      <div style="font-size:15px;color:#0D47A1;line-height:1.6;">🔑 No time said → <strong style="color:#00695C;">Present Perfect</strong> &nbsp;·&nbsp; Specific past time said → <strong style="color:#BF360C;">Past Simple</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 6: SIGNAL WORDS ═══ -->
+<div class="slide" style="background:#F7F4FF;">
+  <div class="slide-header" style="background:#EDE7F6;border-bottom:2px solid #B39DDB;">
+    <div class="header-icon" style="background:#5E35B1;">🚦</div>
+    <div class="header-text">
+      <h2 style="color:#4527A0;">Signal words — your secret helpers</h2>
+      <p>These words tell you which tense to use. Learn them!</p>
+    </div>
+    <div class="timer-pill" style="background:#5E35B1;">Signals 🚦</div>
+  </div>
+
+  <div style="padding:30px 56px;height:596px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;">
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border-top:6px solid #00897B;border:0.5px solid #9CCCC6;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#00695C;margin-bottom:16px;">🟩 Present Perfect words</div>
+      <div style="display:flex;flex-wrap:wrap;gap:9px;">
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">ever</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">never</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">just</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">already</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">yet</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">recently</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">so far</span>
+        <span style="background:#E0F2F1;color:#00695C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">this week</span>
+      </div>
+      <div style="font-size:13px;color:#777;font-style:italic;margin-top:14px;">→ time is unfinished or not said</div>
+    </div>
+    <div style="background:#fff;border-radius:18px;padding:24px 28px;border-top:6px solid #E65100;border:0.5px solid #FFCC9A;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#BF360C;margin-bottom:16px;">🟧 Past Simple words</div>
+      <div style="display:flex;flex-wrap:wrap;gap:9px;">
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">yesterday</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">last week</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">… ago</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">in 2020</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">when I was…</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">last night</span>
+        <span style="background:#FFF3E0;color:#BF360C;padding:7px 16px;border-radius:20px;font-size:15px;font-weight:700;">at 6 o'clock</span>
+      </div>
+      <div style="font-size:13px;color:#777;font-style:italic;margin-top:14px;">→ a finished, specific past time</div>
+    </div>
+    <div style="grid-column:1 / -1;background:#EDE7F6;border-radius:14px;padding:14px 24px;border-left:4px solid #5E35B1;text-align:center;">
+      <div style="font-size:15px;color:#4527A0;line-height:1.6;">🎯 Find the signal word first — it almost always tells you the answer!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 7: GOLDEN RULE ═══ -->
+<div class="slide" style="background:#FFF5F5;">
+  <div class="slide-header" style="background:#FFEBEE;border-bottom:2px solid #EF9A9A;">
+    <div class="header-icon" style="background:#C62828;">⛔</div>
+    <div class="header-text">
+      <h2 style="color:#B71C1C;">The #1 mistake — fix it forever!</h2>
+      <p>This is the most common error. Learn it now and you'll never forget.</p>
+    </div>
+    <div class="timer-pill" style="background:#C62828;">Rule ⛔</div>
+  </div>
+
+  <div style="padding:40px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+    <div style="background:#fff;border-radius:18px;padding:26px 34px;border:2px solid #EF9A9A;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center;">
+      <div style="font-size:15px;font-weight:800;color:#C62828;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">⛔ The golden rule</div>
+      <div style="font-size:26px;color:#1a1a2e;font-weight:800;line-height:1.5;">A <strong style="color:#E65100;">finished time word</strong> (yesterday, ago, in 2020, last…)<br>= <strong style="color:#E65100;">Past Simple</strong>. NEVER present perfect!</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#fff;border-radius:14px;padding:18px 26px;border:0.5px solid #E0DDD8;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="font-size:20px;color:#C62828;"><s>I have seen him yesterday.</s> ❌</div>
+        <div style="font-size:22px;color:#2E7D32;font-weight:800;">→ I <strong>saw</strong> him yesterday. ✅</div>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:18px 26px;border:0.5px solid #E0DDD8;box-shadow:0 3px 10px rgba(0,0,0,0.05);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="font-size:20px;color:#C62828;"><s>I have visited Rome in 2019.</s> ❌</div>
+        <div style="font-size:22px;color:#2E7D32;font-weight:800;">→ I <strong>visited</strong> Rome in 2019. ✅</div>
+      </div>
+    </div>
+    <div style="background:#FFF8E1;border-radius:12px;padding:14px 22px;border-left:4px solid #FFD700;font-size:14px;color:#7A5C00;line-height:1.6;">🇪🇸 In Spanish you might say <em>"he visitado Roma en 2019"</em> — but in English, the year <strong>forces</strong> the past simple!</div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 8: CONVERSATION PATTERN ═══ -->
+<div class="slide" style="background:#F0FAF8;">
+  <div class="slide-header" style="background:#D9F2EE;border-bottom:2px solid #80CBC4;">
+    <div class="header-icon" style="background:#00838F;">🔁</div>
+    <div class="header-text">
+      <h2 style="color:#006064;">The natural pattern — ask, then tell</h2>
+      <p>This is how people really speak. Master this and you sound natural!</p>
+    </div>
+    <div class="timer-pill" style="background:#00838F;">Pattern 🔁</div>
+  </div>
+
+  <div style="padding:40px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div style="background:#E0F2F1;border-radius:16px;padding:20px 26px;flex:1;border-left:6px solid #00897B;">
+        <div style="font-size:12px;font-weight:800;color:#00695C;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Step 1 · Ask about experience</div>
+        <div style="font-size:22px;color:#1a1a2e;font-weight:700;">🟩 "<strong style="color:#00897B;">Have you ever</strong> eaten sushi?"</div>
+      </div>
+      <div style="font-size:34px;">➡️</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;flex-direction:row-reverse;">
+      <div style="background:#FFF3E0;border-radius:16px;padding:20px 26px;flex:1;border-left:6px solid #E65100;">
+        <div style="font-size:12px;font-weight:800;color:#BF360C;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Step 2 · Give the details</div>
+        <div style="font-size:22px;color:#1a1a2e;font-weight:700;">🟧 "Yes! I <strong style="color:#E65100;">tried</strong> it in Tokyo <strong>last year</strong>."</div>
+      </div>
+      <div style="font-size:34px;">⬅️</div>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:18px 26px;border:0.5px solid #80CBC4;box-shadow:0 3px 10px rgba(0,0,0,0.05);">
+      <div style="font-size:12px;font-weight:800;color:#00838F;letter-spacing:1px;margin-bottom:10px;">🔊 QUICK DRILL — repeat the connected sounds:</div>
+      <div style="font-size:18px;color:#1a1a2e;line-height:1.9;">"<strong>Have you ever…?</strong>" → <span style="color:#888;">/həv juː ˈevə/</span> &nbsp;·&nbsp; "<strong>When did you…?</strong>" → <span style="color:#888;">/wen dɪdʒə/</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 9: JUST / ALREADY / YET ═══ -->
+<div class="slide" style="background:#FBF6EE;">
+  <div class="slide-header" style="background:#F3E7D3;border-bottom:2px solid #E0C9A0;">
+    <div class="header-icon" style="background:#B8773A;">⭐</div>
+    <div class="header-text">
+      <h2 style="color:#8A5A22;">Bonus words — just, already, yet</h2>
+      <p>Three little words that LOVE the present perfect.</p>
+    </div>
+    <div class="timer-pill" style="background:#B8773A;">Bonus ⭐</div>
+  </div>
+
+  <div style="padding:34px 56px;height:596px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-content:center;">
+    <div style="background:#fff;border-radius:16px;padding:22px 24px;border-top:6px solid #00897B;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:24px;color:#00897B;margin-bottom:10px;">just</div>
+      <div style="font-size:14px;color:#555;margin-bottom:12px;">= a very short time ago</div>
+      <div style="background:#E0F2F1;border-radius:10px;padding:12px 16px;font-size:16px;color:#1a1a2e;">"I've <strong style="color:#00897B;">just</strong> arrived."</div>
+      <div style="font-size:12px;color:#888;margin-top:8px;">have + <strong>just</strong> + V3</div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:22px 24px;border-top:6px solid #5E35B1;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:24px;color:#5E35B1;margin-bottom:10px;">already</div>
+      <div style="font-size:14px;color:#555;margin-bottom:12px;">= sooner than expected (+)</div>
+      <div style="background:#EDE7F6;border-radius:10px;padding:12px 16px;font-size:16px;color:#1a1a2e;">"I've <strong style="color:#5E35B1;">already</strong> eaten."</div>
+      <div style="font-size:12px;color:#888;margin-top:8px;">have + <strong>already</strong> + V3</div>
+    </div>
+    <div style="background:#fff;border-radius:16px;padding:22px 24px;border-top:6px solid #E65100;border:0.5px solid #E0DDD8;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+      <div style="font-family:'Fredoka One',cursive;font-size:24px;color:#E65100;margin-bottom:10px;">yet</div>
+      <div style="font-size:14px;color:#555;margin-bottom:12px;">= until now (? and −)</div>
+      <div style="background:#FFF3E0;border-radius:10px;padding:12px 16px;font-size:16px;color:#1a1a2e;">"Have you finished <strong style="color:#E65100;">yet</strong>?"</div>
+      <div style="font-size:12px;color:#888;margin-top:8px;">…V3 + <strong>yet</strong>? / not …yet</div>
+    </div>
+    <div style="grid-column:1 / -1;background:#F3E7D3;border-radius:14px;padding:14px 24px;border-left:4px solid #B8773A;text-align:center;margin-top:6px;">
+      <div style="font-size:14px;color:#8A5A22;line-height:1.6;">⭐ These all connect the past to <strong>now</strong> — so they go with the <strong>present perfect</strong>, never a finished-time past!</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 10: PRACTICE ═══ -->
+<div class="slide" style="background:#F0FAF5;">
+  <div class="slide-header" style="background:#E8F5E9;border-bottom:2px solid #A5D6A7;">
+    <div class="header-icon" style="background:#2E7D32;">⌨️</div>
+    <div class="header-text">
+      <h2 style="color:#1B5E20;">Your turn — open the activity!</h2>
+      <p>Open the link in the chat. We'll do the 3 parts together.</p>
+    </div>
+    <div class="timer-pill" style="background:#2E7D32;">Practice ⌨️</div>
+  </div>
+
+  <div style="padding:40px 56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;height:596px;align-content:center;">
+    <div class="step-card"><div class="step-num" style="background:#5E35B1;">1</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>Which tense?</strong> — let the signal word decide 🚦</div></div>
+    <div class="step-card"><div class="step-num" style="background:#C62828;">2</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>Spot the mistake</strong> — choose the correct one ✅</div></div>
+    <div class="step-card"><div class="step-num" style="background:#00838F;">3</div><div style="font-size:14px;color:#1a1a2e;line-height:1.5;"><strong>Complete the chat</strong> — ask & answer naturally 💬</div></div>
+    <div style="grid-column:1 / -1;background:#E8F5E9;border-radius:14px;padding:16px 22px;border-left:4px solid #2E7D32;margin-top:6px;">
+      <div style="font-size:14px;color:#1B5E20;line-height:1.7;">💡 Try each one yourself first — then tell me <strong>which signal word</strong> helped you decide 🤝</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 11: FREER (personalised) ═══ -->
+<div class="slide" style="background:#1a1a2e;">
+  <div style="position:absolute;top:-100px;left:-100px;width:380px;height:380px;border-radius:50%;background:rgba(0,137,123,0.15);"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(230,81,0,0.12);"></div>
+
+  <div style="position:absolute;left:0;top:0;bottom:0;width:600px;display:flex;flex-direction:column;justify-content:center;padding:56px 52px;gap:16px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#80CBC4;font-weight:700;">Speaking · the real pattern</div>
+    <div style="font-family:'Fredoka One',cursive;font-size:36px;color:#fff;line-height:1.15;">Interview time! 🎤</div>
+
+    <div style="background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.2);border-radius:18px;padding:20px 26px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#4DB6AC;font-weight:700;margin-bottom:10px;">The rule of the game:</div>
+      <div style="font-size:16px;color:#fff;line-height:1.8;">
+        1️⃣ I ask: "<strong style="color:#4DB6AC;">Have you ever…?</strong>"<br>
+        2️⃣ You answer, then I ask: "<strong style="color:#FF8A4C;">When? Where? What happened?</strong>"<br>
+        3️⃣ You give details in the <strong style="color:#FF8A4C;">past simple</strong>!
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFD54F;margin-bottom:8px;">Topics 🎲</div>
+      <div style="font-size:14px;color:#CECBF6;line-height:1.9;">…won a prize · …broken a bone · …met someone famous · …cooked for many people · …got lost in a city</div>
+    </div>
+    <div style="font-size:13px;color:#80CBC4;font-style:italic;">🗣️ Then YOU interview me — switch roles!</div>
+  </div>
+
+  <div style="position:absolute;right:0;top:0;bottom:0;width:660px;display:flex;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" width="520" height="520">
+      <circle cx="260" cy="260" r="220" fill="rgba(0,137,123,0.05)"/>
+      <!-- two speech bubbles teal & orange -->
+      <g>
+        <rect x="90" y="140" width="200" height="100" rx="20" fill="#00897B"/>
+        <polygon points="140,238 175,238 130,280" fill="#00897B"/>
+        <text x="190" y="180" text-anchor="middle" font-size="16" fill="#fff" font-family="Nunito" font-weight="800">Have you</text>
+        <text x="190" y="206" text-anchor="middle" font-size="16" fill="#fff" font-family="Nunito" font-weight="800">ever…?</text>
+      </g>
+      <g>
+        <rect x="240" y="290" width="200" height="100" rx="20" fill="#E65100"/>
+        <polygon points="380,388 415,388 425,430" fill="#E65100"/>
+        <text x="340" y="330" text-anchor="middle" font-size="16" fill="#fff" font-family="Nunito" font-weight="800">Yes! I went</text>
+        <text x="340" y="356" text-anchor="middle" font-size="16" fill="#fff" font-family="Nunito" font-weight="800">there in…</text>
+      </g>
+      <text x="260" y="270" text-anchor="middle" font-size="34">🎙️</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══ SLIDE 12: WRAP-UP ═══ -->
+<div class="slide" style="background:#F4F8F7;">
+  <div class="slide-header" style="background:#E0F0EE;border-bottom:2px solid #9CCCC6;">
+    <div class="header-icon" style="background:#00695C;">✅</div>
+    <div class="header-text">
+      <h2 style="color:#004D40;">Before we finish…</h2>
+      <p>Present Perfect or Past Simple? Find and fix!</p>
+    </div>
+    <div class="timer-pill" style="background:#00695C;">Review ✅</div>
+  </div>
+
+  <div style="padding:30px 64px;height:596px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+    <div style="font-family:'Fredoka One',cursive;font-size:22px;color:#004D40;margin-bottom:4px;">Find and fix the mistake 🔎</div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">1. &nbsp;<em>"I have met her last weekend."</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">2. &nbsp;<em>"Did you ever try Thai food?"</em></div>
+    <div style="background:#fff;border-radius:14px;padding:16px 24px;border:0.5px solid #9CCCC6;box-shadow:0 3px 10px rgba(0,0,0,0.05);font-size:18px;color:#1a1a2e;">3. &nbsp;<em>"She lives here since 2018."</em></div>
+
+    <div style="background:#E0F0EE;border-radius:14px;padding:18px 24px;border-left:4px solid #00695C;margin-top:8px;">
+      <div style="font-size:15px;color:#004D40;line-height:1.7;">🎯 <strong>Today you learned to:</strong> choose between Present Perfect (experience, no time) and Past Simple (specific finished time) — using signal words and the natural "ask → tell" pattern! 🌟</div>
+    </div>
+    <div style="text-align:center;margin-top:4px;">
+      <span style="background:#fff;border:0.5px solid #9CCCC6;display:inline-block;border-radius:30px;padding:10px 26px;font-size:14px;color:#004D40;font-weight:700;">Amazing progress — see you next class! 👋</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

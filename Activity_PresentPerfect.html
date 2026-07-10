@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Present Perfect — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; background: #F2F0EB; min-height: 100vh; padding: 36px 18px 70px; }
+.wrap { max-width: 880px; margin: 0 auto; }
+
+.topcard { background: linear-gradient(135deg,#06202a,#1a1a2e,#0a2a3a); border-radius: 22px; padding: 32px 40px; color:#fff; position:relative; overflow:hidden; margin-bottom: 22px; }
+.topcard::before { content:''; position:absolute; top:-70px; right:-50px; width:220px; height:220px; border-radius:50%; background:rgba(0,172,193,0.18); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#4DD0E1; font-weight:700; margin-bottom:6px; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:30px; line-height:1.1; }
+.topcard h1 span { color:#FFD54F; }
+.topcard p { font-size:14px; color:#a0a0c0; margin-top:8px; }
+
+.tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { flex:1; min-width:160px; background:#fff; border:0.5px solid #E0DDD8; border-radius:14px; padding:12px 14px; cursor:pointer; transition:all 0.15s; display:flex; align-items:center; gap:10px; }
+.tab:hover { background:#FAF8F4; }
+.tab.active { background:#1a1a2e; border-color:#1a1a2e; }
+.tab.active .tab-num { background:#FFD54F; color:#1a1a2e; }
+.tab.active .tab-label { color:#fff; }
+.tab.done .tab-num { background:#2E7D32; color:#fff; }
+.tab-num { width:28px; height:28px; min-width:28px; border-radius:8px; background:#F2F0EB; color:#666; display:flex; align-items:center; justify-content:center; font-family:'Fredoka One',cursive; font-size:14px; }
+.tab-label { font-size:13px; font-weight:800; color:#1a1a2e; line-height:1.2; }
+
+.panel { display:none; background:#fff; border-radius:22px; padding:34px 40px; border:0.5px solid #E0DDD8; box-shadow:0 8px 36px rgba(0,0,0,0.07); }
+.panel.active { display:block; }
+.panel h2 { font-family:'Fredoka One',cursive; font-size:24px; margin-bottom:6px; }
+.panel .sub { font-size:14px; color:#666; line-height:1.6; margin-bottom:22px; padding:12px 16px; border-radius:12px; }
+
+.q { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:12px; font-size:16px; color:#1a1a2e; line-height:1.9; }
+.q .num { font-family:'Fredoka One',cursive; margin-right:6px; }
+.opts { display:inline-flex; gap:8px; margin:0 4px; flex-wrap:wrap; }
+.opt { font-family:'Nunito'; font-size:14px; font-weight:700; padding:5px 14px; border-radius:20px; border:1.5px solid #80CBC4; background:#fff; color:#00838F; cursor:pointer; transition:all 0.12s; }
+.opt:hover { background:#D8F3F7; }
+.opt.sel { background:#00838F; color:#fff; border-color:#00838F; }
+.opt.correct { background:#E8F5E9 !important; border-color:#2E7D32 !important; color:#1B5E20 !important; }
+.opt.wrong { background:#FFEBEE !important; border-color:#C62828 !important; color:#C62828 !important; }
+
+.q2 { background:#FAF8F4; border-radius:14px; padding:16px 20px; border:0.5px solid #EDE9E2; margin-bottom:14px; }
+.q2-label { font-size:12px; font-weight:800; color:#888; letter-spacing:1px; margin-bottom:10px; }
+.q2-opt { display:block; width:100%; text-align:left; background:#fff; border:1.5px solid #E0DDD8; border-radius:10px; padding:12px 16px; margin-bottom:8px; font-size:15px; color:#1a1a2e; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#1565C0; background:#F5FAFF; }
+.q2-opt.sel { border-color:#1565C0; background:#E3F2FD; border-width:2px; }
+.q2-opt.correct { border-color:#2E7D32 !important; background:#E8F5E9 !important; color:#1B5E20 !important; font-weight:700; }
+.q2-opt.wrong { border-color:#C62828 !important; background:#FFEBEE !important; color:#C62828 !important; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 24px; border-radius:12px; cursor:pointer; border:none; transition:all 0.12s; }
+.btn-primary { background:#1a1a2e; color:#fff; }
+.btn-primary:hover { background:#2C2C50; }
+.btn-secondary { background:#F2F0EB; color:#666; border:0.5px solid #E0DDD8; }
+.btn-secondary:hover { background:#E8E5DF; }
+.score { font-size:14px; color:#555; }
+.score.good { color:#2E7D32; font-weight:800; }
+.score.partial { color:#E65100; font-weight:800; }
+.score.bad { color:#C62828; font-weight:800; }
+
+@media (max-width:680px){ .panel{padding:24px 20px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topcard">
+    <div class="tag">Grammar Practice · B1</div>
+    <h1>Present Perfect — <span>life experiences</span></h1>
+    <p>have/has + past participle. Three parts — check your answers as you go.</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">have or has? ✍️</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">Past participle 🗂️</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">3</div><div class="tab-label">Which is correct? ✅</div></div>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="panel active" id="panel-0">
+    <h2 style="color:#00838F;">Part 1 — have or has? ✍️</h2>
+    <div class="sub" style="background:#D8F3F7;color:#006064;"><strong>have</strong> → I / you / we / they · <strong>has</strong> → he / she / it. Choose the correct one.</div>
+    <div id="p1"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP1()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP1()">Reset</button>
+      <span class="score" id="score1"></span>
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="panel" id="panel-1">
+    <h2 style="color:#B8773A;">Part 2 — Choose the past participle 🗂️</h2>
+    <div class="sub" style="background:#F3E7D3;color:#8A5A22;">Present perfect uses the <strong>3rd form (V3)</strong> — not the past simple! Choose the correct participle.</div>
+    <div id="p2"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP2()">Reset</button>
+      <span class="score" id="score2"></span>
+    </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="panel" id="panel-2">
+    <h2 style="color:#1565C0;">Part 3 — Which sentence is correct? ✅</h2>
+    <div class="sub" style="background:#E3F2FD;color:#0D47A1;">Watch the participle, have/has agreement, the position of <em>ever</em>, and double negatives!</div>
+    <div id="p3"></div>
+    <div class="footer">
+      <button class="btn btn-primary" onclick="checkP3()">Check answers</button>
+      <button class="btn btn-secondary" onclick="resetP3()">Reset</button>
+      <span class="score" id="score3"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i));
+  document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i));
+}
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+
+/* ===== PART 1: have / has ===== */
+const P1 = [
+  {pre:"I ", post:" visited Spain three times.", ans:"have"},
+  {pre:"She ", post:" never eaten sushi.", ans:"has"},
+  {pre:"My parents ", post:" travelled all over the world.", ans:"have"},
+  {pre:"He ", post:" climbed a real mountain!", ans:"has"},
+  {pre:"We ", post:" seen that film already.", ans:"have"},
+  {pre:"Maria ", post:" written three books.", ans:"has"}
+];
+let p1sel={}; let p1checked=false;
+function renderP1(){
+  const c=document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML=`<span class="num" style="color:#00838F;">${i+1}.</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts';
+    ['have','has'].forEach(o=>{
+      const b=document.createElement('span');
+      b.className='opt'+(p1sel[i]===o?' sel':'');
+      b.textContent=o;
+      b.onclick=()=>{ if(p1checked) return; p1sel[i]=o; renderP1(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    div.insertAdjacentHTML('beforeend', ` ${q.post}`);
+    c.appendChild(div);
+  });
+}
+function checkP1(){
+  p1checked=true; let correct=0;
+  const qs=document.querySelectorAll('#p1 .q');
+  P1.forEach((q,i)=>{
+    qs[i].querySelectorAll('.opt').forEach(o=>{
+      if(o.textContent===q.ans) o.classList.add('correct');
+      else if(o.classList.contains('sel')) o.classList.add('wrong');
+    });
+    if(p1sel[i]===q.ans) correct++;
+  });
+  const s=document.getElementById('score1');
+  s.textContent=`${correct} / ${P1.length} correct`+(correct===P1.length?' — well done! 🎉':'');
+  s.className='score '+(correct===P1.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1sel={}; p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+/* ===== PART 2: past participle ===== */
+const P2 = [
+  {pre:"She has ", base:"(read)", opts:['readed','read'], ans:'read', post:" a lot of books."},
+  {pre:"They have ", base:"(eat)", opts:['ate','eaten'], ans:'eaten', post:" sushi in Japan."},
+  {pre:"I have ", base:"(do)", opts:['done','did'], ans:'done', post:" my homework."},
+  {pre:"He has ", base:"(be)", opts:['been','was'], ans:'been', post:" to Paris twice."},
+  {pre:"We have ", base:"(see)", opts:['saw','seen'], ans:'seen', post:" that show."},
+  {pre:"You have ", base:"(drink)", opts:['drank','drunk'], ans:'drunk', post:" a lot of coffee today!"}
+];
+let p2sel={}; let p2checked=false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,i)=>{
+    const div=document.createElement('div'); div.className='q';
+    div.innerHTML=`<span class="num" style="color:#B8773A;">${i+1}.</span> ${q.pre}`;
+    const opts=document.createElement('span'); opts.className='opts';
+    q.opts.forEach(o=>{
+      const b=document.createElement('span');
+      b.className='opt'+(p2sel[i]===o?' sel':'');
+      b.style.borderColor='#C8A06A'; b.style.color='#8A5A22';
+      if(p2sel[i]===o){ b.style.background='#8A5A22'; b.style.color='#fff'; }
+      b.textContent=o;
+      b.onclick=()=>{ if(p2checked) return; p2sel[i]=o; renderP2(); };
+      opts.appendChild(b);
+    });
+    div.appendChild(opts);
+    div.insertAdjacentHTML('beforeend', ` ${q.post} <span style="color:#888;font-style:italic;font-size:14px;">${q.base}</span>`);
+    c.appendChild(div);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0;
+  const qs=document.querySelectorAll('#p2 .q');
+  P2.forEach((q,i)=>{
+    qs[i].querySelectorAll('.opt').forEach(o=>{
+      o.style.background=''; o.style.color=''; o.style.borderColor='';
+      if(o.textContent===q.ans) o.classList.add('correct');
+      else if(p2sel[i]===o.textContent) o.classList.add('wrong');
+    });
+    if(p2sel[i]===q.ans) correct++;
+  });
+  const s=document.getElementById('score2');
+  s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' — great! 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+/* ===== PART 3: which is correct ===== */
+const P3 = [
+  {opts:['Have you ever been to Brazil?','Have you ever went to Brazil?'], correct:0},
+  {opts:['She has never saw snow.','She has never seen snow.'], correct:1},
+  {opts:['He has ate insects.','He has eaten insects.'], correct:1},
+  {opts:['Has you ever tried it?','Have you ever tried it?'], correct:1},
+  {opts:['They haven\u2019t never been there.','They have never been there.'], correct:1},
+  {opts:['I\u2019ve been to Peru.','I\u2019ve go to Peru.'], correct:0}
+];
+let p3sel={}; let p3checked=false;
+function renderP3(){
+  const c=document.getElementById('p3'); c.innerHTML='';
+  P3.forEach((q,qi)=>{
+    const box=document.createElement('div'); box.className='q2';
+    const lab=document.createElement('div'); lab.className='q2-label'; lab.textContent='Sentence '+(qi+1);
+    box.appendChild(lab);
+    q.opts.forEach((o,oi)=>{
+      const b=document.createElement('button');
+      b.className='q2-opt'+(p3sel[qi]===oi?' sel':'');
+      b.textContent=o;
+      if(!p3checked) b.onclick=()=>{ p3sel[qi]=oi; renderP3(); };
+      box.appendChild(b);
+    });
+    c.appendChild(box);
+  });
+}
+function checkP3(){
+  p3checked=true; let correct=0;
+  const boxes=document.querySelectorAll('#p3 .q2');
+  P3.forEach((q,qi)=>{
+    const opts=boxes[qi].querySelectorAll('.q2-opt');
+    opts.forEach((o,oi)=>{
+      if(oi===q.correct) o.classList.add('correct');
+      else if(p3sel[qi]===oi) o.classList.add('wrong');
+    });
+    if(p3sel[qi]===q.correct) correct++;
+  });
+  const s=document.getElementById('score3');
+  s.textContent=`${correct} / ${P3.length} correct`+(correct===P3.length?' — excellent! 🎉':'');
+  s.className='score '+(correct===P3.length?'good':(correct>=3?'partial':'bad'));
+  if(correct===P3.length) markDone(2);
+}
+function resetP3(){ p3sel={}; p3checked=false; document.getElementById('score3').textContent=''; renderP3(); }
+
+renderP1(); renderP2(); renderP3();
+</script>
+</body>
+</html>

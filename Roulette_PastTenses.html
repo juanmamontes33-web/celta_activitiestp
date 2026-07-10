@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Tenses Roulette</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#F2F0EB; min-height:100vh; padding:28px 18px 60px; }
+.wrap { max-width:880px; margin:0 auto; }
+
+.hero { background:linear-gradient(135deg,#06202a,#1a1a2e,#2a1038); border-radius:22px; padding:26px 36px; color:#fff; position:relative; overflow:hidden; margin-bottom:22px; text-align:center; }
+.hero::before { content:''; position:absolute; top:-70px; right:-40px; width:220px; height:220px; border-radius:50%; background:rgba(255,179,0,0.16); }
+.hero::after { content:''; position:absolute; bottom:-60px; left:-40px; width:180px; height:180px; border-radius:50%; background:rgba(94,53,177,0.2); }
+.hero .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#FFD54F; font-weight:700; margin-bottom:6px; }
+.hero h1 { font-family:'Fredoka One',cursive; font-size:34px; line-height:1.1; }
+.hero h1 span { color:#FFD54F; }
+.hero p { font-size:14px; color:#b8b8d0; margin-top:8px; }
+
+.stage { background:#fff; border-radius:22px; padding:30px 32px 34px; border:0.5px solid #E0DDD8; box-shadow:0 8px 36px rgba(0,0,0,0.07); display:flex; flex-direction:column; align-items:center; }
+
+.counter { font-size:13px; font-weight:800; letter-spacing:1px; color:#888; text-transform:uppercase; margin-bottom:14px; }
+
+.wheel-wrap { position:relative; width:460px; height:460px; margin-bottom:6px; }
+.pointer { position:absolute; top:-6px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-top:34px solid #1a1a2e; z-index:5; filter:drop-shadow(0 3px 3px rgba(0,0,0,0.25)); }
+.pointer::after { content:''; position:absolute; top:-40px; left:-12px; width:24px; height:24px; border-radius:50%; background:#1a1a2e; }
+.wheel { width:460px; height:460px; transform-origin:50% 50%; transition:transform 4.4s cubic-bezier(0.16,0.74,0.12,1); will-change:transform; }
+.hub { position:absolute; top:50%; left:50%; width:78px; height:78px; margin:-39px 0 0 -39px; border-radius:50%; background:#1a1a2e; border:5px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,0.3); z-index:4; display:flex; align-items:center; justify-content:center; font-size:30px; }
+
+.spinBtn { font-family:'Fredoka One',cursive; font-size:22px; letter-spacing:1px; color:#fff; background:linear-gradient(135deg,#E65100,#C2185B); border:none; border-radius:16px; padding:14px 48px; cursor:pointer; margin:16px 0 8px; box-shadow:0 6px 18px rgba(194,24,91,0.35); transition:transform 0.1s, box-shadow 0.1s; }
+.spinBtn:hover { transform:translateY(-2px); box-shadow:0 9px 22px rgba(194,24,91,0.4); }
+.spinBtn:active { transform:translateY(0); }
+.spinBtn:disabled { background:#CFCAC2; color:#fff; cursor:default; box-shadow:none; transform:none; }
+
+.result { width:100%; margin-top:18px; min-height:120px; border-radius:18px; border:2px dashed #E0DDD8; padding:24px 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; transition:all 0.2s; background:#FAF8F4; }
+.result.show { border-style:solid; background:#fff; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+.result .placeholder { font-size:16px; color:#999; }
+.result .qtopic { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; padding:5px 16px; border-radius:20px; margin-bottom:14px; }
+.result .qnum { font-family:'Fredoka One',cursive; font-size:13px; color:#bbb; margin-bottom:6px; }
+.result .qtext { font-size:24px; font-weight:800; color:#1a1a2e; line-height:1.4; max-width:680px; }
+.result .qhint { font-size:14px; color:#888; font-style:italic; margin-top:12px; }
+
+.controls { display:flex; gap:14px; align-items:center; margin-top:20px; flex-wrap:wrap; justify-content:center; }
+.btn-reset { font-family:'Nunito'; font-size:14px; font-weight:700; padding:10px 22px; border-radius:12px; cursor:pointer; background:#F2F0EB; color:#666; border:0.5px solid #E0DDD8; }
+.btn-reset:hover { background:#E8E5DF; }
+
+.legend { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:22px; }
+.leg { font-size:12.5px; font-weight:700; color:#555; display:inline-flex; align-items:center; gap:7px; }
+.dot { width:12px; height:12px; border-radius:50%; display:inline-block; }
+
+.done-msg { font-size:20px; font-weight:800; color:#2E7D32; }
+
+@media (max-width:520px){ .wheel-wrap,.wheel{width:320px;height:320px;} .hub{width:60px;height:60px;margin:-30px 0 0 -30px;} .result .qtext{font-size:20px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="tag">Speaking Game · B1</div>
+    <h1>Past Tenses <span>Roulette</span> 🎡</h1>
+    <p>Spin the wheel — then answer my question! Each question disappears after it's used.</p>
+  </div>
+
+  <div class="stage">
+    <div class="counter" id="counter">0 / 10 used</div>
+
+    <div class="wheel-wrap">
+      <div class="pointer"></div>
+      <div class="wheel" id="wheel">
+        <svg viewBox="0 0 500 500" width="460" height="460" xmlns="http://www.w3.org/2000/svg">
+      <path id="wedge-0" d="M250 250 L250.00 10.00 A240 240 0 0 1 391.07 55.84 Z" fill="#1565C0" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-0" x="298.8" y="99.7" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">1</text>
+      <path id="wedge-1" d="M250 250 L391.07 55.84 A240 240 0 0 1 478.25 175.84 Z" fill="#5E35B1" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-1" x="377.8" y="157.1" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">2</text>
+      <path id="wedge-2" d="M250 250 L478.25 175.84 A240 240 0 0 1 478.25 324.16 Z" fill="#B8773A" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-2" x="408.0" y="250.0" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">3</text>
+      <path id="wedge-3" d="M250 250 L478.25 324.16 A240 240 0 0 1 391.07 444.16 Z" fill="#00897B" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-3" x="377.8" y="342.9" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">4</text>
+      <path id="wedge-4" d="M250 250 L391.07 444.16 A240 240 0 0 1 250.00 490.00 Z" fill="#C2185B" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-4" x="298.8" y="400.3" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">5</text>
+      <path id="wedge-5" d="M250 250 L250.00 490.00 A240 240 0 0 1 108.93 444.16 Z" fill="#E65100" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-5" x="201.2" y="400.3" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">6</text>
+      <path id="wedge-6" d="M250 250 L108.93 444.16 A240 240 0 0 1 21.75 324.16 Z" fill="#1565C0" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-6" x="122.2" y="342.9" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">7</text>
+      <path id="wedge-7" d="M250 250 L21.75 324.16 A240 240 0 0 1 21.75 175.84 Z" fill="#5E35B1" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-7" x="92.0" y="250.0" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">8</text>
+      <path id="wedge-8" d="M250 250 L21.75 175.84 A240 240 0 0 1 108.93 55.84 Z" fill="#00897B" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-8" x="122.2" y="157.1" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">9</text>
+      <path id="wedge-9" d="M250 250 L108.93 55.84 A240 240 0 0 1 250.00 10.00 Z" fill="#B8773A" stroke="#fff" stroke-width="2.5"/>
+      <text id="label-9" x="201.2" y="99.7" text-anchor="middle" dominant-baseline="central" font-family="Fredoka One,cursive" font-size="34" fill="#fff">10</text>
+        </svg>
+      </div>
+      <div class="hub">🎯</div>
+    </div>
+
+    <button class="spinBtn" id="spinBtn" onclick="spin()">SPIN! 🎡</button>
+
+    <div class="result" id="result">
+      <div class="placeholder">👆 Press <strong>SPIN!</strong> to get your first question</div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-reset" onclick="resetWheel()">↺ Reset wheel</button>
+    </div>
+
+    <div class="legend">
+      <span class="leg"><span class="dot" style="background:#1565C0"></span>Past Simple</span><span class="leg"><span class="dot" style="background:#5E35B1"></span>Past Continuous</span><span class="leg"><span class="dot" style="background:#B8773A"></span>used to</span><span class="leg"><span class="dot" style="background:#00897B"></span>Present Perfect</span><span class="leg"><span class="dot" style="background:#C2185B"></span>Adverbs of frequency</span><span class="leg"><span class="dot" style="background:#E65100"></span>do & make</span><span class="leg"><span class="dot" style="background:#5E35B1"></span>Past Cont. + Simple</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [{"topic": "Past Simple", "color": "#1565C0", "q": "What did you do last weekend? Tell me 3 things you did.", "hint": "I went… I watched… I visited…"}, {"topic": "Past Continuous", "color": "#5E35B1", "q": "What were you doing yesterday at 8 o'clock in the evening?", "hint": "I was …-ing"}, {"topic": "used to", "color": "#B8773A", "q": "What did you use to do as a child that you don't do anymore?", "hint": "I used to… (but now I don't)"}, {"topic": "Present Perfect", "color": "#00897B", "q": "Have you ever travelled abroad? Where have you been?", "hint": "I've been to… / I've never…"}, {"topic": "Adverbs of frequency", "color": "#C2185B", "q": "How often do you exercise? Use always, usually, sometimes or never.", "hint": "I always / usually / sometimes…"}, {"topic": "do & make", "color": "#E65100", "q": "Tell me ONE thing you MADE and ONE thing you DID last week.", "hint": "I made… / I did…"}, {"topic": "Past Simple", "color": "#1565C0", "q": "What time did you wake up today, and what was the first thing you did?", "hint": "I woke up… then I…"}, {"topic": "Past Cont. + Simple", "color": "#5E35B1", "q": "Finish the story: “I was walking down the street when suddenly…”", "hint": "…when suddenly + past simple"}, {"topic": "Present Perfect", "color": "#00897B", "q": "What is the best film you have ever seen? Why?", "hint": "The best film I've ever seen is…"}, {"topic": "used to", "color": "#B8773A", "q": "Tell me about a food you didn't use to like but you love now.", "hint": "I didn't use to like… but now…"}];
+const SEG = 36;
+let rotation = 0;
+let active = QUESTIONS.map((_,i)=>i);
+let used = 0;
+let pendingTarget = null;
+let spinning = false;
+
+const wheel = document.getElementById('wheel');
+const btn = document.getElementById('spinBtn');
+
+function spin(){
+  if(spinning || active.length===0) return;
+  spinning = true;
+  btn.disabled = true;
+  const target = active[Math.floor(Math.random()*active.length)];
+  pendingTarget = target;
+  const desiredMod = (360 - (target*SEG + SEG/2)) % 360;
+  const spins = 4;
+  let newRot = rotation + spins*360;
+  const delta = ((desiredMod - (newRot % 360)) + 360) % 360;
+  newRot += delta;
+  rotation = newRot;
+  // clear current result while spinning
+  const res = document.getElementById('result');
+  res.classList.remove('show');
+  res.innerHTML = '<div class="placeholder">🎡 Spinning…</div>';
+  wheel.style.transform = `rotate(${rotation}deg)`;
+}
+
+wheel.addEventListener('transitionend', ()=>{
+  if(pendingTarget===null) return;
+  const t = pendingTarget;
+  pendingTarget = null;
+  revealQuestion(t);
+  // grey out used wedge
+  const w = document.getElementById('wedge-'+t);
+  const l = document.getElementById('label-'+t);
+  if(w){ w.setAttribute('fill','#D8D3CB'); w.setAttribute('stroke','#fff'); }
+  if(l){ l.setAttribute('fill','#aaa'); }
+  active = active.filter(x=>x!==t);
+  used++;
+  document.getElementById('counter').textContent = used + ' / 10 used';
+  spinning = false;
+  if(active.length===0){
+    btn.disabled = true;
+    btn.textContent = 'All done! 🎉';
+  } else {
+    btn.disabled = false;
+  }
+});
+
+function revealQuestion(i){
+  const q = QUESTIONS[i];
+  const res = document.getElementById('result');
+  res.classList.add('show');
+  res.innerHTML =
+    '<div class="qnum">Question ' + (i+1) + '</div>' +
+    '<div class="qtopic" style="background:'+q.color+'">'+q.topic+'</div>' +
+    '<div class="qtext">'+q.q+'</div>' +
+    '<div class="qhint">💬 '+q.hint+'</div>';
+}
+
+function resetWheel(){
+  active = QUESTIONS.map((_,i)=>i);
+  used = 0; pendingTarget = null; spinning = false;
+  document.getElementById('counter').textContent = '0 / 10 used';
+  for(let i=0;i<QUESTIONS.length;i++){
+    const w=document.getElementById('wedge-'+i);
+    const l=document.getElementById('label-'+i);
+    if(w){ w.setAttribute('fill', QUESTIONS[i].color); w.setAttribute('stroke','#fff'); }
+    if(l){ l.setAttribute('fill','#fff'); }
+  }
+  btn.disabled=false; btn.textContent='SPIN! 🎡';
+  const res=document.getElementById('result');
+  res.classList.remove('show');
+  res.innerHTML='<div class="placeholder">👆 Press <strong>SPIN!</strong> to get your first question</div>';
+}
+</script>
+</body>
+</html>

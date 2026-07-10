@@ -95,16 +95,16 @@ body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; p
   <div class="panel active" id="panel-0">
     <div class="stage">
       <div class="turnbar">
-        <div class="pchip j active" id="chip-j"><span class="pdot" style="background:#22D3EE"></span>Juan</div>
+        <div class="pchip j active" id="chip-j"><span class="pdot" style="background:#22D3EE"></span>Player 1</div>
         <span style="color:#555;font-weight:800;">&amp;</span>
-        <div class="pchip v" id="chip-v"><span class="pdot" style="background:#F472B6"></span>Valeria</div>
+        <div class="pchip v" id="chip-v"><span class="pdot" style="background:#F472B6"></span>Player 2</div>
       </div>
       <div class="counter" id="counter">0 / 12 revealed</div>
       <div class="ball" id="ball">🔮</div>
       <button class="revealBtn" id="revealBtn" onclick="reveal()">REVEAL!</button>
       <button class="btn-reset" onclick="resetMachine()">↺ Reset</button>
       <div class="prompt" id="prompt">
-        <div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press REVEAL!</div>
+        <div class="ptxt" style="color:#9a9aa8;">👆 Player 1 starts — press REVEAL!</div>
       </div>
     </div>
   </div>
@@ -147,7 +147,7 @@ const PROMPTS = [
   {t:'plan', x:"What are you going to do on your next holiday? 🏝️"}
 ];
 const TAG = {plan:{l:'Plan 📅 (going to)',c:'#FBBF24'}, pred:{l:'Prediction 🔮 (will)',c:'#22D3EE'}, dec:{l:'Decision / Promise ⚡ (will)',c:'#A78BFA'}};
-const NAMES = {j:'Juan', v:'Valeria'};
+const NAMES = {j:'Player 1', v:'Player 2'};
 let active = PROMPTS.map((_,i)=>i);
 let used=0, cur='j', busy=false, over=false;
 
@@ -196,7 +196,7 @@ function resetMachine(){
   document.getElementById('revealBtn').textContent='REVEAL!';
   const pr=document.getElementById('prompt');
   pr.style.borderColor='#2a2a30'; pr.style.boxShadow='none';
-  pr.innerHTML='<div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press REVEAL!</div>';
+  pr.innerHTML='<div class="ptxt" style="color:#9a9aa8;">👆 Player 1 starts — press REVEAL!</div>';
 }
 
 /* ===== TAB 2: will or going to ===== */

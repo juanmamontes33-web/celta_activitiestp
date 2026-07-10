@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Present Simple &amp; Continuous — Practice</title>
+<title>Present Perfect: Simple vs Continuous — Practice</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -11,11 +11,11 @@ body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; p
 .wrap { max-width: 880px; margin: 0 auto; }
 
 .topcard { background: radial-gradient(120% 120% at 80% 0%, #16161f, #0a0a10 60%, #000); border-radius: 22px; padding: 32px 40px; position:relative; overflow:hidden; margin-bottom: 22px; border:1px solid rgba(255,255,255,0.06); }
-.topcard::before { content:''; position:absolute; top:-60px; left:-30px; width:200px; height:200px; border-radius:50%; background:rgba(251,191,36,0.12); filter:blur(20px); }
-.topcard::after { content:''; position:absolute; bottom:-60px; right:-30px; width:200px; height:200px; border-radius:50%; background:rgba(34,211,238,0.12); filter:blur(20px); }
-.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#FBBF24; font-weight:700; margin-bottom:6px; position:relative; }
-.topcard h1 { font-family:'Fredoka One',cursive; font-size:27px; line-height:1.1; position:relative; }
-.topcard h1 .s { color:#FBBF24; } .topcard h1 .c { color:#22D3EE; }
+.topcard::before { content:''; position:absolute; top:-60px; left:-30px; width:200px; height:200px; border-radius:50%; background:rgba(34,211,238,0.12); filter:blur(20px); }
+.topcard::after { content:''; position:absolute; bottom:-60px; right:-30px; width:200px; height:200px; border-radius:50%; background:rgba(163,230,53,0.12); filter:blur(20px); }
+.topcard .tag { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#22D3EE; font-weight:700; margin-bottom:6px; position:relative; }
+.topcard h1 { font-family:'Fredoka One',cursive; font-size:28px; line-height:1.1; position:relative; }
+.topcard h1 .c { color:#22D3EE; } .topcard h1 .s { color:#A3E635; }
 .topcard p { font-size:14px; color:#9a9aa8; margin-top:8px; position:relative; }
 
 .tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
@@ -69,20 +69,20 @@ body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; p
 
   <div class="topcard">
     <div class="tag">Grammar Practice · B1</div>
-    <h1><span class="s">Present Simple</span> &amp; <span class="c">Present Continuous</span></h1>
-    <p>Usual life or happening now? Three parts — check your answers as you go.</p>
+    <h1><span class="c">Continuous</span> (activity) vs <span class="s">Simple</span> (result)</h1>
+    <p>Activity & how long, or result & how many? Three parts — check your answers as you go.</p>
   </div>
 
   <div class="tabs">
-    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">Simple or Continuous? ✍️</div></div>
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">1</div><div class="tab-label">Activity or Result? ✍️</div></div>
     <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">2</div><div class="tab-label">Which is correct? ✅</div></div>
-    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">3</div><div class="tab-label">Now or usually? 🧠</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">3</div><div class="tab-label">What does it mean? 🧠</div></div>
   </div>
 
   <!-- PART 1 -->
   <div class="panel active" id="panel-0">
-    <h2 style="color:#FBBF24;">Part 1 — Simple or Continuous? ✍️</h2>
-    <div class="sub" style="background:#231c08;color:#fcd34d;">Look at the time word! <strong style="color:#FBBF24;">every day / usually</strong> → Simple · <strong style="color:#22D3EE;">now / today</strong> → Continuous.</div>
+    <h2 style="color:#22D3EE;">Part 1 — Activity or Result? Choose the form ✍️</h2>
+    <div class="sub" style="background:#13202a;color:#a0e8f4;"><strong style="color:#22D3EE;">Continuous</strong> = the activity / how long · <strong style="color:#A3E635;">Simple</strong> = the finished result / how many. Read the clue and choose!</div>
     <div id="p1"></div>
     <div class="footer">
       <button class="btn btn-primary" onclick="checkP1()">Check answers</button>
@@ -94,7 +94,7 @@ body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; p
   <!-- PART 2 -->
   <div class="panel" id="panel-1">
     <h2 style="color:#A3E635;">Part 2 — Which sentence is correct? ✅</h2>
-    <div class="sub" style="background:#1a2310;color:#d4f59a;">Watch for: the -s (he/she/it), am/is/are with -ing, do/does, and stative verbs (want, know).</div>
+    <div class="sub" style="background:#1a2310;color:#d4f59a;">Watch for: how long → continuous · how many → simple · and stative verbs (know, have, be) → simple only!</div>
     <div id="p2"></div>
     <div class="footer">
       <button class="btn btn-primary" onclick="checkP2()">Check answers</button>
@@ -105,8 +105,8 @@ body { font-family: 'Nunito', sans-serif; background: #000; min-height: 100vh; p
 
   <!-- PART 3 -->
   <div class="panel" id="panel-2">
-    <h2 style="color:#22D3EE;">Part 3 — Now or usually? 🧠</h2>
-    <div class="sub" style="background:#10222b;color:#a0e8f4;">Read each sentence. Is it about <strong>right now / temporary</strong>, or something <strong>in general / a habit</strong>?</div>
+    <h2 style="color:#F472B6;">Part 3 — What does it really mean? 🧠</h2>
+    <div class="sub" style="background:#2a1020;color:#f9a8d4;">Read each sentence. Is the focus the <strong>ACTIVITY</strong> (maybe not finished) or the <strong>RESULT</strong> (finished)?</div>
     <div id="p3"></div>
     <div class="footer">
       <button class="btn btn-primary" onclick="checkP3()">Check answers</button>
@@ -126,21 +126,21 @@ function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done')
 
 /* ===== PART 1 ===== */
 const P1 = [
-  {pre:"I ", post:" from home.", cue:"(every day)", opts:["work","'m working"], ans:"work"},
-  {pre:"Shh! The baby ", post:".", cue:"(right now)", opts:["sleeps","is sleeping"], ans:"is sleeping"},
-  {pre:"Ana usually ", post:" coffee in the morning.", cue:"(usually)", opts:["drinks","is drinking"], ans:"drinks"},
-  {pre:"Look outside — it ", post:"!", cue:"(look! now)", opts:["rains","is raining"], ans:"is raining"},
-  {pre:"Water ", post:" at 100 degrees.", cue:"(a fact)", opts:["boils","is boiling"], ans:"boils"},
-  {pre:"I can't talk now — I ", post:".", cue:"(at the moment)", opts:["drive","'m driving"], ans:"'m driving"},
-  {pre:"She ", post:" meat. She's vegetarian.", cue:"(permanent)", opts:["doesn't eat","isn't eating"], ans:"doesn't eat"},
-  {pre:"These days, Leo ", post:" a lot for his exam.", cue:"(these days)", opts:["studies","is studying"], ans:"is studying"}
+  {pre:"I'm exhausted! I ", post:" the house all morning.", cue:"(activity · all morning)", opts:["'ve been cleaning","'ve cleaned"], ans:"'ve been cleaning"},
+  {pre:"Great news — I ", post:" the whole house! It's perfect now.", cue:"(finished result)", opts:["'ve been cleaning","'ve cleaned"], ans:"'ve cleaned"},
+  {pre:"How long ", post:" Spanish?", cue:"(how long)", opts:["have you been learning","have you learned"], ans:"have you been learning"},
+  {pre:"How many books ", post:" this year?", cue:"(how many)", opts:["have you been reading","have you read"], ans:"have you read"},
+  {pre:"Your eyes are red. ", post:"?", cue:"(evidence · activity)", opts:["Have you been crying","Have you cried"], ans:"Have you been crying"},
+  {pre:"I ", post:" three emails so far today.", cue:"(quantity)", opts:["'ve been writing","'ve written"], ans:"'ve written"},
+  {pre:"She ", post:" all day — there's paint everywhere!", cue:"(activity · all day)", opts:["'s been painting","'s painted"], ans:"'s been painting"},
+  {pre:"We ", post:" the project. Here it is! 🎉", cue:"(finished result)", opts:["'ve been finishing","'ve finished"], ans:"'ve finished"}
 ];
 let p1sel={}; let p1checked=false;
 function renderP1(){
   const c=document.getElementById('p1'); c.innerHTML='';
   P1.forEach((q,i)=>{
     const div=document.createElement('div'); div.className='q';
-    div.innerHTML=`<span class="num" style="color:#FBBF24;">${i+1}.</span> ${q.pre}`;
+    div.innerHTML=`<span class="num" style="color:#22D3EE;">${i+1}.</span> ${q.pre}`;
     const opts=document.createElement('span'); opts.className='opts';
     q.opts.forEach(o=>{
       const b=document.createElement('span');
@@ -173,12 +173,12 @@ function resetP1(){ p1sel={}; p1checked=false; document.getElementById('score1')
 
 /* ===== PART 2 ===== */
 const P2 = [
-  {opts:["He work in a bank.","He works in a bank."], correct:1},
-  {opts:["I'm wanting a coffee.","I want a coffee."], correct:1},
-  {opts:["She is studying right now.","She studying right now."], correct:0},
-  {opts:["Do she like pizza?","Does she like pizza?"], correct:1},
-  {opts:["They are playing football now.","They are play football now."], correct:0},
-  {opts:["I'm knowing the answer.","I know the answer."], correct:1}
+  {opts:["I've been knowing him for years.","I've known him for years."], correct:1},
+  {opts:["How long have you been waiting?","How long have you waited?"], correct:0},
+  {opts:["I've been reading five books this month.","I've read five books this month."], correct:1},
+  {opts:["She's had a car since 2020.","She's been having a car since 2020."], correct:0},
+  {opts:["Why are you tired? I've cleaned all day.","Why are you tired? I've been cleaning all day."], correct:1},
+  {opts:["He's written ten songs.","He's been writing ten songs."], correct:0}
 ];
 let p2sel={}; let p2checked=false;
 function renderP2(){
@@ -217,12 +217,12 @@ function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2')
 
 /* ===== PART 3 ===== */
 const P3 = [
-  {s:"I'm wearing a jacket.", opts:["Right now / temporary","In general / a habit"], ans:0},
-  {s:"I wear glasses.", opts:["Right now / temporary","In general / always"], ans:1},
-  {s:"She's living with friends.", opts:["Temporary / for now","Permanent / forever"], ans:0},
-  {s:"She lives in Madrid.", opts:["Just today","Permanent / in general"], ans:1},
-  {s:"We're having lunch.", opts:["Right now","Every day at 1 pm"], ans:0},
-  {s:"We have lunch at 1 pm.", opts:["Right now","Usually / a routine"], ans:1}
+  {s:"I've been reading a book.", opts:["Focus: the ACTIVITY (maybe not finished)","Focus: the RESULT (finished)"], ans:0},
+  {s:"I've read the book.", opts:["Focus: the ACTIVITY (maybe not finished)","Focus: the RESULT (I know the story now)"], ans:1},
+  {s:"I've been painting the door.", opts:["Activity — maybe still wet / not done","Result — the door is finished"], ans:0},
+  {s:"I've painted the door.", opts:["Activity — maybe still wet / not done","Result — the door is finished"], ans:1},
+  {s:"I've been calling her all day.", opts:["Activity / duration (maybe no answer)","Result — I reached her"], ans:0},
+  {s:"I've called her three times.", opts:["Activity / duration","Result — a completed number of calls"], ans:1}
 ];
 let p3sel={}; let p3checked=false;
 function renderP3(){

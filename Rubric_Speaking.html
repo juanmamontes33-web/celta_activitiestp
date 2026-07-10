@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking Assessment — Teacher Rubric</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(135% 80% at 85% -5%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%); min-height:100vh; padding:40px 18px 80px; color:#EAE7DF; }
+.wrap { max-width:920px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9097A4; font-weight:800; margin-bottom:14px; }
+.kick::before { content:''; width:32px; height:2px; background:#E3B45A; }
+.head { margin-bottom:24px; }
+.head h1 { font-family:'Fredoka One',cursive; font-size:32px; color:#F1EFE8; line-height:1.08; }
+.head h1 span { color:#5ED0CC; }
+.head p { font-size:14px; color:#9097A4; margin-top:10px; max-width:680px; line-height:1.6; }
+
+.candidate { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+.field { flex:1; min-width:200px; }
+.field label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8A92A0; font-weight:800; display:block; margin-bottom:6px; }
+.field input { width:100%; font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:12px; padding:11px 16px; color:#fff; }
+.field input:focus { outline:none; border-color:#5ED0CC; }
+
+.crit { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:24px 28px; margin-bottom:16px; }
+.crit .ch { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
+.crit .cn { font-family:'Space Grotesk'; font-weight:700; font-size:18px; color:#5ED0CC; }
+.crit .ct { font-family:'Fredoka One'; font-size:18px; color:#F1EFE8; }
+.crit .cw { margin-left:auto; font-size:12px; color:#8A92A0; font-weight:800; }
+.crit .cd { font-size:13px; color:#9097A4; line-height:1.6; margin-bottom:16px; }
+.bands { display:flex; gap:8px; flex-wrap:wrap; }
+.band { flex:1; min-width:90px; text-align:center; border:1.5px solid #3a4250; border-radius:12px; padding:12px 8px; cursor:pointer; transition:all 0.12s; background:rgba(255,255,255,0.02); }
+.band:hover { border-color:#5ED0CC; }
+.band.sel { border-color:#5ED0CC; background:rgba(94,208,204,0.12); }
+.band .bs { font-family:'Fredoka One'; font-size:22px; color:#F1EFE8; }
+.band.sel .bs { color:#5ED0CC; }
+.band .bl { font-size:11px; color:#8A92A0; font-weight:700; margin-top:4px; letter-spacing:0.5px; }
+
+.comments { margin-top:14px; }
+.comments label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8A92A0; font-weight:800; display:block; margin-bottom:6px; }
+.comments textarea { width:100%; min-height:60px; font-family:'Nunito'; font-size:14px; background:rgba(255,255,255,0.04); border:1.5px solid #3a4250; border-radius:12px; padding:12px 16px; color:#EAE7DF; resize:vertical; line-height:1.5; }
+.comments textarea:focus { outline:none; border-color:#5ED0CC; }
+
+.total { position:sticky; bottom:18px; margin-top:26px; background:linear-gradient(135deg,#22303a,#1a2230); border:1px solid rgba(94,208,204,0.3); border-radius:20px; padding:24px 32px; display:flex; align-items:center; gap:28px; flex-wrap:wrap; box-shadow:0 16px 44px rgba(0,0,0,0.4); }
+.total .tnum { font-family:'Space Grotesk'; font-weight:700; font-size:46px; color:#5ED0CC; line-height:1; }
+.total .tlbl { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#8A92A0; font-weight:800; }
+.total .tpct { font-family:'Space Grotesk'; font-weight:700; font-size:30px; color:#F1EFE8; }
+.total .verdict { margin-left:auto; font-family:'Fredoka One'; font-size:24px; padding:10px 26px; border-radius:14px; }
+.total .verdict.pass { color:#A8E8AE; background:rgba(120,210,130,0.14); }
+.total .verdict.fail { color:#F0B6B6; background:rgba(232,154,154,0.12); }
+.total .verdict.none { color:#8A92A0; background:rgba(255,255,255,0.05); font-size:18px; }
+
+.bar { font-size:13px; color:#8A92A0; margin-top:18px; padding-left:16px; border-left:2px solid #E3B45A; line-height:1.7; }
+.actions { display:flex; gap:12px; margin-top:18px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 24px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#5ED0CC; color:#0d1016; } .btn-p:hover { background:#7adcd8; }
+.btn-s { background:transparent; color:#9097A4; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#5ED0CC; color:#fff; }
+@media print { body{background:#fff;color:#000;} .total{position:static;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Teacher Use Only · Speaking Assessment</div>
+    <h1>Speaking — <span>Evaluation Rubric</span> 🎤</h1>
+    <p>Score each criterion from 1 to 5 as the candidate answers the five speaking questions. The total updates automatically. Pass mark: <strong style="color:#E3B45A;">70%</strong> (≥ 18 / 25).</p>
+  </div>
+
+  <div class="candidate">
+    <div class="field"><label>Candidate</label><input id="cand" placeholder="Write name here…"></div>
+    <div class="field"><label>Date</label><input id="date" placeholder="dd / mm / yyyy"></div>
+    <div class="field"><label>Examiner</label><input id="exam" placeholder="—"></div>
+  </div>
+
+  <div id="crits"></div>
+
+  <div class="total" id="total">
+    <div><div class="tnum" id="tnum">0</div><div class="tlbl">/ 25 points</div></div>
+    <div><div class="tpct" id="tpct">0%</div><div class="tlbl">overall</div></div>
+    <div class="verdict none" id="verdict">Not scored yet</div>
+  </div>
+
+  <div class="bar">📋 Band guide — <strong>5</strong> Excellent · <strong>4</strong> Good · <strong>3</strong> Satisfactory (pass level) · <strong>2</strong> Limited · <strong>1</strong> Very limited. Use the comment boxes to note specific examples (good language used, errors, tenses attempted).</div>
+
+  <div class="actions">
+    <button class="btn btn-p" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn btn-s" onclick="resetRubric()">Reset</button>
+  </div>
+</div>
+
+<script>
+const CRITERIA = [
+  {t:"Fluency & Coherence", d:"Speaks at a natural pace, keeps going without long pauses, links ideas clearly."},
+  {t:"Use of Tenses", d:"Attempts a range of past, present and future tenses and uses them accurately for meaning."},
+  {t:"Grammatical Range & Accuracy", d:"Variety of structures beyond tenses; errors do not block understanding."},
+  {t:"Vocabulary", d:"Sufficient and appropriate range of words for the topics; good word choice."},
+  {t:"Pronunciation", d:"Generally clear and intelligible; word and sentence stress support meaning."}
+];
+const LABELS = {5:"Excellent",4:"Good",3:"Satisfactory",2:"Limited",1:"Very limited"};
+let scores={};
+
+function renderCrits(){
+  const c=document.getElementById('crits'); c.innerHTML='';
+  CRITERIA.forEach((cr,i)=>{
+    const div=document.createElement('div'); div.className='crit';
+    let bands='';
+    for(let s=5;s>=1;s--){
+      bands+=`<div class="band${scores[i]===s?' sel':''}" data-c="${i}" data-s="${s}"><div class="bs">${s}</div><div class="bl">${LABELS[s]}</div></div>`;
+    }
+    div.innerHTML=`<div class="ch"><span class="cn">0${i+1}</span><span class="ct">${cr.t}</span><span class="cw">/ 5</span></div>
+      <div class="cd">${cr.d}</div>
+      <div class="bands">${bands}</div>
+      <div class="comments"><label>Notes &amp; examples</label><textarea id="cm${i}" placeholder="e.g. used present perfect well; mixed up past simple / continuous…"></textarea></div>`;
+    c.appendChild(div);
+  });
+  document.querySelectorAll('.band').forEach(b=>{
+    b.onclick=()=>{ const ci=b.dataset.c, s=parseInt(b.dataset.s); scores[ci]=s;
+      document.querySelectorAll(`.band[data-c="${ci}"]`).forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); updateTotal(); };
+  });
+}
+function updateTotal(){
+  let sum=0, count=0;
+  CRITERIA.forEach((_,i)=>{ if(scores[i]){ sum+=scores[i]; count++; } });
+  const pct=Math.round(sum/25*100);
+  document.getElementById('tnum').textContent=sum;
+  document.getElementById('tpct').textContent=pct+'%';
+  const v=document.getElementById('verdict');
+  if(count<CRITERIA.length){ v.className='verdict none'; v.textContent='In progress ('+count+'/5)'; }
+  else if(pct>=70){ v.className='verdict pass'; v.textContent='PASS ✓'; }
+  else { v.className='verdict fail'; v.textContent='NOT YET ✗'; }
+}
+function resetRubric(){ scores={}; renderCrits(); updateTotal();
+  ['cand','date','exam'].forEach(id=>document.getElementById(id).value=''); }
+renderCrits(); updateTotal();
+</script>
+</body>
+</html>

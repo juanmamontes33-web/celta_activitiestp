@@ -62,13 +62,13 @@ body { font-family:'Nunito',sans-serif; background:#000; min-height:100vh; paddi
   <div class="hero">
     <div class="tag">Speaking Game · B1</div>
     <h1>Speaking <span>Board</span> 🎲 — How long have you been…?</h1>
-    <p>Juan vs Valeria! Roll, move, and do the speaking task. First to square 20 wins!</p>
+    <p>Player 1 vs Player 2! Roll, move, and do the speaking task. First to square 20 wins!</p>
   </div>
 
   <div class="turnbar">
-    <div class="pchip j active" id="chip-j"><span class="pdot" style="background:#22D3EE"></span>Juan</div>
+    <div class="pchip j active" id="chip-j"><span class="pdot" style="background:#22D3EE"></span>Player 1</div>
     <span style="color:#555;font-weight:800;">VS</span>
-    <div class="pchip v" id="chip-v"><span class="pdot" style="background:#F472B6"></span>Valeria</div>
+    <div class="pchip v" id="chip-v"><span class="pdot" style="background:#F472B6"></span>Player 2</div>
   </div>
 
   <div class="board" id="board">
@@ -101,7 +101,7 @@ body { font-family:'Nunito',sans-serif; background:#000; min-height:100vh; paddi
   </div>
 
   <div class="prompt" id="prompt">
-    <div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press ROLL!</div>
+    <div class="ptxt" style="color:#9a9aa8;">👆 Player 1 starts — press ROLL!</div>
   </div>
 
 </div>
@@ -111,7 +111,7 @@ const PROMPTS = ["START — roll the dice to begin! 🎲", "How long have you be
 const TYPES = ["start", "prompt", "prompt", "bonus", "swap", "prompt", "prompt", "swap", "prompt", "prompt", "swap", "bonus", "prompt", "prompt", "swap", "prompt", "prompt", "swap", "prompt", "finish"];
 const TYPECOL = {start:'#A3E635',prompt:'#22D3EE',bonus:'#FBBF24',swap:'#A78BFA',finish:'#FBBF24'};
 const TYPELABEL = {start:'Start',prompt:'Speak!',bonus:'Bonus ⭐',swap:'Ask your partner 🔄',finish:'Finish 🏆'};
-const NAMES = {j:'Juan', v:'Valeria'};
+const NAMES = {j:'Player 1', v:'Player 2'};
 let pos = {j:1, v:1};
 let cur = 'j';
 let busy = false;
@@ -182,7 +182,7 @@ function resetGame(){
   document.getElementById('dice').textContent='🎲';
   const p=document.getElementById('prompt');
   p.style.borderColor='#2a2a30'; p.style.boxShadow='none';
-  p.innerHTML='<div class="ptxt" style="color:#9a9aa8;">👆 Juan starts — press ROLL!</div>';
+  p.innerHTML='<div class="ptxt" style="color:#9a9aa8;">👆 Player 1 starts — press ROLL!</div>';
   renderTokens();
 }
 renderTokens();
