@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Conditional — Grammar Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #1b2a52 0%, #12203f 48%, #0a1124 100%); min-height:100vh; padding:40px 18px 80px; color:#E8ECF5; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Fredoka'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8A97B5; font-weight:600; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#38BDF8; }
+
+.gbox { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.gbox .gh { font-family:'Fredoka'; font-weight:600; font-size:22px; color:#F4F7FC; margin-bottom:16px; }
+.gbox .big { font-size:22px; color:#F1F5FB; line-height:1.5; font-family:'Nunito'; margin-bottom:16px; }
+.gbox .big .ifc { color:#7DD3FC; font-weight:700; } .gbox .big .res { color:#FBBF24; font-weight:700; }
+.gbox .form { font-size:15.5px; color:#CDD5E6; line-height:1.8; }
+.gbox .form .chip { display:inline-block; background:rgba(56,189,248,0.14); border:1px solid rgba(56,189,248,0.3); color:#bfe6fb; border-radius:8px; padding:2px 9px; font-weight:700; font-size:14px; margin:2px 2px; }
+.gbox .note { margin-top:12px; font-size:14.5px; color:#AAB6D0; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px; }
+.gbox .note b { color:#7DD3FC; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 17px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C4CDE2; }
+.tab.active { border-bottom-color:#38BDF8; }
+.tab.active .tab-num { color:#7DD3FC; } .tab.active .tab-label { color:#F4F7FC; }
+.tab.done .tab-num { color:#86EFAC; }
+.tab-num { font-family:'Fredoka'; font-weight:700; font-size:16px; color:#5C6A8C; }
+.tab-label { font-size:13px; font-weight:800; color:#8A97B5; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Fredoka'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#AAB6D0; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E1E7F2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; margin-right:8px; }
+.q .qt em { color:#bfe6fb; font-style:italic; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C4CDE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#38BDF8; background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:#38BDF8; background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:700; }
+.opt.wrong { border-color:#FB7185 !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Nunito'; font-size:17px; color:#E1E7F2; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#FB7185; font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:#8A97B5; font-weight:700; }
+.fix input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:7px 14px; color:#fff; width:220px; }
+.fix input:focus { outline:none; border-color:#38BDF8; }
+.fix input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no { border-color:#FB7185; background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol { font-size:13px; color:#86EFAC; display:none; } .fix .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); flex-wrap:wrap; }
+.coll .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; }
+.coll .phrase { font-family:'Nunito'; font-weight:600; font-size:17px; color:#E1E7F2; }
+.coll input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:9px; padding:5px 12px; color:#fff; width:150px; margin:0 3px; }
+.coll input:focus { outline:none; border-color:#38BDF8; }
+.coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.coll input.no { border-color:#FB7185; background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.coll .hint { font-size:13px; color:#8A97B5; font-style:italic; }
+.coll .sol { font-size:13px; color:#86EFAC; display:none; } .coll .sol.show { display:inline; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#38BDF8; color:#0a1124; } .btn-p:hover { background:#7DD3FC; }
+.btn-s { background:transparent; color:#8A97B5; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#38BDF8; color:#fff; }
+.score { font-size:14px; color:#AAB6D0; }
+.score.good { color:#A7F3C0; font-weight:800; } .score.partial { color:#FBBF24; font-weight:800; } .score.bad { color:#FBA5B4; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Grammar · B2 · Second Conditional · Unit 5 Home</div>
+
+  <!-- GRAMMAR REFERENCE -->
+  <div class="gbox">
+    <div class="gh">The Second Conditional 💭</div>
+    <div class="big"><span class="ifc">If I had a bigger house,</span> <span class="res">I would invite everyone over.</span></div>
+    <div class="form"><b>Form:</b> <span class="chip">If + past simple</span>, <span class="chip">would + base verb</span>.<br>
+      We use it for <b>imaginary or unlikely</b> situations now or in the future — <em>dream homes, "what if…"</em>.</div>
+    <div class="note">
+      <b>were</b> for everyone: <em>If I <b>were</b> rich, I'd buy a mansion.</em> · <b>would</b> → <b>'d</b> · <b>could / might</b> = possible result.<br>
+      Put a <b>comma</b> when the <em>if-</em>clause comes first. Never use <b>will</b> or <b>would</b> in the <em>if-</em>clause!
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Complete it</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Make it unreal</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Gap-fill</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#7DD3FC;">Task 1 — Complete the conditional 🔍</div>
+    <div class="sub" style="border-color:#38BDF8; color:#9cd8f7;">Choose the correct verb forms. Remember: <em>if</em> + past, <em>would</em> + base verb.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#7DD3FC;">Task 2 — Make it unreal 🔄</div>
+    <div class="sub" style="border-color:#7DD3FC; color:#9cd8f7;">Turn each real situation into a second conditional. Choose the correct sentence.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#FB7185;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#FB7185; color:#fba5b4;">Each sentence has one <span style="color:#FB7185;">crossed-out</span> mistake (often <em>will</em> where it shouldn't be!). Type the correct form.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FBBF24;">Task 4 — Gap-fill 🧩</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fbd277;">Write the verb in brackets in the correct form (<em>past simple</em> or <em>would + verb</em>).</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* MCQ — options shuffled so position never gives away the answer */
+const MCQ_RAW = {
+  0:[
+    {q:"If I <em>___</em> the lottery, I'd buy a mansion.", correct:"won", opts:["won","win","would win"]},
+    {q:"If we had a garden, we <em>___</em> our own vegetables.", correct:"would grow", opts:["would grow","will grow","grew"]},
+    {q:"If my flat <em>___</em> bigger, I'd feel less cramped.", correct:"were", opts:["were","is","would be"]},
+    {q:"If you painted the kitchen yellow, it <em>___</em> cosier.", correct:"would feel", opts:["would feel","will feel","felt"]},
+    {q:"I'd put up more photos if I <em>___</em> more wall space.", correct:"had", opts:["had","have","would have"]}
+  ],
+  1:[
+    {q:"Real: <em>I don't have a garden, so I don't grow vegetables.</em>", correct:"If I had a garden, I would grow vegetables.", opts:["If I had a garden, I would grow vegetables.","If I have a garden, I will grow vegetables.","If I had a garden, I will grow vegetables."]},
+    {q:"Real: <em>My flat is small, so I can't invite many people.</em>", correct:"If my flat weren't small, I could invite more people.", opts:["If my flat weren't small, I could invite more people.","If my flat isn't small, I can invite more people.","If my flat wouldn't be small, I could invite more people."]},
+    {q:"Real: <em>I don't live in the city, so I don't walk to work.</em>", correct:"If I lived in the city, I would walk to work.", opts:["If I lived in the city, I would walk to work.","If I would live in the city, I would walk to work.","If I live in the city, I walk to work."]},
+    {q:"Real: <em>We don't have a spare room, so guests can't stay.</em>", correct:"If we had a spare room, guests could stay.", opts:["If we had a spare room, guests could stay.","If we have a spare room, guests can stay.","If we had a spare room, guests can stay."]},
+    {q:"Real: <em>The kitchen isn't bright, so I don't cook much.</em>", correct:"If the kitchen were brighter, I would cook more.", opts:["If the kitchen were brighter, I would cook more.","If the kitchen is brighter, I will cook more.","If the kitchen would be brighter, I would cook more."]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+/* TASK 3 — FIND & FIX */
+const FIX = [
+  {pre:"If I ", bad:"will have", post:" a mansion, I'd get lost.", accept:["had"]},
+  {pre:"If we lived here, we ", bad:"will be", post:" happier.", accept:["would be","'d be"]},
+  {pre:"If I were you, I ", bad:"will", post:" paint it blue.", accept:["would","'d"]},
+  {pre:"If my room was bigger, I ", bad:"would bought", post:" a desk.", accept:["would buy","'d buy"]},
+  {pre:"I'd move house if I ", bad:"have", post:" enough money.", accept:["had"]},
+  {pre:"If she ", bad:"would live", post:" in a flat, she'd miss her garden.", accept:["lived"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+/* TASK 4 — GAP-FILL */
+const COLL = [
+  {pre:"If I ", post:" in a castle, I'd feel lonely.", accept:["lived"], hint:"live — if-clause"},
+  {pre:"If we had a balcony, we ", post:" outside.", accept:["would sit","'d sit"], hint:"sit — result"},
+  {pre:"If my neighbours ", post:" quieter, I'd sleep better.", accept:["were","was"], hint:"be — if-clause"},
+  {pre:"I ", post:" a bigger sofa if the room were larger.", accept:["would buy","'d buy"], hint:"buy — result"},
+  {pre:"If you ", post:" the walls, the flat would feel new.", accept:["painted"], hint:"paint — if-clause"},
+  {pre:"If I could choose, I ", post:" a garden.", accept:["would have","'d have"], hint:"have — result"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
