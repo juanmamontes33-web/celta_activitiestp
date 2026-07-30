@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Month in Vietnam — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #1b2a52 0%, #12203f 48%, #0a1124 100%); min-height:100vh; padding:40px 18px 80px; color:#E8ECF5; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Fredoka'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8A97B5; font-weight:600; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#38BDF8; }
+
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Fredoka'; font-weight:600; font-size:24px; color:#F4F7FC; line-height:1.2; }
+.video .vsub { font-size:13px; color:#8A97B5; margin-top:4px; font-family:'Fredoka'; letter-spacing:0.5px; }
+.video .vnote { display:inline-block; margin-top:11px; font-size:14px; font-weight:800; color:#0a1124; background:#38BDF8; padding:9px 20px; border-radius:30px; }
+
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 17px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C4CDE2; }
+.tab.active { border-bottom-color:#38BDF8; }
+.tab.active .tab-num { color:#7DD3FC; } .tab.active .tab-label { color:#F4F7FC; }
+.tab.done .tab-num { color:#86EFAC; }
+.tab-num { font-family:'Fredoka'; font-weight:700; font-size:16px; color:#5C6A8C; }
+.tab-label { font-size:13px; font-weight:800; color:#8A97B5; }
+
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Fredoka'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#AAB6D0; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E1E7F2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C4CDE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.opt:hover { border-color:#38BDF8; background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:#38BDF8; background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:700; }
+.opt.wrong { border-color:#FB7185 !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Nunito'; font-size:17px; color:#E1E7F2; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#FB7185; font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:#8A97B5; font-weight:700; }
+.fix input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:7px 14px; color:#fff; width:220px; }
+.fix input:focus { outline:none; border-color:#38BDF8; }
+.fix input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no { border-color:#FB7185; background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol { font-size:13px; color:#86EFAC; display:none; } .fix .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); flex-wrap:wrap; }
+.coll .num { font-family:'Fredoka'; font-weight:700; color:#5C6A8C; }
+.coll .phrase { font-family:'Nunito'; font-weight:600; font-size:18px; color:#E1E7F2; }
+.coll input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:9px; padding:5px 12px; color:#fff; width:130px; margin:0 3px; }
+.coll input:focus { outline:none; border-color:#38BDF8; }
+.coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.coll input.no { border-color:#FB7185; background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.coll .hint { font-size:13px; color:#8A97B5; font-style:italic; }
+.coll .sol { font-size:13px; color:#86EFAC; display:none; } .coll .sol.show { display:inline; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#38BDF8; color:#0a1124; } .btn-p:hover { background:#7DD3FC; }
+.btn-s { background:transparent; color:#8A97B5; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#38BDF8; color:#fff; }
+.score { font-size:14px; color:#AAB6D0; }
+.score.good { color:#A7F3C0; font-weight:800; } .score.partial { color:#FBBF24; font-weight:800; } .score.bad { color:#FBA5B4; font-weight:800; }
+
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Fredoka'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#8A97B5; font-weight:700; }
+details.tr p { font-family:'Nunito'; font-size:15.5px; line-height:1.85; color:#C4CDE2; margin-top:14px; }
+details.tr .lbl { color:#38BDF8; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · Travel · Unit 4</div>
+
+  <div class="video">
+    <div class="vico">🎧</div>
+    <div class="vmeta">
+      <h1>The Wandering Ear — "A Month in Vietnam"</h1>
+      <div class="vsub">TRAVEL PODCAST · ~3 MIN · LISTEN TWICE, THEN DO THE TASKS</div>
+      <span class="vnote">▶ Your teacher will play / read the audio (×2)</span>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Specific info</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Complete the phrases</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#7DD3FC;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#38BDF8; color:#9cd8f7;">Listen once for the general idea. Don't worry about details yet.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#7DD3FC;">Task 2 — Specific information (second listen) 🔢</div>
+    <div class="sub" style="border-color:#7DD3FC; color:#9cd8f7;">Read the questions first, then listen again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#FB7185;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#FB7185; color:#fba5b4;">No listening back! Each sentence has one <span style="color:#FB7185;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FBBF24;">Task 4 — Complete the phrases 🧩</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fbd277;">Complete each phrase from the podcast with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📄 Transcript — teacher reference / read aloud</summary>
+    <p><span class="lbl">Maya (host):</span> Welcome back to The Wandering Ear. Today I'm with travel writer Tom Rivers, who spent a whole month in Vietnam. Tom, what made this trip different?</p>
+    <p><span class="lbl">Tom:</span> Well, normally I try to <strong>cram in</strong> as many places as possible, but this time I decided to slow down. I spent two whole weeks in a single town called Hoi An.</p>
+    <p><span class="lbl">Maya:</span> Two weeks in one place! Weren't you bored?</p>
+    <p><span class="lbl">Tom:</span> Not at all. Because I stayed longer, I <strong>got to know</strong> the locals. I ate at the same little <strong>family-run</strong> restaurant every morning, and by the end the owner knew my name. That never happens when you're rushing.</p>
+    <p><span class="lbl">Maya:</span> What was the highlight?</p>
+    <p><span class="lbl">Tom:</span> Honestly, the smallest moment. One evening I was cycling back to my guesthouse when it started to rain. A farmer invited me in, we shared tea, and I <strong>picked up</strong> a few words of Vietnamese. No landmark could beat that.</p>
+    <p><span class="lbl">Maya:</span> And the cost?</p>
+    <p><span class="lbl">Tom:</span> Much <strong>cheaper than</strong> my usual trips. I rented a room by the month and cooked at home. I probably spent less in a month than I usually spend in a week.</p>
+    <p><span class="lbl">Maya:</span> Any advice for our listeners?</p>
+    <p><span class="lbl">Tom:</span> Don't try to see everything. Choose one place, stay longer, and let things happen. You'll come back with better stories — and more money in your pocket.</p>
+    <p><span class="lbl">Maya:</span> Wise words. Tom Rivers, thank you.</p>
+  </details>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* MCQ — options shuffled so position never gives away the answer */
+const MCQ_RAW = {
+  0:[ {q:"What is the main idea of the interview?", correct:"Tom enjoyed slowing down and staying in one place.", opts:["Tom enjoyed slowing down and staying in one place.","Tom regrets spending so long in Vietnam.","Tom recommends visiting as many cities as possible."]} ],
+  1:[
+    {q:"How long did Tom spend in the town of Hoi An?", correct:"Two weeks", opts:["Two weeks","Two days","A month"]},
+    {q:"Where did Tom eat every morning?", correct:"A family-run restaurant", opts:["A family-run restaurant","A big hotel","A street market"]},
+    {q:"What happened while Tom was cycling back to his guesthouse?", correct:"It started to rain", opts:["It started to rain","He lost his bike","He missed his flight"]},
+    {q:"What did the farmer and Tom share?", correct:"Tea", opts:["Tea","Dinner","A taxi"]},
+    {q:"How much did Tom spend compared to usual?", correct:"Less in a month than he usually spends in a week", opts:["Less in a month than he usually spends in a week","More than on any other trip","Exactly the same as usual"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+/* TASK 3 — FIND & FIX */
+const FIX = [
+  {pre:"This time I decided ", bad:"slowing", post:" down.", accept:["to slow"]},
+  {pre:"I was cycling back when it ", bad:"start", post:" to rain.", accept:["started"]},
+  {pre:"It was much ", bad:"cheap", post:" than my usual trips.", accept:["cheaper"]},
+  {pre:"I ", bad:"pick", post:" up a few words of Vietnamese.", accept:["picked"]},
+  {pre:"By the end the owner ", bad:"know", post:" my name.", accept:["knew"]},
+  {pre:"I spent ", bad:"little", post:" in a month than in a week.", accept:["less"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+/* TASK 4 — COMPLETE COLLOCATIONS */
+const COLL = [
+  {pre:"slow ", post:"", accept:["down"], hint:"= go less fast"},
+  {pre:"cram ", post:" as many places", accept:["in"], hint:"= fit too much into little time"},
+  {pre:"get ", post:" know the locals", accept:["to"], hint:"= become familiar with"},
+  {pre:"a family-", post:" restaurant", accept:["run"], hint:"operated by a family"},
+  {pre:"pick ", post:" a few words", accept:["up"], hint:"= learn casually"},
+  {pre:"much cheaper ", post:" usual", accept:["than"], hint:"comparison word"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
