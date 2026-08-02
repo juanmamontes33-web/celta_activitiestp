@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Describing Your Future — Listening &amp; Target Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(251,113,133,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--coral); background:rgba(251,113,133,0.1); border:1px solid rgba(251,113,133,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:14px; color:var(--muted); margin-bottom:18px; } .hero .src b { color:var(--ink); }
+.watchrow { display:flex; gap:12px; flex-wrap:wrap; }
+.watchbtn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; padding:12px 20px; border-radius:12px; text-decoration:none; transition:.15s; }
+.watchbtn.primary { color:#0a1022; background:var(--sky); } .watchbtn.primary:hover { background:var(--sky2); transform:translateY(-1px); }
+.watchbtn.ghost { color:var(--ink); background:rgba(255,255,255,0.05); border:1px solid var(--line); } .watchbtn.ghost:hover { border-color:var(--sky); }
+.howto { margin-top:20px; font-size:14.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:16px; } .howto b { color:var(--ink); }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-direction:column; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:200px; } .coll input { width:160px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+details.tr { margin-top:26px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+details.tr p { font-size:15px; line-height:1.8; color:#C7D0E4; margin-top:12px; } details.tr b { color:var(--ink); }
+
+/* TARGET LANGUAGE */
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 1 · Work &amp; School · Listening</div><div class="level">B2</div></div>
+
+  <!-- AUTHENTIC VIDEO -->
+  <div class="hero">
+    <span class="badge">🎬 Authentic speech</span>
+    <h1>"Stay hungry, stay foolish" — finding what you love</h1>
+    <div class="src">Speaker: <b>Steve Jobs</b> · Stanford Commencement Address, 2005 · ~15 min</div>
+    <div class="watchrow">
+      <a class="watchbtn primary" href="https://news.stanford.edu/stories/2005/06/steve-jobs-2005-graduates-stay-hungry-stay-foolish" target="_blank" rel="noopener">▶ Watch on Stanford</a>
+      <a class="watchbtn ghost" href="https://stevejobsarchive.com/stories/stay-hungry-stay-foolish" target="_blank" rel="noopener">▶ Steve Jobs Archive</a>
+    </div>
+    <div class="howto">🎧 <b>Watch the speech</b> (or the parts your teacher chooses). He tells <b>three short stories</b>. Watch once for the big idea (Task 1), then again for details (Task 2). Subtitles/CC available.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Gist</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Find the facts</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Dreams &amp; future vocabulary</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Gist (first watch) 🎯</div>
+    <div class="sub">Watch once for the big idea. What is Steve Jobs' main message?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Find the facts (second watch) 🔎</div>
+    <div class="sub">Watch again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each sentence has one <span style="color:var(--coral)">crossed-out</span> mistake (future forms &amp; grammar). Type the correct form.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Dreams &amp; future vocabulary 🧩</div>
+    <div class="sub">Complete each phrase from the speech — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📝 Key facts — teacher reference</summary>
+    <p><b>Speaker:</b> Steve Jobs, co-founder of Apple &amp; Pixar (Stanford Commencement, June 2005, ~15 min; watched 120M+ times).<br>
+    <b>Structure:</b> three short stories — <b>"connecting the dots", "love and loss", and "death".</b><br>
+    <b>Story 1:</b> he dropped out of college, then dropped in on a <b>calligraphy class</b> — years later that shaped the Mac's beautiful fonts. "You can't connect the dots looking forward; you can only connect them looking <b>backward</b>."<br>
+    <b>Story 2:</b> he was <b>fired from Apple</b>, the company he co-founded — but it freed him to start again. "You've got to find what you love."<br>
+    <b>Story 3:</b> facing illness taught him: "Your <b>time is limited</b>, so don't waste it living someone else's life."<br>
+    <b>Closing:</b> "Stay hungry. Stay foolish."</p>
+  </details>
+
+  <!-- TARGET LANGUAGE (MFP) -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">Target language</span><h2>Talking about the future</h2></div>
+    <div class="tl-sub">Future forms for dreams, jobs &amp; plans, with <b>MFP</b>: <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>.</div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <h3>💭 Dreams &amp; ambitions</h3>
+        <div class="chunk"><b>I'd like to</b> … <br><b>I hope to</b> … <br><b>My dream is to</b> … <br><b>I've always wanted to</b> …</div>
+        <div class="mfp"><span class="m">M</span> a wish / hope. &nbsp;<span class="f">F</span> <em>'d like / hope</em> + <b>to + base verb</b>. &nbsp;<span class="p">P</span> <em>I'd</em> /aɪd/; weak <em>to</em> /tə/.</div>
+      </div>
+      <div class="tl-card b">
+        <h3>📋 Plans &amp; intentions</h3>
+        <div class="chunk"><b>I'm going to</b> … <br><b>I'm planning to</b> … <br><b>I intend to</b> …</div>
+        <div class="mfp"><span class="m">M</span> a decision already made. &nbsp;<span class="f">F</span> <em>be going to</em> + base verb. &nbsp;<span class="p">P</span> <em>going to</em> → "gonna".</div>
+      </div>
+      <div class="tl-card c">
+        <h3>🔮 Predictions &amp; goals</h3>
+        <div class="chunk"><b>I think I'll</b> … <br><b>I'll probably</b> … <br><b>In five years, I'll</b> …</div>
+        <div class="mfp"><span class="m">M</span> a prediction. &nbsp;<span class="f">F</span> <em>will ('ll)</em> + base verb. &nbsp;<span class="p">P</span> <em>'ll</em> /l/.</div>
+      </div>
+      <div class="tl-card d">
+        <h3>🎯 Seeing your future</h3>
+        <div class="chunk"><b>I see myself + -ing</b> … <br><b>I aim to</b> … <br><b>I'm working towards</b> …</div>
+        <div class="mfp"><span class="m">M</span> your vision. &nbsp;<span class="f">F</span> <em>see myself</em> + <b>-ing</b> (gerund!); <em>aim to</em> + base. &nbsp;<span class="p">P</span> stress the goal.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[ {q:"What is Steve Jobs' main message?", correct:"Find and do what you love, and follow your own path — life is short.", opts:["Find and do what you love, and follow your own path — life is short.","Always stay in a safe, well-paid job.","Never take any risks with your career."]} ],
+  1:[
+    {q:"How many stories does he tell?", correct:"Three", opts:["Three","One","Five"]},
+    {q:"What did he 'drop in on' after dropping out of college?", correct:"A calligraphy class (it later shaped the Mac's fonts)", opts:["A calligraphy class (it later shaped the Mac's fonts)","A cooking class","A maths lecture"]},
+    {q:"What happened to him at Apple?", correct:"He was fired from the company he co-founded", opts:["He was fired from the company he co-founded","He became CEO on day one","He never worked there"]},
+    {q:"What does he say about connecting the dots?", correct:"You can only connect them looking backward, not forward", opts:["You can only connect them looking backward, not forward","You should plan every dot in advance","The dots never connect"]},
+    {q:"What are his famous final words?", correct:"Stay hungry, stay foolish", opts:["Stay hungry, stay foolish","Work hard, play hard","Never give up"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"One day I'd like ", bad:"be", post:" like Steve Jobs.", accept:["to be"]},
+  {pre:"I'm going ", bad:"following", post:" my passion.", accept:["to follow"]},
+  {pre:"You've got ", bad:"find", post:" what you love.", accept:["to find"]},
+  {pre:"Don't waste your time ", bad:"to live", post:" someone else's life.", accept:["living"]},
+  {pre:"He ", bad:"drop", post:" out of college.", accept:["dropped"]},
+  {pre:"The only way to do great work is to ", bad:"loving", post:" it.", accept:["love"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"follow your ", post:"", accept:["heart","passion"], hint:"do what you love / feel"},
+  {pre:"connect the ", post:"", accept:["dots"], hint:"his metaphor for life's events"},
+  {pre:"", post:" out of college", accept:["drop"], hint:"leave before finishing"},
+  {pre:"do what you ", post:"", accept:["love"], hint:"the key to great work, he says"},
+  {pre:"stay hungry, stay ", post:"", accept:["foolish"], hint:"his famous closing word"},
+  {pre:"your time is ", post:"", accept:["limited"], hint:"= short / not unlimited"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
