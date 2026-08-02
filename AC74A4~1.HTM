@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages &amp; Professional Emails — Reading &amp; Target Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(56,189,248,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); background:rgba(134,239,172,0.1); border:1px solid rgba(134,239,172,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:14px; color:var(--muted); margin-bottom:18px; } .hero .src b { color:var(--ink); }
+.readbtn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; color:#0a1022; background:var(--sky); padding:12px 22px; border-radius:12px; text-decoration:none; transition:.15s; }
+.readbtn:hover { background:var(--sky2); transform:translateY(-1px); }
+.howto { margin-top:20px; font-size:14.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:16px; } .howto b { color:var(--ink); }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-direction:column; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:210px; } .coll input { width:160px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+/* MODELS */
+.models { margin-top:40px; }
+.models h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; margin-bottom:4px; }
+.models .msub { font-size:14px; color:var(--muted); margin-bottom:18px; }
+.mgrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.email { background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:16px; padding:20px 22px; }
+.email .etag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:999px; display:inline-block; margin-bottom:12px; }
+.email.t .etag { color:#0a1022; background:var(--green); } .email.p .etag { color:#0a1022; background:var(--sky2); }
+.email p { font-size:15px; line-height:1.7; color:#D6DEEE; margin-bottom:8px; }
+.email b { color:var(--sky2); font-weight:600; }
+
+/* TARGET LANGUAGE */
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 1 · Work &amp; School · Reading (Writing skills)</div><div class="level">B2</div></div>
+
+  <!-- AUTHENTIC SOURCE -->
+  <div class="hero">
+    <span class="badge">📄 Authentic article</span>
+    <h1>Writing clearly: messages to teachers &amp; professional emails</h1>
+    <div class="src">Source: <b>Indeed Career Guide</b> — "How To Write a Professional Email (With Examples and Tips)"</div>
+    <a class="readbtn" href="https://www.indeed.com/career-advice/career-development/how-to-write-a-professional-email" target="_blank" rel="noopener">Read the original article →</a>
+    <div class="howto">📖 <b>Read the real article first</b>, then do the tasks. Study the two <b>model messages</b> and the <b>Target Language</b> box — you'll write your own emails at the end.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Gist</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Find the advice</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Email vocabulary</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Gist 🎯</div>
+    <div class="sub">Read the article quickly. What is it mainly about?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Find the advice 🔎</div>
+    <div class="sub">Scan the article. Find the writer's advice.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each email sentence has one <span style="color:var(--coral)">crossed-out</span> mistake. Type the correct form.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Email vocabulary 🧩</div>
+    <div class="sub">Complete each email phrase — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <!-- MODELS -->
+  <div class="models">
+    <h2>📬 Two models, one toolkit</h2>
+    <div class="msub">A short message to a teacher and a professional email — notice the shared phrases.</div>
+    <div class="mgrid">
+      <div class="email t">
+        <span class="etag">To a teacher</span>
+        <p>Dear Ms Patel,</p>
+        <p>I hope you're well. <b>I'm writing to ask</b> if I could hand in my essay on Friday instead of Wednesday, as I've been unwell this week. <b>Please let me know</b> if that's okay.</p>
+        <p>Thank you very much,<br>Diego</p>
+      </div>
+      <div class="email p">
+        <span class="etag">Professional</span>
+        <p>Dear Mr Lopez,</p>
+        <p><b>I'm writing to request</b> the figures for the Q3 report. <b>I was wondering if you could</b> send them by Thursday. <b>I've attached</b> last quarter's version for reference.</p>
+        <p>Thank you for your help. <b>I look forward to hearing</b> from you.<br>Best regards,<br>Ana Ruiz</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARGET LANGUAGE (MFP) -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">Target language</span><h2>Email chunks</h2></div>
+    <div class="tl-sub">Functional email phrases, with <b>MFP</b>: <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>.</div>
+    <div class="tl-grid">
+
+      <div class="tl-card">
+        <h3>📨 Opening &amp; purpose</h3>
+        <div class="chunk"><b>Dear Mr / Ms …,</b> · <b>Hi …,</b> <br><b>I hope you're well.</b> <br><b>I'm writing to</b> …</div>
+        <div class="mfp"><span class="m">M</span> greet + say why you're writing. &nbsp;<span class="f">F</span> <em>I'm writing to</em> + <b>base verb</b>; <em>Dear</em> + title + surname = formal. &nbsp;<span class="p">P</span> weak <em>to</em> /tə/.</div>
+      </div>
+
+      <div class="tl-card b">
+        <h3>🙏 Polite requests</h3>
+        <div class="chunk"><b>Could you please</b> …? <br><b>I was wondering if you could</b> … <br><b>Would it be possible to</b> …?</div>
+        <div class="mfp"><span class="m">M</span> ask politely. &nbsp;<span class="f">F</span> <em>Could/Would</em> + base verb; <em>I was wondering if you could</em> + base. &nbsp;<span class="p">P</span> soft, rising tone; stress the request.</div>
+      </div>
+
+      <div class="tl-card c">
+        <h3>📎 Attachments &amp; referring</h3>
+        <div class="chunk"><b>Please find attached</b> … <br><b>I've attached</b> … <br><b>As mentioned,</b> …</div>
+        <div class="mfp"><span class="m">M</span> point to a file / an earlier point. &nbsp;<span class="f">F</span> <em>find attached</em> + noun; <em>I've attached</em> = present perfect. &nbsp;<span class="p">P</span> at·<b>TACHED</b> /əˈtætʃt/.</div>
+      </div>
+
+      <div class="tl-card d">
+        <h3>🔁 Follow-ups &amp; closing</h3>
+        <div class="chunk"><b>I'm just following up on</b> … <br><b>I look forward to hearing</b> from you. <br><b>Best regards, / Kind regards,</b></div>
+        <div class="mfp"><span class="m">M</span> chase a reply / sign off. &nbsp;<span class="f">F</span> <em>look forward to</em> + <b>-ing</b> (gerund!); <em>following up on</em> + noun. &nbsp;<span class="p">P</span> "look forward to <b>HEAR</b>ing".</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[ {q:"What is the article mainly about?", correct:"How to write a clear, professional email (structure and tone).", opts:["How to write a clear, professional email (structure and tone).","Why you should never send emails.","How to design a website."]} ],
+  1:[
+    {q:"What parts make up a professional email?", correct:"Subject line, greeting, concise body, call to action, sign-off", opts:["Subject line, greeting, concise body, call to action, sign-off","Just a long paragraph of text","Only emojis and a signature"]},
+    {q:"How long should the subject line be?", correct:"Short but specific (about 5–8 words)", opts:["Short but specific (about 5–8 words)","One single letter","A whole sentence of 30 words"]},
+    {q:"How should you greet a formal contact?", correct:"'Dear Mr/Ms' + family name", opts:["'Dear Mr/Ms' + family name","'Hey!'","No greeting at all"]},
+    {q:"What should you avoid?", correct:"Slang, emojis and text-style shorthand", opts:["Slang, emojis and text-style shorthand","A clear subject line","A polite sign-off"]},
+    {q:"What does the article say about length?", correct:"Keep it concise, with short paragraphs", opts:["Keep it concise, with short paragraphs","Make it as long as possible","Write everything in one line"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"I'm writing ", bad:"for", post:" ask about the deadline.", accept:["to"]},
+  {pre:"Please find ", bad:"attach", post:" my report.", accept:["attached"]},
+  {pre:"I look forward ", bad:"to hear", post:" from you.", accept:["to hearing"]},
+  {pre:"Could you ", bad:"sending", post:" me the file, please?", accept:["send"]},
+  {pre:"Sorry ", bad:"for bother", post:" you, but I have a question.", accept:["to bother"]},
+  {pre:"Best ", bad:"regard", post:",", accept:["regards"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"I'm writing ", post:" ask a question", accept:["to"], hint:"purpose: writing ___ + verb"},
+  {pre:"Please find ", post:"", accept:["attached"], hint:"= here is the file"},
+  {pre:"I look forward to ", post:" from you", accept:["hearing"], hint:"look forward to + -ing"},
+  {pre:"Could you ", post:" send me…?", accept:["please"], hint:"the polite word in a request"},
+  {pre:"Best ", post:",", accept:["regards"], hint:"a polite email closing"},
+  {pre:"I'm just following ", post:" on my email", accept:["up"], hint:"follow ___ = chase a reply"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
