@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Describing Your Future — Listening &amp; Target Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(251,113,133,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--coral); background:rgba(251,113,133,0.1); border:1px solid rgba(251,113,133,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:14px; color:var(--muted); margin-bottom:18px; } .hero .src b { color:var(--ink); }
+.watchrow { display:flex; gap:12px; flex-wrap:wrap; }
+.watchbtn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; padding:12px 20px; border-radius:12px; text-decoration:none; transition:.15s; }
+.watchbtn.primary { color:#0a1022; background:var(--sky); } .watchbtn.primary:hover { background:var(--sky2); transform:translateY(-1px); }
+.watchbtn.ghost { color:var(--ink); background:rgba(255,255,255,0.05); border:1px solid var(--line); } .watchbtn.ghost:hover { border-color:var(--sky); }
+.howto { margin-top:20px; font-size:14.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:16px; } .howto b { color:var(--ink); }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-direction:column; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:200px; } .coll input { width:160px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+details.tr { margin-top:26px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+details.tr p { font-size:15px; line-height:1.8; color:#C7D0E4; margin-top:12px; } details.tr b { color:var(--ink); }
+
+/* TARGET LANGUAGE */
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 1 · Work &amp; School · Listening</div><div class="level">B2</div></div>
+
+  <!-- AUTHENTIC VIDEO -->
+  <div class="hero">
+    <span class="badge">🎬 Authentic listening</span>
+    <h1>Are you following your dreams?</h1>
+    <div class="src">BBC <b>6 Minute English</b> · Neil &amp; Beth · ~6 min</div>
+    <div class="watchrow">
+      <a class="watchbtn primary" href="https://www.youtube.com/watch?v=26PrgjTboVQ" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+    </div>
+    <div class="howto">🎧 <b>Watch once</b> for the big idea (Task 1), then <b>again</b> for details (Task 2). You'll meet two real dreamers — <b>Daisy</b> in New Zealand and <b>Herman</b> from Argentina. Subtitles/CC available.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Gist</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Find the facts</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Dreams &amp; future vocabulary</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Gist (first watch) 🎯</div>
+    <div class="sub">Watch once for the big idea. What is the programme mainly about?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Find the facts (second watch) 🔎</div>
+    <div class="sub">Watch again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each sentence has one <span style="color:var(--coral)">crossed-out</span> mistake (future forms &amp; grammar). Type the correct form.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Dreams &amp; future vocabulary 🧩</div>
+    <div class="sub">Complete each word from the programme — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📝 Key facts — teacher reference</summary>
+    <p><b>Programme:</b> BBC 6 Minute English, "Are you following your dreams?" (Neil &amp; Beth, ~6 min).<br>
+    <b>Warm-up:</b> Neil wanted to be a <b>fireman</b>; Beth wanted to be an <b>astronaut</b>. Most of us have big childhood dreams that get lost in adult life.<br>
+    <b>Dreamer 1 — Daisy:</b> lives in <b>Riverside</b>, a sharing community in New Zealand (farm, hotel, café). All money earned is <b>shared equally</b>. She joined in 2004; some locals call it <b>outlandish</b>.<br>
+    <b>Dreamer 2 — Herman Zapp:</b> in 2000 he &amp; his wife Candelaria bought a <b>vintage car</b> and left Argentina with under $3,500. 22 years &amp; 3 children later: <b>100+ countries</b>. He's now <b>humble</b> — "a grain of sand."<br>
+    <b>Quiz:</b> Bronnie Ware's book <em>The Top Five Regrets of the Dying</em> — the #1 regret was <b>not having the courage to follow your dreams</b>.<br>
+    <b>Vocabulary:</b> utopia · struggle with an idea · outlandish · to conquer · humble · a grain of sand.</p>
+  </details>
+
+  <!-- TARGET LANGUAGE (MFP) -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">Target language</span><h2>Talking about the future</h2></div>
+    <div class="tl-sub">Future forms for dreams, jobs &amp; plans, with <b>MFP</b>: <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>.</div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <h3>💭 Dreams &amp; ambitions</h3>
+        <div class="chunk"><b>I'd like to</b> … <br><b>I hope to</b> … <br><b>My dream is to</b> … <br><b>I've always wanted to</b> …</div>
+        <div class="mfp"><span class="m">M</span> a wish / hope. &nbsp;<span class="f">F</span> <em>'d like / hope</em> + <b>to + base verb</b>. &nbsp;<span class="p">P</span> <em>I'd</em> /aɪd/; weak <em>to</em> /tə/.</div>
+      </div>
+      <div class="tl-card b">
+        <h3>📋 Plans &amp; intentions</h3>
+        <div class="chunk"><b>I'm going to</b> … <br><b>I'm planning to</b> … <br><b>I intend to</b> …</div>
+        <div class="mfp"><span class="m">M</span> a decision already made. &nbsp;<span class="f">F</span> <em>be going to</em> + base verb. &nbsp;<span class="p">P</span> <em>going to</em> → "gonna".</div>
+      </div>
+      <div class="tl-card c">
+        <h3>🔮 Predictions &amp; goals</h3>
+        <div class="chunk"><b>I think I'll</b> … <br><b>I'll probably</b> … <br><b>In five years, I'll</b> …</div>
+        <div class="mfp"><span class="m">M</span> a prediction. &nbsp;<span class="f">F</span> <em>will ('ll)</em> + base verb. &nbsp;<span class="p">P</span> <em>'ll</em> /l/.</div>
+      </div>
+      <div class="tl-card d">
+        <h3>🎯 Seeing your future</h3>
+        <div class="chunk"><b>I see myself + -ing</b> … <br><b>I aim to</b> … <br><b>I'm working towards</b> …</div>
+        <div class="mfp"><span class="m">M</span> your vision. &nbsp;<span class="f">F</span> <em>see myself</em> + <b>-ing</b> (gerund!); <em>aim to</em> + base. &nbsp;<span class="p">P</span> stress the goal.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[ {q:"What is the programme mainly about?", correct:"Two people who followed their childhood dreams and found a happy life without regret.", opts:["Two people who followed their childhood dreams and found a happy life without regret.","How to become rich by working very hard.","Why childhood dreams are a waste of time."]} ],
+  1:[
+    {q:"What did Neil want to be when he was a boy?", correct:"A fireman", opts:["A fireman","An astronaut","A doctor"]},
+    {q:"Where does Daisy live?", correct:"Riverside, a sharing community in New Zealand", opts:["Riverside, a sharing community in New Zealand","A big city in East Germany","A farm in Argentina"]},
+    {q:"How does the Riverside community handle money?", correct:"All the money earned is collected and shared equally", opts:["All the money earned is collected and shared equally","Everyone keeps what they earn","Only the leaders are paid"]},
+    {q:"What did Herman and Candelaria Zapp do in 2000?", correct:"Bought a vintage car and set off from Argentina to travel the world", opts:["Bought a vintage car and set off from Argentina to travel the world","Opened a café in New Zealand","Started a technology company"]},
+    {q:"According to Bronnie Ware's book, what was the dying's top regret?", correct:"Not having the courage to follow their dreams", opts:["Not having the courage to follow their dreams","Working too little","Not making more money"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"When I grow up, I'd like ", bad:"be", post:" an astronaut.", accept:["to be"]},
+  {pre:"One day I'm going ", bad:"follow", post:" my dream.", accept:["to follow"]},
+  {pre:"They wanted the world ", bad:"becoming", post:" a utopia.", accept:["to become"]},
+  {pre:"I hope ", bad:"travelling", post:" the world one day.", accept:["to travel"]},
+  {pre:"In 2004, Daisy ", bad:"join", post:" the community.", accept:["joined"]},
+  {pre:"He no longer wants ", bad:"conquering", post:" the world.", accept:["to conquer"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"follow your ", post:"", accept:["dreams","dream"], hint:"do what you always wanted"},
+  {pre:"a ", post:" (a perfect, ideal world)", accept:["utopia"], hint:"everyone is happy"},
+  {pre:"", post:" with an idea", accept:["struggle"], hint:"find it hard to accept"},
+  {pre:"strange and unusual = ", post:"", accept:["outlandish"], hint:"how locals described Riverside"},
+  {pre:"not proud or arrogant = ", post:"", accept:["humble"], hint:"how Herman feels now"},
+  {pre:"a grain of ", post:"", accept:["sand"], hint:"tiny yet important"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
