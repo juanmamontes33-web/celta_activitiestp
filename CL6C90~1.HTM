@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Countable &amp; Uncountable + Quantifiers — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.10); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#070c1a; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(120% 90% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%);
+  color:var(--ink); box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.rail { position:absolute; left:0; top:0; bottom:0; width:8px; background:linear-gradient(180deg,var(--sky),var(--green)); }
+.dsp { font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.5px; color:#F6F9FF; }
+.kick { font-family:'Space Grotesk'; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:12px; }
+.kick::before { content:''; width:30px; height:2px; background:var(--sky); }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:#59668a; border-top:1px solid var(--line); padding-top:13px; }
+.foot b { color:var(--sky); }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:13px; letter-spacing:3px; color:#33436b; }
+.sky{color:var(--sky2);} .em{color:var(--sky);} .coral{color:var(--coral);} .amber{color:var(--amber);} .violet{color:var(--violet);} .green{color:var(--green);}
+.card { background:rgba(255,255,255,0.04); border:1px solid var(--line); border-radius:16px; }
+.chip { display:inline-block; font-family:'Space Grotesk'; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--sky2); background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); border-radius:999px; padding:4px 12px; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div class="rail"></div>
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:1px solid var(--line); padding-bottom:18px;">
+    <div class="dsp" style="font-size:20px; letter-spacing:2px;">CORE&nbsp;<span class="em">2</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase;">Daily Life · Grammar</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:var(--muted);">B2</div>
+  </div>
+  <div style="position:absolute; left:60px; top:210px; width:960px;">
+    <div style="margin-bottom:18px;"><span class="chip">📐 Grammar · Eating Out &amp; Food</span></div>
+    <div class="dsp" style="font-size:48px; line-height:1.06;">Countable, uncountable<br>&amp; <span class="em">quantifiers</span></div>
+    <div style="margin-top:20px; font-size:20px; color:var(--muted); line-height:1.5; max-width:720px;">some / any · much / many · a little / a few · too much / too many</div>
+  </div>
+  <div style="position:absolute; right:80px; top:250px; text-align:center;">
+    <div class="dsp" style="font-size:96px; color:var(--green); line-height:1;">🍽️</div>
+  </div>
+  <div class="foot"><span>Core 2 · Eating Out · Grammar</span><span><b>01</b> / 10</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Notice · warm up</div></div>
+  <div style="position:absolute; left:60px; top:170px; right:60px;">
+    <div class="dsp" style="font-size:34px; margin-bottom:26px;">Spot the difference 🔍</div>
+    <div style="display:flex; gap:20px; margin-bottom:24px;">
+      <div class="card" style="flex:1; padding:24px 28px; border-left:3px solid var(--sky);"><div style="font-size:22px; color:#F1F5FB; line-height:1.5;">"How <span class="em">many</span> <span class="em">eggs</span> do we need?"</div></div>
+      <div class="card" style="flex:1; padding:24px 28px; border-left:3px solid var(--amber);"><div style="font-size:22px; color:#F1F5FB; line-height:1.5;">"How <span class="amber">much</span> <span class="amber">rice</span> do we need?"</div></div>
+    </div>
+    <div style="font-size:20px; color:#C7D0E4; line-height:1.5;">👉 In pairs: <b>Why</b> is it "many eggs" but "much rice"? Which words can you <b>count</b>? Which can't you?</div>
+  </div>
+  <div class="foot"><span>Lead-in · elicit the rule · 4 min</span><span><b>02</b> / 10</span></div>
+</div>
+
+<!-- 03 PRESENTATION: COUNTABLE VS UNCOUNTABLE -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">RULE 1</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Countable vs uncountable</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px;">
+    <div class="dsp" style="font-size:32px; margin-bottom:22px;">Can you count it? 🔢</div>
+    <div style="display:flex; gap:20px;">
+      <div class="card" style="flex:1; padding:24px 28px; border-top:3px solid var(--sky);"><div class="dsp" style="font-size:20px; color:var(--sky2); margin-bottom:10px;">✅ Countable</div>
+        <div style="font-size:17px; color:#EAEEF7; line-height:1.8;">an egg → two eggs<br>a plate, a banana, a sandwich<br><span style="color:var(--muted);">has singular &amp; plural</span></div></div>
+      <div class="card" style="flex:1; padding:24px 28px; border-top:3px solid var(--amber);"><div class="dsp" style="font-size:20px; color:var(--amber); margin-bottom:10px;">🚫 Uncountable</div>
+        <div style="font-size:17px; color:#EAEEF7; line-height:1.8;">rice, water, bread, sugar, cheese, food<br><span style="color:var(--muted);">no plural · takes a singular verb</span></div></div>
+    </div>
+    <div style="margin-top:20px;"><div class="card" style="padding:18px 26px; border-color:rgba(251,191,36,0.3); background:rgba(251,191,36,0.06);"><span class="amber dsp" style="font-size:14px;">CCQ →</span> <span style="font-size:16.5px; color:#EAEEF7;"> Can we say "two rices"? <span class="amber">(No!)</span> To count it we say "two <em>bowls of</em> rice." Can we say "three eggs"? <span class="amber">(Yes.)</span></span></div></div>
+  </div>
+  <div class="foot"><span>Presentation · rule 1</span><span><b>03</b> / 10</span></div>
+</div>
+
+<!-- 04 PRESENTATION: SOME / ANY -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">RULE 2</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">some / any</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="dsp" style="font-size:32px; margin-bottom:24px;">some &amp; any ➕</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="card" style="padding:22px 26px; border-left:3px solid var(--green);"><div class="dsp" style="font-size:19px; color:var(--green); margin-bottom:8px;">some</div><div style="font-size:17px; color:#EAEEF7; line-height:1.7;">✔️ positives &amp; offers<br><em>I'd like <b>some</b> water.</em><br><em>Would you like <b>some</b> cake?</em></div></div>
+      <div class="card" style="padding:22px 26px; border-left:3px solid var(--coral);"><div class="dsp" style="font-size:19px; color:var(--coral); margin-bottom:8px;">any</div><div style="font-size:17px; color:#EAEEF7; line-height:1.7;">❓ questions &amp; ➖ negatives<br><em>Is there <b>any</b> milk?</em><br><em>There isn't <b>any</b> bread.</em></div></div>
+    </div>
+    <div style="margin-top:20px; font-size:18px; color:#C7D0E4;">💡 Both work with countable <em>and</em> uncountable nouns: <span class="sky">some apples / some rice</span>.</div>
+  </div>
+  <div class="foot"><span>Presentation · rule 2</span><span><b>04</b> / 10</span></div>
+</div>
+
+<!-- 05 PRESENTATION: MUCH/MANY, A LITTLE/A FEW, TOO MUCH/TOO MANY -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">RULE 3</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">much/many · a little/a few · too much/too many</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:140px;">
+    <div class="dsp" style="font-size:30px; margin-bottom:18px;">Match to the noun ⚖️</div>
+    <div style="display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:14px; font-size:16px;">
+      <div class="card" style="padding:16px 20px;"><div class="dsp" style="font-size:14px; color:var(--muted); margin-bottom:10px;">&nbsp;</div><div style="color:#EAEEF7; line-height:2.2;"><b>How much…?</b><br><b>a little</b><br><b>too much</b></div></div>
+      <div class="card" style="padding:16px 20px; border-top:3px solid var(--amber);"><div class="dsp" style="font-size:14px; color:var(--amber); margin-bottom:10px;">UNCOUNTABLE</div><div style="color:#C7D0E4; line-height:2.2;">how much <b>rice</b>?<br>a little <b>sugar</b><br>too much <b>salt</b></div></div>
+      <div class="card" style="padding:16px 20px; border-top:3px solid var(--sky);"><div class="dsp" style="font-size:14px; color:var(--sky2); margin-bottom:10px;">COUNTABLE</div><div style="color:#C7D0E4; line-height:2.2;">how <b>many</b> chips?<br>a <b>few</b> olives<br>too <b>many</b> plates</div></div>
+    </div>
+    <div style="margin-top:18px; font-size:17px; color:#C7D0E4;">💡 <span class="green">a little / a few</span> = a small (positive) amount. &nbsp; <span class="coral">too much / too many</span> = more than you want.</div>
+  </div>
+  <div class="foot"><span>Presentation · rule 3</span><span><b>05</b> / 10</span></div>
+</div>
+
+<!-- 06 CONTROLLED PRACTICE -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">PRACTICE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Controlled practice · check as a class</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px;">
+    <div class="dsp" style="font-size:32px; margin-bottom:8px;">Choose the right word ✅</div>
+    <div style="font-size:16px; color:var(--muted); margin-bottom:22px;">Do <span class="sky">Tasks 1–2</span> on the activity page, then check answers here.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; font-size:17px;">
+      <div class="card" style="padding:16px 22px;">How <span class="amber">much</span> / <s style="color:#59668a;">many</s> sugar?</div>
+      <div class="card" style="padding:16px 22px;">There aren't <span class="sky">many</span> tomatoes.</div>
+      <div class="card" style="padding:16px 22px;">I'd like <span class="green">some</span> water.</div>
+      <div class="card" style="padding:16px 22px;">Is there <span class="coral">any</span> milk?</div>
+      <div class="card" style="padding:16px 22px;">Just <span class="sky">a few</span> olives.</div>
+      <div class="card" style="padding:16px 22px;"><span class="coral">Too much</span> salt in this soup!</div>
+    </div>
+  </div>
+  <div class="foot"><span>Controlled practice · Tasks 1–2</span><span><b>06</b> / 10</span></div>
+</div>
+
+<!-- 07 FIND & FIX -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">PRACTICE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Error correction · pairs</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="dsp" style="font-size:32px; margin-bottom:22px;">Find &amp; fix the mistakes 🔧</div>
+    <div style="display:flex; flex-direction:column; gap:12px; font-size:18px;">
+      <div class="card" style="padding:15px 24px;">How <s class="coral">much</s> eggs do we need? → How <span class="green">many</span> eggs…</div>
+      <div class="card" style="padding:15px 24px;">There isn't <s class="coral">many</s> rice. → isn't <span class="green">much</span> rice</div>
+      <div class="card" style="padding:15px 24px;">I want <s class="coral">a few</s> sugar. → <span class="green">a little</span> sugar</div>
+      <div class="card" style="padding:15px 24px;">Too <s class="coral">much</s> people in the café. → too <span class="green">many</span> people</div>
+    </div>
+    <div style="margin-top:16px; font-size:16px; color:var(--muted);">👉 Full set in <span class="sky">Task 3 · Find &amp; fix</span> on the activity page.</div>
+  </div>
+  <div class="foot"><span>Practice · Task 3</span><span><b>07</b> / 10</span></div>
+</div>
+
+<!-- 08 MFP -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">MFP</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Meaning · Form · Pronunciation</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:135px;">
+    <div class="dsp" style="font-size:30px; margin-bottom:18px;">Get it right — <span class="sky">M</span>·<span class="amber">F</span>·<span class="green">P</span></div>
+    <div style="display:flex; flex-direction:column; gap:13px;">
+      <div class="card" style="padding:16px 24px;"><div style="font-size:18px; color:#F6F9FF; font-weight:600; margin-bottom:6px;">"How much / How many…?"</div>
+        <div style="font-size:15px; color:#C7D0E4; line-height:1.6;"><span class="sky dsp" style="font-size:12px;">MEANING</span> = asking about quantity · <span class="amber dsp" style="font-size:12px;">FORM</span> much + uncountable, many + countable · <span class="green dsp" style="font-size:12px;">PRON</span> <em>much</em> /mʌtʃ/, <em>many</em> /ˈmeni/</div></div>
+      <div class="card" style="padding:16px 24px;"><div style="font-size:18px; color:#F6F9FF; font-weight:600; margin-bottom:6px;">"I'd like some water." / "Is there any milk?"</div>
+        <div style="font-size:15px; color:#C7D0E4; line-height:1.6;"><span class="sky dsp" style="font-size:12px;">MEANING</span> = an unspecified amount · <span class="amber dsp" style="font-size:12px;">FORM</span> some (+/offer), any (–/?) · <span class="green dsp" style="font-size:12px;">PRON</span> weak <em>some</em> /səm/</div></div>
+      <div class="card" style="padding:16px 24px;"><div style="font-size:18px; color:#F6F9FF; font-weight:600; margin-bottom:6px;">"a little sugar / a few olives"</div>
+        <div style="font-size:15px; color:#C7D0E4; line-height:1.6;"><span class="sky dsp" style="font-size:12px;">MEANING</span> = a small, positive amount · <span class="amber dsp" style="font-size:12px;">FORM</span> a little + uncount, a few + count · <span class="green dsp" style="font-size:12px;">PRON</span> weak <em>a</em> /ə/</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Clarify · MFP</span><span><b>08</b> / 10</span></div>
+</div>
+
+<!-- 09 FREER PRACTICE -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">PRODUCTION</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Freer practice · speaking</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="dsp" style="font-size:36px; margin-bottom:24px;">Plan a dinner party 🎉</div>
+    <div class="card" style="padding:22px 28px; margin-bottom:16px;">
+      <div style="font-size:19px; color:#EAEEF7; line-height:1.5;">In pairs, you're cooking for <b class="sky">six friends</b>. Decide the menu and the shopping list — using quantifiers!</div>
+    </div>
+    <div style="display:flex; gap:16px;">
+      <div class="card" style="flex:1; padding:18px 24px;"><div style="font-size:16px; color:#C7D0E4; line-height:1.6;">🎯 <b style="color:#F6F9FF;">Use:</b> "We need <span class="amber">a lot of</span>…", "<span class="sky">How much</span>…?", "just <span class="green">a few</span>…", "not <span class="coral">too much</span>…".</div></div>
+      <div class="card" style="flex:1; padding:18px 24px;"><div style="font-size:16px; color:#C7D0E4; line-height:1.6;">🛒 Then <span class="green">present your list</span> to another pair. Did you buy too much or too little?</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Production · pairs → share · 12 min</span><span><b>09</b> / 10</span></div>
+</div>
+
+<!-- 10 WRAP-UP -->
+<div class="slide">
+  <div class="rail"></div>
+  <div class="idx">WRAP-UP</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Before you go</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:235px;">
+    <div class="dsp" style="font-size:48px; line-height:1.1; margin-bottom:26px;">Count it or<br><span class="em">not?</span> 🔢</div>
+    <div style="font-size:21px; color:#C7D0E4; line-height:1.6; max-width:840px;">Exit ticket: give me <span class="sky" style="font-weight:700;">one</span> countable and <span class="sky" style="font-weight:700;">one</span> uncountable food word — each in a sentence with the right quantifier.</div>
+  </div>
+  <div class="foot"><span>Wrap-up · exit ticket</span><span><b>10</b> / 10</span></div>
+</div>
+
+</body>
+</html>

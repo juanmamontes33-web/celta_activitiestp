@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countable &amp; Uncountable + Quantifiers — Grammar</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(56,189,248,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky2); background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:14px; color:var(--muted); margin-bottom:4px; } .hero .src b { color:var(--ink); }
+.rulegrid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
+.rule { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:14px; padding:16px 20px; border-left:3px solid var(--sky); }
+.rule.b { border-left-color:var(--amber); } .rule.c { border-left-color:var(--green); } .rule.d { border-left-color:var(--violet); }
+.rule h3 { font-family:'Space Grotesk'; font-size:15px; color:#F6F9FF; margin-bottom:7px; }
+.rule p { font-size:14.5px; color:#C7D0E4; line-height:1.65; } .rule b { color:var(--sky2); font-weight:600; }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-wrap:wrap; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:11px 18px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:200px; } .coll input { width:150px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 2 · Daily Life · Grammar</div><div class="level">B2</div></div>
+
+  <!-- GRAMMAR REFERENCE -->
+  <div class="hero">
+    <span class="badge">📐 Grammar focus</span>
+    <h1>Countable &amp; uncountable nouns + quantifiers</h1>
+    <div class="src">Talking about food, drink &amp; amounts — <b>some/any · much/many · a little/a few · too much/too many</b></div>
+    <div class="rulegrid">
+      <div class="rule"><h3>🔢 Countable vs uncountable</h3><p><b>Countable:</b> an egg, two eggs, a plate. <b>Uncountable:</b> rice, water, bread, sugar, cheese, food — <b>no plural</b>, singular verb.</p></div>
+      <div class="rule b"><h3>➕ some / any</h3><p><b>some</b> in positives &amp; offers; <b>any</b> in negatives &amp; questions. <em>I'd like some water. Is there any bread? There isn't any milk.</em></p></div>
+      <div class="rule c"><h3>❓ much / many</h3><p><b>much</b> + uncountable; <b>many</b> + countable (mostly in ?/–). <em>How much sugar? How many chips? Not much time, not many people.</em></p></div>
+      <div class="rule d"><h3>⚖️ a little / a few · too much / too many</h3><p><b>a little</b> + uncountable, <b>a few</b> + countable (= a small amount). <b>too much/too many</b> = more than you want.</p></div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Countable or uncountable?</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Choose the quantifier</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Complete the sentence</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Countable or uncountable? 🔢</div>
+    <div class="sub">Decide whether each food word is countable (you can count it) or uncountable.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Choose the quantifier ✅</div>
+    <div class="sub">Pick the correct word to complete each restaurant sentence.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each sentence has one <span style="color:var(--coral)">crossed-out</span> mistake. Type the correct word(s).</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Complete the sentence 🧩</div>
+    <div class="sub">Type the missing quantifier or partitive — from what you've learned.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tl" style="margin-top:26px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:14px; padding:14px 22px;" open>
+    <summary style="cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700;">📝 Quick reference — partitives (a … of)</summary>
+    <p style="font-size:15px; line-height:1.85; color:#C7D0E4; margin-top:12px;">To count uncountable things, use a "container/portion" word: <b style="color:var(--sky2)">a glass of</b> water · <b style="color:var(--sky2)">a bottle of</b> wine · <b style="color:var(--sky2)">a cup of</b> coffee · <b style="color:var(--sky2)">a slice/loaf of</b> bread · <b style="color:var(--sky2)">a piece of</b> cheese · <b style="color:var(--sky2)">a bit of</b> salt · <b style="color:var(--sky2)">a bowl of</b> soup.</p>
+  </details>
+
+  <!-- MFP -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">MFP</span><h2>Meaning · Form · Pronunciation</h2></div>
+    <div class="tl-sub">The four quantifier pairs, clarified with <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>.</div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <h3>some / any</h3>
+        <div class="chunk"><b>I'd like some tea.</b> <br><b>Is there any milk?</b> <br><b>We don't have any bread.</b></div>
+        <div class="mfp"><span class="m">M</span> an unspecified amount. &nbsp;<span class="f">F</span> some = +/offers; any = –/?. &nbsp;<span class="p">P</span> weak <em>some</em> /səm/, <em>any</em> /ˈeni/.</div>
+      </div>
+      <div class="tl-card b">
+        <h3>much / many</h3>
+        <div class="chunk"><b>How much rice?</b> (uncount.) <br><b>How many eggs?</b> (count.) <br><b>Not much / not many …</b></div>
+        <div class="mfp"><span class="m">M</span> ask/talk about quantity. &nbsp;<span class="f">F</span> much + uncount; many + count. &nbsp;<span class="p">P</span> <em>much</em> /mʌtʃ/, <em>many</em> /ˈmeni/.</div>
+      </div>
+      <div class="tl-card c">
+        <h3>a little / a few</h3>
+        <div class="chunk"><b>a little sugar</b> (uncount.) <br><b>a few olives</b> (count.) <br><em>= a small amount</em></div>
+        <div class="mfp"><span class="m">M</span> a small (positive) amount. &nbsp;<span class="f">F</span> a little + uncount; a few + count. &nbsp;<span class="p">P</span> weak <em>a</em> /ə/.</div>
+      </div>
+      <div class="tl-card d">
+        <h3>too much / too many</h3>
+        <div class="chunk"><b>too much salt</b> (uncount.) <br><b>too many plates</b> (count.) <br><em>= more than you want</em></div>
+        <div class="mfp"><span class="m">M</span> an excessive amount. &nbsp;<span class="f">F</span> too much + uncount; too many + count. &nbsp;<span class="p">P</span> stress <b>TOO</b>.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.%]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[
+    {q:"rice", correct:"Uncountable", opts:["Countable","Uncountable"]},
+    {q:"banana", correct:"Countable", opts:["Countable","Uncountable"]},
+    {q:"water", correct:"Uncountable", opts:["Countable","Uncountable"]},
+    {q:"potato", correct:"Countable", opts:["Countable","Uncountable"]},
+    {q:"cheese", correct:"Uncountable", opts:["Countable","Uncountable"]},
+    {q:"sandwich", correct:"Countable", opts:["Countable","Uncountable"]}
+  ],
+  1:[
+    {q:"How ___ sugar do you take in your coffee?", correct:"much", opts:["much","many","few"]},
+    {q:"There aren't ___ tomatoes left.", correct:"many", opts:["many","much","a little"]},
+    {q:"I'd like ___ water, please.", correct:"some", opts:["some","any","many"]},
+    {q:"Is there ___ milk in the fridge?", correct:"any", opts:["any","many","a few"]},
+    {q:"We only have ___ olives — five or six.", correct:"a few", opts:["a few","a little","much"]},
+    {q:"There's ___ salt in this soup — it's too salty!", correct:"too much", opts:["too much","too many","a few"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"How ", bad:"much", post:" eggs do we need?", accept:["many"]},
+  {pre:"There isn't ", bad:"many", post:" rice left.", accept:["much"]},
+  {pre:"I only want ", bad:"a few", post:" sugar.", accept:["a little"]},
+  {pre:"Would you like ", bad:"any", post:" dessert?", accept:["some"]},
+  {pre:"There are too ", bad:"much", post:" people in the café.", accept:["many"]},
+  {pre:"Can I have ", bad:"a", post:" water, please?", accept:["some"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"I'd like ", post:" rice, please. (positive, uncount.)", accept:["some"], hint:"positive statement"},
+  {pre:"There isn't ", post:" time before the table's ready. (uncount., –)", accept:["much"], hint:"uncountable, negative"},
+  {pre:"We have a ", post:" apples. (count., small number)", accept:["few"], hint:"a ___ apples"},
+  {pre:"Add a ", post:" of salt. (small amount)", accept:["little","bit","pinch"], hint:"a ___ of salt"},
+  {pre:"Too ", post:" cooks spoil the broth. (count. idiom)", accept:["many"], hint:"countable"},
+  {pre:"Can I have a ", post:" of water? (container)", accept:["glass","bottle"], hint:"a ___ of water"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
