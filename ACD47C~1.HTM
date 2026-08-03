@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eating Out &amp; Food — Listening &amp; Target Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(251,113,133,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--coral); background:rgba(251,113,133,0.1); border:1px solid rgba(251,113,133,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:14px; color:var(--muted); margin-bottom:18px; } .hero .src b { color:var(--ink); }
+.watchrow { display:flex; gap:12px; flex-wrap:wrap; }
+.watchbtn { display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; padding:12px 20px; border-radius:12px; text-decoration:none; transition:.15s; }
+.watchbtn.primary { color:#0a1022; background:var(--sky); } .watchbtn.primary:hover { background:var(--sky2); transform:translateY(-1px); }
+.howto { margin-top:20px; font-size:14.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:16px; } .howto b { color:var(--ink); }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-direction:column; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:200px; } .coll input { width:160px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+details.tr { margin-top:26px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; }
+details.tr p { font-size:15px; line-height:1.8; color:#C7D0E4; margin-top:12px; } details.tr b { color:var(--ink); }
+
+/* TARGET LANGUAGE */
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 2 · Daily Life · Listening</div><div class="level">B2</div></div>
+
+  <!-- AUTHENTIC VIDEO -->
+  <div class="hero">
+    <span class="badge">🎬 Authentic listening</span>
+    <h1>The hidden life of buffets</h1>
+    <div class="src">BBC <b>6 Minute English</b> · Neil &amp; Sam · ~6 min</div>
+    <div class="watchrow">
+      <a class="watchbtn primary" href="https://www.youtube.com/watch?v=8p7HytjrKj4" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+    </div>
+    <div class="howto">🎧 <b>Watch once</b> for the big idea (Task 1), then <b>again</b> for details (Task 2). You'll hear about all-you-can-eat buffets around the world. Then use the <b>Target Language</b> box to practise eating out. Subtitles/CC available.</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Gist</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Find the facts</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Food vocabulary</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Gist (first watch) 🎯</div>
+    <div class="sub">Watch once for the big idea. What is the programme mainly about?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Find the facts (second watch) 🔎</div>
+    <div class="sub">Watch again and catch the details.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each sentence has one <span style="color:var(--coral)">crossed-out</span> mistake. Type the correct form.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Food vocabulary 🧩</div>
+    <div class="sub">Complete each expression from the programme — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📝 Key facts — teacher reference</summary>
+    <p><b>Programme:</b> BBC 6 Minute English, "The hidden life of buffets" (Neil &amp; Sam, ~6 min, 2023).<br>
+    <b>Buffet</b> = an all-you-can-eat meal; a feast of many dishes. Popularity is booming, especially in Middle Eastern &amp; Asian countries — but buffets are criticised for <b>waste</b>.<br>
+    <b>Quiz:</b> the word 'buffet' is French (the serving table), but buffets are thought to come from <b>Sweden</b>, in the Middle Ages.<br>
+    <b>John Wood</b> (Kitchen Cut) ran a <b>1,000-seat</b> breakfast buffet at the five-star <b>Jumeirah Beach Hotel in Dubai</b>. Diners want to <b>get their money's worth</b>, so they <b>pile</b> plates high with the most expensive food.<br>
+    <b>Sandeep Sreedharan</b> (a wedding <b>caterer</b> in Goa, India): rich weddings have huge buffets — up to <b>5,000 guests</b> — designed to <b>knock your socks off</b>. Each must top the last — a <b>vicious circle</b>.<br>
+    <b>Vocabulary:</b> eyes bigger than your belly/stomach · pile up · get your money's worth · a vicious circle · knock your socks off · a caterer.</p>
+  </details>
+
+  <!-- TARGET LANGUAGE (MFP) -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">Target language</span><h2>Eating out</h2></div>
+    <div class="tl-sub">Restaurant phrases, with <b>MFP</b>: <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>. (Use these to role-play ordering a meal!)</div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <h3>🍽️ Ordering</h3>
+        <div class="chunk"><b>I'll have</b> … <br><b>Could I get</b> …? <br><b>For me,</b> the … <b>please.</b></div>
+        <div class="mfp"><span class="m">M</span> say what you want. &nbsp;<span class="f">F</span> <em>I'll have</em> + noun. &nbsp;<span class="p">P</span> <em>I'll</em> /aɪl/; weak <em>the</em> /ðə/.</div>
+      </div>
+      <div class="tl-card b">
+        <h3>📋 Asking about the menu</h3>
+        <div class="chunk"><b>What do you recommend?</b> <br><b>Does it come with</b> …? <br><b>What's the … like?</b></div>
+        <div class="mfp"><span class="m">M</span> ask before you choose. &nbsp;<span class="f">F</span> <em>Does it come with</em> + noun? &nbsp;<span class="p">P</span> <em>recommend</em> → re·co·<b>MMEND</b>.</div>
+      </div>
+      <div class="tl-card c">
+        <h3>🥗 Dietary needs</h3>
+        <div class="chunk"><b>I'm allergic to</b> … <br><b>Could I have it without</b> …? <br><b>Is this vegetarian / vegan?</b></div>
+        <div class="mfp"><span class="m">M</span> stay safe / adapt a dish. &nbsp;<span class="f">F</span> <em>allergic <b>to</b></em> + noun (NOT <s>of</s>). &nbsp;<span class="p">P</span> a·<b>LLER</b>·gic /əˈlɜːdʒɪk/.</div>
+      </div>
+      <div class="tl-card d">
+        <h3>💳 Paying</h3>
+        <div class="chunk"><b>Could we have the bill, please?</b> <br><b>Can I get this to go?</b> <br><b>Is service included?</b></div>
+        <div class="mfp"><span class="m">M</span> finish &amp; pay. &nbsp;<span class="f">F</span> <em>Could we have</em> + noun? &nbsp;<span class="p">P</span> <em>bill</em> (UK) / <em>check</em> (US); polite fall–rise.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.%]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[ {q:"What is the programme mainly about?", correct:"How all-you-can-eat buffets work around the world — behaviour, waste and showing off.", opts:["How all-you-can-eat buffets work around the world — behaviour, waste and showing off.","How to cook a five-course meal at home.","Why restaurants are closing down."]} ],
+  1:[
+    {q:"What does 'eyes bigger than your belly' mean?", correct:"You've taken more food than you can eat", opts:["You've taken more food than you can eat","You are still very hungry","You eat very slowly"]},
+    {q:"Where are buffets thought to have come from?", correct:"Sweden (in the Middle Ages)", opts:["Sweden (in the Middle Ages)","The United States","China"]},
+    {q:"Where did John Wood run a 1,000-seat breakfast buffet?", correct:"The Jumeirah Beach Hotel in Dubai", opts:["The Jumeirah Beach Hotel in Dubai","A hotel in Sweden","A café in Goa"]},
+    {q:"Why do diners pile their plates high?", correct:"To get their money's worth (good value)", opts:["To get their money's worth (good value)","Because the plates are small","To help the waiters"]},
+    {q:"How many guests can a big Indian wedding buffet have?", correct:"Up to 5,000", opts:["Up to 5,000","About 50","Exactly 300"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"You've taken more food ", bad:"then", post:" you can eat.", accept:["than"]},
+  {pre:"Diners pile ", bad:"down", post:" their plates.", accept:["up"]},
+  {pre:"They want to get their money's ", bad:"worthy", post:".", accept:["worth"]},
+  {pre:"Each buffet becomes a vicious ", bad:"circus", post:".", accept:["circle"]},
+  {pre:"The food will knock your socks ", bad:"of", post:".", accept:["off"]},
+  {pre:"Buffets first came ", bad:"of", post:" Sweden.", accept:["from"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"eyes bigger than your ", post:"", accept:["belly","stomach"], hint:"you took too much food"},
+  {pre:"pile ", post:" your plate", accept:["up"], hint:"gather a large amount"},
+  {pre:"get your money's ", post:"", accept:["worth"], hint:"good value for money"},
+  {pre:"a vicious ", post:"", accept:["circle"], hint:"a problem that feeds itself"},
+  {pre:"knock your socks ", post:"", accept:["off"], hint:"amaze / impress you"},
+  {pre:"a ", post:" (provides food for events)", accept:["caterer"], hint:"e.g. for a wedding"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
