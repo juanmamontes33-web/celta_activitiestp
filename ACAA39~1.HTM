@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Around &amp; Directions — Reading &amp; Target Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --sky:#38BDF8; --sky2:#7DD3FC; --green:#86EFAC; --coral:#FB7185; --amber:#FBBF24; --violet:#A78BFA;
+  --ink:#EAEEF7; --muted:#8F9CBA; --line:rgba(255,255,255,0.09); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:radial-gradient(120% 70% at 100% 0%, #1d2c56 0%, #14213f 45%, #0a1022 100%); min-height:100vh; padding:36px 18px 90px; color:var(--ink); }
+.wrap { max-width:900px; margin:0 auto; }
+.topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.crumb { font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:600; display:flex; align-items:center; gap:10px; }
+.crumb::before { content:''; width:26px; height:2px; background:var(--sky); display:inline-block; }
+.level { font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:#0a1022; background:var(--sky2); padding:3px 12px; border-radius:999px; }
+
+.hero { background:linear-gradient(160deg, rgba(56,189,248,0.10), rgba(255,255,255,0.02)); border:1px solid var(--line); border-radius:22px; padding:30px 34px; margin-bottom:22px; }
+.hero .badge { display:inline-flex; align-items:center; gap:7px; font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky2); background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); padding:5px 12px; border-radius:999px; margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk'; font-weight:700; font-size:30px; line-height:1.12; color:#F6F9FF; letter-spacing:-0.5px; margin-bottom:8px; }
+.hero .src { font-size:13.5px; color:var(--muted); } .hero .src a { color:var(--sky2); text-decoration:none; } .hero .src b { color:var(--ink); }
+
+.read { background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:18px; padding:26px 30px; margin-bottom:24px; }
+.read p { font-size:15.5px; line-height:1.75; color:#D7DEEC; margin-bottom:13px; } .read p:last-child { margin-bottom:0; }
+.read b { color:#F6F9FF; } .read .lead { font-size:16.5px; color:#F1F5FB; }
+
+.tabs { display:flex; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+.tab { font-family:'Space Grotesk'; font-weight:600; font-size:13.5px; color:var(--muted); background:rgba(255,255,255,0.04); border:1px solid var(--line); padding:10px 16px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.14s; }
+.tab:hover { color:var(--ink); border-color:rgba(255,255,255,0.2); }
+.tab.active { color:#0a1022; background:var(--sky); border-color:var(--sky); }
+.tab .tn { font-weight:700; opacity:.7; } .tab.active .tn { opacity:1; }
+.tab.done::after { content:'✓'; color:var(--green); font-weight:800; } .tab.active.done::after { color:#0a1022; }
+
+.panel { display:none; } .panel.active { display:block; animation:fade .2s ease; }
+@keyframes fade { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:20px; margin-bottom:6px; color:#F6F9FF; }
+.panel .sub { font-size:14px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+
+.q { padding:15px 0; border-bottom:1px solid var(--line); }
+.q .qt { font-size:16px; color:var(--ink); line-height:1.6; margin-bottom:11px; font-weight:500; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.opts { display:flex; flex-direction:column; gap:8px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid var(--line); border-radius:12px; padding:12px 16px; font-size:14.5px; color:#C7D0E4; cursor:pointer; transition:.12s; font-family:'Inter'; }
+.opt:hover { border-color:var(--sky); background:rgba(56,189,248,0.06); }
+.opt.sel { border-color:var(--sky); background:rgba(56,189,248,0.12); border-width:2px; }
+.opt.correct { border-color:#4ADE80 !important; background:rgba(74,222,128,0.14) !important; color:#A7F3C0 !important; font-weight:600; }
+.opt.wrong { border-color:var(--coral) !important; background:rgba(251,113,133,0.1) !important; color:#FBA5B4 !important; }
+
+.fix { padding:16px 0; border-bottom:1px solid var(--line); }
+.fix .fsent { font-size:17px; color:var(--ink); line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); margin-right:9px; }
+.fix .fsent .bad { color:var(--coral); font-weight:700; text-decoration:line-through; }
+.fix .frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.fix .frow .lab { font-size:13px; color:var(--muted); font-weight:600; font-family:'Space Grotesk'; }
+.fix input, .coll input { font-family:'Inter'; font-weight:600; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2b3a5e; border-radius:10px; padding:8px 14px; color:#fff; }
+.fix input { width:200px; } .coll input { width:160px; margin:0 3px; }
+.fix input:focus, .coll input:focus { outline:none; border-color:var(--sky); }
+.fix input.ok, .coll input.ok { border-color:#4ADE80; background:rgba(74,222,128,0.12); color:#A7F3C0; }
+.fix input.no, .coll input.no { border-color:var(--coral); background:rgba(251,113,133,0.1); color:#FBA5B4; }
+.fix .sol, .coll .sol { font-size:13px; color:var(--green); display:none; font-weight:600; } .fix .sol.show, .coll .sol.show { display:inline; }
+
+.coll { display:flex; align-items:center; gap:10px; padding:15px 0; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:var(--muted); }
+.coll .phrase { font-size:18px; color:var(--ink); font-weight:500; }
+.coll .hint { font-size:13px; color:var(--muted); font-style:italic; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Space Grotesk'; font-size:14px; font-weight:700; padding:11px 26px; border-radius:12px; cursor:pointer; border:none; }
+.btn-p { background:var(--sky); color:#0a1022; } .btn-p:hover { background:var(--sky2); }
+.btn-s { background:transparent; color:var(--muted); border:1px solid var(--line); } .btn-s:hover { border-color:var(--sky); color:#fff; }
+.score { font-size:14px; color:var(--muted); font-family:'Space Grotesk'; font-weight:600; }
+.score.good { color:#A7F3C0; } .score.partial { color:var(--amber); } .score.bad { color:#FBA5B4; }
+
+.tl { margin-top:40px; }
+.tl-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.tl-head h2 { font-family:'Space Grotesk'; font-size:22px; color:#F6F9FF; font-weight:700; }
+.tl-head .tag { font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#0a1022; background:var(--amber); padding:4px 11px; border-radius:999px; }
+.tl-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.tl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.tl-card { background:rgba(255,255,255,0.035); border:1px solid var(--line); border-radius:16px; padding:20px 22px; border-top:3px solid var(--sky); }
+.tl-card.b { border-top-color:var(--amber); } .tl-card.c { border-top-color:var(--green); } .tl-card.d { border-top-color:var(--violet); }
+.tl-card h3 { font-family:'Space Grotesk'; font-size:16px; color:#F6F9FF; margin-bottom:12px; }
+.tl-card .chunk { font-size:16px; color:var(--ink); line-height:1.9; } .tl-card .chunk b { color:var(--sky2); font-weight:600; }
+.mfp { margin-top:12px; border-top:1px solid var(--line); padding-top:11px; font-size:13px; color:#C7D0E4; line-height:1.6; }
+.mfp span { font-family:'Space Grotesk'; font-weight:700; font-size:11px; letter-spacing:1px; }
+.mfp .m{color:var(--sky2);} .mfp .f{color:var(--amber);} .mfp .p{color:var(--green);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><div class="crumb">Core 2 · Daily Life · Reading</div><div class="level">B2</div></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="badge">📖 Authentic-based reading</span>
+    <h1>Why do some people never get lost?</h1>
+    <div class="src">Adapted from <b>ScienceABC</b> — "Why Do Some People Have A Better Sense Of Direction Than Others?" · <a href="https://www.scienceabc.com/humans/why-do-some-people-have-a-better-sense-of-direction-than-others" target="_blank" rel="noopener">read the original ↗</a></div>
+  </div>
+
+  <!-- READING TEXT -->
+  <div class="read">
+    <p class="lead">Some people can find their way around a new city after one visit. Others need GPS to reach a shop around the corner. So why are some of us "super-navigators" while the rest of us get lost so easily?</p>
+    <p>Scientists call a good sense of direction <b>wayfinding</b> — knowing where you are and how to reach your destination without a map or phone. There are two main strategies. Some people rely on <b>route knowledge</b>: a memorised chain of turns and landmarks, such as "left at the bakery, right after the church". Others build <b>survey knowledge</b>: a mental bird's-eye map of how everything fits together. Survey navigators can usually invent a shortcut and still know which way home is.</p>
+    <p>Inside the brain, three types of cell do the work. <b>Place cells</b>, discovered by Nobel Prize winner John O'Keefe, tell us where we are. <b>Grid cells</b> map where we have been, and <b>head-direction cells</b> act like a compass. Some of this ability may be there from birth, but most of it is learned.</p>
+    <p>That is why experts describe navigation as a <b>"use-it-or-lose-it" skill</b>. Leaning on GPS for every journey can weaken it, because we stop noticing landmarks and building mental maps. Anxiety doesn't help either: if people are told they are hopeless at directions, they often start to believe it.</p>
+    <p>The good news? Wayfinding improves with practice. Researchers suggest switching off the GPS sometimes, paying attention to landmarks and the direction you set off in, glancing back over your shoulder, and using a full map instead of turn-by-turn instructions — so your brain has to do the work itself.</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><span class="tn">01</span> Gist</div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><span class="tn">02</span> Find the facts</div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><span class="tn">03</span> Find &amp; fix</div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><span class="tn">04</span> Vocabulary</div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle">Task 1 — Gist (read once) 🎯</div>
+    <div class="sub">Read quickly for the general idea. What is the text mainly about?</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(0)">Check</button><button class="btn btn-s" onclick="reset0()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle">Task 2 — Find the facts (read again) 🔎</div>
+    <div class="sub">Read more carefully and answer the detail questions.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="check(1)">Check</button><button class="btn btn-s" onclick="reset1()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub">Each sentence has one <span style="color:var(--coral)">crossed-out</span> mistake. Type the correct word.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle">Task 4 — Vocabulary 🧩</div>
+    <div class="sub">Complete each word/phrase from the text — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tl" style="margin-top:26px; background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:14px; padding:14px 22px;">
+    <summary style="cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700;">📝 Answer key — teacher reference</summary>
+    <p style="font-size:15px; line-height:1.85; color:#C7D0E4; margin-top:12px;"><b style="color:var(--ink)">Gist:</b> B (why some people navigate better — and how anyone can improve). <b style="color:var(--ink)">Facts:</b> ① wayfinding ② a memorised chain of turns &amp; landmarks ③ they tell us where we are ④ head-direction cells ⑤ relying on GPS weakens it (we stop noticing landmarks). <b style="color:var(--ink)">Find &amp; fix:</b> lost · lose · to · eye · with · like. <b style="color:var(--ink)">Vocabulary:</b> wayfinding · map · landmarks · lose · shortcut · destination.</p>
+  </details>
+
+  <!-- TARGET LANGUAGE (MFP) -->
+  <div class="tl">
+    <div class="tl-head"><span class="tag">Target language</span><h2>Getting around &amp; directions</h2></div>
+    <div class="tl-sub">Real phrases for finding your way, with <b>MFP</b>: <span style="color:var(--sky2)">Meaning</span> · <span style="color:var(--amber)">Form</span> · <span style="color:var(--green)">Pronunciation</span>. (Use these to role-play in the city!)</div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <h3>🙋 Asking for directions</h3>
+        <div class="chunk"><b>Excuse me, how do I get to</b> …? <br><b>Is there a … near here?</b> <br><b>Is it far?</b> / <b>How long does it take?</b></div>
+        <div class="mfp"><span class="m">M</span> ask the way politely. &nbsp;<span class="f">F</span> <em>how do I get to</em> + place. &nbsp;<span class="p">P</span> weak <em>to</em> /tə/; start with "Excuse me".</div>
+      </div>
+      <div class="tl-card b">
+        <h3>➡️ Giving directions</h3>
+        <div class="chunk"><b>Go straight on.</b> <br><b>Turn left / right at</b> … <br><b>It's on your left, opposite the</b> …</div>
+        <div class="mfp"><span class="m">M</span> tell someone the way. &nbsp;<span class="f">F</span> imperatives: <em>Go / Turn / Take</em> + … &nbsp;<span class="p">P</span> stress the direction: <b>LEFT</b>, <b>RIGHT</b>.</div>
+      </div>
+      <div class="tl-card c">
+        <h3>🚇 Public transport</h3>
+        <div class="chunk"><b>Which line / bus goes to</b> …? <br><b>Where do I change?</b> <br><b>Does this train stop at</b> …?</div>
+        <div class="mfp"><span class="m">M</span> use the network. &nbsp;<span class="f">F</span> <em>Which … goes to</em> + place? &nbsp;<span class="p">P</span> <em>Which</em> /wɪtʃ/; rising tone on the question.</div>
+      </div>
+      <div class="tl-card d">
+        <h3>🔁 Checking &amp; clarifying</h3>
+        <div class="chunk"><b>Sorry, could you repeat that?</b> <br><b>So it's the second left?</b> <br><b>Did you say left or right?</b></div>
+        <div class="mfp"><span class="m">M</span> make sure you understood. &nbsp;<span class="f">F</span> <em>So it's</em> … ? (confirm). &nbsp;<span class="p">P</span> fall–rise = polite checking.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.%]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const MCQ_RAW = {
+  0:[ {q:"What is the text mainly about?", correct:"Why some people navigate better than others — and how anyone can improve.", opts:["Why some people navigate better than others — and how anyone can improve.","Why GPS is always better than a paper map.","How to design a city that is easy to drive around."]} ],
+  1:[
+    {q:"What do scientists call a good sense of direction?", correct:"Wayfinding", opts:["Wayfinding","Mental rotation","Proprioception"]},
+    {q:"What is 'route knowledge'?", correct:"A memorised chain of turns and landmarks", opts:["A memorised chain of turns and landmarks","A bird's-eye map of the whole area","A type of GPS app"]},
+    {q:"What do 'place cells' do?", correct:"They tell us where we are", opts:["They tell us where we are","They act like a compass","They control our balance"]},
+    {q:"Which cells act like a compass?", correct:"Head-direction cells", opts:["Head-direction cells","Place cells","Grid cells"]},
+    {q:"Why is navigation a 'use-it-or-lose-it' skill?", correct:"Relying on GPS weakens it — we stop noticing landmarks", opts:["Relying on GPS weakens it — we stop noticing landmarks","Because it can never be learned","Because maps are always wrong"]}
+  ]
+};
+const MCQ = {};
+for(const t of [0,1]){ MCQ[t]=MCQ_RAW[t].map(m=>{ const opts=shuffle(m.opts); return {q:m.q, opts, ans:opts.indexOf(m.correct)}; }); }
+let sel={0:{},1:{}};
+function renderMCQ(t){
+  const c=document.getElementById('t'+t); c.innerHTML='';
+  MCQ[t].forEach((m,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<div class="qt"><span class="num">${String(qi+1).padStart(2,'0')}</span>${m.q}</div>`;
+    const ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='opt'+(sel[t][qi]===oi?' sel':''); b.textContent=o;
+      b.onclick=()=>{ if(checkedM[t]) return; sel[t][qi]=oi; renderMCQ(t); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d);
+  });
+}
+let checkedM={0:false,1:false};
+function check(t){
+  checkedM[t]=true; let correct=0; const qs=document.querySelectorAll('#t'+t+' .q');
+  MCQ[t].forEach((m,qi)=>{ qs[qi].querySelectorAll('.opt').forEach((o,oi)=>{ if(oi===m.ans) o.classList.add('correct'); else if(sel[t][qi]===oi) o.classList.add('wrong'); }); if(sel[t][qi]===m.ans) correct++; });
+  const s=document.getElementById('s'+t); s.textContent=`${correct} / ${MCQ[t].length} correct`+(correct===MCQ[t].length?' 🎉':'');
+  s.className='score '+(correct===MCQ[t].length?'good':(correct>=Math.ceil(MCQ[t].length/2)?'partial':'bad')); if(correct===MCQ[t].length) markDone(t);
+}
+function reset0(){ checkedM[0]=false; sel[0]={}; document.getElementById('s0').textContent=''; renderMCQ(0); }
+function reset1(){ checkedM[1]=false; sel[1]={}; document.getElementById('s1').textContent=''; renderMCQ(1); }
+
+const FIX = [
+  {pre:"Some people never get ", bad:"lose", post:".", accept:["lost"]},
+  {pre:"Navigation is a use-it-or-", bad:"loose", post:"-it skill.", accept:["lose"]},
+  {pre:"Pay attention ", bad:"at", post:" landmarks.", accept:["to"]},
+  {pre:"They build a mental bird's-", bad:"eyes", post:" map.", accept:["eye"]},
+  {pre:"Wayfinding improves ", bad:"by", post:" practice.", accept:["with"]},
+  {pre:"Head-direction cells act ", bad:"as", post:" a compass.", accept:["like"]}
+];
+function renderFix(){
+  const c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='fix';
+    d.innerHTML=`<div class="fsent"><span class="num">${String(i+1).padStart(2,'0')}</span>${f.pre}<span class="bad">${f.bad}</span>${f.post}</div>
+      <div class="frow"><span class="lab">Correct it →</span><input id="f${i}" autocomplete="off"><span class="sol" id="fs${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let fixChecked=false;
+function checkFix(){
+  fixChecked=true; let correct=0;
+  FIX.forEach((f,i)=>{ const inp=document.getElementById('f'+i); const ok=f.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('fs'+i);
+    if(ok) correct++; else { sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s2'); s.textContent=`${correct} / ${FIX.length} correct`+(correct===FIX.length?' 🎉':'');
+  s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length) markDone(2);
+}
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+const COLL = [
+  {pre:"way", post:" (finding your way)", accept:["finding"], hint:"the scientific word for it"},
+  {pre:"a mental bird's-eye ", post:"", accept:["map","view"], hint:"how survey navigators picture a place"},
+  {pre:"a chain of turns and ", post:"", accept:["landmarks"], hint:"e.g. the bakery, the church"},
+  {pre:"a use-it-or-", post:"-it skill", accept:["lose"], hint:"if you don't practise it, it fades"},
+  {pre:"take a ", post:" (a quicker route)", accept:["shortcut","short cut"], hint:"a survey navigator can invent one"},
+  {pre:"your ", post:" (where you're going)", accept:["destination"], hint:"the place you want to reach"}
+];
+function renderColl(){
+  const c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='coll';
+    d.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')}</span><span class="phrase">${g.pre}<input id="k${i}" autocomplete="off">${g.post}</span><span class="hint">— ${g.hint}</span><span class="sol" id="ks${i}"></span>`;
+    c.appendChild(d);
+  });
+}
+let collChecked=false;
+function checkColl(){
+  collChecked=true; let correct=0;
+  COLL.forEach((g,i)=>{ const inp=document.getElementById('k'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ks'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('s3'); s.textContent=`${correct} / ${COLL.length} correct`+(correct===COLL.length?' 🎉':'');
+  s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length) markDone(3);
+}
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(0); renderMCQ(1); renderFix(); renderColl();
+</script>
+</body>
+</html>
