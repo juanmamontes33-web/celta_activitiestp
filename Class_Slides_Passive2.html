@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Passive Voice Part 2 — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0d1016; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(135% 110% at 88% -10%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%);
+  color:#EAE7DF; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#9097A4; font-weight:700; }
+.kick::before { content:''; width:34px; height:2px; background:#E3B45A; }
+.foot { position:absolute; left:64px; right:64px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#5C6473; border-top:1px solid rgba(255,255,255,0.09); padding-top:13px; }
+.foot b { color:#E3B45A; }
+.idx { position:absolute; top:34px; right:60px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; letter-spacing:3px; color:#3e3b52; }
+.ghost { position:absolute; font-family:'Space Grotesk'; font-weight:700; color:rgba(255,255,255,0.03); line-height:0.8; pointer-events:none; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F1EFE8; letter-spacing:-1px; }
+.serif { font-family:'Lora',serif; }
+.teal { color:#5ED0CC; } .gold { color:#E3B45A; } .rose { color:#E89A9A; }
+.panel { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:16px; }
+.hl-g { background:rgba(227,180,90,0.18); color:#EFC872; border-radius:6px; padding:2px 8px; font-weight:700; }
+.hl-t { background:rgba(94,208,204,0.18); color:#8BE5E1; border-radius:6px; padding:2px 8px; font-weight:700; }
+.hl-r { background:rgba(232,154,154,0.18); color:#F0B6B6; border-radius:6px; padding:2px 8px; font-weight:700; }
+.tipbox { background:rgba(227,180,90,0.08); border:1px solid rgba(227,180,90,0.25); border-radius:12px; padding:14px 20px; }
+.fbox { border-radius:12px; padding:14px 20px; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:18px; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div class="ghost" style="font-size:220px; bottom:-40px; left:-20px;">V3</div>
+  <div style="position:absolute; left:64px; top:60px;"><div class="kick">Grammar · B1 → B2 · Online</div></div>
+  <div style="position:absolute; left:64px; top:205px; width:820px;">
+    <div class="disp" style="font-size:64px; line-height:1.03;">Passive Voice<br><span class="gold">Part 2</span> — made simple ✨</div>
+    <div style="margin-top:20px; font-size:19px; color:#A8AEBA; line-height:1.6; max-width:600px;">New tenses, same logic. The secret? <span class="gold">V3 never changes</span> — only <span class="teal">BE</span> does.</div>
+    <div style="margin-top:20px; display:inline-flex; align-items:center; gap:12px; background:rgba(94,208,204,0.1); border:1px solid rgba(94,208,204,0.3); border-radius:30px; padding:8px 18px;">
+      <span style="color:#5ED0CC; font-weight:800; font-size:12px;">✓ PART 1 DONE</span>
+      <span style="color:#A8AEBA; font-size:13px;">is/are + V3 · was/were + V3</span>
+    </div>
+  </div>
+  <div style="position:absolute; right:80px; top:230px; width:340px; display:flex; flex-direction:column; gap:12px;">
+    <div class="panel" style="padding:14px 20px; border-left:3px solid #5ED0CC;"><span class="teal" style="font-weight:800;">has/have been</span> + V3 &nbsp;<span style="color:#8A92A0; font-size:13px;">present perfect passive</span></div>
+    <div class="panel" style="padding:14px 20px; border-left:3px solid #E3B45A;"><span class="gold" style="font-weight:800;">must / can / should</span> + be + V3 &nbsp;<span style="color:#8A92A0; font-size:13px;">modal passive</span></div>
+    <div class="panel" style="padding:14px 20px; border-left:3px solid #E89A9A;"><span class="rose" style="font-weight:800;">will be</span> + V3 &nbsp;<span style="color:#8A92A0; font-size:13px;">future passive</span></div>
+    <div class="panel" style="padding:14px 20px; border-left:3px solid #9FE6A6;"><span style="color:#9FE6A6; font-weight:800;">by</span> &nbsp;<span style="color:#8A92A0; font-size:13px;">when to include the agent</span></div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>01</b> / 11</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div class="ghost" style="font-size:200px; top:-10px; right:40px;">?</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Warm up · speak</div></div>
+  <div style="position:absolute; left:64px; top:190px; right:64px;">
+    <div class="disp" style="font-size:40px; margin-bottom:48px;">Has it been done? 📋</div>
+    <div style="display:flex; gap:30px; align-items:flex-start; margin-bottom:38px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:52px; color:#E3B45A; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(227,180,90,0.4); padding-left:24px;"><div class="serif" style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"Think of something that <span class="gold">was done for you</span> this week — who did it?"</div></div>
+    </div>
+    <div style="display:flex; gap:30px; align-items:flex-start;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:52px; color:#5ED0CC; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(94,208,204,0.4); padding-left:24px;"><div class="serif" style="font-size:27px; color:#F1EFE8; font-style:italic; line-height:1.4;">"What's something that <span class="teal">must be done</span> every day at school or work?"</div></div>
+    </div>
+    <div style="margin-top:48px; font-size:15px; color:#8A92A0;">🔁 &nbsp;With a partner — you're already using passive! Let's see the patterns.</div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>02</b> / 11</span></div>
+</div>
+
+<!-- 03 THE KEY UNLOCK -->
+<div class="slide">
+  <div class="idx">THE SECRET</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">One rule to rule them all</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:148px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;"><span class="teal">BE</span> changes. &nbsp;<span class="gold">V3</span> never changes. That's it. 🎯</div>
+    <div style="display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:0; align-items:center; margin-bottom:18px;">
+      <div style="font-family:'Space Grotesk'; font-size:12px; color:#9097A4; font-weight:800; letter-spacing:2px; text-align:center; padding-bottom:8px;">SUBJECT</div>
+      <div></div>
+      <div style="font-family:'Space Grotesk'; font-size:12px; color:#5ED0CC; font-weight:800; letter-spacing:2px; text-align:center; padding-bottom:8px;">BE ← changes!</div>
+      <div></div>
+      <div style="font-family:'Space Grotesk'; font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:2px; text-align:center; padding-bottom:8px;">V3 ← never changes ★</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:7px;">
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 36px 1fr; align-items:center; gap:0; background:rgba(255,255,255,0.03); border-radius:10px; padding:10px 16px;">
+        <div class="serif" style="font-size:15px; color:#D6D4CC;">The report</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:15px;">is / are written</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:14px;">every week ← Part 1</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 36px 1fr; align-items:center; gap:0; background:rgba(255,255,255,0.03); border-radius:10px; padding:10px 16px;">
+        <div class="serif" style="font-size:15px; color:#D6D4CC;">The report</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:15px;">was / were written</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:14px;">yesterday ← Part 1</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 36px 1fr; align-items:center; gap:0; background:rgba(94,208,204,0.07); border:1px solid rgba(94,208,204,0.25); border-radius:10px; padding:10px 16px;">
+        <div class="serif" style="font-size:15px; color:#D6D4CC;">The report</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:15px;">has been written</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:14px;">already ← NEW ✨</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 36px 1fr 36px 1fr; align-items:center; gap:0; background:rgba(227,180,90,0.07); border:1px solid rgba(227,180,90,0.2); border-radius:10px; padding:10px 16px;">
+        <div class="serif" style="font-size:15px; color:#D6D4CC;">The report</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#5ED0CC; font-size:15px;">must / will be written</div><div style="color:#56607a; text-align:center;">+</div>
+        <div style="font-family:'Space Grotesk'; font-weight:700; color:#E3B45A; font-size:14px;">by Friday ← NEW ✨</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; font-size:15px; color:#9097A4;">👀 See it? <span class="gold">written</span> is always the same — <span class="teal">be</span> is the only thing that changes.</div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>03</b> / 11</span></div>
+</div>
+
+<!-- 04 PRESENT PERFECT PASSIVE -->
+<div class="slide">
+  <div class="idx">PATTERN · 1</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Present perfect passive · has / have been + V3</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:148px;">
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom:18px;">
+      <div class="fbox" style="background:rgba(94,208,204,0.1); border:1px solid rgba(94,208,204,0.3); flex:0 0 auto;">subject</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(94,208,204,0.2); border:2px solid #5ED0CC; flex:0 0 auto; color:#5ED0CC;">has / have been</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(227,180,90,0.2); border:2px solid #E3B45A; flex:0 0 auto; color:#E3B45A;">V3</div>
+    </div>
+    <div style="display:flex; gap:16px; margin-bottom:18px;">
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #5ED0CC;">
+        <div style="font-size:12px; color:#5ED0CC; font-weight:800; letter-spacing:1px; margin-bottom:8px;">🏫 SCHOOL</div>
+        <div class="serif" style="font-size:18px; color:#F1EFE8; line-height:1.7;">"The homework <span class="hl-t">has been submitted</span>."<br>"The results <span class="hl-t">have been published</span>."</div>
+      </div>
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #E3B45A;">
+        <div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px; margin-bottom:8px;">💼 WORK</div>
+        <div class="serif" style="font-size:18px; color:#F1EFE8; line-height:1.7;">"The email <span class="hl-g">has been sent</span>."<br>"The contract <span class="hl-g">has been signed</span>."</div>
+      </div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 Use this when the action <strong>happened recently</strong> and the result <strong>matters now</strong>. <span style="color:#8A92A0;">= something was done and it's relevant right now.</span></div></div>
+    <div style="margin-top:12px; font-size:14px; color:#8A92A0;">❓ "The email has been sent" — do we know who sent it? <span style="color:#8BE5E1;">Not necessarily</span> &nbsp;·&nbsp; ❓ Is it done? <span style="color:#8BE5E1;">Yes, just now</span></div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>04</b> / 11</span></div>
+</div>
+
+<!-- 05 MODAL PASSIVE -->
+<div class="slide">
+  <div class="idx">PATTERN · 2</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Modal passive · must / can / should + be + V3</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:148px;">
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom:18px;">
+      <div class="fbox" style="background:rgba(94,208,204,0.1); border:1px solid rgba(94,208,204,0.3); flex:0 0 auto;">subject</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(227,180,90,0.2); border:2px solid #E3B45A; flex:0 0 auto; color:#E3B45A;">must / can / should</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(94,208,204,0.2); border:2px solid #5ED0CC; flex:0 0 auto; color:#5ED0CC;">be</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(227,180,90,0.2); border:2px solid #E3B45A; flex:0 0 auto; color:#E3B45A;">V3</div>
+    </div>
+    <div style="display:flex; gap:16px; margin-bottom:18px;">
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #E3B45A;">
+        <div style="font-size:12px; color:#E3B45A; font-weight:800; letter-spacing:1px; margin-bottom:8px;">RULES / NECESSITY</div>
+        <div class="serif" style="font-size:17px; color:#F1EFE8; line-height:1.75;">"Phones <span class="hl-g">must be turned off</span> during class."<br>"Forms <span class="hl-g">must be completed</span> in capital letters."</div>
+      </div>
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #5ED0CC;">
+        <div style="font-size:12px; color:#5ED0CC; font-weight:800; letter-spacing:1px; margin-bottom:8px;">ABILITY / ADVICE</div>
+        <div class="serif" style="font-size:17px; color:#F1EFE8; line-height:1.75;">"This error <span class="hl-t">can be fixed</span> easily."<br>"Feedback <span class="hl-t">should be given</span> after each task."</div>
+      </div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 <strong>Key:</strong> modal + <strong class="teal">be</strong> + V3. The "be" never disappears — <s>"must turned off"</s> → <strong class="teal">"must be turned off"</strong>. That's the most common mistake! ⚠️</div></div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>05</b> / 11</span></div>
+</div>
+
+<!-- 06 FUTURE PASSIVE -->
+<div class="slide">
+  <div class="idx">PATTERN · 3</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Future passive · will be + V3</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:155px;">
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom:22px;">
+      <div class="fbox" style="background:rgba(94,208,204,0.1); border:1px solid rgba(94,208,204,0.3); flex:0 0 auto;">subject</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(232,154,154,0.2); border:2px solid #E89A9A; flex:0 0 auto; color:#E89A9A;">will be</div>
+      <div style="color:#56607a; font-size:22px;">+</div>
+      <div class="fbox" style="background:rgba(227,180,90,0.2); border:2px solid #E3B45A; flex:0 0 auto; color:#E3B45A;">V3</div>
+    </div>
+    <div class="panel" style="padding:22px 30px; margin-bottom:18px;">
+      <div class="serif" style="font-size:21px; color:#F1EFE8; line-height:1.85;">"The exam <span class="hl-r">will be corrected</span> next week." 🏫<br>"The results <span class="hl-r">will be announced</span> on Friday." 💼<br>"The meeting <span class="hl-r">will be held</span> online."</div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 Compare: active = <em>"They will announce the results."</em> → focus on THEM. Passive = <em>"The results will be announced."</em> → focus on THE RESULTS. We use passive when <strong>who does it doesn't matter</strong>.</div></div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>06</b> / 11</span></div>
+</div>
+
+<!-- 07 CHEAT SHEET -->
+<div class="slide">
+  <div class="idx">CHEAT SHEET</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">All patterns · keep this in your head</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:145px;">
+    <div class="disp" style="font-size:26px; margin-bottom:16px;"><span class="gold">V3</span> = always the same &nbsp;·&nbsp; only <span class="teal">BE</span> changes 🔑</div>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; padding:0 8px;">
+        <div style="font-family:'Space Grotesk'; font-size:11px; color:#5C6473; font-weight:800; letter-spacing:1px;">TENSE</div>
+        <div style="font-family:'Space Grotesk'; font-size:11px; color:#5C6473; font-weight:800; letter-spacing:1px;">FORMULA</div>
+        <div style="font-family:'Space Grotesk'; font-size:11px; color:#5C6473; font-weight:800; letter-spacing:1px;">EXAMPLE</div>
+      </div>
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; background:rgba(255,255,255,0.035); border-radius:10px; padding:12px 8px; border-left:3px solid rgba(255,255,255,0.2);">
+        <div style="font-size:13px; color:#9097A4; font-weight:700;">Present simple ✓</div>
+        <div><span class="hl-t">is / are</span> + V3</div>
+        <div class="serif" style="font-size:14px; color:#D6D4CC; font-style:italic;">"It is checked daily."</div>
+      </div>
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; background:rgba(255,255,255,0.035); border-radius:10px; padding:12px 8px; border-left:3px solid rgba(255,255,255,0.2);">
+        <div style="font-size:13px; color:#9097A4; font-weight:700;">Past simple ✓</div>
+        <div><span class="hl-t">was / were</span> + V3</div>
+        <div class="serif" style="font-size:14px; color:#D6D4CC; font-style:italic;">"It was checked yesterday."</div>
+      </div>
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; background:rgba(94,208,204,0.07); border-radius:10px; padding:12px 8px; border-left:3px solid #5ED0CC;">
+        <div style="font-size:13px; color:#5ED0CC; font-weight:700;">Present perfect ✨</div>
+        <div><span class="hl-t">has / have been</span> + V3</div>
+        <div class="serif" style="font-size:14px; color:#D6D4CC; font-style:italic;">"It has been checked."</div>
+      </div>
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; background:rgba(227,180,90,0.07); border-radius:10px; padding:12px 8px; border-left:3px solid #E3B45A;">
+        <div style="font-size:13px; color:#E3B45A; font-weight:700;">Modal ✨</div>
+        <div><span class="hl-g">must / can / should</span> + be + V3</div>
+        <div class="serif" style="font-size:14px; color:#D6D4CC; font-style:italic;">"It must be checked."</div>
+      </div>
+      <div style="display:grid; grid-template-columns:200px 1fr 1fr; gap:10px; background:rgba(232,154,154,0.07); border-radius:10px; padding:12px 8px; border-left:3px solid #E89A9A;">
+        <div style="font-size:13px; color:#E89A9A; font-weight:700;">Future ✨</div>
+        <div><span class="hl-r">will be</span> + V3</div>
+        <div class="serif" style="font-size:14px; color:#D6D4CC; font-style:italic;">"It will be checked."</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>07</b> / 11</span></div>
+</div>
+
+<!-- 08 BY -->
+<div class="slide">
+  <div class="idx">BY</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">When to include the agent · and when to skip it</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:155px;">
+    <div class="disp" style="font-size:30px; margin-bottom:20px;">Use <span class="rose">by</span> only when the agent matters 👤</div>
+    <div style="display:flex; gap:16px; margin-bottom:18px;">
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #9FE6A6;">
+        <div style="font-size:12px; color:#9FE6A6; font-weight:800; letter-spacing:1px; margin-bottom:10px;">✅ USE "BY" — agent is important</div>
+        <div class="serif" style="font-size:17px; color:#F1EFE8; line-height:1.75;">"The report was written <span style="color:#9FE6A6; font-weight:700;">by the manager</span>."<br>"The song was composed <span style="color:#9FE6A6; font-weight:700;">by Beethoven</span>."</div>
+        <div style="font-size:13px; color:#8A92A0; margin-top:8px;">→ Knowing WHO matters.</div>
+      </div>
+      <div class="panel" style="flex:1; padding:20px 24px; border-top:3px solid #E89A9A;">
+        <div style="font-size:12px; color:#E89A9A; font-weight:800; letter-spacing:1px; margin-bottom:10px;">✗ SKIP "BY" — agent is unknown / obvious / unimportant</div>
+        <div class="serif" style="font-size:17px; color:#F1EFE8; line-height:1.75;">"The window was broken." <span style="color:#8A92A0; font-size:14px;">(we don't know)</span><br>"The homework must be submitted." <span style="color:#8A92A0; font-size:14px;">(obvious)</span></div>
+        <div style="font-size:13px; color:#8A92A0; margin-top:8px;">→ WHO doesn't add information.</div>
+      </div>
+    </div>
+    <div class="tipbox"><div style="font-size:15px; color:#EFC872; line-height:1.6;">💡 Test: ask yourself <strong>"Does knowing who did it add something useful?"</strong> If yes → add <span class="rose">by</span>. If no → leave it out. Most of the time, <strong>we leave it out!</strong></div></div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>08</b> / 11</span></div>
+</div>
+
+<!-- 09 READ ALOUD -->
+<div class="slide">
+  <div class="idx">READ ALOUD</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Read in pairs · passive in real conversations</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:142px; display:flex; gap:18px;">
+    <div class="panel" style="flex:1; padding:22px 26px;">
+      <div style="font-family:'Space Grotesk'; font-size:13px; color:#5ED0CC; font-weight:700; letter-spacing:1px; margin-bottom:14px;">🏫 School — exam week</div>
+      <div class="serif" style="font-size:16px; color:#E2E0D8; line-height:1.95;">
+        <strong class="teal">A:</strong> Has the essay <u>been graded</u> yet?<br>
+        <strong class="gold">B:</strong> Not yet. It <u>will be corrected</u> by Friday.<br>
+        <strong class="teal">A:</strong> And the project — <u>has it been submitted</u>?<br>
+        <strong class="gold">B:</strong> Yes, it <u>was sent</u> yesterday. Phones <u>must be turned off</u> during the exam, by the way!<br>
+        <strong class="teal">A:</strong> I know, I know. <u>Can it be taken</u> in silent mode?<br>
+        <strong class="gold">B:</strong> No — it <u>must be left</u> outside!
+      </div>
+    </div>
+    <div class="panel" style="flex:1; padding:22px 26px;">
+      <div style="font-family:'Space Grotesk'; font-size:13px; color:#E3B45A; font-weight:700; letter-spacing:1px; margin-bottom:14px;">💼 Work — project update</div>
+      <div class="serif" style="font-size:16px; color:#E2E0D8; line-height:1.95;">
+        <strong class="teal">A:</strong> <u>Has the report been sent</u> to the client?<br>
+        <strong class="gold">B:</strong> Not yet. It <u>will be sent</u> this afternoon.<br>
+        <strong class="teal">A:</strong> And the budget — <u>has it been approved</u>?<br>
+        <strong class="gold">B:</strong> Yes! It <u>was approved</u> by the director.<br>
+        <strong class="teal">A:</strong> Great. The invoices <u>must be paid</u> by Monday.<br>
+        <strong class="gold">B:</strong> Already done — <u>they were processed</u> this morning.
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; left:64px; right:64px; bottom:78px;"><div style="font-size:14px; color:#8A92A0;">🎯 Swap roles and read again. After each passive, say which pattern it uses — present perfect / future / modal / past simple!</div></div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>09</b> / 11</span></div>
+</div>
+
+<!-- 10 PRACTICE + SPEAKING -->
+<div class="slide">
+  <div class="idx">PRACTICE</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Your turn · open the link</div></div>
+  <div style="position:absolute; left:64px; right:64px; top:158px; display:flex; gap:22px;">
+    <div style="flex:1.1; display:flex; flex-direction:column; gap:0;">
+      <div style="display:flex; align-items:center; gap:26px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:44px; color:#5ED0CC; width:76px;">01</div><div><div style="font-size:20px; color:#F1EFE8; font-weight:700;">Active → Passive</div><div style="font-size:13px; color:#8A92A0;">transform each sentence ✍️</div></div></div>
+      <div style="display:flex; align-items:center; gap:26px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.09);"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:44px; color:#E3B45A; width:76px;">02</div><div><div style="font-size:20px; color:#F1EFE8; font-weight:700;">Choose the correct form</div><div style="font-size:13px; color:#8A92A0;">has been? must be? will be? ✅</div></div></div>
+      <div style="display:flex; align-items:center; gap:26px; padding:18px 0;"><div style="font-family:'Space Grotesk'; font-weight:700; font-size:44px; color:#E89A9A; width:76px;">03</div><div><div style="font-size:20px; color:#F1EFE8; font-weight:700;">Complete the conversation</div><div style="font-size:13px; color:#8A92A0;">real-world passive in context 💬</div></div></div>
+    </div>
+    <div class="panel" style="flex:1; padding:26px 28px; border-top:3px solid #E3B45A;">
+      <div style="font-family:'Space Grotesk'; font-size:14px; color:#E3B45A; font-weight:700; margin-bottom:14px;">💬 Speaking — after practice</div>
+      <div class="serif" style="font-size:16px; color:#D6D4CC; line-height:2;">"What <u>has been done</u> in your school / office this week?"<br>"What <u>must be done</u> before the end of the day?"<br>"What <u>will be decided</u> soon at your school / work?"</div>
+    </div>
+  </div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>10</b> / 11</span></div>
+</div>
+
+<!-- 11 FIX-IT -->
+<div class="slide">
+  <div class="idx">FIX-IT</div>
+  <div style="position:absolute; left:64px; top:62px;"><div class="kick">Find &amp; fix · the most common errors</div></div>
+  <div style="position:absolute; left:64px; top:155px; width:680px;">
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">01</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"The homework was gave back yesterday."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">02</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"Phones must turned off during the exam."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">03</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"The results will announced next week."</span></div>
+    <div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><span style="color:#E89A9A; font-family:'Space Grotesk'; font-weight:700;">04</span><span class="serif" style="font-size:19px; color:#D6D4CC; font-style:italic;">"The report has been write by the manager."</span></div>
+  </div>
+  <div class="panel" style="position:absolute; right:64px; top:158px; width:400px; padding:28px; border-left:3px solid #E3B45A;">
+    <div style="font-size:13px; letter-spacing:2px; color:#E3B45A; font-weight:800; margin-bottom:14px;">ANSWERS</div>
+    <div style="font-size:15px; color:#E2E0D8; line-height:2.1;">01 <span class="gold">given</span> (irregular V3)<br>02 <span class="teal">must be turned</span> off (missing "be")<br>03 <span class="rose">will be announced</span> (missing "be")<br>04 <span class="teal">written</span> (V3, not base verb)</div>
+  </div>
+  <div style="position:absolute; left:64px; bottom:78px; font-size:15px; color:#A8AEBA;">✏️ &nbsp;Fix each one aloud. Say which pattern it belongs to!</div>
+  <div class="foot"><span>Passive Voice · Part 2</span><span><b>11</b> / 11</span></div>
+</div>
+
+</body>
+</html>

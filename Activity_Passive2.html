@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passive Voice Part 2 — Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(135% 90% at 85% -5%, #2b2f3f 0%, #1c1d2a 45%, #131119 100%); min-height:100vh; padding:40px 18px 70px; color:#EAE7DF; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#9097A4; font-weight:800; margin-bottom:14px; }
+.kick::before { content:''; width:32px; height:2px; background:#E3B45A; }
+.head h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:#F1EFE8; letter-spacing:-1px; }
+.head h1 span { color:#E3B45A; }
+.head p { font-size:14px; color:#9097A4; margin-top:10px; line-height:1.6; }
+.formula { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:8px 16px; margin-bottom:22px; font-size:14px; flex-wrap:wrap; }
+.formula .be { color:#5ED0CC; font-weight:800; } .formula .v3 { color:#E3B45A; font-weight:800; }
+.tabs { display:flex; gap:0; margin:24px 0; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6D4CC; }
+.tab.active { border-bottom-color:#E3B45A; }
+.tab.active .tab-num { color:#E3B45A; } .tab.active .tab-label { color:#F1EFE8; }
+.tab.done .tab-num { color:#9FE6A6; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:17px; color:#5C6473; }
+.tab-label { font-size:13px; font-weight:800; color:#8A92A0; }
+.panel { display:none; } .panel.active { display:block; }
+.ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.sub { font-size:14px; color:#A8AEBA; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+
+.trow { padding:16px 4px; border-bottom:1px solid rgba(255,255,255,0.07); }
+.trow .active-s { font-family:'Lora',serif; font-size:16px; color:#A8AEBA; font-style:italic; margin-bottom:8px; }
+.trow .active-s .num { font-family:'Space Grotesk'; font-weight:700; color:#5C6473; margin-right:6px; font-style:normal; }
+.trow .pfill { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.trow .pfill .lab { font-size:12px; color:#8A92A0; font-weight:700; }
+.trow input { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:10px; padding:7px 13px; color:#fff; width:280px; }
+.trow input:focus { outline:none; border-color:#5ED0CC; }
+.trow input.ok { border-color:#7FD68A; background:rgba(120,210,130,0.12); color:#A8E8AE; }
+.trow input.no { border-color:#E89A9A; background:rgba(232,154,154,0.1); color:#F0B6B6; }
+.trow .sol { font-size:13px; color:#7FD68A; display:none; } .trow .sol.show { display:inline; }
+
+.q2 { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q2 .q2-label { font-size:12px; font-weight:800; color:#6B7484; letter-spacing:1px; margin-bottom:8px; }
+.q2 .q2-stem { font-family:'Lora',serif; font-size:17px; color:#E4E9E6; line-height:1.5; margin-bottom:10px; font-style:italic; }
+.q2-opt { display:block; width:100%; text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; margin-bottom:7px; font-size:14.5px; color:#D2DAD5; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; }
+.q2-opt:hover { border-color:#E3B45A; background:rgba(227,180,90,0.06); }
+.q2-opt.sel { border-color:#E3B45A; background:rgba(227,180,90,0.1); border-width:2px; }
+.q2-opt.correct { border-color:#7FD68A !important; background:rgba(120,210,130,0.12) !important; color:#A8E8AE !important; font-weight:700; }
+.q2-opt.wrong { border-color:#E89A9A !important; background:rgba(232,154,154,0.1) !important; color:#F0B6B6 !important; }
+
+.convo { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.09); border-radius:16px; padding:22px 28px; }
+.cline { font-family:'Lora',serif; font-size:16.5px; color:#E2E0D8; line-height:2.8; }
+.cline .sp { font-family:'Nunito'; font-weight:800; font-style:normal; }
+.cline .sp.a { color:#5ED0CC; } .cline .sp.b { color:#E3B45A; }
+.cline .hint { font-family:'Nunito'; font-size:12px; color:#8A92A0; font-style:normal; }
+.cline input { font-family:'Nunito'; font-weight:700; font-size:14px; background:rgba(255,255,255,0.05); border:1.5px solid #3a4250; border-radius:8px; padding:4px 10px; color:#fff; width:200px; }
+.cline input:focus { outline:none; border-color:#5ED0CC; }
+.cline input.ok { border-color:#7FD68A; background:rgba(120,210,130,0.12); color:#A8E8AE; }
+.cline input.no { border-color:#E89A9A; background:rgba(232,154,154,0.1); color:#F0B6B6; }
+
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:26px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-primary { background:#E3B45A; color:#1a1d2a; } .btn-primary:hover { background:#edc879; }
+.btn-secondary { background:transparent; color:#9097A4; border:1px solid rgba(255,255,255,0.15); } .btn-secondary:hover { border-color:#E3B45A; color:#fff; }
+.score { font-size:14px; color:#A8AEBA; }
+.score.good { color:#A8E8AE; font-weight:800; } .score.partial { color:#E3B45A; font-weight:800; } .score.bad { color:#F0B6B6; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Grammar Practice · B1 → B2 · Passive Voice Part 2</div>
+    <h1>Made <span>simple</span> ✨</h1>
+    <p>Remember: <strong style="color:#5ED0CC;">BE changes</strong> (has been / must be / will be) · <strong style="color:#E3B45A;">V3 never changes</strong>. Three tasks — check as you go.</p>
+  </div>
+  <div class="formula">
+    <span>subject</span><span style="color:#56607a;">+</span>
+    <span class="be">is/are &nbsp;·&nbsp; was/were &nbsp;·&nbsp; has been &nbsp;·&nbsp; will be &nbsp;·&nbsp; must be</span>
+    <span style="color:#56607a;">+</span><span class="v3">V3</span>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Active → Passive</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Choose the correct form</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Complete the conversation</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#5ED0CC;">Task 1 — Active → Passive ✍️</div>
+    <div class="sub" style="border-color:#5ED0CC; color:#9fe6e2;">Transform each sentence into the passive. The tense is shown in brackets. Keep "by + agent" only when given!</div>
+    <div id="p1"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP1()">Check answers</button><button class="btn btn-secondary" onclick="resetP1()">Reset</button><span class="score" id="score1"></span></div>
+  </div>
+
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#E3B45A;">Task 2 — Choose the correct form ✅</div>
+    <div class="sub" style="border-color:#E3B45A; color:#efc872;">Choose the correct passive form. Watch the "be" verb — and don't forget it in modal and future passives!</div>
+    <div id="p2"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP2()">Check answers</button><button class="btn btn-secondary" onclick="resetP2()">Reset</button><span class="score" id="score2"></span></div>
+  </div>
+
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#E89A9A;">Task 3 — Complete the conversation 💬</div>
+    <div class="sub" style="border-color:#E89A9A; color:#f0b6b6;">Complete each gap with the correct passive form. The verb and tense are shown in brackets.</div>
+    <div id="p3"></div>
+    <div class="footer"><button class="btn btn-primary" onclick="checkP3()">Check answers</button><button class="btn btn-secondary" onclick="resetP3()">Reset</button><span class="score" id="score3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach((t,k)=>t.classList.toggle('active',k===i)); document.querySelectorAll('.panel').forEach((p,k)=>p.classList.toggle('active',k===i)); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* TASK 1 — active to passive */
+const P1 = [
+  {active:"The teacher corrects the homework every Friday.", tense:"present simple passive", accept:["the homework is corrected every friday","homework is corrected every friday"]},
+  {active:"Someone broke the window this morning.", tense:"past simple passive", accept:["the window was broken this morning","the window was broken"]},
+  {active:"The company has cancelled the meeting.", tense:"present perfect passive", accept:["the meeting has been cancelled","the meeting has been canceled"]},
+  {active:"They will announce the results on Friday.", tense:"future passive", accept:["the results will be announced on friday","the results will be announced"]},
+  {active:"You must submit the report by Monday.", tense:"modal passive", accept:["the report must be submitted by monday","the report must be submitted"]}
+];
+function renderP1(){
+  const c=document.getElementById('p1'); c.innerHTML='';
+  P1.forEach((g,i)=>{
+    const d=document.createElement('div'); d.className='trow';
+    d.innerHTML=`<div class="active-s"><span class="num">${String(i+1).padStart(2,'0')}</span>${g.active} <span style="font-size:12px;color:#5ED0CC;font-style:normal;font-weight:700;">[${g.tense}]</span></div>
+      <div class="pfill"><span class="lab">Passive →</span><input id="t${i}" autocomplete="off"><span class="sol" id="ts${i}"></span></div>`;
+    c.appendChild(d);
+  });
+}
+let p1checked=false;
+function checkP1(){
+  p1checked=true; let correct=0;
+  P1.forEach((g,i)=>{ const inp=document.getElementById('t'+i); const ok=g.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; const sol=document.getElementById('ts'+i);
+    if(ok) correct++; else { sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  const s=document.getElementById('score1'); s.textContent=`${correct} / ${P1.length} correct`+(correct===P1.length?' 🎉':'');
+  s.className='score '+(correct===P1.length?'good':(correct>=3?'partial':'bad')); if(correct===P1.length) markDone(0);
+}
+function resetP1(){ p1checked=false; document.getElementById('score1').textContent=''; renderP1(); }
+
+/* TASK 2 — choose correct form (shuffled) */
+const P2_RAW = [
+  {stem:"The homework ___ already. You don't need to do it.", correct:"has been done", opts:["has been done","have been done","was been done"]},
+  {stem:"Phones ___ off during the exam. Please remember!", correct:"must be turned", opts:["must be turned","must turned","must been turned"]},
+  {stem:"The results ___ next Friday at 9am.", correct:"will be announced", opts:["will be announced","will announced","will been announced"]},
+  {stem:"The essay ___ by the examiner last week.", correct:"was written", opts:["was written","was wrote","has written"]},
+  {stem:"All forms ___ in capital letters, please.", correct:"should be completed", opts:["should be completed","should completed","should been completed"]},
+  {stem:"This mistake ___ easily. Don't worry.", correct:"can be fixed", opts:["can be fixed","can fixed","can been fixed"]}
+];
+const P2 = P2_RAW.map(p=>{ const opts=shuffle(p.opts); return {stem:p.stem, opts, correct:opts.indexOf(p.correct)}; });
+let p2sel={}; let p2checked=false;
+function renderP2(){
+  const c=document.getElementById('p2'); c.innerHTML='';
+  P2.forEach((q,qi)=>{
+    const box=document.createElement('div'); box.className='q2';
+    box.innerHTML=`<div class="q2-label">QUESTION ${String(qi+1).padStart(2,'0')}</div><div class="q2-stem">${q.stem}</div>`;
+    q.opts.forEach((o,oi)=>{ const b=document.createElement('button'); b.className='q2-opt'+(p2sel[qi]===oi?' sel':''); b.textContent=o; if(!p2checked) b.onclick=()=>{ p2sel[qi]=oi; renderP2(); }; box.appendChild(b); });
+    c.appendChild(box);
+  });
+}
+function checkP2(){
+  p2checked=true; let correct=0; const boxes=document.querySelectorAll('#p2 .q2');
+  P2.forEach((q,qi)=>{ const opts=boxes[qi].querySelectorAll('.q2-opt'); opts.forEach((o,oi)=>{ if(oi===q.correct) o.classList.add('correct'); else if(p2sel[qi]===oi) o.classList.add('wrong'); }); if(p2sel[qi]===q.correct) correct++; });
+  const s=document.getElementById('score2'); s.textContent=`${correct} / ${P2.length} correct`+(correct===P2.length?' 🎉':'');
+  s.className='score '+(correct===P2.length?'good':(correct>=3?'partial':'bad')); if(correct===P2.length) markDone(1);
+}
+function resetP2(){ p2sel={}; p2checked=false; document.getElementById('score2').textContent=''; renderP2(); }
+
+/* TASK 3 — complete the conversation */
+const P3 = [
+  {sp:'a', pre:"Has the report ", accept:["has been sent","been sent"], hint:"send / present perfect passive", post:" to the client yet?"},
+  {sp:'b', pre:"Not yet — it ", accept:["will be sent"], hint:"send / future passive", post:" this afternoon."},
+  {sp:'a', pre:"OK. And the invoices — ", accept:["must be paid"], hint:"pay / modal passive (must)", post:" by Friday."},
+  {sp:'b', pre:"Already done! They ", accept:["were processed","have been processed"], hint:"process / past or present perfect passive", post:" this morning."},
+  {sp:'a', pre:"Great. The meeting room ", accept:["has been booked"], hint:"book / present perfect passive", post:" too."},
+  {sp:'b', pre:"Perfect. And next time, notes ", accept:["should be taken"], hint:"take / modal passive (should)", post:" during the meeting."}
+];
+function renderP3(){
+  const c=document.getElementById('p3'); c.innerHTML='';
+  const box=document.createElement('div'); box.className='convo';
+  P3.forEach((line,i)=>{
+    const div=document.createElement('div'); div.className='cline';
+    div.innerHTML=`<span class="sp ${line.sp}">${line.sp.toUpperCase()}:</span> ${line.pre}<input id="c${i}" autocomplete="off"> <span class="hint">(${line.hint})</span>${line.post}`;
+    box.appendChild(div);
+  });
+  c.appendChild(box);
+}
+let p3checked=false;
+function checkP3(){
+  p3checked=true; let correct=0;
+  P3.forEach((line,i)=>{ const inp=document.getElementById('c'+i); const ok=line.accept.map(norm).includes(norm(inp.value));
+    inp.classList.add(ok?'ok':'no'); inp.disabled=true; if(ok) correct++; });
+  const s=document.getElementById('score3'); s.textContent=`${correct} / ${P3.length} correct`+(correct===P3.length?' — now read it aloud! 🎉':'');
+  s.className='score '+(correct===P3.length?'good':(correct>=3?'partial':'bad')); if(correct===P3.length) markDone(2);
+}
+function resetP3(){ p3checked=false; document.getElementById('score3').textContent=''; renderP3(); }
+
+renderP1(); renderP2(); renderP3();
+</script>
+</body>
+</html>
