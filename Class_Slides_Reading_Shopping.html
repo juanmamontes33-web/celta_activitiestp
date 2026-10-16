@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Are You a Smart Shopper? — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0f0c08; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(130% 110% at 85% -10%, #2b2622 0%, #1d1a16 48%, #110f0c 100%);
+  color:#ECE8E2; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A39B8F; font-weight:700; }
+.kick::before { content:''; width:32px; height:2px; background:#F0A830; }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#6B6358; border-top:1px solid rgba(255,255,255,0.08); padding-top:13px; }
+.foot b { color:#F0A830; }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:14px; letter-spacing:3px; color:#453f36; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F6F2EC; letter-spacing:-1px; }
+.amber { color:#F0A830; } .pink { color:#F472B6; } .mint { color:#34D399; }
+.card { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:16px; }
+.serif { font-family:'Lora',serif; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:18px;">
+    <div style="font-family:'Space Grotesk'; font-weight:700; font-size:22px; letter-spacing:3px; color:#fff;">THE&nbsp;<span class="amber">CART</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:#A39B8F; text-transform:uppercase;">Everyday English · Reading</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#A39B8F;">B1 → B2</div>
+  </div>
+  <div style="position:absolute; left:60px; top:220px; width:760px;">
+    <div style="font-family:'Space Grotesk'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#F472B6; font-weight:700; margin-bottom:18px;">Cover Story · Consumer Life</div>
+    <div class="serif" style="font-size:62px; font-weight:600; line-height:1.05; color:#F8F4EE;">Are you a<br><span class="amber" style="font-style:italic;">smart shopper?</span> 🛍️</div>
+    <div class="serif" style="margin-top:22px; font-size:19px; color:#B4AC9E; font-style:italic; max-width:560px; line-height:1.5;">Bargains, impulse buys, refunds — how to spend your money wisely.</div>
+  </div>
+  <svg style="position:absolute; right:85px; top:250px;" width="300" height="230" viewBox="0 0 300 230">
+    <path d="M60 70 h150 l-15 120 h-120 z" fill="none" stroke="#F0A830" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M95 70 a40 40 0 0 1 80 0" fill="none" stroke="#F0A830" stroke-width="4"/>
+    <circle cx="95" cy="205" r="12" fill="#F472B6"/>
+    <circle cx="175" cy="205" r="12" fill="#F472B6"/>
+    <text x="135" y="150" text-anchor="middle" font-size="40">🏷️</text>
+  </svg>
+  <div class="foot"><span>Shopping · Reading</span><span><b>01</b> / 09</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Before we read · talk</div></div>
+  <div style="position:absolute; left:60px; top:190px; right:60px;">
+    <div class="disp" style="font-size:38px; margin-bottom:48px;">Let's talk money 💳</div>
+    <div style="display:flex; gap:28px; align-items:flex-start; margin-bottom:36px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:50px; color:#F0A830; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(240,168,48,0.4); padding-left:24px;"><div class="serif" style="font-size:26px; color:#F6F2EC; font-style:italic; line-height:1.4;">"Do you prefer shopping <span class="amber">online</span> or <span class="amber">in shops</span>? Why?"</div></div>
+    </div>
+    <div style="display:flex; gap:28px; align-items:flex-start;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:50px; color:#F472B6; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(244,114,182,0.4); padding-left:24px;"><div class="serif" style="font-size:26px; color:#F6F2EC; font-style:italic; line-height:1.4;">"What was the last thing you <span class="pink">bought</span> — was it worth it?"</div></div>
+    </div>
+    <div style="margin-top:48px; font-size:14px; color:#A39B8F;">🔁 &nbsp;With a partner — share your shopping habits before we read.</div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>02</b> / 09</span></div>
+</div>
+
+<!-- 03 PRE-TEACH -->
+<div class="slide">
+  <div class="idx">VOCABULARY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Key words · learn before you read</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+    <div class="card" style="padding:24px; border-top:3px solid #F0A830;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#A39B8F; letter-spacing:1px;">NOUN</div>
+      <div class="disp" style="font-size:23px; color:#F0A830; margin:8px 0 12px;">an impulse buy</div>
+      <div style="font-size:14px; color:#CFC8BC; line-height:1.6;">something you buy suddenly, without planning it.</div>
+      <div style="font-size:12px; color:#F472B6; margin-top:12px;">CCQ: Did you plan it? ✗ · Did you need it? Usually ✗</div>
+    </div>
+    <div class="card" style="padding:24px; border-top:3px solid #F472B6;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#A39B8F; letter-spacing:1px;">NOUN · /ˈbɑːɡɪn/</div>
+      <div class="disp" style="font-size:24px; color:#F472B6; margin:8px 0 12px;">a bargain</div>
+      <div style="font-size:14px; color:#CFC8BC; line-height:1.6;">something you buy much cheaper than usual — a great deal.</div>
+      <div style="font-size:12px; color:#34D399; margin-top:12px;">CCQ: Expensive or cheap? Cheap · Good or bad? Good!</div>
+    </div>
+    <div class="card" style="padding:24px; border-top:3px solid #34D399;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#A39B8F; letter-spacing:1px;">NOUN / VERB</div>
+      <div class="disp" style="font-size:24px; color:#34D399; margin:8px 0 12px;">a refund</div>
+      <div style="font-size:14px; color:#CFC8BC; line-height:1.6;">your money back when you return something.</div>
+      <div style="font-size:12px; color:#F0A830; margin-top:12px;">CCQ: Do you keep the item? No · Get money back? Yes</div>
+    </div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>03</b> / 09</span></div>
+</div>
+
+<!-- 04 GIST -->
+<div class="slide">
+  <div class="idx">TASK 1 · GIST</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Read fast · the big idea</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">First read — for the <span class="amber">main idea</span> 🎯</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #F0A830;">
+      <div style="font-size:17px; color:#DAD3C7; line-height:1.8;">📖 Open the article. Read it <strong style="color:#fff;">quickly</strong> — about <strong style="color:#fff;">3 minutes</strong>. Don't stop at every word.<br>Then choose the best answer from <strong style="color:#F0A830;">A, B, C or D</strong>.</div>
+    </div>
+    <div class="card" style="margin-top:22px; padding:16px 24px; border-left:3px solid #F472B6;"><div style="font-size:14px; color:#CFC8BC;">💡 Four options now — read them all carefully before choosing!</div></div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>04</b> / 09</span></div>
+</div>
+
+<!-- 05 SCAN -->
+<div class="slide">
+  <div class="idx">TASK 2 · DETAIL</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Read again · True / False / Doesn't say</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:32px; margin-bottom:18px;">Second read — <span class="mint">true, false… or not there?</span> 🔎</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #34D399;">
+      <div style="font-size:16px; color:#DAD3C7; line-height:1.8;">Decide if each sentence is <strong style="color:#34D399;">True</strong>, <strong style="color:#F472B6;">False</strong>, or <strong style="color:#F0A830;">Doesn't say</strong> (the text doesn't give this information).</div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:16px 24px; border-left:3px solid #F0A830;"><div style="font-size:14px; color:#CFC8BC; line-height:1.6;">⚠️ <strong style="color:#F0A830;">"Doesn't say"</strong> is tricky! If the text doesn't mention it, don't guess from your own ideas — choose "Doesn't say".</div></div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>05</b> / 09</span></div>
+</div>
+
+<!-- 06 FIND & FIX -->
+<div class="slide">
+  <div class="idx">TASK 3 · FIX</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Use what you read · no reading back!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Find &amp; fix the mistakes 🔧</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #F472B6;">
+      <div style="font-size:16px; color:#DAD3C7; line-height:1.8;">Each sentence uses language from the article — but one part is <strong style="color:#F472B6;">wrong</strong>. Type the correction from memory:</div>
+      <div style="margin-top:16px; display:flex; flex-direction:column; gap:8px;">
+        <div class="serif" style="font-size:17px; color:#ECE8E2; font-style:italic;">"This jacket is <span class="pink">more cheaper</span> than that one." → ?</div>
+        <div class="serif" style="font-size:17px; color:#ECE8E2; font-style:italic;">"If you keep the receipt, it can be <span class="pink">return</span>." → ?</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px; padding:14px 24px; border-left:3px solid #34D399;"><div style="font-size:14px; color:#CFC8BC;">🎯 Comparatives, passives, prepositions — all the grammar we've studied!</div></div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>06</b> / 09</span></div>
+</div>
+
+<!-- 07 COMPLETE PHRASES -->
+<div class="slide">
+  <div class="idx">TASK 4 · LEXIS</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Fill the blanks · from memory</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:175px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Complete the shopping phrases 🧩</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #F0A830;">
+      <div style="font-size:17px; color:#DAD3C7; line-height:1.8;">In <strong style="color:#F0A830;">Task 4</strong>, fill each blank with the missing word. These are <strong style="color:#fff;">collocations</strong> — words that go together. Learn them as whole chunks!</div>
+    </div>
+    <div style="margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;">
+      <span class="serif" style="background:rgba(240,168,48,0.14); color:#F5C878; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">compare ___</span>
+      <span class="serif" style="background:rgba(244,114,182,0.14); color:#F9A8D0; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">get a ___</span>
+      <span class="serif" style="background:rgba(52,211,153,0.14); color:#7FEAC9; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">value for ___</span>
+      <span class="serif" style="background:rgba(240,168,48,0.14); color:#F5C878; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">keep the ___</span>
+    </div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>07</b> / 09</span></div>
+</div>
+
+<!-- 08 SPEAKING -->
+<div class="slide">
+  <div class="idx">SPEAKING</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">React · your shopping life</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:flex; gap:20px;">
+    <div style="flex:1.3;">
+      <div class="disp" style="font-size:30px; margin-bottom:18px;">Now — talk about <span class="amber">you</span> 💬</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F6F2EC; font-style:italic;">Are you an impulse buyer, or do you plan every purchase?</div></div>
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F6F2EC; font-style:italic;">What's the best bargain you've ever found?</div></div>
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F6F2EC; font-style:italic;">Have you ever returned something and got a refund?</div></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1; padding:24px 26px; border-top:3px solid #F472B6;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#F472B6; font-weight:700; margin-bottom:14px;">USEFUL LANGUAGE</div>
+      <div style="font-size:15px; color:#DAD3C7; line-height:2;">"I tend to…"<br>"It was (such) a bargain!"<br>"It was (not) worth it because…"<br>"I'd rather save than…"<br>"The best deal I've ever…"</div>
+    </div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>08</b> / 09</span></div>
+</div>
+
+<!-- 09 WRAP-UP -->
+<div class="slide">
+  <div class="idx">TAKEAWAY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Words to keep · we'll reuse these!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">Today's shopping vocabulary 🎒</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; max-width:940px;">
+      <span class="serif" style="background:rgba(240,168,48,0.14); color:#F5C878; padding:9px 18px; border-radius:10px; font-size:16px;">an impulse buy</span>
+      <span class="serif" style="background:rgba(244,114,182,0.14); color:#F9A8D0; padding:9px 18px; border-radius:10px; font-size:16px;">a bargain</span>
+      <span class="serif" style="background:rgba(52,211,153,0.14); color:#7FEAC9; padding:9px 18px; border-radius:10px; font-size:16px;">get a refund</span>
+      <span class="serif" style="background:rgba(240,168,48,0.14); color:#F5C878; padding:9px 18px; border-radius:10px; font-size:16px;">value for money</span>
+      <span class="serif" style="background:rgba(244,114,182,0.14); color:#F9A8D0; padding:9px 18px; border-radius:10px; font-size:16px;">compare prices</span>
+      <span class="serif" style="background:rgba(52,211,153,0.14); color:#7FEAC9; padding:9px 18px; border-radius:10px; font-size:16px;">keep the receipt</span>
+      <span class="serif" style="background:rgba(240,168,48,0.14); color:#F5C878; padding:9px 18px; border-radius:10px; font-size:16px;">read reviews</span>
+      <span class="serif" style="background:rgba(244,114,182,0.14); color:#F9A8D0; padding:9px 18px; border-radius:10px; font-size:16px;">worth it</span>
+    </div>
+    <div class="card" style="margin-top:26px; padding:20px 28px; border-left:3px solid #34D399; max-width:820px;">
+      <div style="font-size:16px; color:#DAD3C7; line-height:1.7;">🎯 Keep this vocabulary — we'll use it again in our <strong class="amber">listening</strong> lesson about online shopping! 🌙</div>
+    </div>
+    <div style="margin-top:18px; font-size:15px; color:#A39B8F;">📌 Homework: write 3 things you'd like to buy, and how you'll shop smartly for them.</div>
+  </div>
+  <div class="foot"><span>Shopping · Reading</span><span><b>09</b> / 09</span></div>
+</div>
+
+</body>
+</html>

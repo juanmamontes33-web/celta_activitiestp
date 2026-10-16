@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vampire Shoppers — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #2b2622 0%, #1d1a16 48%, #110f0c 100%); min-height:100vh; padding:40px 18px 80px; color:#ECE8E2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#A39B8F; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#F472B6; }
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(244,114,182,0.15); border:1px solid rgba(244,114,182,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Lora',serif; font-weight:600; font-size:24px; color:#F8F4EE; line-height:1.2; }
+.video .vsub { font-size:13px; color:#A39B8F; margin-top:4px; font-family:'Space Grotesk'; letter-spacing:0.5px; }
+.video a { display:inline-block; margin-top:10px; font-size:14px; font-weight:800; color:#110f0c; background:#F0A830; padding:9px 20px; border-radius:30px; text-decoration:none; }
+.video a:hover { background:#f5c04f; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D8D1C5; }
+.tab.active { border-bottom-color:#F0A830; }
+.tab.active .tab-num { color:#F5C878; } .tab.active .tab-label { color:#F8F4EE; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6B6358; }
+.tab-label { font-size:13px; font-weight:800; color:#A39B8F; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#B4AC9E; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E8E2D8; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6358; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D8D1C5; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#A39B8F; flex:0 0 auto; }
+.opt:hover { border-color:#F0A830; background:rgba(240,168,48,0.06); }
+.opt.sel { border-color:#F0A830; background:rgba(240,168,48,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#9FEAC9 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F472B6 !important; background:rgba(244,114,182,0.1) !important; color:#F9A8D0 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#D8D1C5; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#F0A830; }
+.tfd button.sel { border-color:#F0A830; background:rgba(240,168,48,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#9FEAC9 !important; }
+.tfd button.wrong { border-color:#F472B6 !important; background:rgba(244,114,182,0.12) !important; color:#F9A8D0 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E8E2D8; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6358; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F472B6; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#A39B8F; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #453f36; border-radius:10px; padding:7px 14px; color:#fff; width:210px; }
+input.ti:focus { outline:none; border-color:#F0A830; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#9FEAC9; }
+input.ti.no { border-color:#F472B6; background:rgba(244,114,182,0.1); color:#F9A8D0; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E8E2D8; }
+.coll input.ti { width:150px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#A39B8F; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#F0A830; color:#110f0c; } .btn-p:hover { background:#f5c04f; }
+.btn-s { background:transparent; color:#A39B8F; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#F0A830; color:#fff; }
+.score { font-size:14px; color:#B4AC9E; }
+.score.good { color:#9FEAC9; font-weight:800; } .score.partial { color:#F5C878; font-weight:800; } .score.bad { color:#F9A8D0; font-weight:800; }
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#A39B8F; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15px; line-height:1.8; color:#C6BFB3; margin-top:14px; }
+details.tr .lbl { color:#F0A830; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · Shopping &amp; Money</div>
+  <div class="video">
+    <div class="vico">🧛</div>
+    <div class="vmeta">
+      <h1>Vampire shoppers</h1>
+      <div class="vsub">BBC 6 MINUTE ENGLISH · ~6 MIN · WATCH/LISTEN FIRST, THEN DO THE TASKS</div>
+      <a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english/ep-190530" target="_blank" rel="noopener">▶ Open on BBC Learning English</a>
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#F5C878;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#F0A830; color:#f5c878;">Listen once for the general idea. Choose A, B, C or D.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#34D399;">Task 2 — True / False / Doesn't say 🔢</div>
+    <div class="sub" style="border-color:#34D399; color:#7feac9;">Listen again. If the programme does not mention it, choose <strong>Doesn't say</strong>.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F472B6;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F472B6; color:#f9a8d0;">No listening back! Each sentence has one <span style="color:#F472B6;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#F5C878;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#F0A830; color:#f5c878;">Complete each phrase from the programme with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📄 Transcript — teacher reference / post-listening</summary>
+    <p><span class="lbl">Neil &amp; Rob:</span> Rob doesn't enjoy walking around shopping malls — he finds it tiring and would rather shop online from the comfort of home. Buying things online is now big business.</p>
+    <p><span class="lbl">The topic:</span> "Vampire shopping" means shopping late at night — a time when most people are asleep. But sleep-deprived parents, shift-workers, gamers and insomniacs (people who can't sleep easily) are often awake. Online shops are open 24 hours a day, so it's easy to get sucked in and keep shopping.</p>
+    <p><span class="lbl">The downside:</span> Shopping when we're tired is sometimes too easy, and we make purchases we later regret — regret is the sad feeling you get when you wish you hadn't done something. Luckily, there's usually the option to return an item and get a refund.</p>
+    <p><span class="lbl">Research mentioned:</span> A survey found that around three-quarters of people did not send back the last thing they bought online that they regretted. As online shopping keeps growing, the temptation will always be there.</p>
+  </details>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"What is the programme mainly about?", correct:"Shopping online late at night and why people regret it", opts:["Shopping online late at night and why people regret it","How to get a refund from an online shop","Why shopping malls are closing down","The best time of year to find bargains"]},
+ {q:"Overall, what do Neil and Rob suggest about vampire shopping?", correct:"It's easy to get sucked in and buy things you don't need", opts:["It's easy to get sucked in and buy things you don't need","It's the cheapest way to shop","It is only done by young people","It always saves you money"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=1?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var TFD=[
+ {s:"'Vampire shopping' means shopping late at night.", a:"True"},
+ {s:"Rob loves walking around shopping malls.", a:"False"},
+ {s:"Online shops are open 24 hours a day.", a:"True"},
+ {s:"Most regretted online purchases are sent back for a refund.", a:"False"},
+ {s:"Online shopping is bigger in the UK than in the USA.", a:"Doesn't say"},
+ {s:"Insomniacs are people who can't sleep easily.", a:"True"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+var FIX=[
+ {pre:"Online shops are open ", bad:"twenty-four hour", post:" a day.", accept:["twenty-four hours","24 hours"]},
+ {pre:"Buying things at night is ", bad:"easyer", post:" when you're tired.", accept:["easier"]},
+ {pre:"Regret is the sad feeling you get when you ", bad:"wished", post:" you hadn't done it.", accept:["wish"]},
+ {pre:"You can usually return an item and get ", bad:"refund", post:".", accept:["a refund"]},
+ {pre:"Shopping late at night is ", bad:"more easy", post:" than shopping in a busy mall.", accept:["easier"]},
+ {pre:"Most people ", bad:"didn't sent", post:" back the thing they regretted.", accept:["didn't send","did not send"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"get ", post:" in", accept:["sucked"], hint:"can't stop shopping"},
+ {pre:"big ", post:"", accept:["business"], hint:"makes a lot of money"},
+ {pre:"", post:"-deprived", accept:["sleep"], hint:"not enough rest"},
+ {pre:"make a ", post:"", accept:["purchase"], hint:"buy something (formal)"},
+ {pre:"the ", post:"", accept:["temptation"], hint:"the urge to buy"},
+ {pre:"an ", post:"", accept:["insomniac"], hint:"a person who can't sleep"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>

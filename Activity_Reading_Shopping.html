@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are You a Smart Shopper? — Reading Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #2b2622 0%, #1d1a16 48%, #110f0c 100%); min-height:100vh; padding:40px 18px 80px; color:#ECE8E2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#A39B8F; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#F0A830; }
+.article { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:34px 40px; margin-bottom:26px; }
+.article .masthead { display:flex; align-items:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:14px; margin-bottom:20px; }
+.article .masthead .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.article .masthead .logo span { color:#F0A830; }
+.article .masthead .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#A39B8F; }
+.article h1 { font-family:'Lora',serif; font-weight:600; font-size:32px; line-height:1.15; color:#F8F4EE; margin-bottom:6px; }
+.article .byline { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:#F472B6; text-transform:uppercase; margin-bottom:22px; }
+.article p { font-family:'Lora',serif; font-size:17.5px; line-height:1.85; color:#D8D1C5; margin-bottom:16px; }
+.article p .pn { font-family:'Space Grotesk'; font-size:12px; color:#6B6358; font-weight:700; margin-right:8px; vertical-align:2px; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D8D1C5; }
+.tab.active { border-bottom-color:#F0A830; }
+.tab.active .tab-num { color:#F5C878; } .tab.active .tab-label { color:#F8F4EE; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6B6358; }
+.tab-label { font-size:13px; font-weight:800; color:#A39B8F; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#B4AC9E; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E8E2D8; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6358; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D8D1C5; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#A39B8F; flex:0 0 auto; }
+.opt:hover { border-color:#F0A830; background:rgba(240,168,48,0.06); }
+.opt.sel { border-color:#F0A830; background:rgba(240,168,48,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#9FEAC9 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F472B6 !important; background:rgba(244,114,182,0.1) !important; color:#F9A8D0 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#D8D1C5; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#F0A830; }
+.tfd button.sel { border-color:#F0A830; background:rgba(240,168,48,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#9FEAC9 !important; }
+.tfd button.wrong { border-color:#F472B6 !important; background:rgba(244,114,182,0.12) !important; color:#F9A8D0 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E8E2D8; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#6B6358; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F472B6; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#A39B8F; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #453f36; border-radius:10px; padding:7px 14px; color:#fff; width:200px; }
+input.ti:focus { outline:none; border-color:#F0A830; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#9FEAC9; }
+input.ti.no { border-color:#F472B6; background:rgba(244,114,182,0.1); color:#F9A8D0; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E8E2D8; }
+.coll input.ti { width:140px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#A39B8F; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#F0A830; color:#110f0c; } .btn-p:hover { background:#f5c04f; }
+.btn-s { background:transparent; color:#A39B8F; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#F0A830; color:#fff; }
+.score { font-size:14px; color:#B4AC9E; }
+.score.good { color:#9FEAC9; font-weight:800; } .score.partial { color:#F5C878; font-weight:800; } .score.bad { color:#F9A8D0; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Reading · B2 · Shopping &amp; Money</div>
+  <div class="article">
+    <div class="masthead"><div class="logo">THE <span>CART</span></div><div class="rt">⏱ ~3 min read</div></div>
+    <h1>Are You a Smart Shopper?</h1>
+    <div class="byline">Consumer Life</div>
+    <p><span class="pn">1</span>We all love buying things, but not all of us are good at it. Every year, people waste huge amounts of money on things they never use. The difference between a smart shopper and a careless one is not how much money they have — it is how carefully they think before they pay.</p>
+    <p><span class="pn">2</span>The biggest enemy of the smart shopper is the impulse buy — something you purchase suddenly, without planning. Shops know this well. They place sweets and magazines next to the checkout because they know tired customers will grab them. The best advice is simple: if you see something you want, wait 24 hours. If you still want it the next day, it might be worth buying.</p>
+    <p><span class="pn">3</span>Online shopping has made comparing prices easier than ever. In a few seconds, you can check the same product in five different shops and find the cheapest one. However, the lowest price is not always the best deal. A cheap product that breaks quickly is more expensive in the end than a slightly pricier one that lasts for years. This is why reading reviews matters: other customers will tell you if something is really good value for money.</p>
+    <p><span class="pn">4</span>Smart shoppers also know their rights. In most countries, if a product is faulty, it can be returned for a refund — but usually only if you keep the receipt. Many people throw their receipts away immediately and then cannot prove they bought anything. A smart shopper keeps every receipt, at least until they are sure the product works.</p>
+    <p><span class="pn">5</span>In the end, being a smart shopper is a skill, and like any skill, it can be learned. Plan before you buy, compare before you pay, and never let a shop rush you. Your bank account will thank you.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#F5C878;">Task 1 — Gist 🎯</div>
+    <div class="sub" style="border-color:#F0A830; color:#f5c878;">Read the whole article quickly. Choose the best answer — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#34D399;">Task 2 — True / False / Doesn't say 🔎</div>
+    <div class="sub" style="border-color:#34D399; color:#7feac9;">If the text does not give the information, choose <strong>Doesn't say</strong> — don't guess from your own knowledge!</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F472B6;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F472B6; color:#f9a8d0;">No reading back! Each sentence has one <span style="color:#F472B6;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#F5C878;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#F0A830; color:#f5c878;">Complete each shopping collocation with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+/* TASK 1 — Gist, ABCD, shuffled */
+var MCQ_RAW=[{q:"What is the article mainly about?", correct:"How to shop carefully and avoid wasting money", opts:["How to shop carefully and avoid wasting money","Why online shops are better than real shops","How shops decide the price of products","Why people enjoy buying new things"]}];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':'bad'); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+/* TASK 2 — True/False/Doesn't say */
+var TFD=[
+ {s:"Shops put sweets near the checkout on purpose.", a:"True"},
+ {s:"The lowest price is always the best deal.", a:"False"},
+ {s:"The writer says you should wait 24 hours before an impulse buy.", a:"True"},
+ {s:"Online shopping is more popular than shopping in real shops.", a:"Doesn't say"},
+ {s:"You usually need the receipt to get a refund.", a:"True"},
+ {s:"Most people keep their receipts for over a year.", a:"Doesn't say"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+/* TASK 3 — Find & fix */
+var FIX=[
+ {pre:"This jacket is ", bad:"more cheaper", post:" than that one.", accept:["cheaper"]},
+ {pre:"If you keep the receipt, a faulty item can be ", bad:"return", post:".", accept:["returned"]},
+ {pre:"Reading reviews tells you if something is good value ", bad:"of", post:" money.", accept:["for"]},
+ {pre:"A cheap product that breaks is ", bad:"expensiver", post:" in the end.", accept:["more expensive"]},
+ {pre:"Shops know tired customers ", bad:"will grabbing", post:" sweets at the checkout.", accept:["will grab"]},
+ {pre:"Being a smart shopper is a skill that can be ", bad:"learn", post:".", accept:["learned","learnt"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+/* TASK 4 — Fill the blanks */
+var COLL=[
+ {pre:"compare ", post:"", accept:["prices"], hint:"check who is cheapest"},
+ {pre:"get a ", post:"", accept:["refund"], hint:"your money back"},
+ {pre:"value for ", post:"", accept:["money"], hint:"worth what you pay"},
+ {pre:"keep the ", post:"", accept:["receipt"], hint:"proof you bought it"},
+ {pre:"an impulse ", post:"", accept:["buy"], hint:"bought without planning"},
+ {pre:"read ", post:"", accept:["reviews"], hint:"what other customers say"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>
