@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot the Fake — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #26303a 0%, #1a2028 48%, #0e1217 100%); min-height:100vh; padding:40px 18px 80px; color:#E8ECF0; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8a97a5; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#60A5FA; }
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(96,165,250,0.15); border:1px solid rgba(96,165,250,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Lora',serif; font-weight:600; font-size:24px; color:#F4F7FA; line-height:1.2; }
+.video .vsub { font-size:13px; color:#8a97a5; margin-top:4px; font-family:'Space Grotesk'; letter-spacing:0.5px; }
+.video a { display:inline-block; margin-top:10px; font-size:14px; font-weight:800; color:#fff; background:#EF4444; padding:9px 20px; border-radius:30px; text-decoration:none; }
+.video a:hover { background:#f26868; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C8D1DA; }
+.tab.active { border-bottom-color:#60A5FA; }
+.tab.active .tab-num { color:#93C5FD; } .tab.active .tab-label { color:#F4F7FA; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#5a6570; }
+.tab-label { font-size:13px; font-weight:800; color:#8a97a5; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#AAB6C2; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E2E7EC; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#5a6570; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C8D1DA; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#8a97a5; flex:0 0 auto; }
+.opt:hover { border-color:#60A5FA; background:rgba(96,165,250,0.06); }
+.opt.sel { border-color:#60A5FA; background:rgba(96,165,250,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#C8D1DA; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#60A5FA; }
+.tfd button.sel { border-color:#60A5FA; background:rgba(96,165,250,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E2E7EC; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#5a6570; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#8a97a5; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #38424d; border-radius:10px; padding:7px 14px; color:#fff; width:220px; }
+input.ti:focus { outline:none; border-color:#60A5FA; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E2E7EC; }
+.coll input.ti { width:150px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#8a97a5; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#60A5FA; color:#0e1217; } .btn-p:hover { background:#7cb5fb; }
+.btn-s { background:transparent; color:#8a97a5; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#60A5FA; color:#fff; }
+.score { font-size:14px; color:#AAB6C2; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#8a97a5; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15px; line-height:1.8; color:#C2CBD4; margin-top:14px; }
+details.tr .lbl { color:#60A5FA; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · News &amp; Opinions</div>
+  <div class="video">
+    <div class="vico">🕵️</div>
+    <div class="vmeta">
+      <h1>Five ways to spot fake news</h1>
+      <div class="vsub">BRITISH COUNCIL · ~4 MIN · WATCH FIRST, THEN DO THE TASKS</div>
+      <a href="https://www.youtube.com/watch?v=g2AdkNH-kWA" target="_blank" rel="noopener">▶ Open on YouTube</a>
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#93C5FD;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#60A5FA; color:#93c5fd;">Watch once for the general idea. Choose A, B, C or D.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#93C5FD;">Task 2 — True / False / Doesn't say 🔢</div>
+    <div class="sub" style="border-color:#60A5FA; color:#93c5fd;">Watch again. If the video does not mention it, choose <strong>Doesn't say</strong>.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">No watching back! Each sentence has one <span style="color:#F87171;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#93C5FD;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#60A5FA; color:#93c5fd;">Complete each phrase from the video with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📄 Content summary — teacher reference / post-listening</summary>
+    <p><span class="lbl">The five ways to spot fake news:</span></p>
+    <p><span class="lbl">1. Check the web address.</span> Unusual or unfamiliar domain endings can suggest a site isn't a legitimate news source.</p>
+    <p><span class="lbl">2. Examine the layout.</span> Grammar mistakes, wrong dates, bold claims without sources and sensational images are red flags.</p>
+    <p><span class="lbl">3. Investigate the site.</span> Find out who wrote the article and who runs or funds the site. Hidden information is suspicious.</p>
+    <p><span class="lbl">4. Cross-check the story.</span> Use fact-checking websites and see whether other credible news outlets report the same thing.</p>
+    <p><span class="lbl">5. Run a reverse image search.</span> If the same photo appears in unrelated stories, the content may be misleading.</p>
+    <p>Key idea: building <strong>media literacy</strong> — the ability to analyse and evaluate the news.</p>
+  </details>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"What is the video mainly about?", correct:"Practical ways to check if a news story is real", opts:["Practical ways to check if a news story is real","How to write news articles","The history of newspapers","Why photos are always true"]},
+ {q:"What is the overall message?", correct:"With a few simple checks, anyone can spot fake news", opts:["With a few simple checks, anyone can spot fake news","Only journalists can tell what is true","You should never read news online","Fake news is impossible to spot"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=1?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var TFD=[
+ {s:"The web address can help you spot a fake site.", a:"True"},
+ {s:"Grammar mistakes and wrong dates are red flags.", a:"True"},
+ {s:"The video says you should only ever read one source.", a:"False"},
+ {s:"A reverse image search checks where a photo appears.", a:"True"},
+ {s:"Fake news is a bigger problem in the USA than in Europe.", a:"Doesn't say"},
+ {s:"You should find out who wrote the article.", a:"True"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+var FIX=[
+ {pre:"Check ", bad:"who did write", post:" the article.", accept:["who wrote"]},
+ {pre:"A reverse image search is ", bad:"more useful", post:" way to check photos.", accept:["a useful"]},
+ {pre:"Look at the web ", bad:"adress", post:" first.", accept:["address"]},
+ {pre:"Sensational images ", bad:"is", post:" a warning sign.", accept:["are"]},
+ {pre:"You should cross-check it with ", bad:"credible source", post:".", accept:["credible sources"]},
+ {pre:"Bold claims ", bad:"without", post:" sources are a red flag.", accept:["without"], skip:true}
+];
+// remove the accidental correct item (index 5) so all are real errors
+FIX = FIX.filter(function(f){return !f.skip;});
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"a red ", post:"", accept:["flag"], hint:"a warning sign"},
+ {pre:"check the web ", post:"", accept:["address"], hint:"the site's URL"},
+ {pre:"reverse image ", post:"", accept:["search"], hint:"find where a photo appears"},
+ {pre:"media ", post:"", accept:["literacy"], hint:"ability to evaluate news"},
+ {pre:"a credible ", post:"", accept:["source"], hint:"a trustworthy place"},
+ {pre:"cross-", post:" the story", accept:["check"], hint:"confirm with others"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>

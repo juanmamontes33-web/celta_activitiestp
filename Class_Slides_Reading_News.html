@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What's Going On? — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0b0d10; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(130% 110% at 85% -10%, #26303a 0%, #1a2028 48%, #0f1318 100%);
+  color:#E8ECF0; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#8a97a5; font-weight:700; }
+.kick::before { content:''; width:32px; height:2px; background:#EF4444; }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#5a6570; border-top:1px solid rgba(255,255,255,0.08); padding-top:13px; }
+.foot b { color:#EF4444; }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:14px; letter-spacing:3px; color:#38424d; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F1F4F7; letter-spacing:-1px; }
+.red { color:#F87171; } .sky { color:#60A5FA; } .amber { color:#FBBF24; }
+.card { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:16px; }
+.serif { font-family:'Lora',serif; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:18px;">
+    <div style="font-family:'Space Grotesk'; font-weight:700; font-size:22px; letter-spacing:3px; color:#fff;">THE&nbsp;<span class="red">DISPATCH</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:#8a97a5; text-transform:uppercase;">Everyday English · Reading</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#8a97a5;">B1 → B2</div>
+  </div>
+  <div style="position:absolute; left:60px; top:222px; width:770px;">
+    <div style="font-family:'Space Grotesk'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#60A5FA; font-weight:700; margin-bottom:18px;">Front Page · Media</div>
+    <div class="serif" style="font-size:60px; font-weight:600; line-height:1.05; color:#F4F7FA;">What's going<br><span class="red" style="font-style:italic;">on?</span> 📰</div>
+    <div class="serif" style="margin-top:22px; font-size:19px; color:#AAB6C2; font-style:italic; max-width:560px; line-height:1.5;">How we read the news today — and how to tell what's true from what's fake.</div>
+  </div>
+  <svg style="position:absolute; right:90px; top:245px;" width="290" height="220" viewBox="0 0 290 220">
+    <rect x="40" y="40" width="200" height="150" rx="8" fill="none" stroke="#EF4444" stroke-width="4"/>
+    <line x1="60" y1="70" x2="220" y2="70" stroke="#60A5FA" stroke-width="6"/>
+    <line x1="60" y1="95" x2="160" y2="95" stroke="#8a97a5" stroke-width="4"/>
+    <line x1="60" y1="112" x2="200" y2="112" stroke="#8a97a5" stroke-width="4"/>
+    <rect x="60" y="130" width="70" height="45" fill="rgba(96,165,250,0.2)"/>
+    <line x1="145" y1="138" x2="215" y2="138" stroke="#8a97a5" stroke-width="4"/>
+    <line x1="145" y1="155" x2="215" y2="155" stroke="#8a97a5" stroke-width="4"/>
+    <line x1="145" y1="170" x2="190" y2="170" stroke="#8a97a5" stroke-width="4"/>
+  </svg>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>01</b> / 09</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Before we read · talk</div></div>
+  <div style="position:absolute; left:60px; top:190px; right:60px;">
+    <div class="disp" style="font-size:38px; margin-bottom:48px;">Where do you get your news? 📱</div>
+    <div style="display:flex; gap:28px; align-items:flex-start; margin-bottom:36px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:50px; color:#F87171; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(248,113,113,0.4); padding-left:24px;"><div class="serif" style="font-size:26px; color:#F1F4F7; font-style:italic; line-height:1.4;">"How do you find out what's happening — <span class="red">TV, social media, apps</span>?"</div></div>
+    </div>
+    <div style="display:flex; gap:28px; align-items:flex-start;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:50px; color:#60A5FA; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(96,165,250,0.4); padding-left:24px;"><div class="serif" style="font-size:26px; color:#F1F4F7; font-style:italic; line-height:1.4;">"Have you ever read a story online that turned out to be <span class="sky">false</span>?"</div></div>
+    </div>
+    <div style="margin-top:48px; font-size:14px; color:#8a97a5;">🔁 &nbsp;With a partner — share before we read.</div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>02</b> / 09</span></div>
+</div>
+
+<!-- 03 PRE-TEACH -->
+<div class="slide">
+  <div class="idx">VOCABULARY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Key words · learn before you read</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+    <div class="card" style="padding:24px; border-top:3px solid #EF4444;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#8a97a5; letter-spacing:1px;">NOUN PHRASE</div>
+      <div class="disp" style="font-size:23px; color:#F87171; margin:8px 0 12px;">fake news</div>
+      <div style="font-size:14px; color:#C2CBD4; line-height:1.6;">false stories made to look like real news.</div>
+      <div style="font-size:12px; color:#60A5FA; margin-top:12px;">CCQ: Real or invented? Invented · Looks real? Yes</div>
+    </div>
+    <div class="card" style="padding:24px; border-top:3px solid #60A5FA;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#8a97a5; letter-spacing:1px;">ADJECTIVE</div>
+      <div class="disp" style="font-size:23px; color:#60A5FA; margin:8px 0 12px;">reliable</div>
+      <div style="font-size:14px; color:#C2CBD4; line-height:1.6;">that you can trust; usually correct and honest.</div>
+      <div style="font-size:12px; color:#FBBF24; margin-top:12px;">CCQ: Can you trust it? Yes · Often wrong? No</div>
+    </div>
+    <div class="card" style="padding:24px; border-top:3px solid #FBBF24;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; color:#8a97a5; letter-spacing:1px;">VERB</div>
+      <div class="disp" style="font-size:21px; color:#FBBF24; margin:8px 0 12px;">to cross-check</div>
+      <div style="font-size:14px; color:#C2CBD4; line-height:1.6;">to confirm something by comparing other sources.</div>
+      <div style="font-size:12px; color:#F87171; margin-top:12px;">CCQ: One source or several? Several · Why? To be sure</div>
+    </div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>03</b> / 09</span></div>
+</div>
+
+<!-- 04 GIST -->
+<div class="slide">
+  <div class="idx">TASK 1 · GIST</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Read fast · the big idea</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">First read — for the <span class="red">main idea</span> 🎯</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #EF4444;">
+      <div style="font-size:17px; color:#CFD6DD; line-height:1.8;">📖 Read the article <strong style="color:#fff;">quickly</strong> — about <strong style="color:#fff;">3 minutes</strong>. Don't stop at every word.<br>Then choose the best answer from <strong style="color:#F87171;">A, B, C or D</strong>.</div>
+    </div>
+    <div class="card" style="margin-top:22px; padding:16px 24px; border-left:3px solid #60A5FA;"><div style="font-size:14px; color:#C2CBD4;">💡 Four options — read them all before choosing!</div></div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>04</b> / 09</span></div>
+</div>
+
+<!-- 05 DETAIL -->
+<div class="slide">
+  <div class="idx">TASK 2 · DETAIL</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Read again · True / False / Doesn't say</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:32px; margin-bottom:18px;">Second read — <span class="sky">true, false… or not there?</span> 🔎</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #60A5FA;">
+      <div style="font-size:16px; color:#CFD6DD; line-height:1.8;">Decide if each sentence is <strong style="color:#60A5FA;">True</strong>, <strong style="color:#F87171;">False</strong>, or <strong style="color:#FBBF24;">Doesn't say</strong>.</div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:16px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#C2CBD4; line-height:1.6;">⚠️ <strong style="color:#FBBF24;">"Doesn't say"</strong> — if the text doesn't mention it, don't guess from your own knowledge!</div></div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>05</b> / 09</span></div>
+</div>
+
+<!-- 06 FIND & FIX -->
+<div class="slide">
+  <div class="idx">TASK 3 · FIX</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Use what you read · no reading back!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Find &amp; fix the mistakes 🔧</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #F87171;">
+      <div style="font-size:16px; color:#CFD6DD; line-height:1.8;">One part of each sentence is <strong style="color:#F87171;">wrong</strong>. Fix it from memory:</div>
+      <div style="margin-top:16px; display:flex; flex-direction:column; gap:8px;">
+        <div class="serif" style="font-size:17px; color:#E8ECF0; font-style:italic;">"Fake news spreads <span class="red">more fast</span> than true news." → ?</div>
+        <div class="serif" style="font-size:17px; color:#E8ECF0; font-style:italic;">"You should <span class="red">cross-check it with</span> other source." → ?</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px; padding:14px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#C2CBD4;">🎯 Comparatives, plurals, opinion phrases — the grammar we've studied!</div></div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>06</b> / 09</span></div>
+</div>
+
+<!-- 07 FILL BLANKS -->
+<div class="slide">
+  <div class="idx">TASK 4 · LEXIS</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Opinion language · from memory</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:175px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Complete the opinion phrases 🧩</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #EF4444;">
+      <div style="font-size:17px; color:#CFD6DD; line-height:1.8;">Fill each blank. These are the chunks you'll use to <strong style="color:#fff;">agree, disagree and give opinions</strong>!</div>
+    </div>
+    <div style="margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;">
+      <span class="serif" style="background:rgba(239,68,68,0.14); color:#FCA5A5; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">in my ___</span>
+      <span class="serif" style="background:rgba(96,165,250,0.14); color:#93C5FD; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">I see your ___</span>
+      <span class="serif" style="background:rgba(251,191,36,0.14); color:#FCD34D; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">I totally ___</span>
+      <span class="serif" style="background:rgba(239,68,68,0.14); color:#FCA5A5; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">a ___ source</span>
+    </div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>07</b> / 09</span></div>
+</div>
+
+<!-- 08 SPEAKING -->
+<div class="slide">
+  <div class="idx">SPEAKING</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">React · agree or disagree?</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:flex; gap:20px;">
+    <div style="flex:1.3;">
+      <div class="disp" style="font-size:30px; margin-bottom:18px;">Now — give your <span class="red">opinion</span> 💬</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F1F4F7; font-style:italic;">"Social media is the worst place to get news." Agree?</div></div>
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F1F4F7; font-style:italic;">Should schools teach students how to spot fake news?</div></div>
+        <div class="card" style="padding:16px 22px;"><div class="serif" style="font-size:17px; color:#F1F4F7; font-style:italic;">Whose job is it to stop fake news — websites, or readers?</div></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1; padding:24px 26px; border-top:3px solid #60A5FA;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#60A5FA; font-weight:700; margin-bottom:14px;">USEFUL LANGUAGE</div>
+      <div style="font-size:15px; color:#CFD6DD; line-height:2;">"In my opinion…"<br>"I totally agree."<br>"I see your point, but…"<br>"I'm not so sure about that."<br>"That's a good point."</div>
+    </div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>08</b> / 09</span></div>
+</div>
+
+<!-- 09 WRAP-UP -->
+<div class="slide">
+  <div class="idx">TAKEAWAY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Words to keep!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">Today's news &amp; opinion vocabulary 🎒</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; max-width:940px;">
+      <span class="serif" style="background:rgba(239,68,68,0.14); color:#FCA5A5; padding:9px 18px; border-radius:10px; font-size:16px;">fake news</span>
+      <span class="serif" style="background:rgba(96,165,250,0.14); color:#93C5FD; padding:9px 18px; border-radius:10px; font-size:16px;">a reliable source</span>
+      <span class="serif" style="background:rgba(251,191,36,0.14); color:#FCD34D; padding:9px 18px; border-radius:10px; font-size:16px;">cross-check</span>
+      <span class="serif" style="background:rgba(239,68,68,0.14); color:#FCA5A5; padding:9px 18px; border-radius:10px; font-size:16px;">in my opinion</span>
+      <span class="serif" style="background:rgba(96,165,250,0.14); color:#93C5FD; padding:9px 18px; border-radius:10px; font-size:16px;">I see your point</span>
+      <span class="serif" style="background:rgba(251,191,36,0.14); color:#FCD34D; padding:9px 18px; border-radius:10px; font-size:16px;">headline</span>
+      <span class="serif" style="background:rgba(239,68,68,0.14); color:#FCA5A5; padding:9px 18px; border-radius:10px; font-size:16px;">a current event</span>
+      <span class="serif" style="background:rgba(96,165,250,0.14); color:#93C5FD; padding:9px 18px; border-radius:10px; font-size:16px;">to go viral</span>
+    </div>
+    <div class="card" style="margin-top:26px; padding:20px 28px; border-left:3px solid #FBBF24; max-width:820px;">
+      <div style="font-size:16px; color:#CFD6DD; line-height:1.7;">🎯 Keep this vocabulary — we'll use it again in our <strong class="red">listening</strong> lesson: five ways to spot fake news! 🕵️</div>
+    </div>
+    <div style="margin-top:18px; font-size:15px; color:#8a97a5;">📌 Homework: find one news headline and write whether you think it's reliable — and why.</div>
+  </div>
+  <div class="foot"><span>News &amp; Opinions · Reading</span><span><b>09</b> / 09</span></div>
+</div>
+
+</body>
+</html>

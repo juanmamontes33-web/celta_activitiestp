@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Going On? — Reading Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #26303a 0%, #1a2028 48%, #0e1217 100%); min-height:100vh; padding:40px 18px 80px; color:#E8ECF0; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8a97a5; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EF4444; }
+.article { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:34px 40px; margin-bottom:26px; }
+.article .masthead { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:20px; }
+.article .masthead .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.article .masthead .logo span { color:#EF4444; }
+.article .masthead .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#8a97a5; }
+.article h1 { font-family:'Lora',serif; font-weight:600; font-size:32px; line-height:1.15; color:#F4F7FA; margin-bottom:6px; }
+.article .byline { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:#60A5FA; text-transform:uppercase; margin-bottom:22px; }
+.article p { font-family:'Lora',serif; font-size:17.5px; line-height:1.85; color:#C8D1DA; margin-bottom:16px; }
+.article p .pn { font-family:'Space Grotesk'; font-size:12px; color:#5a6570; font-weight:700; margin-right:8px; vertical-align:2px; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C8D1DA; }
+.tab.active { border-bottom-color:#EF4444; }
+.tab.active .tab-num { color:#F87171; } .tab.active .tab-label { color:#F4F7FA; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#5a6570; }
+.tab-label { font-size:13px; font-weight:800; color:#8a97a5; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#AAB6C2; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E2E7EC; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#5a6570; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C8D1DA; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#8a97a5; flex:0 0 auto; }
+.opt:hover { border-color:#EF4444; background:rgba(239,68,68,0.06); }
+.opt.sel { border-color:#EF4444; background:rgba(239,68,68,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#C8D1DA; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#EF4444; }
+.tfd button.sel { border-color:#EF4444; background:rgba(239,68,68,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E2E7EC; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#5a6570; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#8a97a5; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #38424d; border-radius:10px; padding:7px 14px; color:#fff; width:220px; }
+input.ti:focus { outline:none; border-color:#EF4444; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E2E7EC; }
+.coll input.ti { width:140px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#8a97a5; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EF4444; color:#fff; } .btn-p:hover { background:#f26868; }
+.btn-s { background:transparent; color:#8a97a5; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EF4444; color:#fff; }
+.score { font-size:14px; color:#AAB6C2; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Reading · B2 · News &amp; Opinions</div>
+  <div class="article">
+    <div class="masthead"><div class="logo">THE <span>DISPATCH</span></div><div class="rt">⏱ ~3 min read</div></div>
+    <h1>What's Going On?</h1>
+    <div class="byline">Media</div>
+    <p><span class="pn">1</span>Not long ago, most people got their news from a newspaper or the evening television bulletin. Today, the news comes to us all day long — on our phones, in our social media feeds, from friends in messaging groups. We are more informed than ever before. But we are also, strangely, more confused.</p>
+    <p><span class="pn">2</span>The problem is fake news: false stories that are designed to look exactly like real news. Some are created as jokes; others are made to make money or to change what people think. Studies suggest that false stories often spread faster than true ones, because they are more shocking, and shocking things get more clicks.</p>
+    <p><span class="pn">3</span>So how can you tell what to trust? Experts give simple advice. First, check the source: is it a reliable news organisation, or a website you have never heard of? Second, look at the writing. Lots of capital letters, spelling mistakes and dramatic language are warning signs. Third, and most importantly, cross-check the story with other sources. If only one strange website is reporting something huge, be suspicious.</p>
+    <p><span class="pn">4</span>Images can lie too. A real photograph can be used with a completely false story, so the same picture may appear in several unrelated articles. A quick reverse image search often reveals the truth in seconds.</p>
+    <p><span class="pn">5</span>None of this means we should stop reading the news. It means we should read it like detectives — asking questions, staying calm, and thinking before we share. In a world full of information, knowing how to check it is one of the most valuable skills you can have.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#F87171;">Task 1 — Gist 🎯</div>
+    <div class="sub" style="border-color:#EF4444; color:#fca5a5;">Read the whole article quickly. Choose the best answer — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#60A5FA;">Task 2 — True / False / Doesn't say 🔎</div>
+    <div class="sub" style="border-color:#60A5FA; color:#93c5fd;">If the text doesn't give the information, choose <strong>Doesn't say</strong>.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">No reading back! Each sentence has one <span style="color:#F87171;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#F87171;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#EF4444; color:#fca5a5;">Complete each phrase with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[{q:"What is the writer's main point?", correct:"We should check the news carefully instead of trusting everything", opts:["We should check the news carefully instead of trusting everything","We should stop reading the news completely","Newspapers are better than phones","Only experts can understand the news"]}];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':'bad'); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var TFD=[
+ {s:"Today, news reaches us all through the day on our phones.", a:"True"},
+ {s:"All fake news is created as a joke.", a:"False"},
+ {s:"The article says false stories often spread faster than true ones.", a:"True"},
+ {s:"Reverse image search is the most popular app in the world.", a:"Doesn't say"},
+ {s:"Lots of capital letters can be a warning sign of fake news.", a:"True"},
+ {s:"The writer says we should stop reading the news.", a:"False"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+var FIX=[
+ {pre:"Fake news spreads ", bad:"more fast", post:" than true news.", accept:["faster"]},
+ {pre:"You should cross-check it with other ", bad:"source", post:".", accept:["sources"]},
+ {pre:"It is one of the ", bad:"most valuable", post:" skill you can have.", accept:["most valuable skills"]},
+ {pre:"Shocking stories ", bad:"gets", post:" more clicks.", accept:["get"]},
+ {pre:"In my ", bad:"oppinion", post:", we should think before we share.", accept:["opinion"]},
+ {pre:"A real photo can be ", bad:"use", post:" with a false story.", accept:["used"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"in my ", post:"", accept:["opinion"], hint:"what you think"},
+ {pre:"I see your ", post:"", accept:["point"], hint:"partly agreeing"},
+ {pre:"I totally ", post:"", accept:["agree"], hint:"you think the same"},
+ {pre:"a reliable ", post:"", accept:["source"], hint:"a place you can trust"},
+ {pre:"cross-", post:"", accept:["check"], hint:"confirm with others"},
+ {pre:"go ", post:"", accept:["viral"], hint:"spread very fast online"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>
