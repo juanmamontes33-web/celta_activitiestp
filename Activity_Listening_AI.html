@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will a Robot Take Your Job? — Listening Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #231f3e 0%, #171528 48%, #0c0b16 100%); min-height:100vh; padding:40px 18px 80px; color:#E6EAF2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#938BA7; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#A78BFA; }
+.video { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px 34px; margin-bottom:16px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.video .vico { width:64px; height:64px; border-radius:16px; background:rgba(167,139,250,0.15); border:1px solid rgba(167,139,250,0.4); display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+.video .vmeta { flex:1; min-width:220px; }
+.video h1 { font-family:'Lora',serif; font-weight:600; font-size:24px; color:#F4F6FB; line-height:1.2; }
+.video .vsub { font-size:13px; color:#938BA7; margin-top:4px; font-family:'Space Grotesk'; letter-spacing:0.5px; }
+.video a { display:inline-block; margin-top:10px; font-size:14px; font-weight:800; color:#0b0f18; background:#A78BFA; padding:9px 20px; border-radius:30px; text-decoration:none; }
+.video a:hover { background:#bda6fc; }
+.howto { font-size:13px; color:#938BA7; line-height:1.6; margin-bottom:26px; padding:12px 18px; background:rgba(255,255,255,0.02); border:1px dashed rgba(255,255,255,0.12); border-radius:12px; }
+.howto b { color:#C4B5FD; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 16px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C6CEDC; }
+.tab.active { border-bottom-color:#A78BFA; }
+.tab.active .tab-num { color:#C4B5FD; } .tab.active .tab-label { color:#F4F6FB; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#645b74; }
+.tab-label { font-size:13px; font-weight:800; color:#938BA7; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A9B2C6; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E0E5EF; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#645b74; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C6CEDC; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#938BA7; flex:0 0 auto; }
+.opt:hover { border-color:#A78BFA; background:rgba(167,139,250,0.06); }
+.opt.sel { border-color:#A78BFA; background:rgba(167,139,250,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#C6CEDC; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#A78BFA; }
+.tfd button.sel { border-color:#A78BFA; background:rgba(167,139,250,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E0E5EF; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#645b74; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#938BA7; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #443a57; border-radius:10px; padding:7px 14px; color:#fff; width:220px; }
+input.ti:focus { outline:none; border-color:#A78BFA; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E0E5EF; }
+.coll input.ti { width:150px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#938BA7; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#A78BFA; color:#0b0f18; } .btn-p:hover { background:#bda6fc; }
+.btn-s { background:transparent; color:#938BA7; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#A78BFA; color:#fff; }
+.score { font-size:14px; color:#A9B2C6; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+details.tr { margin-top:34px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#938BA7; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15.5px; line-height:1.85; color:#C6CEDC; margin-top:14px; }
+details.tr p .sp { font-family:'Space Grotesk'; font-weight:700; font-size:12px; letter-spacing:1px; margin-right:8px; }
+details.tr p .host { color:#A78BFA; } details.tr p .guest { color:#67E8F9; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Listening · B2 · Technology &amp; AI</div>
+  <div class="video">
+    <div class="vico">🎙️</div>
+    <div class="vmeta">
+      <h1>The Signal Podcast — "Will a robot take your job?"</h1>
+      <div class="vsub">THE SIGNAL · ~5 MIN · LISTEN FIRST, THEN DO THE TASKS</div>
+      <a href="https://www.youtube.com/results?search_query=bbc+learning+english+6+minute+english+artificial+intelligence" target="_blank" rel="noopener">▶ Find authentic AI audio</a>
+    </div>
+  </div>
+  <div class="howto">🎧 <b>How to play it:</b> the teacher reads the script aloud (twice) at a natural pace — or plays an authentic AI clip from the link above. Students do the tasks <b>without</b> seeing the transcript; open the transcript at the bottom only for post-listening checking.</div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#C4B5FD;">Task 1 — Gist (first listen) 🎧</div>
+    <div class="sub" style="border-color:#A78BFA; color:#d4c9fe;">Listen once for the general idea. Choose A, B, C or D.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#C4B5FD;">Task 2 — True / False / Doesn't say 🔢</div>
+    <div class="sub" style="border-color:#A78BFA; color:#d4c9fe;">Listen again. If the podcast does not mention it, choose <strong>Doesn't say</strong>.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">No listening back! Each sentence has one <span style="color:#F87171;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#C4B5FD;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#A78BFA; color:#d4c9fe;">Complete each phrase from the podcast with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📄 Audio script — teacher reads aloud / post-listening reference</summary>
+    <p><span class="sp host">HOST:</span> Welcome back to The Signal. Today's big question: will a robot take your job? Every week someone asks me if a machine is going to replace them. What's the honest answer?</p>
+    <p><span class="sp guest">GUEST:</span> The honest answer is: some tasks, yes; most whole jobs, no. AI is very good at repetitive, predictable work — sorting data, basic translation, simple customer questions. Those tasks are already being automated.</p>
+    <p><span class="sp host">HOST:</span> So which jobs are the safest?</p>
+    <p><span class="sp guest">GUEST:</span> Jobs that need the things machines are still bad at: creativity, empathy, judgement, working with people. A nurse, a teacher, a good manager — these are hard to automate, because they depend on human connection.</p>
+    <p><span class="sp host">HOST:</span> But we keep hearing that millions of jobs will disappear.</p>
+    <p><span class="sp guest">GUEST:</span> Some will. History shows, though, that technology also creates new jobs we can't yet imagine. Thirty years ago nobody was a social media manager. The real risk isn't that robots take every job — it's that people who don't adapt get left behind.</p>
+    <p><span class="sp host">HOST:</span> So what should our listeners actually do?</p>
+    <p><span class="sp guest">GUEST:</span> Three things. First, learn to use AI tools rather than fear them — the person who uses AI will replace the person who doesn't. Second, build the human skills: communication, problem-solving, teamwork. Third, keep learning. The most valuable skill now is the ability to learn something new quickly.</p>
+    <p><span class="sp host">HOST:</span> And is there any good news for workers?</p>
+    <p><span class="sp guest">GUEST:</span> Plenty. If machines take the boring parts of our jobs, we're free to do more interesting, creative work. Used well, AI could give us better jobs, not no jobs.</p>
+    <p><span class="sp host">HOST:</span> A hopeful note to end on. Thanks for joining us on The Signal.</p>
+  </details>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"What is the main message of the podcast?", correct:"AI will change many jobs, but people who adapt will be fine", opts:["AI will change many jobs, but people who adapt will be fine","Robots will soon take almost every job","Technology never creates new jobs","Workers should refuse to use AI tools"]},
+ {q:"According to the guest, which jobs are hardest to automate?", correct:"Jobs that need creativity, empathy and working with people", opts:["Jobs that need creativity, empathy and working with people","Jobs that involve sorting data","Jobs with simple, repeated tasks","Jobs that nobody wants to do"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=1?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var TFD=[
+ {s:"The guest says AI is good at repetitive, predictable tasks.", a:"True"},
+ {s:"The guest believes most whole jobs will disappear.", a:"False"},
+ {s:"Technology can also create new types of jobs.", a:"True"},
+ {s:"The podcast says teachers earn more than nurses.", a:"Doesn't say"},
+ {s:"The guest advises people to learn to use AI tools.", a:"True"},
+ {s:"The guest ends on a hopeful note.", a:"True"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+var FIX=[
+ {pre:"Some tasks are already ", bad:"being automate", post:".", accept:["being automated"]},
+ {pre:"These jobs ", bad:"depends on", post:" human connection.", accept:["depend on"]},
+ {pre:"Technology also ", bad:"create", post:" new jobs.", accept:["creates"]},
+ {pre:"The person who uses AI ", bad:"will replaces", post:" the person who doesn't.", accept:["will replace"]},
+ {pre:"We need to learn something new ", bad:"quick", post:".", accept:["quickly"]},
+ {pre:"We are ", bad:"free do", post:" more creative work.", accept:["free to do"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"human ", post:"", accept:["skills"], hint:"things machines are bad at"},
+ {pre:"problem-", post:"", accept:["solving"], hint:"finding answers to difficulties"},
+ {pre:"to ", post:" to change", accept:["adapt"], hint:"change to fit a new situation"},
+ {pre:"to get left ", post:"", accept:["behind"], hint:"not keep up with others"},
+ {pre:"to ", post:" someone", accept:["replace"], hint:"take the place of"},
+ {pre:"keep ", post:"", accept:["learning"], hint:"continue studying"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>
