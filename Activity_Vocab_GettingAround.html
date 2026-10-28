@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding Your Way — Directions Vocabulary</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #0f2d2b 0%, #0c2120 48%, #081314 100%); min-height:100vh; padding:40px 18px 80px; color:#E6F0EE; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#86A49E; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#2DD4BF; }
+.head h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; color:#F1F7F5; letter-spacing:-1px; }
+.head h1 span { color:#5EEAD4; }
+.head p { font-size:14px; color:#86A49E; margin-top:10px; line-height:1.6; }
+.tabs { display:flex; gap:0; margin:24px 0; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#C4D4D0; }
+.tab.active { border-bottom-color:#2DD4BF; }
+.tab.active .tab-num { color:#5EEAD4; } .tab.active .tab-label { color:#F1F7F5; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#55685f; }
+.tab-label { font-size:13px; font-weight:800; color:#86A49E; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A6BBB5; line-height:1.6; margin-bottom:20px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#DCE8E4; line-height:1.6; margin-bottom:10px; font-family:'Lora',serif; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#55685f; margin-right:8px; font-style:normal; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#C4D4D0; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#86A49E; flex:0 0 auto; }
+.opt:hover { border-color:#2DD4BF; background:rgba(45,212,191,0.06); }
+.opt.sel { border-color:#2DD4BF; background:rgba(45,212,191,0.12); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#55685f; margin-right:4px; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#DCE8E4; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #324a44; border-radius:10px; padding:7px 14px; color:#fff; width:170px; }
+input.ti:focus { outline:none; border-color:#2DD4BF; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#86A49E; font-style:italic; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.dlg { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.09); border-radius:16px; padding:22px 28px; font-family:'Lora',serif; font-size:17px; line-height:2.4; color:#DCE8E4; }
+.dlg .sp { font-family:'Space Grotesk'; font-weight:700; font-size:13px; letter-spacing:1px; margin-right:6px; }
+.dlg .a { color:#FDBA74; } .dlg .b { color:#5EEAD4; }
+.dlg input.ti { width:130px; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:22px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#2DD4BF; color:#06201d; } .btn-p:hover { background:#5EEAD4; }
+.btn-s { background:transparent; color:#86A49E; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#2DD4BF; color:#fff; }
+.score { font-size:14px; color:#A6BBB5; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+details.tr { margin-top:30px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#86A49E; font-weight:700; }
+details.tr .grp { margin-top:14px; } details.tr .gh { font-family:'Space Grotesk'; font-size:12px; font-weight:800; letter-spacing:1px; color:#5EEAD4; margin-bottom:6px; }
+details.tr .gl { font-size:14.5px; color:#C4D4D0; line-height:1.9; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Vocabulary · A2–B1 · Getting Around</div>
+    <h1>Finding your <span>way</span> 🧭</h1>
+    <p>Street, city and direction words — practise them, then use them to ask for and give directions.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Street &amp; city words</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Where is it?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Giving directions</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">The conversation</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#5EEAD4;">Street &amp; city words 🛣️</div>
+    <div class="sub" style="border-color:#2DD4BF; color:#5eead4;">Read the meaning and choose the correct word — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#FDBA74;">Where is it? 📍</div>
+    <div class="sub" style="border-color:#FDBA74; color:#fdba74;">Complete each sentence with a preposition of place. The hint tells you the meaning.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkPrep()">Check</button><button class="btn btn-s" onclick="resetPrep()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#5EEAD4;">Giving directions 🚦</div>
+    <div class="sub" style="border-color:#2DD4BF; color:#5eead4;">Complete each direction phrase. More than one answer may be correct.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkDir()">Check</button><button class="btn btn-s" onclick="resetDir()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FDBA74;">The conversation 💬</div>
+    <div class="sub" style="border-color:#FDBA74; color:#fdba74;">A tourist is asking for the museum. Fill the gaps to complete the directions.</div>
+    <div class="dlg">
+      <div><span class="sp a">A:</span> Excuse me, how do I <input class="ti" id="d0" autocomplete="off"> to the museum?</div>
+      <div><span class="sp b">B:</span> Go <input class="ti" id="d1" autocomplete="off"> on and <input class="ti" id="d2" autocomplete="off"> the first turning on the left.</div>
+      <div><span class="sp b">&nbsp;&nbsp;</span> Go <input class="ti" id="d3" autocomplete="off"> the bank and <input class="ti" id="d4" autocomplete="off"> at the pedestrian crossing.</div>
+      <div><span class="sp b">&nbsp;&nbsp;</span> The museum is <input class="ti" id="d5" autocomplete="off"> the park, on your <input class="ti" id="d6" autocomplete="off">.</div>
+      <div><span class="sp a">A:</span> Thank you! Is it <input class="ti" id="d7" autocomplete="off">?</div>
+      <div><span class="sp b">B:</span> No, about five minutes on foot.</div>
+    </div>
+    <div class="footer"><button class="btn btn-p" onclick="checkDlg()">Check</button><button class="btn btn-s" onclick="resetDlg()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="tr">
+    <summary>📖 Key vocabulary — glossary</summary>
+    <div class="grp"><div class="gh">ROADS &amp; AREAS</div><div class="gl">street / road · avenue · boulevard · lane · square · block · neighbourhood · the city centre (US downtown) · the outskirts</div></div>
+    <div class="grp"><div class="gh">ON THE STREET</div><div class="gl">corner · crossroads / junction · roundabout (US traffic circle) · traffic lights · pedestrian crossing · pavement (US sidewalk) · bridge · bus stop · dead end</div></div>
+    <div class="grp"><div class="gh">BUILDINGS &amp; LANDMARKS</div><div class="gl">landmark · town hall · (train) station · car park (US parking lot) · shopping centre (US mall) · crossing · bank · café · park · petrol station (US gas station)</div></div>
+    <div class="grp"><div class="gh">WHERE (prepositions)</div><div class="gl">opposite · next to / beside · between · on the corner of · at the end of · in front of / behind · near</div></div>
+    <div class="grp"><div class="gh">GIVING DIRECTIONS</div><div class="gl">go straight on / ahead · turn left / right · take the first / second turning · go past · go along / go down · cross / go over · it's on your left / right · keep going until you reach…</div></div>
+    <div class="grp"><div class="gh">USEFUL QUESTIONS</div><div class="gl">How do I get to…? · Where's the nearest…? · Is it far? · Is this the right way to…?</div></div>
+  </details>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,;!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+/* TAB 0 — MCQ word from definition */
+var MCQ_RAW=[
+ {q:"A wide street, often with trees.", correct:"avenue", opts:["avenue","lane","bridge","corner"]},
+ {q:"A circular junction that cars drive around.", correct:"roundabout", opts:["roundabout","crossroads","pavement","square"]},
+ {q:"The path at the side of the road for people to walk on.", correct:"pavement", opts:["pavement","block","lane","crossing"]},
+ {q:"A place where two or more roads cross.", correct:"crossroads", opts:["crossroads","roundabout","corner","bus stop"]},
+ {q:"A famous building or place you use to find your way.", correct:"landmark", opts:["landmark","square","station","block"]},
+ {q:"The area where people live.", correct:"neighbourhood", opts:["neighbourhood","city centre","outskirts","junction"]},
+ {q:"A safe place to cross the road on foot.", correct:"pedestrian crossing", opts:["pedestrian crossing","traffic lights","dead end","car park"]},
+ {q:"The buildings between two streets — 'two ___ away'.", correct:"block", opts:["block","lane","corner","avenue"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var n=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)n++; });
+  var s=document.getElementById('s0'); s.textContent=n+' / '+MCQ.length+' correct'+(n===MCQ.length?' 🎉':''); s.className='score '+(n===MCQ.length?'good':(n>=4?'partial':'bad')); if(n===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+/* TAB 1 — prepositions of place */
+var PREP=[
+ {pre:"The bank is ", post:" the park.", accept:["opposite"], hint:"facing it, on the other side"},
+ {pre:"The café is ", post:" the bank.", accept:["next to","beside"], hint:"right at the side of"},
+ {pre:"The hotel is ", post:" the bank and the café.", accept:["between"], hint:"in the middle of two things"},
+ {pre:"The station is ", post:" this road.", accept:["at the end of"], hint:"at the far point"},
+ {pre:"There is a bus stop ", post:" the school.", accept:["in front of","outside","near"], hint:"ahead of it / just outside"},
+ {pre:"The pharmacy is ", post:" Oak Street.", accept:["on the corner of"], hint:"where two streets meet"}
+];
+var prepChecked=false;
+function renderPrep(){ var c=document.getElementById('t1'); c.innerHTML='';
+  PREP.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="p'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ps'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkPrep(){ prepChecked=true; var n=0;
+  PREP.forEach(function(g,i){ var inp=document.getElementById('p'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ps'+i); if(ok)n++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s1'); s.textContent=n+' / '+PREP.length+' correct'+(n===PREP.length?' 🎉':''); s.className='score '+(n===PREP.length?'good':(n>=3?'partial':'bad')); if(n===PREP.length)markDone(1); }
+function resetPrep(){ prepChecked=false; document.getElementById('s1').textContent=''; renderPrep(); }
+
+/* TAB 2 — direction phrases */
+var DIR=[
+ {pre:"", post:" on and don't turn.", accept:["go straight","go straight on","go straight ahead","keep straight"], hint:"keep going forward"},
+ {pre:"At the corner, ", post:" left.", accept:["turn"], hint:"change direction"},
+ {pre:"", post:" the second turning on the right.", accept:["take"], hint:"which turning to choose"},
+ {pre:"", post:" the bank — don't stop there.", accept:["go past","pass"], hint:"move by it without stopping"},
+ {pre:"", post:" the road at the traffic lights.", accept:["cross","go over","go across"], hint:"go to the other side"},
+ {pre:"Keep going until you ", post:" the square.", accept:["reach","get to","arrive at","come to"], hint:"come to that point"}
+];
+var dirChecked=false;
+function renderDir(){ var c=document.getElementById('t2'); c.innerHTML='';
+  DIR.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="x'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="xs'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkDir(){ dirChecked=true; var n=0;
+  DIR.forEach(function(g,i){ var inp=document.getElementById('x'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('xs'+i); if(ok)n++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=n+' / '+DIR.length+' correct'+(n===DIR.length?' 🎉':''); s.className='score '+(n===DIR.length?'good':(n>=3?'partial':'bad')); if(n===DIR.length)markDone(2); }
+function resetDir(){ dirChecked=false; document.getElementById('s2').textContent=''; renderDir(); }
+
+/* TAB 3 — dialogue */
+var DLG=[
+ {accept:["get"]},
+ {accept:["straight"]},
+ {accept:["take"]},
+ {accept:["past"]},
+ {accept:["cross","go across"]},
+ {accept:["opposite"]},
+ {accept:["right"]},
+ {accept:["far"]}
+];
+function checkDlg(){ var n=0;
+  DLG.forEach(function(g,i){ var inp=document.getElementById('d'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; if(ok)n++; });
+  var s=document.getElementById('s3'); s.textContent=n+' / '+DLG.length+' correct'+(n===DLG.length?' 🎉 You can give directions!':''); s.className='score '+(n===DLG.length?'good':(n>=4?'partial':'bad')); if(n===DLG.length)markDone(3); }
+function resetDlg(){ DLG.forEach(function(g,i){ var inp=document.getElementById('d'+i); inp.value=''; inp.disabled=false; inp.className='ti'; }); document.getElementById('s3').textContent=''; }
+
+renderMCQ(); renderPrep(); renderDir();
+</script>
+</body>
+</html>
