@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Should We Trust AI? — Writing Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #2a2416 0%, #1a1a12 46%, #0c0e12 100%); min-height:100vh; padding:40px 18px 80px; color:#E9EAE2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#A79E86; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#FBBF24; }
+.head h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:30px; color:#F6F4EC; letter-spacing:-1px; }
+.head h1 span { color:#FCD34D; }
+.head p { font-size:14px; color:#A79E86; margin-top:10px; line-height:1.6; }
+.prompt { background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.3); border-radius:14px; padding:16px 22px; margin-top:16px; }
+.prompt .serif { font-family:'Lora',serif; font-size:17px; font-style:italic; color:#F0ECDF; line-height:1.5; }
+.tabs { display:flex; gap:0; margin:24px 0; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D7CFBE; }
+.tab.active { border-bottom-color:#FBBF24; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#F6F4EC; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#73694f; }
+.tab-label { font-size:13px; font-weight:800; color:#A79E86; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#BBB39C; line-height:1.6; margin-bottom:20px; padding-left:16px; border-left:2px solid; }
+.bcols { display:flex; gap:16px; flex-wrap:wrap; }
+.bcol { flex:1; min-width:260px; }
+.bcol .bh { font-family:'Space Grotesk'; font-size:12px; font-weight:800; letter-spacing:1px; margin-bottom:8px; }
+textarea.ta { width:100%; font-family:'Nunito'; font-size:15px; line-height:1.6; background:rgba(255,255,255,0.05); border:1.5px solid #4a4433; border-radius:12px; padding:14px 16px; color:#fff; resize:vertical; }
+textarea.ta:focus { outline:none; border-color:#FBBF24; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E4DECD; line-height:1.6; margin-bottom:10px; font-family:'Lora',serif; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#73694f; margin-right:8px; font-style:normal; }
+.wp { display:flex; gap:7px; flex-wrap:wrap; }
+.wp button { flex:1; min-width:110px; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13px; font-weight:800; color:#D7CFBE; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.wp button:hover { border-color:#FBBF24; }
+.wp button.sel { border-color:#FBBF24; background:rgba(251,191,36,0.14); border-width:2px; }
+.wp button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.wp button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#73694f; margin-right:4px; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#E4DECD; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a4433; border-radius:10px; padding:7px 14px; color:#fff; width:190px; }
+input.ti:focus { outline:none; border-color:#FBBF24; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#A79E86; font-style:italic; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:22px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#FBBF24; color:#1a1405; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#A79E86; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#FBBF24; color:#fff; }
+.score { font-size:14px; color:#BBB39C; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.planbox { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:18px 22px; margin-bottom:16px; }
+.planrow { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+.planrow .pl { font-family:'Space Grotesk'; font-size:11px; font-weight:800; letter-spacing:1px; width:120px; flex:0 0 auto; }
+.planrow input.pi { flex:1; min-width:180px; font-family:'Nunito'; font-size:14px; background:rgba(255,255,255,0.05); border:1.5px solid #4a4433; border-radius:9px; padding:8px 12px; color:#fff; }
+.planrow input.pi:focus { outline:none; border-color:#FBBF24; }
+.wc { display:flex; align-items:center; gap:14px; margin-top:12px; flex-wrap:wrap; }
+.wc .count { font-family:'Space Grotesk'; font-weight:700; font-size:30px; color:#FCD34D; }
+.wc .wlabel { font-size:13px; color:#A79E86; }
+.wc .verdict { font-size:14px; font-weight:800; }
+.check { margin-top:20px; }
+.check .ci { display:flex; align-items:center; gap:12px; padding:9px 0; cursor:pointer; font-size:15px; color:#D7CFBE; }
+.check .box { width:22px; height:22px; border-radius:6px; border:1.5px solid #73694f; flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:14px; color:#1a1405; }
+.check .ci.on .box { background:#34D399; border-color:#34D399; }
+.check .ci.on { color:#F6F4EC; }
+details.tr { margin-top:30px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 22px; }
+details.tr summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#A79E86; font-weight:700; }
+details.tr p { font-family:'Lora',serif; font-size:15px; line-height:1.8; color:#D7CFBE; margin-top:12px; }
+details.tr .lbl { font-weight:700; }
+.note { font-size:13px; color:#A79E86; margin-top:14px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">Writing · B2 First · For &amp; Against</div>
+    <h1>Should we trust <span>AI?</span> ✍️</h1>
+    <p>A step-by-step essay workshop: brainstorm both sides, study the shape, master the linkers, then plan and write.</p>
+    <div class="prompt"><div class="serif">"Some people say we should not trust artificial intelligence. Discuss both sides of this view and give your own opinion." &nbsp;<span style="color:#A79E86; font-style:normal; font-size:13px;">(140–190 words · 4 paragraphs)</span></div></div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Brainstorm</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Which paragraph?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Linkers</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Plan &amp; write</div></div>
+  </div>
+
+  <!-- TAB 0 BRAINSTORM -->
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Brainstorm both sides 🧠</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Before writing, collect ideas. Note 2–3 points on each side — use your debate notes. No full sentences yet.</div>
+    <div class="bcols">
+      <div class="bcol">
+        <div class="bh" style="color:#A5F0FA;">👍 FOR TRUSTING AI</div>
+        <textarea class="ta" id="bfor" rows="6" placeholder="e.g. fast & accurate&#10;helps doctors&#10;works 24/7, never tired"></textarea>
+      </div>
+      <div class="bcol">
+        <div class="bh" style="color:#FDA4AF;">👎 AGAINST TRUSTING AI</div>
+        <textarea class="ta" id="bagainst" rows="6" placeholder="e.g. no common sense&#10;can be biased&#10;who is responsible?"></textarea>
+      </div>
+    </div>
+    <div class="footer"><button class="btn btn-p" onclick="doneBrainstorm()">I've got my ideas →</button><span class="score" id="s0"></span></div>
+    <div class="note">💡 Tip: pick your <strong>two strongest</strong> points on each side — that's all you need for the two body paragraphs.</div>
+  </div>
+
+  <!-- TAB 1 WHICH PARAGRAPH -->
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#67E8F9;">Which paragraph? 🧩</div>
+    <div class="sub" style="border-color:#67E8F9; color:#a5f0fa;">Each sentence comes from the model essay. Which paragraph does it belong to — <strong>Intro, For, Against</strong> or <strong>Conclusion</strong>?</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkWP()">Check</button><button class="btn btn-s" onclick="resetWP()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+
+  <!-- TAB 2 LINKERS -->
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#FCD34D;">Linkers 🔗</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Add a linking word or phrase that fits the function in the hint. More than one answer can be correct.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkLink()">Check</button><button class="btn btn-s" onclick="resetLink()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+
+  <!-- TAB 3 PLAN & WRITE -->
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#C4B5FD;">Plan &amp; write ✍️</div>
+    <div class="sub" style="border-color:#C4B5FD; color:#d4c9fe;">Jot a quick plan, then write your essay in the box. Watch the word counter — aim for <strong>140–190</strong>.</div>
+    <div class="planbox">
+      <div class="planrow"><span class="pl" style="color:#FCD34D;">¶1 INTRO</span><input class="pi" id="pi0" placeholder="rephrase the topic + 'both sides'"></div>
+      <div class="planrow"><span class="pl" style="color:#A5F0FA;">¶2 FOR</span><input class="pi" id="pi1" placeholder="point 1 + point 2 (with example)"></div>
+      <div class="planrow"><span class="pl" style="color:#FDA4AF;">¶3 AGAINST</span><input class="pi" id="pi2" placeholder="point 1 + point 2 (with example)"></div>
+      <div class="planrow"><span class="pl" style="color:#D4C9FE;">¶4 CONCLUSION</span><input class="pi" id="pi3" placeholder="your opinion"></div>
+    </div>
+    <textarea class="ta" id="essay" rows="12" placeholder="Write your essay here…" oninput="countWords()"></textarea>
+    <div class="wc">
+      <span class="count" id="wcount">0</span><span class="wlabel">words</span>
+      <span class="verdict" id="wverdict" style="color:#A79E86;">start writing…</span>
+    </div>
+    <div class="check" id="checklist"></div>
+    <div class="footer"><button class="btn btn-p" onclick="copyEssay()">📋 Copy my essay</button><button class="btn btn-s" onclick="clearEssay()">Clear</button><span class="score" id="s3"></span></div>
+    <details class="tr">
+      <summary>📄 Model essay — open only after you've written yours</summary>
+      <p><span class="lbl" style="color:#FCD34D;">¶1</span> Artificial intelligence is now part of everyday life, from phones to hospitals. However, many people wonder whether we can really trust it. This essay will look at both sides.</p>
+      <p><span class="lbl" style="color:#A5F0FA;">¶2</span> On the one hand, there are good reasons to trust AI. It is fast, accurate and never gets tired, so it can do many tasks better than humans. For instance, computers already help doctors diagnose illnesses more quickly.</p>
+      <p><span class="lbl" style="color:#FDA4AF;">¶3</span> On the other hand, AI also has clear weaknesses. Firstly, it learns from human data, so it can repeat our mistakes. Furthermore, it has no common sense, which means it can be confidently wrong.</p>
+      <p><span class="lbl" style="color:#D4C9FE;">¶4</span> In conclusion, I believe we should use AI but not trust it completely. In my view, the best approach is to let machines help us while humans make the final decisions.</p>
+    </details>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,;!?]/g,''); }
+
+/* TAB 0 — brainstorm */
+function doneBrainstorm(){
+  var f=document.getElementById('bfor').value.trim(), a=document.getElementById('bagainst').value.trim();
+  var s=document.getElementById('s0');
+  if(f && a){ s.textContent='Great — you have points on both sides. Now shape them into paragraphs!'; s.className='score good'; markDone(0); }
+  else { s.textContent='Add at least one idea on each side first.'; s.className='score partial'; }
+}
+
+/* TAB 1 — which paragraph */
+var WP=[
+ {s:"This essay will look at both sides of the argument.", a:"Intro"},
+ {s:"On the one hand, AI is fast, accurate and never gets tired.", a:"For"},
+ {s:"However, it learns from human data, so it can repeat our mistakes.", a:"Against"},
+ {s:"For instance, computers already help doctors diagnose illnesses.", a:"For"},
+ {s:"Furthermore, AI has no common sense and can be confidently wrong.", a:"Against"},
+ {s:"In conclusion, I believe we should use AI but not trust it completely.", a:"Conclusion"}
+];
+var WPOPTS=['Intro','For','Against','Conclusion'];
+var wpSel={}; var wpChecked=false;
+function renderWP(){ var c=document.getElementById('t1'); c.innerHTML='';
+  WP.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='wp';
+    WPOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(wpSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(wpChecked)return; wpSel[qi]=opt; renderWP(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkWP(){ wpChecked=true; var n=0; var qs=document.querySelectorAll('#t1 .q');
+  WP.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.wp button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(wpSel[qi]===b.textContent)b.classList.add('wrong'); }); if(wpSel[qi]===q.a)n++; });
+  var s=document.getElementById('s1'); s.textContent=n+' / '+WP.length+' correct'+(n===WP.length?' 🎉':''); s.className='score '+(n===WP.length?'good':(n>=3?'partial':'bad')); if(n===WP.length)markDone(1); }
+function resetWP(){ wpChecked=false; wpSel={}; document.getElementById('s1').textContent=''; renderWP(); }
+
+/* TAB 2 — linkers */
+var LINK=[
+ {post:", AI is extremely fast and accurate.", accept:["firstly","first of all","to begin with","on the one hand"], hint:"add your first point"},
+ {post:", it can work all day without getting tired.", accept:["furthermore","in addition","moreover","also","what is more"], hint:"add another point"},
+ {post:", AI also has some real weaknesses.", accept:["however","on the other hand","nevertheless","nonetheless"], hint:"show contrast"},
+ {post:", it sometimes repeats human mistakes.", accept:["for instance","for example"], hint:"give an example"},
+ {post:", we should not trust it completely.", accept:["in my view","in my opinion","i believe","it seems to me","i think"], hint:"give your opinion"},
+ {post:", AI is useful but still needs human control.", accept:["in conclusion","to sum up","all in all","to conclude","in summary"], hint:"conclude"}
+];
+var linkChecked=false;
+function renderLink(){ var c=document.getElementById('t2'); c.innerHTML='';
+  LINK.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><input class="ti" id="l'+i+'" autocomplete="off"><span class="phrase">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ls'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkLink(){ linkChecked=true; var n=0;
+  LINK.forEach(function(g,i){ var inp=document.getElementById('l'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ls'+i); if(ok)n++; else{ sol.textContent='→ e.g. '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=n+' / '+LINK.length+' correct'+(n===LINK.length?' 🎉':''); s.className='score '+(n===LINK.length?'good':(n>=3?'partial':'bad')); if(n===LINK.length)markDone(2); }
+function resetLink(){ linkChecked=false; document.getElementById('s2').textContent=''; renderLink(); }
+
+/* TAB 3 — plan & write */
+function countWords(){
+  var t=document.getElementById('essay').value.trim();
+  var n=t?t.split(/\s+/).length:0;
+  document.getElementById('wcount').textContent=n;
+  var v=document.getElementById('wverdict');
+  if(n===0){ v.textContent='start writing…'; v.style.color='#A79E86'; }
+  else if(n<140){ v.textContent='keep going ('+(140-n)+' to go)'; v.style.color='#FCD34D'; }
+  else if(n<=190){ v.textContent='✓ perfect length!'; v.style.color='#86EFC0'; markDone(3); }
+  else { v.textContent='a bit long — trim '+(n-190); v.style.color='#FCA5A5'; }
+}
+var CHECKS=[
+ "Four clear paragraphs",
+ "Both sides (for AND against)",
+ "Linkers used (However, Furthermore…)",
+ "My opinion is in the conclusion",
+ "Formal register (no contractions / slang)"
+];
+function renderChecks(){ var c=document.getElementById('checklist'); c.innerHTML='';
+  CHECKS.forEach(function(txt,i){ var d=document.createElement('div'); d.className='ci'; d.id='ci'+i;
+    d.innerHTML='<span class="box">✓</span><span>'+txt+'</span>';
+    d.onclick=function(){ d.classList.toggle('on'); }; c.appendChild(d); }); }
+function copyEssay(){
+  var t=document.getElementById('essay').value; var s=document.getElementById('s3');
+  function ok(){ s.textContent='Copied! Paste it to your teacher or into your notes.'; s.className='score good'; }
+  function fail(){ s.textContent='Select the text and copy it manually (Ctrl/Cmd + C).'; s.className='score partial'; }
+  try { if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok, fail); } else { throw 0; } }
+  catch(e){ try { var ta=document.getElementById('essay'); ta.focus(); ta.select(); document.execCommand('copy'); ok(); } catch(e2){ fail(); } }
+}
+function clearEssay(){ document.getElementById('essay').value=''; document.getElementById('s3').textContent=''; countWords(); }
+
+renderWP(); renderLink(); renderChecks(); countWords();
+</script>
+</body>
+</html>

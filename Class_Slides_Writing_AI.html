@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Should We Trust AI? — Writing Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#090c13; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(130% 110% at 85% -10%, #2a2416 0%, #1a1a12 46%, #0c0e12 100%);
+  color:#E9EAE2; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A79E86; font-weight:700; }
+.kick::before { content:''; width:32px; height:2px; background:#FBBF24; }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#73694f; border-top:1px solid rgba(255,255,255,0.08); padding-top:13px; }
+.foot b { color:#FBBF24; }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:14px; letter-spacing:3px; color:#4a4433; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F6F4EC; letter-spacing:-1px; }
+.am { color:#FCD34D; } .cy { color:#67E8F9; } .vi { color:#C4B5FD; } .co { color:#FB7185; }
+.card { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.09); border-radius:16px; }
+.serif { font-family:'Lora',serif; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:18px;">
+    <div style="font-family:'Space Grotesk'; font-weight:700; font-size:22px; letter-spacing:3px; color:#fff;">THE&nbsp;<span class="am">SIGNAL</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:#A79E86; text-transform:uppercase;">Technology &amp; The World · Writing</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#A79E86;">B2 · FIRST</div>
+  </div>
+  <div style="position:absolute; left:60px; top:214px; width:800px;">
+    <div style="font-family:'Space Grotesk'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#67E8F9; font-weight:700; margin-bottom:18px;">Opinion Desk · For &amp; Against Essay</div>
+    <div class="serif" style="font-size:58px; font-weight:600; line-height:1.05; color:#F7F5ED;">Should we<br><span class="am" style="font-style:italic;">trust AI?</span> ✍️</div>
+    <div class="serif" style="margin-top:22px; font-size:19px; color:#BBB39C; font-style:italic; max-width:600px; line-height:1.5;">Debate both sides, then write a clear for-and-against essay — the B2 First way.</div>
+    <div style="margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;">
+      <span style="font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:20px; background:rgba(251,191,36,0.14); color:#FCD34D;">Speak → Plan → Write</span>
+      <span style="font-family:'Space Grotesk'; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:20px; background:rgba(103,232,249,0.14); color:#A5F0FA;">140–190 words</span>
+    </div>
+  </div>
+  <svg style="position:absolute; right:92px; top:235px;" width="250" height="250" viewBox="0 0 250 250">
+    <rect x="52" y="46" width="128" height="158" rx="10" fill="rgba(255,255,255,0.03)" stroke="#FBBF24" stroke-width="3"/>
+    <line x1="72" y1="78" x2="160" y2="78" stroke="#67E8F9" stroke-width="4"/>
+    <line x1="72" y1="100" x2="160" y2="100" stroke="#73694f" stroke-width="3"/>
+    <line x1="72" y1="118" x2="160" y2="118" stroke="#73694f" stroke-width="3"/>
+    <line x1="72" y1="142" x2="130" y2="142" stroke="#C4B5FD" stroke-width="4"/>
+    <line x1="72" y1="164" x2="160" y2="164" stroke="#73694f" stroke-width="3"/>
+    <path d="M150 170 l48 -48 a10 10 0 0 1 16 16 l-48 48 -22 6 z" fill="rgba(251,191,36,0.18)" stroke="#FBBF24" stroke-width="3" stroke-linejoin="round"/>
+  </svg>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>01</b> / 10</span></div>
+</div>
+
+<!-- 02 LEAD-IN / DEBATE -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Warm up · take a side</div></div>
+  <div style="position:absolute; left:60px; top:180px; right:60px;">
+    <div class="disp" style="font-size:36px; margin-bottom:34px;">Quick debate before we write 💬</div>
+    <div style="display:flex; gap:28px; align-items:flex-start; margin-bottom:28px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:46px; color:#FCD34D; line-height:0.8;">Q1</div>
+      <div style="border-left:2px solid rgba(251,191,36,0.4); padding-left:24px;"><div class="serif" style="font-size:25px; color:#F6F4EC; font-style:italic; line-height:1.4;">"Do you <span class="am">trust</span> AI to give you correct information?"</div></div>
+    </div>
+    <div style="display:flex; gap:28px; align-items:flex-start; margin-bottom:28px;">
+      <div style="font-family:'Space Grotesk'; font-weight:700; font-size:46px; color:#67E8F9; line-height:0.8;">Q2</div>
+      <div style="border-left:2px solid rgba(103,232,249,0.4); padding-left:24px;"><div class="serif" style="font-size:25px; color:#F6F4EC; font-style:italic; line-height:1.4;">"Where should a machine <span class="cy">never</span> have the final say?"</div></div>
+    </div>
+    <div class="card" style="padding:16px 24px; border-left:3px solid #FB7185;"><div style="font-size:15px; color:#CFC9B8;">🔁 With a partner: <strong style="color:#fff;">one of you argues FOR</strong> trusting AI, the other <strong style="color:#fff;">AGAINST</strong>. Note down your best 2 arguments each — you'll use them in your essay.</div></div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>02</b> / 10</span></div>
+</div>
+
+<!-- 03 THE TASK -->
+<div class="slide">
+  <div class="idx">THE TASK</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">What you're going to write</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">A <span class="am">for-and-against</span> essay 🧾</div>
+    <div class="card" style="padding:28px 34px; border-left:3px solid #FBBF24;">
+      <div style="font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#A79E86; font-weight:700; margin-bottom:12px;">EXAM-STYLE QUESTION</div>
+      <div class="serif" style="font-size:23px; color:#F6F4EC; line-height:1.5;">"Some people say we should not trust artificial intelligence. <span class="am">Discuss both sides</span> of this view and give your own opinion."</div>
+    </div>
+    <div style="margin-top:22px; display:flex; gap:14px; flex-wrap:wrap;">
+      <div class="card" style="flex:1; min-width:240px; padding:16px 22px;"><div style="font-size:14px; color:#CFC9B8;">🎯 <strong style="color:#fff;">Goal:</strong> present both sides fairly, in a <strong class="am">formal</strong>, organised way — then give your view at the end.</div></div>
+      <div class="card" style="flex:1; min-width:240px; padding:16px 22px;"><div style="font-size:14px; color:#CFC9B8;">📏 <strong style="color:#fff;">Length:</strong> 140–190 words · <strong style="color:#fff;">4 paragraphs</strong> · about 40 minutes.</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>03</b> / 10</span></div>
+</div>
+
+<!-- 04 MODEL ESSAY -->
+<div class="slide">
+  <div class="idx">MODEL</div>
+  <div style="position:absolute; left:60px; top:54px;"><div class="kick">Read the model · notice the shape</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:118px;">
+    <div class="card" style="padding:22px 30px;">
+      <div class="serif" style="font-size:15.5px; color:#DAD4C3; line-height:1.72;">
+        <span style="color:#FCD34D; font-weight:700;">¶1</span> Artificial intelligence is now part of everyday life, from phones to hospitals. However, many people wonder whether we can really trust it. This essay will look at both sides.<br><br>
+        <span style="color:#67E8F9; font-weight:700;">¶2</span> On the one hand, there are good reasons to trust AI. It is fast, accurate and never gets tired, so it can do many tasks better than humans. For instance, computers already help doctors diagnose illnesses more quickly.<br><br>
+        <span style="color:#FB7185; font-weight:700;">¶3</span> On the other hand, AI also has clear weaknesses. Firstly, it learns from human data, so it can repeat our mistakes. Furthermore, it has no common sense, which means it can be confidently wrong.<br><br>
+        <span style="color:#C4B5FD; font-weight:700;">¶4</span> In conclusion, I believe we should use AI but not trust it completely. In my view, the best approach is to let machines help us while humans make the final decisions.
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>04</b> / 10</span></div>
+</div>
+
+<!-- 05 STRUCTURE -->
+<div class="slide">
+  <div class="idx">STRUCTURE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Four paragraphs · the plan</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+    <div class="card" style="padding:20px 24px; border-left:3px solid #FBBF24;"><div style="font-size:12px; color:#FCD34D; font-weight:800; letter-spacing:1px;">¶1 · INTRODUCTION</div><div style="font-size:15px; color:#DAD4C3; margin-top:8px; line-height:1.6;">Rephrase the topic. Say you will look at <strong style="color:#fff;">both sides</strong>. <em>Don't</em> give your opinion yet.</div></div>
+    <div class="card" style="padding:20px 24px; border-left:3px solid #67E8F9;"><div style="font-size:12px; color:#A5F0FA; font-weight:800; letter-spacing:1px;">¶2 · ARGUMENTS FOR</div><div style="font-size:15px; color:#DAD4C3; margin-top:8px; line-height:1.6;">Two reasons to trust AI, each with a short <strong style="color:#fff;">example</strong>.</div></div>
+    <div class="card" style="padding:20px 24px; border-left:3px solid #FB7185;"><div style="font-size:12px; color:#FDA4AF; font-weight:800; letter-spacing:1px;">¶3 · ARGUMENTS AGAINST</div><div style="font-size:15px; color:#DAD4C3; margin-top:8px; line-height:1.6;">Two reasons to be careful, again with support or examples.</div></div>
+    <div class="card" style="padding:20px 24px; border-left:3px solid #C4B5FD;"><div style="font-size:12px; color:#D4C9FE; font-weight:800; letter-spacing:1px;">¶4 · CONCLUSION</div><div style="font-size:15px; color:#DAD4C3; margin-top:8px; line-height:1.6;">Now give <strong style="color:#fff;">your opinion</strong>, clearly and briefly. No new arguments.</div></div>
+  </div>
+  <div class="card" style="position:absolute; left:60px; right:60px; top:440px; padding:14px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#CFC9B8;">🎯 One idea per paragraph body = one clear point. Balance: give the two sides roughly equal space.</div></div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>05</b> / 10</span></div>
+</div>
+
+<!-- 06 USEFUL LANGUAGE -->
+<div class="slide">
+  <div class="idx">LINKERS</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Useful language · link your ideas</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+    <div class="card" style="padding:18px 22px; border-top:3px solid #67E8F9;"><div style="font-size:11px; color:#A5F0FA; font-weight:800; letter-spacing:1px; margin-bottom:8px;">ADDING A POINT</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">Firstly, …<br>Furthermore, …<br>In addition, …<br>Moreover, …</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #FB7185;"><div style="font-size:11px; color:#FDA4AF; font-weight:800; letter-spacing:1px; margin-bottom:8px;">CONTRASTING</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">However, …<br>On the other hand, …<br>Whereas …<br>Nevertheless, …</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #FBBF24;"><div style="font-size:11px; color:#FCD34D; font-weight:800; letter-spacing:1px; margin-bottom:8px;">GIVING EXAMPLES</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">For instance, …<br>For example, …<br>such as …</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #C4B5FD;"><div style="font-size:11px; color:#D4C9FE; font-weight:800; letter-spacing:1px; margin-bottom:8px;">GIVING YOUR OPINION</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">In my view, …<br>I believe (that) …<br>It seems to me that …</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #67E8F9;"><div style="font-size:11px; color:#A5F0FA; font-weight:800; letter-spacing:1px; margin-bottom:8px;">CONCLUDING</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">In conclusion, …<br>To sum up, …<br>All in all, …</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #FBBF24;"><div style="font-size:11px; color:#FCD34D; font-weight:800; letter-spacing:1px; margin-bottom:8px;">RESULT / REASON</div><div style="font-size:14.5px; color:#DAD4C3; line-height:1.9;">…, so …<br>because …<br>which means (that) …</div></div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>06</b> / 10</span></div>
+</div>
+
+<!-- 07 REGISTER -->
+<div class="slide">
+  <div class="idx">REGISTER</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Keep it formal · the essay voice</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:165px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">Write it like an essay, not a chat 🎩</div>
+    <div style="display:flex; gap:16px;">
+      <div class="card" style="flex:1; padding:22px 26px; border-top:3px solid #FB7185;">
+        <div style="font-size:12px; color:#FDA4AF; font-weight:800; letter-spacing:1px; margin-bottom:12px;">✗ TOO INFORMAL</div>
+        <div class="serif" style="font-size:16px; color:#D7CFBE; line-height:2; font-style:italic;">"AI's pretty cool but it's kinda scary too."<br>"I think it's a big problem, tbh."<br>"And another thing…"</div>
+      </div>
+      <div class="card" style="flex:1; padding:22px 26px; border-top:3px solid #34D399;">
+        <div style="font-size:12px; color:#86EFC0; font-weight:800; letter-spacing:1px; margin-bottom:12px;">✓ FORMAL &amp; CLEAR</div>
+        <div class="serif" style="font-size:16px; color:#D7CFBE; line-height:2; font-style:italic;">"AI offers clear benefits, but it also raises concerns."<br>"It could be argued that…"<br>"Furthermore, …"</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:14px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#CFC9B8;">🎯 No contractions (<em>it is</em>, not <em>it's</em>) · no slang · no "I think it's cool" — use <strong style="color:#fff;">full sentences</strong> and linkers.</div></div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>07</b> / 10</span></div>
+</div>
+
+<!-- 08 PLAN IT -->
+<div class="slide">
+  <div class="idx">PLAN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · plan before you write</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">Brainstorm both sides first 🧠</div>
+    <div style="display:flex; gap:16px;">
+      <div class="card" style="flex:1; padding:22px 26px; border-top:3px solid #67E8F9;">
+        <div style="font-size:12px; color:#A5F0FA; font-weight:800; letter-spacing:1px; margin-bottom:10px;">FOR TRUSTING AI 👍</div>
+        <div style="font-size:14.5px; color:#DAD4C3; line-height:1.8;">fast &amp; accurate · works 24/7 · helps doctors · reduces human error · handles boring tasks…</div>
+      </div>
+      <div class="card" style="flex:1; padding:22px 26px; border-top:3px solid #FB7185;">
+        <div style="font-size:12px; color:#FDA4AF; font-weight:800; letter-spacing:1px; margin-bottom:10px;">AGAINST TRUSTING AI 👎</div>
+        <div style="font-size:14.5px; color:#DAD4C3; line-height:1.8;">no common sense · can be biased · learns our mistakes · privacy · who is responsible?…</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:16px 24px; border-left:3px solid #FBBF24;"><div style="font-size:15px; color:#CFC9B8;">🎯 In the <strong style="color:#fff;">activity</strong>: brainstorm ideas, order a model essay, practise linkers, then plan and write — with a live word counter. ✍️</div></div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>08</b> / 10</span></div>
+</div>
+
+<!-- 09 WRITE IT -->
+<div class="slide">
+  <div class="idx">WRITE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Now write · you've got this</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Your turn — write the essay ✍️</div>
+    <div class="card" style="padding:20px 28px; border-left:3px solid #FBBF24;">
+      <div class="serif" style="font-size:18px; color:#F6F4EC; font-style:italic; line-height:1.5;">"Some people say we should not trust artificial intelligence. Discuss both sides and give your own opinion."</div>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
+      <div class="card" style="flex:1; min-width:150px; padding:14px 20px; text-align:center;"><div style="font-family:'Space Grotesk'; font-size:22px; font-weight:700; color:#FCD34D;">140–190</div><div style="font-size:12px; color:#A79E86; letter-spacing:1px;">WORDS</div></div>
+      <div class="card" style="flex:1; min-width:150px; padding:14px 20px; text-align:center;"><div style="font-family:'Space Grotesk'; font-size:22px; font-weight:700; color:#67E8F9;">4</div><div style="font-size:12px; color:#A79E86; letter-spacing:1px;">PARAGRAPHS</div></div>
+      <div class="card" style="flex:1; min-width:150px; padding:14px 20px; text-align:center;"><div style="font-family:'Space Grotesk'; font-size:22px; font-weight:700; color:#C4B5FD;">~40</div><div style="font-size:12px; color:#A79E86; letter-spacing:1px;">MINUTES</div></div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:14px 24px; border-left:3px solid #67E8F9;"><div style="font-size:14px; color:#CFC9B8;">✅ Before you finish, check: 4 paragraphs? both sides? linkers? your opinion in the conclusion? formal register?</div></div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>09</b> / 10</span></div>
+</div>
+
+<!-- 10 WRAP -->
+<div class="slide">
+  <div class="idx">WRAP</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Great writing · peer review</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:34px; margin-bottom:24px;">Swap &amp; improve 🔁</div>
+    <div style="display:flex; flex-direction:column; gap:12px; max-width:880px;">
+      <div class="card" style="padding:16px 24px;"><div class="serif" style="font-size:17px; color:#F0ECDF; font-style:italic;">Read your partner's essay. Can you find the <strong style="color:#fff;">four paragraphs</strong> clearly?</div></div>
+      <div class="card" style="padding:16px 24px;"><div class="serif" style="font-size:17px; color:#F0ECDF; font-style:italic;">Tell them <strong style="color:#fff;">one</strong> thing they did well and <strong style="color:#fff;">one</strong> linker they could add.</div></div>
+    </div>
+    <div class="card" style="margin-top:24px; padding:18px 26px; border-left:3px solid #FBBF24; max-width:880px;">
+      <div style="font-size:16px; color:#CFC9B8; line-height:1.7;">🎯 Homework: rewrite your essay neatly, using one improvement from your partner. Send it to me for feedback. 📨</div>
+    </div>
+  </div>
+  <div class="foot"><span>Core 3 · Technology &amp; The World · Writing</span><span><b>10</b> / 10</span></div>
+</div>
+
+</body>
+</html>
