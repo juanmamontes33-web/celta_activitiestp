@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just One More Episode — Reading Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #341338 0%, #22112e 48%, #120b1b 100%); min-height:100vh; padding:40px 18px 80px; color:#F0E8F2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#A98FB0; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EC4899; }
+.article { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:34px 40px; margin-bottom:26px; }
+.article .masthead { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:20px; }
+.article .masthead .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.article .masthead .logo span { color:#EC4899; }
+.article .masthead .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#A98FB0; }
+.article h1 { font-family:'Lora',serif; font-weight:600; font-size:32px; line-height:1.15; color:#F9F3FA; margin-bottom:6px; }
+.article .byline { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:#C4B5FD; text-transform:uppercase; margin-bottom:22px; }
+.article p { font-family:'Lora',serif; font-size:17.5px; line-height:1.85; color:#D6C9DA; margin-bottom:16px; }
+.article p .pn { font-family:'Space Grotesk'; font-size:12px; color:#6b5873; font-weight:700; margin-right:8px; vertical-align:2px; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6C9DA; }
+.tab.active { border-bottom-color:#EC4899; }
+.tab.active .tab-num { color:#F9A8D4; } .tab.active .tab-label { color:#F9F3FA; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6b5873; }
+.tab-label { font-size:13px; font-weight:800; color:#A98FB0; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B6CE; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E8DEEB; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6b5873; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D6C9DA; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#A98FB0; flex:0 0 auto; }
+.opt:hover { border-color:#EC4899; background:rgba(236,72,153,0.07); }
+.opt.sel { border-color:#EC4899; background:rgba(236,72,153,0.14); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#D6C9DA; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#EC4899; }
+.tfd button.sel { border-color:#EC4899; background:rgba(236,72,153,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E8DEEB; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#6b5873; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#A98FB0; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a3a52; border-radius:10px; padding:7px 14px; color:#fff; width:200px; }
+input.ti:focus { outline:none; border-color:#EC4899; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E8DEEB; }
+.coll input.ti { width:150px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#A98FB0; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EC4899; color:#fff; } .btn-p:hover { background:#f06aad; }
+.btn-s { background:transparent; color:#A98FB0; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EC4899; color:#fff; }
+.score { font-size:14px; color:#C9B6CE; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.cardwrap { text-align:center; padding:12px 0 0; }
+.tcard { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:34px 28px; max-width:580px; margin:0 auto; min-height:170px; display:flex; flex-direction:column; justify-content:center; }
+.tcard .topic { font-family:'Lora',serif; font-size:26px; color:#F9F3FA; font-style:italic; margin-bottom:16px; }
+.tcard .subs { font-size:14.5px; color:#C9B6CE; line-height:1.9; }
+.tcard .placeholder { font-size:16px; color:#A98FB0; }
+.timer { font-family:'Space Grotesk'; font-weight:700; font-size:36px; color:#FCD34D; margin:16px 0 4px; letter-spacing:1px; }
+.tml-sub { border-color:#FBBF24; color:#fcd34d; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Reading · B2 · Culture &amp; Entertainment</div>
+  <div class="article">
+    <div class="masthead"><div class="logo">THE <span>MARQUEE</span></div><div class="rt">⏱ ~3 min read</div></div>
+    <h1>Just One More Episode</h1>
+    <div class="byline">Streaming &amp; TV</div>
+    <p><span class="pn">1</span>Not long ago, we waited a whole week for the next episode of our favourite show. Today, entire seasons appear at once, and millions of us "binge-watch" — we sit down for one episode and, somehow, five hours later, we are still on the sofa. Why can't we stop?</p>
+    <p><span class="pn">2</span>Part of the answer is design. Streaming platforms are built to keep us watching. The next episode starts automatically after just a few seconds, before we have time to decide. And writers end almost every episode with a cliffhanger — an exciting, unfinished moment that makes us desperate to know what happens next.</p>
+    <p><span class="pn">3</span>But it isn't only clever technology. A gripping story gives our brains a small reward, a little like a good song we play again and again. We care about the characters, we want them to succeed, and stopping feels almost rude — as if we were leaving a friend in the middle of a conversation.</p>
+    <p><span class="pn">4</span>There is a social side too. When everyone is talking about the same series, no one wants to be left behind, or to have the ending spoiled. "No spoilers!" has become one of the most common phrases of the streaming age.</p>
+    <p><span class="pn">5</span>None of this is bad in itself. Stories have always brought people together, from theatres to living rooms. The trick, as with most pleasures, is balance: enjoy the show, but remember that the real world does not have a "skip intro" button.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Gist (A-D)</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">True / False / Doesn't say</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+    <div class="tab" data-tab="4" onclick="showTab(4)"><div class="tab-num">05</div><div class="tab-label">Talk for a Minute 🎙️</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#F9A8D4;">Task 1 — Gist 🎯</div>
+    <div class="sub" style="border-color:#EC4899; color:#f9a8d4;">Read the whole article quickly. Choose the best answer — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#C4B5FD;">Task 2 — True / False / Doesn't say 🔎</div>
+    <div class="sub" style="border-color:#C4B5FD; color:#c4b5fd;">If the text doesn't give the information, choose <strong>Doesn't say</strong>.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkTFD()">Check</button><button class="btn btn-s" onclick="resetTFD()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">No reading back! Each sentence has one <span style="color:#F87171;">crossed-out</span> mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#F9A8D4;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#EC4899; color:#f9a8d4;">Complete each phrase with the missing word — from memory.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+  <div class="panel" id="panel-4">
+    <div class="ptitle" style="color:#FCD34D;">Task 5 — Talk for a Minute ⏱️🎙️</div>
+    <div class="sub tml-sub">Press <strong>New topic</strong> for a random culture topic, then <strong>Start 60s</strong> and speak until time runs out. Keep going — fluency first! Listener: ask one follow-up at the end, then swap.</div>
+    <div class="cardwrap">
+      <div class="tcard" id="tcard"><div class="placeholder">🎲 Press "New topic" to begin.</div></div>
+      <div class="timer" id="timer"></div>
+      <div class="footer" style="justify-content:center;">
+        <button class="btn btn-p" onclick="newTopic()">New topic 🎲</button>
+        <button class="btn btn-s" onclick="startTimer()">Start 60s ⏱️</button>
+        <button class="btn btn-s" onclick="stopTimer()">Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[{q:"What is the writer's main point?", correct:"We binge-watch for several reasons, but balance is important", opts:["We binge-watch for several reasons, but balance is important","Streaming services are bad and should be avoided","Old television was much better than modern series","Only technology is responsible for how much we watch"]}];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':'bad'); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var TFD=[
+ {s:"In the past, people often waited a week for the next episode.", a:"True"},
+ {s:"Streaming platforms start the next episode automatically.", a:"True"},
+ {s:"The writer says cliffhangers make us want to keep watching.", a:"True"},
+ {s:"Netflix is the most popular platform in the world.", a:"Doesn't say"},
+ {s:"The writer compares a gripping story to a good song.", a:"True"},
+ {s:"The writer says binge-watching is always a bad thing.", a:"False"}
+];
+var tfdSel={}; var tfdChecked=false; var TFDOPTS=['True','False',"Doesn't say"];
+function renderTFD(){ var c=document.getElementById('t1'); c.innerHTML='';
+  TFD.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    TFDOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(tfdSel[qi]===opt?'sel':''); b.textContent=opt;
+      b.onclick=function(){ if(tfdChecked)return; tfdSel[qi]=opt; renderTFD(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkTFD(){ tfdChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  TFD.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ if(b.textContent===q.a)b.classList.add('correct'); else if(tfdSel[qi]===b.textContent)b.classList.add('wrong'); }); if(tfdSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+TFD.length+' correct'+(correct===TFD.length?' 🎉':''); s.className='score '+(correct===TFD.length?'good':(correct>=TFD.length/2?'partial':'bad')); if(correct===TFD.length)markDone(1); }
+function resetTFD(){ tfdChecked=false; tfdSel={}; document.getElementById('s1').textContent=''; renderTFD(); }
+
+var FIX=[
+ {pre:"It's the best show ", bad:"what", post:" I've ever seen.", accept:["that","which"]},
+ {pre:"This series is ", bad:"more good", post:" than the last one.", accept:["better"]},
+ {pre:"Each episode ", bad:"end", post:" with a cliffhanger.", accept:["ends"]},
+ {pre:"I ", bad:"have watch", post:" the whole season already.", accept:["have watched"]},
+ {pre:"The next episode starts ", bad:"automatic", post:".", accept:["automatically"]},
+ {pre:"We stayed on the sofa ", bad:"since", post:" five hours.", accept:["for"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"a gripping ", post:"", accept:["plot","story"], hint:"the events of a story"},
+ {pre:"a catchy ", post:"", accept:["tune","song","melody"], hint:"a song stuck in your head"},
+ {pre:"no ", post:"!", accept:["spoilers","spoiler"], hint:"don't reveal the ending"},
+ {pre:"the film's ", post:"", accept:["soundtrack"], hint:"the music in a film"},
+ {pre:"to ", post:" a whole season", accept:["binge-watch","binge watch"], hint:"watch many episodes in a row"},
+ {pre:"a plot ", post:"", accept:["twist"], hint:"a surprise in the story"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+/* TASK 5 — Talk for a Minute */
+var TOPICS=[
+ {topic:"A series everyone should watch", subs:"What is it about? · Why is it so good? · Who would enjoy it?"},
+ {topic:"A song that always lifts your mood", subs:"What is it? · When do you play it? · How does it make you feel?"},
+ {topic:"A film that disappointed you", subs:"What did you expect? · What went wrong? · Would you still recommend it?"},
+ {topic:"The best concert or live show I've been to", subs:"Who / what was it? · What made it special? · Would you go again?"},
+ {topic:"An actor, singer or artist I admire", subs:"Who are they? · Why do you admire them? · What's their best work?"},
+ {topic:"A film or song that changed how I see something", subs:"What is it? · What did it change? · Would others feel the same?"},
+ {topic:"My guilty-pleasure show or music", subs:"What is it? · Why is it a 'guilty' pleasure? · Who else likes it?"},
+ {topic:"A recent film or series I loved (or hated)", subs:"What was it? · What did you think? · Give it a score out of 10."}
+];
+var used=[];
+function newTopic(){
+  if(used.length===TOPICS.length) used=[];
+  var pool=[]; for(var i=0;i<TOPICS.length;i++){ if(used.indexOf(i)<0) pool.push(i); }
+  var pick=pool[Math.floor(Math.random()*pool.length)]; used.push(pick);
+  var t=TOPICS[pick];
+  document.getElementById('tcard').innerHTML='<div class="topic">"'+t.topic+'"</div><div class="subs">'+t.subs+'</div>';
+  stopTimer(); document.getElementById('timer').textContent=''; markDone(4);
+}
+var tInt=null, tLeft=0;
+function startTimer(){ stopTimer(); tLeft=60; var el=document.getElementById('timer'); el.textContent='0:60';
+  tInt=setInterval(function(){ tLeft--; var m=Math.floor(tLeft/60); var s=tLeft%60; el.textContent=m+':'+(s<10?'0':'')+s; if(tLeft<=0){ stopTimer(); el.textContent='⏰ Time! Listener — ask one follow-up, then swap.'; } },1000); }
+function stopTimer(){ if(tInt){ clearInterval(tInt); tInt=null; } }
+
+renderMCQ(); renderTFD(); renderFix(); renderColl();
+</script>
+</body>
+</html>
