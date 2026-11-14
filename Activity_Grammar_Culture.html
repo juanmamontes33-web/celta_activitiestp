@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relative Clauses — Grammar Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #341338 0%, #22112e 48%, #120b1b 100%); min-height:100vh; padding:40px 18px 80px; color:#F0E8F2; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#A98FB0; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EC4899; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#EC4899; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#A98FB0; }
+.intro .ex { font-family:'Lora',serif; font-size:18px; color:#E8DEEB; line-height:1.7; margin:8px 0; }
+.intro .ex .rel { color:#F9A8D4; font-weight:600; font-style:italic; }
+.intro .ex .cm { color:#FCD34D; font-weight:700; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#C4B5FD; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#D6C9DA; }
+.tab.active { border-bottom-color:#EC4899; }
+.tab.active .tab-num { color:#F9A8D4; } .tab.active .tab-label { color:#F9F3FA; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#6b5873; }
+.tab-label { font-size:13px; font-weight:800; color:#A98FB0; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B6CE; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#E8DEEB; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#6b5873; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#D6C9DA; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#A98FB0; flex:0 0 auto; }
+.opt:hover { border-color:#EC4899; background:rgba(236,72,153,0.07); }
+.opt.sel { border-color:#EC4899; background:rgba(236,72,153,0.14); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#D6C9DA; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#EC4899; }
+.tfd button.sel { border-color:#EC4899; background:rgba(236,72,153,0.14); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#E8DEEB; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#6b5873; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#A98FB0; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a3a52; border-radius:10px; padding:7px 14px; color:#fff; width:150px; }
+input.ti:focus { outline:none; border-color:#EC4899; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:18px; color:#E8DEEB; }
+.coll input.ti { width:130px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#A98FB0; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EC4899; color:#fff; } .btn-p:hover { background:#f06aad; }
+.btn-s { background:transparent; color:#A98FB0; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EC4899; color:#fff; }
+.score { font-size:14px; color:#C9B6CE; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Grammar · B2 · Culture &amp; Entertainment</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>MARQUEE</span></div><div class="rt">RELATIVE CLAUSES</div></div>
+    <div class="tag">Defining — no commas (essential info)</div>
+    <div class="ex">"The singer <span class="rel">who</span> wrote this song is only 19."</div>
+    <div class="tag" style="margin-top:14px;">Non-defining — commas (extra info)</div>
+    <div class="ex">"Adele<span class="cm">,</span> <span class="rel">who</span> is from London<span class="cm">,</span> has won 16 Grammys."</div>
+    <div style="margin-top:16px; font-size:14px; color:#C9B6CE; line-height:1.6;">👉 <strong style="color:#F9A8D4;">who</strong> (people) · <strong style="color:#C4B5FD;">which</strong> (things) · <strong style="color:#F9A8D4;">that</strong> (people/things, defining only) · <strong style="color:#C4B5FD;">where</strong> (places) · <strong style="color:#FCD34D;">whose</strong> (possession) · <strong style="color:#FCD34D;">when</strong> (times)</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Choose the pronoun</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Commas or not?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Fill the blanks</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#F9A8D4;">Task 1 — Choose the relative pronoun 🎯</div>
+    <div class="sub" style="border-color:#EC4899; color:#f9a8d4;">Pick the one word that fits the gap — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#C4B5FD;">Task 2 — Commas or no commas? ✂️</div>
+    <div class="sub" style="border-color:#C4B5FD; color:#c4b5fd;">Is the clause <strong>essential</strong> (defining — no commas) or <strong>extra information</strong> (non-defining — commas)?</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkDN()">Check</button><button class="btn btn-s" onclick="resetDN()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">Each sentence has one <span style="color:#F87171;">crossed-out</span> relative-clause mistake. Type the correct version.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#F9A8D4;">Task 4 — Fill the blanks 🧩</div>
+    <div class="sub" style="border-color:#EC4899; color:#f9a8d4;">Complete each sentence with <strong>one</strong> relative word (who / which / where / whose / when).</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+/* TASK 1 — choose the relative pronoun */
+var MCQ_RAW=[
+ {q:"She's the singer ___ wrote 'Anti-Hero'.", correct:"who", opts:["who","which","where","whose"]},
+ {q:"'Stranger Things' is a series ___ mixes horror and nostalgia.", correct:"which", opts:["who","which","where","whose"]},
+ {q:"That's the venue ___ the band recorded their live album.", correct:"where", opts:["who","which","where","whose"]},
+ {q:"He's the director ___ films always make you cry.", correct:"whose", opts:["who","which","where","whose"]},
+ {q:"Bad Bunny, ___ is from Puerto Rico, sings mostly in Spanish.", correct:"who", opts:["who","which","where","whose"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=3?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+/* TASK 2 — defining / non-defining */
+var DN=[
+ {s:"The song ___ won the award is my favourite.", a:"Defining"},
+ {s:"Adele, ___ is from London, has won 16 Grammys.", a:"Non-defining"},
+ {s:"The actor ___ plays the villain is Colombian.", a:"Defining"},
+ {s:"My favourite film, ___ I've seen five times, is a comedy.", a:"Non-defining"},
+ {s:"People ___ love horror will enjoy this show.", a:"Defining"},
+ {s:"Netflix, ___ began as a DVD company, is now huge.", a:"Non-defining"}
+];
+var dnSel={}; var dnChecked=false; var DNOPTS=['Defining','Non-defining'];
+function renderDN(){ var c=document.getElementById('t1'); c.innerHTML='';
+  DN.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    DNOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(dnSel[qi]===opt?'sel':''); b.textContent=(opt==='Defining'?'Defining — no commas':'Non-defining — commas');
+      b.setAttribute('data-v',opt);
+      b.onclick=function(){ if(dnChecked)return; dnSel[qi]=opt; renderDN(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkDN(){ dnChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  DN.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ var v=b.getAttribute('data-v'); if(v===q.a)b.classList.add('correct'); else if(dnSel[qi]===v)b.classList.add('wrong'); }); if(dnSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+DN.length+' correct'+(correct===DN.length?' 🎉':''); s.className='score '+(correct===DN.length?'good':(correct>=DN.length/2?'partial':'bad')); if(correct===DN.length)markDone(1); }
+function resetDN(){ dnChecked=false; dnSel={}; document.getElementById('s1').textContent=''; renderDN(); }
+
+/* TASK 3 — find & fix */
+var FIX=[
+ {pre:"It's the best show ", bad:"what", post:" I've ever seen.", accept:["that","which"]},
+ {pre:"Taylor Swift, ", bad:"which", post:" is a singer, writes her own songs.", accept:["who"]},
+ {pre:"That's the city ", bad:"which", post:" they filmed the series.", accept:["where"]},
+ {pre:"He's the actor ", bad:"who's", post:" brother is also famous.", accept:["whose"]},
+ {pre:"I don't like films ", bad:"who", post:" have sad endings.", accept:["that","which"]},
+ {pre:"The band ", bad:"what", post:" songs I love is from Mexico.", accept:["whose"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+/* TASK 4 — fill the blanks */
+var COLL=[
+ {pre:"The actor ", post:" played Batman is British.", accept:["who","that"], hint:"a person (subject)"},
+ {pre:"A soundtrack is the music ", post:" you hear in a film.", accept:["which","that"], hint:"a thing"},
+ {pre:"That's the studio ", post:" they record the podcast.", accept:["where"], hint:"a place"},
+ {pre:"She's the artist ", post:" album broke every record.", accept:["whose"], hint:"possession"},
+ {pre:"Rosalía, ", post:" is Spanish, blends flamenco and pop.", accept:["who"], hint:"non-defining person"},
+ {pre:"2016 was the year ", post:" the show first aired.", accept:["when","that"], hint:"a time"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderDN(); renderFix(); renderColl();
+</script>
+</body>
+</html>

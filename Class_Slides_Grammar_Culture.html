@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Relative Clauses — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#0d0814; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(130% 110% at 85% -10%, #341338 0%, #22112e 48%, #120b1b 100%);
+  color:#F0E8F2; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#A98FB0; font-weight:700; }
+.kick::before { content:''; width:32px; height:2px; background:#EC4899; }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#6b5873; border-top:1px solid rgba(255,255,255,0.08); padding-top:13px; }
+.foot b { color:#EC4899; }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:14px; letter-spacing:3px; color:#4a3a52; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#F7F0F8; letter-spacing:-1px; }
+.pk { color:#F9A8D4; } .go { color:#FCD34D; } .pu { color:#C4B5FD; }
+.card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; }
+.serif { font-family:'Lora',serif; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:18px;">
+    <div style="font-family:'Space Grotesk'; font-weight:700; font-size:22px; letter-spacing:3px; color:#fff;">THE&nbsp;<span class="pk">MARQUEE</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:#A98FB0; text-transform:uppercase;">Culture &amp; Entertainment · Grammar</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#A98FB0;">B2</div>
+  </div>
+  <div style="position:absolute; left:60px; top:210px; width:820px;">
+    <div style="font-family:'Space Grotesk'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#FCD34D; font-weight:700; margin-bottom:18px;">Grammar Feature · Describing people, things &amp; places</div>
+    <div class="serif" style="font-size:56px; font-weight:600; line-height:1.05; color:#F9F3FA;">Relative <span class="pk" style="font-style:italic;">clauses</span> 🎬</div>
+    <div class="serif" style="margin-top:22px; font-size:19px; color:#C9B6CE; font-style:italic; max-width:640px; line-height:1.5;">"The show <span class="pk">that</span> everyone's watching… the singer <span class="pk">who</span> wrote it… the café <span class="pk">where</span> it all began." Add detail in one smooth sentence.</div>
+  </div>
+  <svg style="position:absolute; right:96px; top:250px;" width="230" height="220" viewBox="0 0 230 220">
+    <rect x="30" y="40" width="150" height="130" rx="10" fill="rgba(236,72,153,0.10)" stroke="#EC4899" stroke-width="3"/>
+    <text x="105" y="118" font-family="Space Grotesk" font-size="64" font-weight="700" fill="#F9A8D4" text-anchor="middle">who</text>
+    <circle cx="190" cy="56" r="10" fill="#FCD34D"/><text x="190" y="61" font-family="Space Grotesk" font-size="12" font-weight="700" fill="#22112e" text-anchor="middle">,</text>
+    <circle cx="40" cy="186" r="10" fill="#C4B5FD"/><text x="40" y="191" font-family="Space Grotesk" font-size="12" font-weight="700" fill="#22112e" text-anchor="middle">,</text>
+  </svg>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>01</b> / 10</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Notice the language</div></div>
+  <div style="position:absolute; left:60px; top:180px; right:60px;">
+    <div class="disp" style="font-size:34px; margin-bottom:30px;">Two sentences → <span class="pk">one</span> 🔗</div>
+    <div class="card" style="padding:22px 28px; border-left:3px solid #6b5873; margin-bottom:16px;">
+      <div class="serif" style="font-size:20px; color:#C9B6CE; font-style:italic;">"I watched a series. The series won ten awards." 😐</div>
+    </div>
+    <div style="text-align:center; font-size:26px; color:#FCD34D; margin:4px 0 16px;">⬇</div>
+    <div class="card" style="padding:22px 28px; border-left:3px solid #EC4899;">
+      <div class="serif" style="font-size:22px; color:#F7F0F8; font-style:italic;">"I watched a series <span class="pk">that won ten awards</span>." ✨</div>
+    </div>
+    <div style="margin-top:34px; font-size:16px; color:#C9B6CE; line-height:1.6;">💬 How did we join them? What word did we use instead of repeating <em>"the series"</em>?</div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>02</b> / 10</span></div>
+</div>
+
+<!-- 03 FORM -->
+<div class="slide">
+  <div class="idx">FORM</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">The relative pronouns</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:140px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+    <div class="card" style="padding:18px 22px; border-top:3px solid #EC4899;"><div class="disp" style="font-size:24px; color:#F9A8D4;">who</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">people</div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">the singer <strong>who</strong> wrote it</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #C4B5FD;"><div class="disp" style="font-size:24px; color:#C4B5FD;">which</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">things</div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">a show <strong>which</strong> won awards</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #FBBF24;"><div class="disp" style="font-size:24px; color:#FCD34D;">that</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">people / things — <strong>defining only</strong></div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">the film <strong>that</strong> I love</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #C4B5FD;"><div class="disp" style="font-size:24px; color:#C4B5FD;">where</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">places</div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">the café <strong>where</strong> they met</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #EC4899;"><div class="disp" style="font-size:24px; color:#F9A8D4;">whose</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">possession</div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">the DJ <strong>whose</strong> remix went viral</div></div>
+    <div class="card" style="padding:18px 22px; border-top:3px solid #FBBF24;"><div class="disp" style="font-size:24px; color:#FCD34D;">when</div><div style="font-size:13.5px; color:#CFC0D4; margin-top:6px;">times</div><div class="serif" style="font-size:14px; color:#DAD0DE; margin-top:8px; font-style:italic;">the year <strong>when</strong> it aired</div></div>
+  </div>
+  <div class="card" style="position:absolute; left:60px; right:60px; top:450px; padding:16px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#CFC0D4;">💡 In <strong style="color:#FCD34D;">defining</strong> clauses, you can drop the pronoun when it's the object: "the film <span style="color:#6b5873;">(that)</span> I love".</div></div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>03</b> / 10</span></div>
+</div>
+
+<!-- 04 DEFINING vs NON-DEFINING -->
+<div class="slide">
+  <div class="idx">KEY CONCEPT</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">The comma rule · essential vs extra</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:150px; display:flex; gap:18px;">
+    <div class="card" style="flex:1; padding:24px 28px; border-top:3px solid #34D399;">
+      <div style="font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; color:#86EFC0; font-weight:700;">DEFINING · NO COMMAS</div>
+      <div class="serif" style="font-size:19px; color:#F7F0F8; margin:14px 0; font-style:italic;">"The actor <strong class="pk">who plays the villain</strong> is Colombian."</div>
+      <div style="font-size:14px; color:#CFC0D4; line-height:1.6;">The clause is <strong style="color:#86EFC0;">essential</strong> — it tells us <em>which</em> actor. Remove it and the sentence loses its meaning.</div>
+    </div>
+    <div class="card" style="flex:1; padding:24px 28px; border-top:3px solid #FBBF24;">
+      <div style="font-family:'Space Grotesk'; font-size:12px; letter-spacing:2px; color:#FCD34D; font-weight:700;">NON-DEFINING · COMMAS</div>
+      <div class="serif" style="font-size:19px; color:#F7F0F8; margin:14px 0; font-style:italic;">"Pedro Pascal<span class="go">,</span> <strong class="pk">who is Chilean</strong><span class="go">,</span> is a huge star."</div>
+      <div style="font-size:14px; color:#CFC0D4; line-height:1.6;">The clause is <strong style="color:#FCD34D;">extra</strong> — nice to know, but not essential. Commas act like brackets. (No <em>"that"</em> here!)</div>
+    </div>
+  </div>
+  <div class="card" style="position:absolute; left:60px; right:60px; top:450px; padding:16px 24px; border-left:3px solid #C4B5FD;"><div style="font-size:14px; color:#CFC0D4;">🧠 CCQ: If you remove the clause, do you still know <em>exactly</em> who/what? <strong style="color:#86EFC0;">Yes → commas</strong> (extra). <strong style="color:#FCA5A5;">No → no commas</strong> (essential).</div></div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>04</b> / 10</span></div>
+</div>
+
+<!-- 05 TASK 1 -->
+<div class="slide">
+  <div class="idx">TASK 1 · PRONOUN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · tab 1</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Choose the relative pronoun 🎯</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #EC4899;">
+      <div style="font-size:17px; color:#DAD0DE; line-height:1.8;">Which word fits? Ask yourself: <strong style="color:#F9A8D4;">person, thing, place, possession</strong> or <strong style="color:#F9A8D4;">time</strong>?</div>
+      <div class="serif" style="font-size:18px; color:#F0E8F2; font-style:italic; margin-top:14px;">"She's the singer ___ wrote 'Anti-Hero'." → <span class="pk">who</span></div>
+    </div>
+    <div class="card" style="margin-top:20px; padding:16px 24px; border-left:3px solid #C4B5FD;"><div style="font-size:14px; color:#CFC0D4;">💡 Read the whole sentence first — the noun before the gap gives you the answer.</div></div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>05</b> / 10</span></div>
+</div>
+
+<!-- 06 TASK 2 -->
+<div class="slide">
+  <div class="idx">TASK 2 · COMMAS</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · tab 2</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Commas or no commas? ✂️</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #C4B5FD;">
+      <div style="font-size:17px; color:#DAD0DE; line-height:1.8;">Decide if each clause is <strong style="color:#86EFC0;">defining</strong> (essential, no commas) or <strong style="color:#FCD34D;">non-defining</strong> (extra, commas).</div>
+    </div>
+    <div class="card" style="margin-top:18px; padding:16px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#CFC0D4;">🧠 Trick: a <strong>name</strong> (Adele, Netflix) is already specific → usually <strong style="color:#FCD34D;">non-defining</strong> (commas).</div></div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>06</b> / 10</span></div>
+</div>
+
+<!-- 07 TASK 3 -->
+<div class="slide">
+  <div class="idx">TASK 3 · FIX</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · tab 3</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Find &amp; fix the mistakes 🔧</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #EC4899;">
+      <div style="font-size:16px; color:#DAD0DE; line-height:1.8;">One relative word in each sentence is <strong style="color:#F87171;">wrong</strong>. Fix it:</div>
+      <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+        <div class="serif" style="font-size:17px; color:#F0E8F2; font-style:italic;">"It's the best show <span style="color:#F87171;">what</span> I've ever seen." → ?</div>
+        <div class="serif" style="font-size:17px; color:#F0E8F2; font-style:italic;">"He's the actor <span style="color:#F87171;">who's</span> brother is famous too." → ?</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px; padding:14px 24px; border-left:3px solid #FBBF24;"><div style="font-size:14px; color:#CFC0D4;">⚠️ Watch out: <strong style="color:#FCA5A5;">what</strong> ≠ relative pronoun · <strong style="color:#FCA5A5;">who's</strong> (= who is) ≠ <strong style="color:#86EFC0;">whose</strong>.</div></div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>07</b> / 10</span></div>
+</div>
+
+<!-- 08 TASK 4 -->
+<div class="slide">
+  <div class="idx">TASK 4 · PRODUCE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · tab 4</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Complete the sentences 🧩</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #EC4899;">
+      <div style="font-size:17px; color:#DAD0DE; line-height:1.8;">Fill each gap with <strong style="color:#fff;">one</strong> relative word. All about films, shows and artists!</div>
+    </div>
+    <div style="margin-top:22px; display:flex; gap:10px; flex-wrap:wrap;">
+      <span class="serif" style="background:rgba(236,72,153,0.16); color:#F9A8D4; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">the actor ___ played…</span>
+      <span class="serif" style="background:rgba(196,181,253,0.16); color:#C4B5FD; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">the studio ___ they record</span>
+      <span class="serif" style="background:rgba(251,191,36,0.16); color:#FCD34D; padding:7px 16px; border-radius:8px; font-style:italic; font-size:15px;">the artist ___ album…</span>
+    </div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>08</b> / 10</span></div>
+</div>
+
+<!-- 09 SPEAKING -->
+<div class="slide">
+  <div class="idx">PRODUCTION</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Guess who / what! · use the grammar</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Describe &amp; guess 🕵️🎬</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #EC4899;">
+      <div style="font-size:17px; color:#DAD0DE; line-height:1.8;">Think of a <strong style="color:#fff;">film, series, song or celebrity</strong>. Describe it with <strong style="color:#F9A8D4;">two relative clauses</strong> — your partner guesses!</div>
+      <div class="serif" style="font-size:18px; color:#F7F0F8; font-style:italic; margin-top:14px; line-height:1.6;">"It's a series <span class="pk">that is set in the 80s</span>, <span class="pk">which has a boy who disappears</span>…"</div>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:14px; flex-wrap:wrap;">
+      <div class="card" style="flex:1; min-width:220px; padding:16px 22px;"><div style="font-size:14px; color:#CFC0D4;">🎯 At least <strong style="color:#fff;">two</strong> relative clauses before your partner may guess.</div></div>
+      <div class="card" style="flex:1; min-width:220px; padding:16px 22px;"><div style="font-size:14px; color:#CFC0D4;">🔄 Got it in one? Add a harder one. Then swap roles.</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>09</b> / 10</span></div>
+</div>
+
+<!-- 10 WRAP -->
+<div class="slide">
+  <div class="idx">TAKEAWAY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">The rules to keep!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">Relative clauses — in a nutshell 🥜</div>
+    <div style="display:flex; flex-direction:column; gap:12px; max-width:940px;">
+      <div class="card" style="padding:16px 24px; border-left:3px solid #EC4899;"><div style="font-size:16px; color:#DAD0DE;"><strong class="pk">who</strong> people · <strong class="pu">which</strong> things · <strong class="go">that</strong> both (defining) · <strong class="pu">where</strong> places · <strong class="pk">whose</strong> possession · <strong class="go">when</strong> times</div></div>
+      <div class="card" style="padding:16px 24px; border-left:3px solid #34D399;"><div style="font-size:16px; color:#DAD0DE;"><strong style="color:#86EFC0;">Essential info</strong> → no commas, and <em>that</em> is fine.</div></div>
+      <div class="card" style="padding:16px 24px; border-left:3px solid #FBBF24;"><div style="font-size:16px; color:#DAD0DE;"><strong style="color:#FCD34D;">Extra info</strong> → commas, and no <em>that</em>.</div></div>
+    </div>
+    <div style="margin-top:22px; font-size:15px; color:#A98FB0;">📌 Homework: write 4 sentences about your favourite show/artist — two defining, two non-defining.</div>
+  </div>
+  <div class="foot"><span>Core 4 · Culture &amp; Entertainment · Grammar</span><span><b>10</b> / 10</span></div>
+</div>
+
+</body>
+</html>
