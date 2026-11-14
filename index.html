@@ -6,456 +6,289 @@
 <title>English Class Materials — Hub</title>
 <style>
   :root{
-    --bg:#0f172a; --card:#1e293b; --card2:#243449; --ink:#e2e8f0; --muted:#94a3b8;
-    --blue:#3b82f6; --green:#22c55e; --amber:#f59e0b; --violet:#8b5cf6; --line:#334155;
+    --bg0:#070b16; --bg1:#0c1322; --ink:#eef2fb; --muted:#9aa6c0; --faint:#6b7696;
+    --card:rgba(255,255,255,.035); --cardbd:rgba(255,255,255,.09); --chip:rgba(255,255,255,.05);
+    --s:#60a5fa; --a:#34d399; --e:#fbbf24;
   }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:linear-gradient(180deg,#0b1120,#0f172a);color:var(--ink);line-height:1.5}
-  header{padding:48px 20px 28px;text-align:center;border-bottom:1px solid var(--line);
-    background:radial-gradient(1200px 300px at 50% -50%,rgba(59,130,246,.25),transparent)}
-  header h1{margin:0;font-size:2rem;letter-spacing:-.5px}
-  header p{margin:10px auto 0;max-width:640px;color:var(--muted)}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
-  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 8px}
-  .toc a{font-size:.85rem;color:var(--ink);text-decoration:none;background:var(--card);
-    border:1px solid var(--line);padding:6px 12px;border-radius:999px}
-  .toc a:hover{border-color:var(--blue)}
-  section{margin-top:40px}
-  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-  .sec-head h2{margin:0;font-size:1.35rem}
-  .sec-head .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;
-    padding:3px 9px;border-radius:6px;color:#0b1120;font-weight:700}
-  .t-blue{background:var(--blue)} .t-violet{background:var(--violet)}
-  .t-cyan{background:#22d3ee;color:#07121a}
-  .t-pink{background:#ec4899;color:#fff}
-  .sec-sub{color:var(--muted);margin:0 0 18px;font-size:.92rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
-    transition:.15s;position:relative}
-  .card:hover{border-color:var(--blue);transform:translateY(-2px)}
-  .card .num{position:absolute;top:14px;right:14px;font-size:.75rem;color:var(--muted);
-    background:var(--card2);padding:2px 8px;border-radius:6px}
-  .card h3{margin:0 4px 12px 0;font-size:1.02rem;padding-right:44px}
-  .links{display:flex;flex-wrap:wrap;gap:8px}
-  .links a{font-size:.82rem;text-decoration:none;padding:6px 11px;border-radius:8px;
-    border:1px solid transparent;font-weight:600}
-  .l-slides{color:#bfdbfe;background:rgba(59,130,246,.14);border-color:rgba(59,130,246,.35)}
-  .l-act{color:#bbf7d0;background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.35)}
-  .l-extra{color:#fde68a;background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.35)}
-  .l-slides:hover{background:rgba(59,130,246,.28)}
-  .l-act:hover{background:rgba(34,197,94,.28)}
-  .l-extra:hover{background:rgba(245,158,11,.28)}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;color:var(--muted);font-size:.82rem}
-  .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
-  footer{border-top:1px solid var(--line);padding:26px 20px;text-align:center;color:var(--muted);font-size:.82rem}
-  a.foot{color:var(--blue);text-decoration:none}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);line-height:1.5;min-height:100vh;
+    background:
+      radial-gradient(900px 500px at 12% -8%, rgba(99,102,241,.22), transparent 60%),
+      radial-gradient(800px 480px at 92% 2%, rgba(236,72,153,.18), transparent 55%),
+      radial-gradient(700px 500px at 60% 120%, rgba(6,182,212,.14), transparent 55%),
+      linear-gradient(180deg,var(--bg0),var(--bg1));
+    background-attachment:fixed;}
+
+  header{padding:46px 20px 22px;text-align:center;max-width:1180px;margin:0 auto}
+  header h1{font-size:clamp(1.8rem,4.5vw,2.7rem);letter-spacing:-.6px;font-weight:800;
+    background:linear-gradient(92deg,#a5b4fc,#f0abfc 42%,#67e8f9 85%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  header p{margin:10px auto 0;max-width:560px;color:var(--muted);font-size:.96rem}
+  .stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .stat{background:var(--chip);border:1px solid var(--cardbd);border-radius:999px;
+    padding:6px 14px;font-size:.8rem;color:var(--muted)}
+  .stat b{color:var(--ink)}
+
+  /* sticky control bar */
+  .bar{position:sticky;top:0;z-index:50;margin-top:14px;
+    background:rgba(8,12,22,.82);backdrop-filter:blur(14px);
+    border-top:1px solid var(--cardbd);border-bottom:1px solid var(--cardbd)}
+  .bar-in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .search{flex:1;min-width:190px;position:relative}
+  .search input{width:100%;background:var(--chip);border:1px solid var(--cardbd);border-radius:11px;
+    color:var(--ink);font-size:.9rem;padding:10px 14px 10px 38px;outline:none;transition:.15s}
+  .search input:focus{border-color:#818cf8;background:rgba(129,140,248,.08)}
+  .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.5}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin;max-width:100%}
+  .chip{white-space:nowrap;cursor:pointer;border:1px solid var(--cardbd);background:var(--chip);
+    color:var(--muted);font-size:.82rem;font-weight:600;padding:8px 13px;border-radius:999px;
+    transition:.14s;display:flex;align-items:center;gap:7px;font-family:inherit}
+  .chip .ct{font-size:.72rem;opacity:.7;background:rgba(255,255,255,.08);border-radius:999px;padding:1px 7px}
+  .chip:hover{color:var(--ink);border-color:var(--cc,#818cf8)}
+  .chip.active{color:#07101f;background:var(--cc,#818cf8);border-color:var(--cc,#818cf8)}
+  .chip.active .ct{background:rgba(0,0,0,.18);color:#07101f}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:26px 16px 70px}
+  section{margin-top:30px;scroll-margin-top:74px}
+  .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:16px;
+    padding-left:14px;border-left:4px solid var(--cc,#818cf8)}
+  .sec-head .emoji{font-size:1.5rem}
+  .sec-head h2{font-size:1.2rem;font-weight:800}
+  .sec-head .sc{margin-left:auto;font-size:.76rem;color:var(--faint);
+    border:1px solid var(--cardbd);border-radius:999px;padding:3px 10px}
+  .sec-sub{color:var(--muted);margin:-8px 0 16px 18px;font-size:.88rem;max-width:760px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:13px}
+  .card{background:var(--card);border:1px solid var(--cardbd);border-radius:15px;
+    padding:15px 15px 13px;position:relative;overflow:hidden;transition:.16s}
+  .card::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;
+    background:var(--cc,#818cf8);opacity:.85}
+  .card:hover{transform:translateY(-3px);border-color:var(--cc,#818cf8);
+    box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--cc,#818cf8);
+    background:color-mix(in srgb, var(--cc,#818cf8) 16%, transparent);
+    border:1px solid color-mix(in srgb, var(--cc,#818cf8) 32%, transparent);
+    border-radius:7px;padding:3px 9px;margin-bottom:9px}
+  .card h3{font-size:.96rem;font-weight:700;line-height:1.35;margin-bottom:11px;color:#f4f7ff}
+  .links{display:flex;flex-wrap:wrap;gap:7px}
+  .links a{font-size:.78rem;text-decoration:none;padding:6px 11px;border-radius:8px;
+    border:1px solid transparent;font-weight:600;transition:.13s}
+  .l-s{color:#bfdbfe;background:rgba(96,165,250,.14);border-color:rgba(96,165,250,.32)}
+  .l-a{color:#bbf7d0;background:rgba(52,211,153,.14);border-color:rgba(52,211,153,.32)}
+  .l-e{color:#fde68a;background:rgba(251,191,36,.14);border-color:rgba(251,191,36,.32)}
+  .l-s:hover{background:rgba(96,165,250,.28)} .l-a:hover{background:rgba(52,211,153,.28)} .l-e:hover{background:rgba(251,191,36,.28)}
+
+  .empty{display:none;text-align:center;color:var(--faint);padding:60px 20px;font-size:.95rem}
+  footer{border-top:1px solid var(--cardbd);padding:24px 20px;text-align:center;color:var(--faint);font-size:.8rem}
+  footer code{background:var(--chip);padding:2px 7px;border-radius:5px}
+  @media(max-width:520px){.sec-head .sc{display:none}.wrap{padding:22px 14px 60px}}
 </style>
 </head>
 <body>
 <header>
   <h1>📚 English Class Materials</h1>
-  <p>One hub for every lesson — slides, student activities and extras. Organized by course and lesson.</p>
-  <div class="legend">
-    <span><span class="dot" style="background:var(--blue)"></span>Slides</span>
-    <span><span class="dot" style="background:var(--green)"></span>Activity</span>
-    <span><span class="dot" style="background:var(--amber)"></span>Extra / Notes</span>
-  </div>
+  <p>Every lesson in one place — slides, student activities and extras. Filter by course or search to jump straight to what you need.</p>
+  <div class="stats" id="stats"></div>
 </header>
 
-<div class="wrap">
-  <nav class="toc">
-    <a href="#efz">English from Zero (1–22)</a>
-    <a href="#extras">More Grammar &amp; Skills</a>
-    <a href="#core1">Core 1 · Work &amp; School</a>
-    <a href="#core2">Core 2 · Everyday Conversations</a>
-    <a href="#core3">Core 3 · Technology &amp; The World</a>
-    <a href="#core4">Core 4 · Culture &amp; Entertainment</a>
-    <a href="#oneonone">One-on-One Classes</a>
-    <a href="#coresummary">Core Summary</a>
-    <a href="#celta">CELTA Teaching Practice</a>
-  </nav>
-
-  <!-- ENGLISH FROM ZERO -->
-  <section id="efz">
-    <div class="sec-head"><span class="tag t-blue">Course</span><h2>English from Zero</h2></div>
-    <p class="sec-sub">A 22-lesson journey through the tenses and core skills.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">01</span><h3>Past Simple</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Past_Simple_1.html">Slides</a>
-        <a class="l-act" href="Student_Activity_Past_Simple.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">02</span><h3>Past Continuous</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PastContinuous.html">Slides</a>
-        <a class="l-act" href="Student_Activity_PastContinuous.html">Activity</a>
-        <a class="l-extra" href="Roulette_PastTenses.html">Past Tenses Roulette</a></div></div>
-
-      <div class="card"><span class="num">03</span><h3>Used to</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_UsedTo.html">Slides</a>
-        <a class="l-act" href="Activity_UsedTo.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">04</span><h3>Present Perfect</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PresentPerfect.html">Slides</a>
-        <a class="l-act" href="Activity_PresentPerfect.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">05</span><h3>Ice-Breaker &amp; Adverbs of Frequency</h3><div class="links">
-        <a class="l-slides" href="IceBreaker_Spinner.html">Spinner</a>
-        <a class="l-act" href="IceBreaker_Breakout_1.html">Conversation Cards</a>
-        <a class="l-extra" href="Activity_AdverbPosition.html">Adverbs</a>
-        <a class="l-extra" href="Game_SpeakingBoard.html">Speaking Board</a></div></div>
-
-      <div class="card"><span class="num">06</span><h3>Present Perfect vs Past Simple</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PPvsPS.html">Slides</a>
-        <a class="l-act" href="Activity_PPvsPS.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">07</span><h3>Present Perfect Continuous</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PPContinuous.html">Slides</a>
-        <a class="l-act" href="Game_SpeakingBoard.html">Speaking Board</a></div></div>
-
-      <div class="card"><span class="num">08</span><h3>Present Simple vs Present Continuous</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PresentSimpleCont.html">Slides</a>
-        <a class="l-act" href="Activity_PresentSimpleCont.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">09</span><h3>Future — will &amp; going to</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Future.html">Slides</a>
-        <a class="l-act" href="Activity_Future.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">10</span><h3>Future Continuous</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_FutureCont.html">Slides</a>
-        <a class="l-act" href="Activity_FutureCont.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">11</span><h3>Future Perfect</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_FuturePerfect.html">Slides</a>
-        <a class="l-act" href="Activity_FuturePerfect.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">12</span><h3>Final Exam — Tenses</h3><div class="links">
-        <a class="l-slides" href="Exam_Tenses.html">Exam</a>
-        <a class="l-extra" href="Rubric_Speaking.html">Speaking Rubric</a>
-        <a class="l-extra" href="Class_Slides_FirstConditional.html">After: First Conditional</a></div></div>
-
-      <div class="card"><span class="num">13</span><h3>Unit 1 · Reading — Are We Addicted to Our Screens?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Tech.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Tech.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">14</span><h3>Unit 1 · Listening — Social Media &amp; Teenage Health</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Tech.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Tech.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">15</span><h3>Unit 2 · Reading — Do You Still Need a Degree?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Work.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Work.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">16</span><h3>Unit 2 · Listening — What Is the Future of Work?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Work.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Work.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">17</span><h3>Comparatives — Part 1</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Comparatives_1.html">Slides</a>
-        <a class="l-act" href="Activity_Comparatives.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">18</span><h3>Comparatives — Part 2</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Comparatives2.html">Slides</a>
-        <a class="l-act" href="Activity_Comparatives2.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">19</span><h3>Unit 3 · Reading — Health &amp; Living</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Health.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Health.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">20</span><h3>Unit 3 · Listening — Health &amp; Living</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Health.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Health.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">21</span><h3>Superlatives — Part 1</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Superlatives.html">Slides</a>
-        <a class="l-act" href="Activity_Superlatives.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">22</span><h3>Superlatives — Part 2</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Superlatives2.html">Slides</a>
-        <a class="l-act" href="Activity_Superlatives2.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">23</span><h3>Unit 4 · Reading — The Art of Slow Travel</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Travel.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Travel.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">24</span><h3>Unit 4 · Listening — A Month in Vietnam</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Travel.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Travel.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">25</span><h3>Unit 4 · Grammar — Active &amp; Passive Voice</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Passive_Voice.html">Slides</a>
-        <a class="l-act" href="Activity_Passive_Voice.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">26</span><h3>Unit 5 · Reading — Home Sweet Home</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Home.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Home.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">27</span><h3>Unit 5 · Listening — The Decluttering Trend (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Home.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Home.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">28</span><h3>Unit 5 · Grammar — Second Conditional</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Second_Conditional.html">Slides</a>
-        <a class="l-act" href="Activity_Second_Conditional.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">29</span><h3>Unit 6 · Reading — Where Does It All Go?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Money.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Money.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">30</span><h3>Unit 6 · Listening — Money and Lifestyle (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Money.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Money.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">31</span><h3>Unit 6 · Grammar — Modals of Deduction</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Modals_Deduction.html">Slides</a>
-        <a class="l-act" href="Activity_Modals_Deduction.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">32</span><h3>Unit 7 · Reading — Every Little Helps</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Environment.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Environment.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">33</span><h3>Unit 7 · Listening — Help the Environment (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Environment.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Environment.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">34</span><h3>Unit 7 · Grammar — Question Tags</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Question_Tags.html">Slides</a>
-        <a class="l-act" href="Activity_Question_Tags.html">Activity</a></div></div>
-
+<div class="bar">
+  <div class="bar-in">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9aa6c0" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Search lessons…" autocomplete="off">
     </div>
-  </section>
-
-  <!-- EXTRAS -->
-  <section id="extras">
-    <div class="sec-head"><span class="tag t-blue">Course</span><h2>More Grammar &amp; Skills</h2></div>
-    <p class="sec-sub">Standalone lessons and shared resources.</p>
-    <div class="grid">
-      <div class="card"><h3>Present Perfect — Simple vs Continuous</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_PPSimpleVsCont.html">Slides</a>
-        <a class="l-act" href="Activity_PPSimpleVsCont.html">Activity</a></div></div>
-      <div class="card"><h3>Review — Let's Polish Your Stories</h3><div class="links">
-        <a class="l-slides" href="Review_Class_Slides_Adverbs.html">Review Class</a></div></div>
-      <div class="card"><h3>Reading — Microchips Save Lives</h3><div class="links">
-        <a class="l-act" href="student_activities_2.html">Activity</a></div></div>
-    </div>
-  </section>
-
-  <!-- CELTA -->
-  <section id="celta">
-    <div class="sec-head"><span class="tag t-violet">Course</span><h2>CELTA — Teaching Practice</h2></div>
-    <p class="sec-sub">Assessed teaching-practice lessons (TP2–TP8) with slides, activities and teacher scripts.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">TP2</span><h3>Do &amp; Make Collocations</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_TP2_2.html">Slides</a>
-        <a class="l-act" href="Student_Activity_TP2_3.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">TP4</span><h3>Future — Plans &amp; Arrangements</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_TP4_5.html">Slides</a>
-        <a class="l-act" href="Student_Activity_TP4_3.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">TP5</span><h3>Speaking — Celebrity Worship</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_TP5_4.html">Slides</a>
-        <a class="l-act" href="Activity_Useful_Language_TP5_1.html">Useful Language</a>
-        <a class="l-extra" href="Teacher_Script_TP5_3.html">Teacher Script</a></div></div>
-
-      <div class="card"><span class="num">TP6</span><h3>Functional Language — Two Witnesses</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_TP6_4.html">Slides</a>
-        <a class="l-act" href="Discovery_Tasks_TP6_2.html">Discovery Tasks</a>
-        <a class="l-extra" href="Teacher_Script_TP6_5.html">Teacher Script</a></div></div>
-
-      <div class="card"><span class="num">TP7</span><h3>Grammar — Past Modals of Deduction</h3><div class="links">
-        <a class="l-slides" href="class_slides_TP7_2.html">Slides</a>
-        <a class="l-act" href="student_activity_TP7_2.html">Activity</a>
-        <a class="l-extra" href="Teacher_Script_TP7_3.html">Teacher Script</a></div></div>
-
-      <div class="card"><span class="num">TP8</span><h3>Writing — Travel Brochure</h3><div class="links">
-        <a class="l-slides" href="class_slides_TP8_6.html">Slides</a>
-        <a class="l-act" href="student_activity_TP8_16.html">Activity</a>
-        <a class="l-extra" href="Teacher_Script_TP8_4.html">Teacher Script</a></div></div>
-
-    </div>
-  </section>
-
-  <!-- CORE 1 -->
-  <section id="core1">
-    <div class="sec-head"><span class="tag t-violet">Course</span><h2>Core 1 — Work &amp; School</h2></div>
-    <p class="sec-sub">Topic-based lessons built on authentic, real-world materials.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">R1</span><h3>The Four-Day Week — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_FourDayWeek.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_FourDayWeek.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">L1</span><h3>The Four-Day Week — Listening (TED)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_FourDayWeek.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_FourDayWeek.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">R2</span><h3>How to Survive Meetings — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Meetings.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Meetings.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">L2</span><h3>How to Survive Meetings — Listening (TED)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Meetings.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Meetings.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">R3</span><h3>Talk About Your Job &amp; Experience — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Experience.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Experience.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">L3</span><h3>Talk About Your Job &amp; Experience — Listening (TED)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Experience.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Experience.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">R4</span><h3>Describe Your Future / What You Want To Be — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Future.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Future.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">L4</span><h3>Describe Your Future — Listening: Following Your Dreams (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Future.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Future.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">✉️</span><h3>Messages &amp; Professional Emails — Reading (Writing)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Emails.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Emails.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">📧</span><h3>Professional Emails — Listening: Writing an Email (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Emails.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Emails.html">Activity</a></div></div>
-
-    </div>
-  </section>
-
-  <!-- CORE 2 -->
-  <section id="core2">
-    <div class="sec-head"><span class="tag t-violet">Course</span><h2>Core 2 — Everyday Conversations</h2></div>
-    <p class="sec-sub">Social, daily-life English built on authentic materials, with target language &amp; MFP.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">🍽️</span><h3>Eating Out &amp; Food — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_EatingOut.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_EatingOut.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🍤</span><h3>Eating Out &amp; Food — Listening: The Hidden Life of Buffets (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_EatingOut.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_EatingOut.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🧮</span><h3>Eating Out &amp; Food — Grammar: Countable/Uncountable &amp; Quantifiers</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Quantifiers.html">Slides</a>
-        <a class="l-act" href="Activity_Quantifiers.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🧭</span><h3>Getting Around &amp; Directions — Reading: Why Do Some People Never Get Lost?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_GettingAround.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_GettingAround.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🚄</span><h3>Getting Around &amp; Directions — Listening: The Future of Transport (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_GettingAround.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_GettingAround.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🗺️</span><h3>Getting Around &amp; Directions — Vocabulary: Street &amp; City Words</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Vocab_GettingAround.html">Slides</a>
-        <a class="l-act" href="Activity_Vocab_GettingAround.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🛍️</span><h3>Shopping &amp; Money — Reading: Are You a Smart Shopper?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Shopping.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Shopping.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🧛</span><h3>Shopping &amp; Money — Listening: Vampire Shoppers (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Shopping.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Shopping.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🧑‍🤝‍🧑</span><h3>Describing People — Reading: What's He Like?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_People.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_People.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🤝</span><h3>Describing People — Listening: Building Rapport (BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_People.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_People.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">📰</span><h3>News &amp; Opinions — Reading: What's Going On?</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_News.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_News.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🕵️</span><h3>News &amp; Opinions — Listening: Spot the Fake (British Council)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_News.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_News.html">Activity</a></div></div>
-
-    </div>
-  </section>
-
-  <!-- CORE 3 -->
-  <section id="core3">
-    <div class="sec-head"><span class="tag t-cyan">Course</span><h2>Core 3 — Technology &amp; The World</h2></div>
-    <p class="sec-sub">Discussion-driven B2 lessons on AI and modern life — THE SIGNAL. Four-task receptive shape, then opinion &amp; debate practice.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">🤖</span><h3>Living with AI — Reading</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_AI.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_AI.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🎙️</span><h3>What Can AI Do? — Listening (BBC video)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_AI.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_AI.html">Activity</a></div></div>
-      <div class="card"><span class="num">✍️</span><h3>Should We Trust AI? — Writing (Essay)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Writing_AI.html">Slides</a>
-        <a class="l-act" href="Activity_Writing_AI.html">Activity</a></div></div>
-
-
-    </div>
-  </section>
-
-  <!-- CORE 4 -->
-  <section id="core4">
-    <div class="sec-head"><span class="tag t-pink">Course</span><h2>Core 4 — Culture &amp; Entertainment</h2></div>
-    <p class="sec-sub">Film, music, series and the words to talk about them — THE MARQUEE. Four-task receptive shape plus a favourites speaking stage and a “Talk for a Minute” challenge.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">📺</span><h3>Just One More Episode — Reading (Streaming &amp; TV)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Reading_Culture.html">Slides</a>
-        <a class="l-act" href="Activity_Reading_Culture.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🎸</span><h3>Becoming a Musician — Listening (Music · BBC)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Listening_Culture.html">Slides</a>
-        <a class="l-act" href="Activity_Listening_Culture.html">Activity</a></div></div>
-
-      <div class="card"><span class="num">🎬</span><h3>Relative Clauses — Grammar (Describing Film, Music &amp; TV)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_Grammar_Culture.html">Slides</a>
-        <a class="l-act" href="Activity_Grammar_Culture.html">Activity</a></div></div>
-
-    </div>
-  </section>
-
-  <!-- ONE-ON-ONE -->
-  <section id="oneonone">
-    <div class="sec-head"><span class="tag t-violet">Course</span><h2>One-on-One Classes</h2></div>
-    <p class="sec-sub">Tailored solo sessions — speaking-focused, mixed-topic practice with a teacher run sheet.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">🎙️</span><h3>Speaking Session — Mixed Practice (Work + Everyday)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_OneOnOne_Mixed.html">Slides</a>
-        <a class="l-act" href="Activity_OneOnOne_Mixed.html">Activity</a>
-        <a class="l-extra" href="Teacher_Script_OneOnOne.html">Teacher Script</a></div></div>
-
-    </div>
-  </section>
-
-  <!-- CORE SUMMARY -->
-  <section id="coresummary">
-    <div class="sec-head"><span class="tag t-violet">Course</span><h2>Core Summary</h2></div>
-    <p class="sec-sub">Mixed-review sessions that pull Core 1 + Core 2 together — speaking-focused, for pairs, with a teacher run sheet.</p>
-    <div class="grid">
-
-      <div class="card"><span class="num">👥</span><h3>Pair Speaking — Mixed Review (Work + Everyday)</h3><div class="links">
-        <a class="l-slides" href="Class_Slides_CoreSummary_Pair.html">Slides</a>
-        <a class="l-act" href="Activity_CoreSummary_Pair.html">Activity</a>
-        <a class="l-extra" href="Teacher_Script_CoreSummary_Pair.html">Teacher Script</a></div></div>
-
-    </div>
-  </section>
+    <div class="chips" id="chips"></div>
+  </div>
 </div>
 
-<footer>
-  Maintained by Juan · Hosted on GitHub Pages · Older duplicate files live in <code>/archive</code>
-</footer>
+<div class="wrap">
+  <div id="sections"></div>
+  <div class="empty" id="empty">No lessons match that search. 🔍</div>
+</div>
+
+<footer>Maintained by Juan · Hosted on GitHub Pages · Older duplicate files live in <code>/archive</code></footer>
+
+<script>
+var S='s',A='a',E='e';
+function L(label,href,t){return {label:label,href:href,t:t||S};}
+var COURSES=[
+ {id:"zero",name:"English from Zero",emoji:"🎓",cc:"#3b82f6",numbered:true,
+  sub:"A 34-lesson journey through the tenses and core B1→B2 skills.",
+  lessons:[
+   {b:"01",t:"Past Simple",l:[L("Slides","Class_Slides_Past_Simple_1.html"),L("Activity","Student_Activity_Past_Simple.html",A)]},
+   {b:"02",t:"Past Continuous",l:[L("Slides","Class_Slides_PastContinuous.html"),L("Activity","Student_Activity_PastContinuous.html",A),L("Past Tenses Roulette","Roulette_PastTenses.html",E)]},
+   {b:"03",t:"Used to",l:[L("Slides","Class_Slides_UsedTo.html"),L("Activity","Activity_UsedTo.html",A)]},
+   {b:"04",t:"Present Perfect",l:[L("Slides","Class_Slides_PresentPerfect.html"),L("Activity","Activity_PresentPerfect.html",A)]},
+   {b:"05",t:"Ice-Breaker & Adverbs of Frequency",l:[L("Spinner","IceBreaker_Spinner.html"),L("Conversation Cards","IceBreaker_Breakout_1.html",A),L("Adverbs","Activity_AdverbPosition.html",E),L("Speaking Board","Game_SpeakingBoard.html",E)]},
+   {b:"06",t:"Present Perfect vs Past Simple",l:[L("Slides","Class_Slides_PPvsPS.html"),L("Activity","Activity_PPvsPS.html",A)]},
+   {b:"07",t:"Present Perfect Continuous",l:[L("Slides","Class_Slides_PPContinuous.html"),L("Speaking Board","Game_SpeakingBoard.html",A)]},
+   {b:"08",t:"Present Simple vs Present Continuous",l:[L("Slides","Class_Slides_PresentSimpleCont.html"),L("Activity","Activity_PresentSimpleCont.html",A)]},
+   {b:"09",t:"Future — will & going to",l:[L("Slides","Class_Slides_Future.html"),L("Activity","Activity_Future.html",A)]},
+   {b:"10",t:"Future Continuous",l:[L("Slides","Class_Slides_FutureCont.html"),L("Activity","Activity_FutureCont.html",A)]},
+   {b:"11",t:"Future Perfect",l:[L("Slides","Class_Slides_FuturePerfect.html"),L("Activity","Activity_FuturePerfect.html",A)]},
+   {b:"12",t:"Final Exam — Tenses",l:[L("Exam","Exam_Tenses.html"),L("Speaking Rubric","Rubric_Speaking.html",E),L("After: First Conditional","Class_Slides_FirstConditional.html",E)]},
+   {b:"13",t:"Unit 1 · Reading — Are We Addicted to Our Screens?",l:[L("Slides","Class_Slides_Reading_Tech.html"),L("Activity","Activity_Reading_Tech.html",A)]},
+   {b:"14",t:"Unit 1 · Listening — Social Media & Teenage Health",l:[L("Slides","Class_Slides_Listening_Tech.html"),L("Activity","Activity_Listening_Tech.html",A)]},
+   {b:"15",t:"Unit 2 · Reading — Do You Still Need a Degree?",l:[L("Slides","Class_Slides_Reading_Work.html"),L("Activity","Activity_Reading_Work.html",A)]},
+   {b:"16",t:"Unit 2 · Listening — What Is the Future of Work?",l:[L("Slides","Class_Slides_Listening_Work.html"),L("Activity","Activity_Listening_Work.html",A)]},
+   {b:"17",t:"Comparatives — Part 1",l:[L("Slides","Class_Slides_Comparatives_1.html"),L("Activity","Activity_Comparatives.html",A)]},
+   {b:"18",t:"Comparatives — Part 2",l:[L("Slides","Class_Slides_Comparatives2.html"),L("Activity","Activity_Comparatives2.html",A)]},
+   {b:"19",t:"Unit 3 · Reading — Health & Living",l:[L("Slides","Class_Slides_Reading_Health.html"),L("Activity","Activity_Reading_Health.html",A)]},
+   {b:"20",t:"Unit 3 · Listening — Health & Living",l:[L("Slides","Class_Slides_Listening_Health.html"),L("Activity","Activity_Listening_Health.html",A)]},
+   {b:"21",t:"Superlatives — Part 1",l:[L("Slides","Class_Slides_Superlatives.html"),L("Activity","Activity_Superlatives.html",A)]},
+   {b:"22",t:"Superlatives — Part 2",l:[L("Slides","Class_Slides_Superlatives2.html"),L("Activity","Activity_Superlatives2.html",A)]},
+   {b:"23",t:"Unit 4 · Reading — The Art of Slow Travel",l:[L("Slides","Class_Slides_Reading_Travel.html"),L("Activity","Activity_Reading_Travel.html",A)]},
+   {b:"24",t:"Unit 4 · Listening — A Month in Vietnam",l:[L("Slides","Class_Slides_Listening_Travel.html"),L("Activity","Activity_Listening_Travel.html",A)]},
+   {b:"25",t:"Unit 4 · Grammar — Active & Passive Voice",l:[L("Slides","Class_Slides_Passive_Voice.html"),L("Activity","Activity_Passive_Voice.html",A)]},
+   {b:"26",t:"Unit 5 · Reading — Home Sweet Home",l:[L("Slides","Class_Slides_Reading_Home.html"),L("Activity","Activity_Reading_Home.html",A)]},
+   {b:"27",t:"Unit 5 · Listening — The Decluttering Trend (BBC)",l:[L("Slides","Class_Slides_Listening_Home.html"),L("Activity","Activity_Listening_Home.html",A)]},
+   {b:"28",t:"Unit 5 · Grammar — Second Conditional",l:[L("Slides","Class_Slides_Second_Conditional.html"),L("Activity","Activity_Second_Conditional.html",A)]},
+   {b:"29",t:"Unit 6 · Reading — Where Does It All Go?",l:[L("Slides","Class_Slides_Reading_Money.html"),L("Activity","Activity_Reading_Money.html",A)]},
+   {b:"30",t:"Unit 6 · Listening — Money and Lifestyle (BBC)",l:[L("Slides","Class_Slides_Listening_Money.html"),L("Activity","Activity_Listening_Money.html",A)]},
+   {b:"31",t:"Unit 6 · Grammar — Modals of Deduction",l:[L("Slides","Class_Slides_Modals_Deduction.html"),L("Activity","Activity_Modals_Deduction.html",A)]},
+   {b:"32",t:"Unit 7 · Reading — Every Little Helps",l:[L("Slides","Class_Slides_Reading_Environment.html"),L("Activity","Activity_Reading_Environment.html",A)]},
+   {b:"33",t:"Unit 7 · Listening — Help the Environment (BBC)",l:[L("Slides","Class_Slides_Listening_Environment.html"),L("Activity","Activity_Listening_Environment.html",A)]},
+   {b:"34",t:"Unit 7 · Grammar — Question Tags",l:[L("Slides","Class_Slides_Question_Tags.html"),L("Activity","Activity_Question_Tags.html",A)]}
+  ]},
+ {id:"extras",name:"More Grammar & Skills",emoji:"🧩",cc:"#14b8a6",
+  sub:"Standalone lessons and shared resources.",
+  lessons:[
+   {b:"★",t:"Present Perfect — Simple vs Continuous",l:[L("Slides","Class_Slides_PPSimpleVsCont.html"),L("Activity","Activity_PPSimpleVsCont.html",A)]},
+   {b:"★",t:"Review — Let's Polish Your Stories",l:[L("Review Class","Review_Class_Slides_Adverbs.html")]},
+   {b:"★",t:"Reading — Microchips Save Lives",l:[L("Activity","student_activities_2.html",A)]}
+  ]},
+ {id:"celta",name:"CELTA — Teaching Practice",emoji:"🎯",cc:"#8b5cf6",
+  sub:"Assessed teaching-practice lessons (TP2–TP8) with slides, activities and teacher scripts.",
+  lessons:[
+   {b:"TP2",t:"Do & Make Collocations",l:[L("Slides","Class_Slides_TP2_2.html"),L("Activity","Student_Activity_TP2_3.html",A)]},
+   {b:"TP4",t:"Future — Plans & Arrangements",l:[L("Slides","Class_Slides_TP4_5.html"),L("Activity","Student_Activity_TP4_3.html",A)]},
+   {b:"TP5",t:"Speaking — Celebrity Worship",l:[L("Slides","Class_Slides_TP5_4.html"),L("Useful Language","Activity_Useful_Language_TP5_1.html",A),L("Teacher Script","Teacher_Script_TP5_3.html",E)]},
+   {b:"TP6",t:"Functional Language — Two Witnesses",l:[L("Slides","Class_Slides_TP6_4.html"),L("Discovery Tasks","Discovery_Tasks_TP6_2.html",A),L("Teacher Script","Teacher_Script_TP6_5.html",E)]},
+   {b:"TP7",t:"Grammar — Past Modals of Deduction",l:[L("Slides","class_slides_TP7_2.html"),L("Activity","student_activity_TP7_2.html",A),L("Teacher Script","Teacher_Script_TP7_3.html",E)]},
+   {b:"TP8",t:"Writing — Travel Brochure",l:[L("Slides","class_slides_TP8_6.html"),L("Activity","student_activity_TP8_16.html",A),L("Teacher Script","Teacher_Script_TP8_4.html",E)]}
+  ]},
+ {id:"core1",name:"Core 1 — Work & School",emoji:"💼",cc:"#6366f1",
+  sub:"Topic-based lessons built on authentic, real-world materials.",
+  lessons:[
+   {b:"R1",t:"The Four-Day Week — Reading",l:[L("Slides","Class_Slides_Reading_FourDayWeek.html"),L("Activity","Activity_Reading_FourDayWeek.html",A)]},
+   {b:"L1",t:"The Four-Day Week — Listening (TED)",l:[L("Slides","Class_Slides_Listening_FourDayWeek.html"),L("Activity","Activity_Listening_FourDayWeek.html",A)]},
+   {b:"R2",t:"How to Survive Meetings — Reading",l:[L("Slides","Class_Slides_Reading_Meetings.html"),L("Activity","Activity_Reading_Meetings.html",A)]},
+   {b:"L2",t:"How to Survive Meetings — Listening (TED)",l:[L("Slides","Class_Slides_Listening_Meetings.html"),L("Activity","Activity_Listening_Meetings.html",A)]},
+   {b:"R3",t:"Talk About Your Job & Experience — Reading",l:[L("Slides","Class_Slides_Reading_Experience.html"),L("Activity","Activity_Reading_Experience.html",A)]},
+   {b:"L3",t:"Talk About Your Job & Experience — Listening (TED)",l:[L("Slides","Class_Slides_Listening_Experience.html"),L("Activity","Activity_Listening_Experience.html",A)]},
+   {b:"R4",t:"Describe Your Future / What You Want To Be — Reading",l:[L("Slides","Class_Slides_Reading_Future.html"),L("Activity","Activity_Reading_Future.html",A)]},
+   {b:"L4",t:"Describe Your Future — Listening: Following Your Dreams (BBC)",l:[L("Slides","Class_Slides_Listening_Future.html"),L("Activity","Activity_Listening_Future.html",A)]},
+   {b:"✉️",t:"Messages & Professional Emails — Reading (Writing)",l:[L("Slides","Class_Slides_Reading_Emails.html"),L("Activity","Activity_Reading_Emails.html",A)]},
+   {b:"📧",t:"Professional Emails — Listening: Writing an Email (BBC)",l:[L("Slides","Class_Slides_Listening_Emails.html"),L("Activity","Activity_Listening_Emails.html",A)]}
+  ]},
+ {id:"core2",name:"Core 2 — Everyday Conversations",emoji:"💬",cc:"#10b981",
+  sub:"Social, daily-life English on authentic materials, with target language & MFP.",
+  lessons:[
+   {b:"🍽️",t:"Eating Out & Food — Reading",l:[L("Slides","Class_Slides_Reading_EatingOut.html"),L("Activity","Activity_Reading_EatingOut.html",A)]},
+   {b:"🍤",t:"Eating Out & Food — Listening: The Hidden Life of Buffets (BBC)",l:[L("Slides","Class_Slides_Listening_EatingOut.html"),L("Activity","Activity_Listening_EatingOut.html",A)]},
+   {b:"🧮",t:"Eating Out & Food — Grammar: Countable/Uncountable & Quantifiers",l:[L("Slides","Class_Slides_Quantifiers.html"),L("Activity","Activity_Quantifiers.html",A)]},
+   {b:"🧭",t:"Getting Around & Directions — Reading: Why Do Some People Never Get Lost?",l:[L("Slides","Class_Slides_Reading_GettingAround.html"),L("Activity","Activity_Reading_GettingAround.html",A)]},
+   {b:"🚄",t:"Getting Around & Directions — Listening: The Future of Transport (BBC)",l:[L("Slides","Class_Slides_Listening_GettingAround.html"),L("Activity","Activity_Listening_GettingAround.html",A)]},
+   {b:"🗺️",t:"Getting Around & Directions — Vocabulary: Street & City Words",l:[L("Slides","Class_Slides_Vocab_GettingAround.html"),L("Activity","Activity_Vocab_GettingAround.html",A)]},
+   {b:"🛍️",t:"Shopping & Money — Reading: Are You a Smart Shopper?",l:[L("Slides","Class_Slides_Reading_Shopping.html"),L("Activity","Activity_Reading_Shopping.html",A)]},
+   {b:"🧛",t:"Shopping & Money — Listening: Vampire Shoppers (BBC)",l:[L("Slides","Class_Slides_Listening_Shopping.html"),L("Activity","Activity_Listening_Shopping.html",A)]},
+   {b:"🧑‍🤝‍🧑",t:"Describing People — Reading: What's He Like?",l:[L("Slides","Class_Slides_Reading_People.html"),L("Activity","Activity_Reading_People.html",A)]},
+   {b:"🤝",t:"Describing People — Listening: Building Rapport (BBC)",l:[L("Slides","Class_Slides_Listening_People.html"),L("Activity","Activity_Listening_People.html",A)]},
+   {b:"📰",t:"News & Opinions — Reading: What's Going On?",l:[L("Slides","Class_Slides_Reading_News.html"),L("Activity","Activity_Reading_News.html",A)]},
+   {b:"🕵️",t:"News & Opinions — Listening: Spot the Fake (British Council)",l:[L("Slides","Class_Slides_Listening_News.html"),L("Activity","Activity_Listening_News.html",A)]}
+  ]},
+ {id:"core3",name:"Core 3 — Technology & The World",emoji:"🤖",cc:"#06b6d4",
+  sub:"Discussion-driven B2 lessons on AI and modern life — THE SIGNAL.",
+  lessons:[
+   {b:"🤖",t:"Living with AI — Reading",l:[L("Slides","Class_Slides_Reading_AI.html"),L("Activity","Activity_Reading_AI.html",A)]},
+   {b:"🎙️",t:"What Can AI Do? — Listening (BBC video)",l:[L("Slides","Class_Slides_Listening_AI.html"),L("Activity","Activity_Listening_AI.html",A)]},
+   {b:"✍️",t:"Should We Trust AI? — Writing (Essay)",l:[L("Slides","Class_Slides_Writing_AI.html"),L("Activity","Activity_Writing_AI.html",A)]}
+  ]},
+ {id:"core4",name:"Core 4 — Culture & Entertainment",emoji:"🎬",cc:"#ec4899",
+  sub:"Film, music, series and the words to talk about them — THE MARQUEE.",
+  lessons:[
+   {b:"📺",t:"Just One More Episode — Reading (Streaming & TV)",l:[L("Slides","Class_Slides_Reading_Culture.html"),L("Activity","Activity_Reading_Culture.html",A)]},
+   {b:"🎸",t:"Becoming a Musician — Listening (Music · BBC)",l:[L("Slides","Class_Slides_Listening_Culture.html"),L("Activity","Activity_Listening_Culture.html",A)]},
+   {b:"🎭",t:"Relative Clauses — Grammar (Describing Film, Music & TV)",l:[L("Slides","Class_Slides_Grammar_Culture.html"),L("Activity","Activity_Grammar_Culture.html",A)]}
+  ]},
+ {id:"oneonone",name:"One-on-One Classes",emoji:"🎙️",cc:"#f59e0b",
+  sub:"Tailored solo sessions — speaking-focused, mixed-topic practice with a teacher run sheet.",
+  lessons:[
+   {b:"🎙️",t:"Speaking Session — Mixed Practice (Work + Everyday)",l:[L("Slides","Class_Slides_OneOnOne_Mixed.html"),L("Activity","Activity_OneOnOne_Mixed.html",A),L("Teacher Script","Teacher_Script_OneOnOne.html",E)]}
+  ]},
+ {id:"coresummary",name:"Core Summary",emoji:"👥",cc:"#f97316",
+  sub:"Mixed-review sessions pulling Core 1 + Core 2 together — for pairs, with a teacher run sheet.",
+  lessons:[
+   {b:"👥",t:"Pair Speaking — Mixed Review (Work + Everyday)",l:[L("Slides","Class_Slides_CoreSummary_Pair.html"),L("Activity","Activity_CoreSummary_Pair.html",A),L("Teacher Script","Teacher_Script_CoreSummary_Pair.html",E)]}
+  ]}
+];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+var total=COURSES.reduce(function(n,c){return n+c.lessons.length;},0);
+
+/* stats */
+document.getElementById('stats').innerHTML=
+  '<span class="stat"><b>'+total+'</b> lessons</span>'+
+  '<span class="stat"><b>'+COURSES.length+'</b> courses</span>'+
+  '<span class="stat">Slides · Activities · Extras</span>';
+
+/* chips */
+var chips=document.getElementById('chips');
+function mkChip(id,label,count,cc){
+  var b=document.createElement('button'); b.className='chip'; b.setAttribute('data-id',id);
+  if(cc) b.style.setProperty('--cc',cc);
+  b.innerHTML=esc(label)+(count!=null?'<span class="ct">'+count+'</span>':'');
+  b.onclick=function(){ setCourse(id); };
+  chips.appendChild(b);
+}
+mkChip('all','All',total,'#818cf8');
+COURSES.forEach(function(c){ mkChip(c.id,c.emoji+' '+c.name,c.lessons.length,c.cc); });
+
+/* sections */
+var secWrap=document.getElementById('sections');
+COURSES.forEach(function(c){
+  var sec=document.createElement('section'); sec.id='sec-'+c.id; sec.setAttribute('data-id',c.id);
+  sec.style.setProperty('--cc',c.cc);
+  var cards=c.lessons.map(function(ls){
+    var badge=c.numbered?('Class '+ls.b):ls.b;
+    var links=ls.l.map(function(x){return '<a class="l-'+x.t+'" href="'+x.href+'">'+esc(x.label)+'</a>';}).join('');
+    return '<div class="card" data-txt="'+esc((ls.t+' '+badge).toLowerCase())+'">'+
+      '<span class="badge">'+esc(badge)+'</span>'+
+      '<h3>'+esc(ls.t)+'</h3><div class="links">'+links+'</div></div>';
+  }).join('');
+  sec.innerHTML='<div class="sec-head"><span class="emoji">'+c.emoji+'</span><h2>'+esc(c.name)+'</h2>'+
+    '<span class="sc">'+c.lessons.length+' lessons</span></div>'+
+    '<p class="sec-sub">'+esc(c.sub)+'</p><div class="grid">'+cards+'</div>';
+  secWrap.appendChild(sec);
+});
+
+/* filtering */
+var state={course:'all',q:''};
+function setCourse(id){ state.course=id; var qEl=document.getElementById('q'); apply(); window.scrollTo({top:0}); }
+function apply(){
+  var q=state.q.trim().toLowerCase();
+  document.querySelectorAll('.chip').forEach(function(ch){
+    ch.classList.toggle('active', ch.getAttribute('data-id')===(q?'all':state.course));
+  });
+  var anyVisible=false;
+  document.querySelectorAll('section').forEach(function(sec){
+    var sid=sec.getAttribute('data-id');
+    var courseOK = q ? true : (state.course==='all'||state.course===sid);
+    var shown=0;
+    sec.querySelectorAll('.card').forEach(function(card){
+      var match = courseOK && (!q || card.getAttribute('data-txt').indexOf(q)>=0);
+      card.style.display=match?'':'none'; if(match)shown++;
+    });
+    sec.style.display=(courseOK&&shown>0)?'':'none';
+    if(courseOK&&shown>0)anyVisible=true;
+  });
+  document.getElementById('empty').style.display=anyVisible?'none':'block';
+}
+document.getElementById('q').addEventListener('input',function(e){ state.q=e.target.value; apply(); });
+apply();
+</script>
 </body>
 </html>
