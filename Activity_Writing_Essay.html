@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 First Writing — The Essay</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #15314e 0%, #0e2338 48%, #081524 100%); min-height:100vh; padding:40px 18px 80px; color:#E6EEF8; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8EA2BB; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#FBBF24; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#FBBF24; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#8EA2BB; }
+.intro .prompt { background:rgba(125,211,252,0.07); border:1px solid rgba(125,211,252,0.2); border-radius:12px; padding:16px 20px; }
+.intro .prompt .q { font-family:'Lora',serif; font-size:17px; color:#F4F9FF; font-style:italic; }
+.intro .prompt .notes { font-size:14px; color:#A9BACF; margin-top:10px; line-height:1.8; }
+.intro .plan { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+.intro .plan span { font-family:'Space Grotesk'; font-size:12px; font-weight:700; padding:7px 14px; border-radius:8px; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#DCE6F2; }
+.tab.active { border-bottom-color:#FBBF24; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#F4F9FF; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#4d6a85; }
+.tab-label { font-size:13px; font-weight:800; color:#8EA2BB; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A9BACF; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#DCE6F2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#4d6a85; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#DCE6F2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#8EA2BB; flex:0 0 auto; }
+.opt:hover { border-color:#FBBF24; background:rgba(251,191,36,0.08); }
+.opt.sel { border-color:#FBBF24; background:rgba(251,191,36,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#DCE6F2; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#FBBF24; }
+.tfd button.sel { border-color:#FBBF24; background:rgba(251,191,36,0.15); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#DCE6F2; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#4d6a85; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#8EA2BB; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2c4a63; border-radius:10px; padding:7px 14px; color:#fff; width:210px; }
+input.ti:focus { outline:none; border-color:#FBBF24; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#DCE6F2; }
+.coll input.ti { width:130px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#8EA2BB; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#FBBF24; color:#081524; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#8EA2BB; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#FBBF24; color:#fff; }
+.score { font-size:14px; color:#A9BACF; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.model { margin-top:26px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:4px 22px; }
+.model summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#FCD34D; font-weight:700; padding:14px 0; }
+.model .mbody { font-family:'Lora',serif; font-size:15px; line-height:1.9; color:#C7D6E6; padding-bottom:16px; }
+.model .mbody b { color:#7DD3FC; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; text-transform:uppercase; display:block; margin:10px 0 2px; }
+.stretch { margin-top:22px; background:rgba(125,211,252,0.06); border:1px solid rgba(125,211,252,0.25); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#7DD3FC; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#C7D6E6; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Exam Skills · B2 First · Writing Part 1</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>SUMMIT</span></div><div class="rt">THE ESSAY</div></div>
+    <div class="prompt">
+      <div class="q">"Some people think technology makes us less sociable. Do you agree?"</div>
+      <div class="notes">Notes — write about: <strong>1.</strong> communication &nbsp; <strong>2.</strong> free time &nbsp; <strong>3.</strong> …(your own idea)</div>
+    </div>
+    <div class="plan">
+      <span style="background:rgba(251,191,36,0.16); color:#FCD34D;">¶1 Introduction</span>
+      <span style="background:rgba(125,211,252,0.16); color:#7DD3FC;">¶2 First point</span>
+      <span style="background:rgba(52,211,153,0.16); color:#34D399;">¶3 Second point</span>
+      <span style="background:rgba(251,191,36,0.16); color:#FCD34D;">¶4 Conclusion</span>
+    </div>
+    <div style="margin-top:14px; font-size:14px; color:#A9BACF; line-height:1.7;">🎯 140–190 words · <strong style="color:#7DD3FC;">formal/neutral</strong> register · no contractions or slang · link your ideas clearly.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Which part?</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Right register?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Essay phrases</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Task 1 — Which part of the essay? 🎯</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Where does each sentence belong? Choose <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#7DD3FC;">Task 2 — Right register? ✍️</div>
+    <div class="sub" style="border-color:#7DD3FC; color:#7dd3fc;">An essay is <strong>formal/neutral</strong>. Is each phrase suitable, or too informal?</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkCH()">Check</button><button class="btn btn-s" onclick="resetCH()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">Each sentence has one <span style="color:#F87171;">crossed-out</span> error (grammar, linker or register). Type the fix.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Task 4 — Complete the essay phrase 🧩</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Fill each gap with the missing word to make a useful essay chunk.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="model">
+    <summary>📄 Model essay — structure reference (160 words)</summary>
+    <div class="mbody">
+      <b>Introduction</b>It is often argued that modern technology is making people less sociable. While this view has some truth, I believe the reality is more balanced.
+      <b>First point</b>On the one hand, it is true that people now spend hours on their phones instead of talking face to face. Furthermore, family meals are often interrupted by notifications, which can weaken real relationships.
+      <b>Second point</b>On the other hand, technology also connects us. Thanks to video calls and social media, we can stay in touch with friends abroad and meet people who share our interests. In my view, this is a clear social benefit.
+      <b>Conclusion</b>To sum up, although technology can reduce face-to-face contact, it also creates new ways to connect. Overall, I would argue that it depends on how, not how much, we use it.
+    </div>
+  </details>
+
+  <div class="stretch">
+    <div class="sh">⛰️ C1 Stretch — beyond the essay</div>
+    <p>C1 Advanced keeps the compulsory essay but adds other genres in Part 2: a <strong style="color:#FCD34D;">proposal</strong> (recommendations for a decision-maker, with headings), a <strong style="color:#FCD34D;">report</strong> (factual, neutral, headed sections) and a <strong style="color:#FCD34D;">review</strong> (evaluate + recommend). The register climbs: nominalisation ("the implementation of…"), hedging ("this would arguably…") and more precise linking. Try turning the essay above into a short proposal with two headed recommendations.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"\"Nowadays, many people argue that technology harms our social lives.\"", correct:"Introduction", opts:["Introduction","First main point","Second main point","Conclusion"]},
+ {q:"\"Firstly, phones can replace real conversation.\"", correct:"First main point", opts:["Introduction","First main point","Second main point","Conclusion"]},
+ {q:"\"On the other hand, technology helps us stay in touch.\"", correct:"Second main point", opts:["Introduction","First main point","Second main point","Conclusion"]},
+ {q:"\"To sum up, the effect depends on how we use it.\"", correct:"Conclusion", opts:["Introduction","First main point","Second main point","Conclusion"]},
+ {q:"\"This essay will examine both sides of the argument.\"", correct:"Introduction", opts:["Introduction","First main point","Second main point","Conclusion"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=3?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var CH=[
+ {s:"\"In my opinion, schools should act.\"", a:"Good"},
+ {s:"\"Loads of people reckon it's rubbish.\"", a:"Informal"},
+ {s:"\"Furthermore, there are economic benefits.\"", a:"Good"},
+ {s:"\"Also, another thing is it's kinda cheap.\"", a:"Informal"},
+ {s:"\"To conclude, both views have merit.\"", a:"Good"},
+ {s:"\"It's a no-brainer, right?\"", a:"Informal"}
+];
+var chSel={}; var chChecked=false; var CHOPTS=['Good','Informal'];
+function renderCH(){ var c=document.getElementById('t1'); c.innerHTML='';
+  CH.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    CHOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(chSel[qi]===opt?'sel':''); b.textContent=(opt==='Good'?'Essay-appropriate':'Too informal'); b.setAttribute('data-v',opt);
+      b.onclick=function(){ if(chChecked)return; chSel[qi]=opt; renderCH(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkCH(){ chChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  CH.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ var v=b.getAttribute('data-v'); if(v===q.a)b.classList.add('correct'); else if(chSel[qi]===v)b.classList.add('wrong'); }); if(chSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+CH.length+' correct'+(correct===CH.length?' 🎉':''); s.className='score '+(correct===CH.length?'good':(correct>=CH.length/2?'partial':'bad')); if(correct===CH.length)markDone(1); }
+function resetCH(){ chChecked=false; chSel={}; document.getElementById('s1').textContent=''; renderCH(); }
+
+var FIX=[
+ {pre:"I think that technology ", bad:"have changed", post:" our lives.", accept:["has changed"]},
+ {pre:"Firstly, there ", bad:"is lots of", post:" advantages.", accept:["are lots of","are a lot of"]},
+ {pre:"Secondly, people ", bad:"should to recycle", post:" more.", accept:["should recycle"]},
+ {pre:"It is cheaper. ", bad:"In the other hand", post:", it is slower.", accept:["on the other hand"]},
+ {pre:"Furthermore, ", bad:"kids", post:" spend too long online.", accept:["children","young people"]},
+ {pre:"To sum up, I think ", bad:"that is", post:" important to act now.", accept:["it is","it's"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"To ", post:" with, let's consider the cost.", accept:["begin","start"], hint:"To ___ with = firstly"},
+ {pre:"On the ", post:" hand, there are drawbacks.", accept:["other"], hint:"contrast linker"},
+ {pre:"In my ", post:", schools should act now.", accept:["opinion","view"], hint:"give your viewpoint"},
+ {pre:"To ", post:" up, the benefits are clear.", accept:["sum"], hint:"To ___ up = conclude"},
+ {pre:"This essay will ", post:" both sides of the issue.", accept:["discuss","examine","consider","explore"], hint:"introduction verb"},
+ {pre:"", post:", I would argue the first option is better.", accept:["overall","in conclusion","to conclude","all in all"], hint:"conclusion opener"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderCH(); renderFix(); renderColl();
+</script>
+</body>
+</html>
