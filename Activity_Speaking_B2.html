@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 First Speaking — Exam Skills Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #15314e 0%, #0e2338 48%, #081524 100%); min-height:100vh; padding:40px 18px 80px; color:#E6EEF8; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#8EA2BB; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#FBBF24; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#FBBF24; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#8EA2BB; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#DCE6F2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#7DD3FC; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#DCE6F2; }
+.tab.active { border-bottom-color:#FBBF24; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#F4F9FF; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#4d6a85; }
+.tab-label { font-size:13px; font-weight:800; color:#8EA2BB; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#A9BACF; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#DCE6F2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#4d6a85; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#DCE6F2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#8EA2BB; flex:0 0 auto; }
+.opt:hover { border-color:#FBBF24; background:rgba(251,191,36,0.08); }
+.opt.sel { border-color:#FBBF24; background:rgba(251,191,36,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.1) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#DCE6F2; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#FBBF24; }
+.tfd button.sel { border-color:#FBBF24; background:rgba(251,191,36,0.15); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F87171 !important; background:rgba(248,113,113,0.12) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#DCE6F2; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#4d6a85; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F87171; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#8EA2BB; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #2c4a63; border-radius:10px; padding:7px 14px; color:#fff; width:190px; }
+input.ti:focus { outline:none; border-color:#FBBF24; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F87171; background:rgba(248,113,113,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#DCE6F2; }
+.coll input.ti { width:130px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#8EA2BB; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#FBBF24; color:#081524; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#8EA2BB; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#FBBF24; color:#fff; }
+.score { font-size:14px; color:#A9BACF; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.prompts { margin-top:30px; }
+.prompts h2 { font-family:'Space Grotesk'; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#FBBF24; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+.pcard { background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:18px 22px; margin-bottom:14px; border-left:3px solid var(--c,#FBBF24); }
+.pcard .ph { font-family:'Space Grotesk'; font-size:12px; letter-spacing:1px; color:var(--c,#FBBF24); font-weight:700; text-transform:uppercase; margin-bottom:4px; }
+.pcard .pt { font-size:13px; color:#8EA2BB; margin-bottom:10px; }
+.pcard ul { margin:0; padding-left:20px; }
+.pcard li { font-family:'Lora',serif; font-size:16px; color:#DCE6F2; line-height:1.9; }
+.pcard .opts2 { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.pcard .opts2 span { background:rgba(125,211,252,0.12); color:#7DD3FC; padding:6px 13px; border-radius:8px; font-size:14px; font-family:'Lora',serif; }
+.stretch { margin-top:26px; background:rgba(125,211,252,0.06); border:1px solid rgba(125,211,252,0.25); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#7DD3FC; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#C7D6E6; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Exam Skills · B2 First · Speaking</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>SUMMIT</span></div><div class="rt">SPEAKING — ALL FOUR PARTS</div></div>
+    <div class="tag">~14 minutes · in pairs · with an examiner &amp; an assessor</div>
+    <div class="ex"><strong style="color:#FCD34D;">Part 1</strong> interview · <strong style="color:#FCD34D;">Part 2</strong> long turn (compare 2 photos) · <strong style="color:#FCD34D;">Part 3</strong> collaborative task (discuss + decide) · <strong style="color:#FCD34D;">Part 4</strong> discussion</div>
+    <div style="margin-top:14px; font-size:14px; color:#A9BACF; line-height:1.7;">🎯 First master the <strong style="color:#7DD3FC;">functional language</strong> (comparing, speculating, negotiating, agreeing) in the tasks below — then use the prompt cards to do the real thing.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Which phrase?</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Compare or speculate?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Complete the phrase</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Task 1 — Which phrase does the job? 🎯</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Choose the phrase that fits the function — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#7DD3FC;">Task 2 — Comparing or speculating? 🔎</div>
+    <div class="sub" style="border-color:#7DD3FC; color:#7dd3fc;">In the long turn you do both. Is each phrase <strong>comparing</strong> the photos or <strong>speculating</strong> about them?</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkCH()">Check</button><button class="btn btn-s" onclick="resetCH()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F87171;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F87171; color:#fca5a5;">Fix the slip in each spoken sentence — the errors examiners hear most.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Task 4 — Complete the phrase 🧩</div>
+    <div class="sub" style="border-color:#FBBF24; color:#fcd34d;">Fill each gap to build a useful speaking chunk.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <div class="prompts">
+    <h2>🎤 Live practice — speaking prompts</h2>
+    <div class="pcard" style="--c:#FBBF24;">
+      <div class="ph">Part 1 · Interview (2–3 min)</div>
+      <div class="pt">Answer in 2–3 sentences — don't just say "yes". Add a reason or example.</div>
+      <ul>
+        <li>Where are you from, and what's it like to live there?</li>
+        <li>Do you work or study? Tell us about it.</li>
+        <li>What do you enjoy doing in your free time?</li>
+        <li>What are your plans for the next few years?</li>
+      </ul>
+    </div>
+    <div class="pcard" style="--c:#7DD3FC;">
+      <div class="ph">Part 2 · Long turn (1 min each)</div>
+      <div class="pt">Candidate A: compare the two situations and say <em>why the people might have chosen them</em>. Candidate B: answer the short follow-up (30s).</div>
+      <ul>
+        <li><b>Photo A:</b> a group of students studying together in a library.</li>
+        <li><b>Photo B:</b> a person learning online alone at home.</li>
+      </ul>
+      <div class="pt" style="margin-top:8px;">Follow-up for B: <em>Which way of studying would you prefer?</em></div>
+    </div>
+    <div class="pcard" style="--c:#34D399;">
+      <div class="ph">Part 3 · Collaborative task (2–3 min)</div>
+      <div class="pt">Talk together: <strong>"How can people improve their English?"</strong> Discuss each option, then <strong>decide which TWO are the most effective</strong>.</div>
+      <div class="opts2"><span>watching series</span><span>taking a course</span><span>travelling abroad</span><span>using apps</span><span>speaking with friends</span></div>
+    </div>
+    <div class="pcard" style="--c:#FBBF24;">
+      <div class="ph">Part 4 · Discussion (3–4 min)</div>
+      <ul>
+        <li>Is it better to learn a language as a child or as an adult? Why?</li>
+        <li>Do you think technology will ever replace language teachers?</li>
+        <li>Why do some people find speaking harder than writing?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">⛰️ C1 Stretch — toward C1 Advanced Speaking</div>
+    <p>At C1 the long turn compares <strong style="color:#FCD34D;">three</strong> pictures (selecting, not describing all), the collaborative task is more <strong style="color:#FCD34D;">abstract</strong>, and Part 4 answers run longer. Aim for more precise, hedged language: "<em>it's conceivable that…</em>", "<em>arguably…</em>", "<em>that rather depends on…</em>", "<em>I'd be inclined to say…</em>". Re-do Part 3 above using two of these.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"You need to SPECULATE about a photo. Which fits best?", correct:"They might be celebrating something special.", opts:["They might be celebrating something special.","The main difference is the place.","Shall we decide now?","I couldn't agree more."]},
+ {q:"You want to COMPARE the two photos.", correct:"In the first picture people are working, whereas in the second they're relaxing.", opts:["In the first picture people are working, whereas in the second they're relaxing.","Perhaps it's early morning.","Let me think about that.","That's a really good point."]},
+ {q:"Your partner makes a suggestion and you want to AGREE.", correct:"That's a really good point.", opts:["That's a really good point.","It looks as if it's raining.","Both photos show a kitchen.","I'd imagine they're tired."]},
+ {q:"You want to START the Part 3 discussion.", correct:"Shall we begin with this one?", opts:["Shall we begin with this one?","Unlike the first photo, this is indoors.","They could be students.","In my view, it's wrong."]},
+ {q:"You need a moment to think (BUY TIME).", correct:"That's an interesting question — let me think.", opts:["That's an interesting question — let me think.","So, do we agree?","The difference is the weather.","Absolutely, you're right."]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=3?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var CH=[
+ {s:"\"It looks as if they're having a great time.\"", a:"Speculating"},
+ {s:"\"Both pictures show people outdoors.\"", a:"Comparing"},
+ {s:"\"They might be tourists.\"", a:"Speculating"},
+ {s:"\"Unlike the first photo, this one is indoors.\"", a:"Comparing"},
+ {s:"\"Perhaps it's the middle of winter.\"", a:"Speculating"},
+ {s:"\"The main difference is the location.\"", a:"Comparing"}
+];
+var chSel={}; var chChecked=false; var CHOPTS=['Comparing','Speculating'];
+function renderCH(){ var c=document.getElementById('t1'); c.innerHTML='';
+  CH.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+q.s+'</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    CHOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(chSel[qi]===opt?'sel':''); b.textContent=opt; b.setAttribute('data-v',opt);
+      b.onclick=function(){ if(chChecked)return; chSel[qi]=opt; renderCH(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkCH(){ chChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  CH.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ var v=b.getAttribute('data-v'); if(v===q.a)b.classList.add('correct'); else if(chSel[qi]===v)b.classList.add('wrong'); }); if(chSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+CH.length+' correct'+(correct===CH.length?' 🎉':''); s.className='score '+(correct===CH.length?'good':(correct>=CH.length/2?'partial':'bad')); if(correct===CH.length)markDone(1); }
+function resetCH(){ chChecked=false; chSel={}; document.getElementById('s1').textContent=''; renderCH(); }
+
+var FIX=[
+ {pre:"I think ", bad:"is", post:" a great idea.", accept:["it's","it is"]},
+ {pre:"", bad:"I'm agree", post:" with you.", accept:["i agree"]},
+ {pre:"", bad:"Both of pictures", post:" show a city.", accept:["both pictures"]},
+ {pre:"In my opinion, people ", bad:"should to travel", post:" more.", accept:["should travel"]},
+ {pre:"It ", bad:"depends of", post:" the situation.", accept:["depends on"]},
+ {pre:"She ", bad:"looks like tired", post:".", accept:["looks tired"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"In the first picture, ", post:" in the second they're outside.", accept:["whereas","while"], hint:"contrast linker"},
+ {pre:"It looks ", post:" if they're enjoying it.", accept:["as"], hint:"looks ___ if = speculate"},
+ {pre:"I see what you ", post:", but I'm not so sure.", accept:["mean"], hint:"polite disagreement"},
+ {pre:"Shall we ", post:" with this option?", accept:["start","begin","go"], hint:"open the discussion"},
+ {pre:"So, do we ", post:" that the first one is best?", accept:["agree"], hint:"reach a decision"},
+ {pre:"That's an interesting ", post:" — let me think.", accept:["question","point"], hint:"buy time"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderCH(); renderFix(); renderColl();
+</script>
+</body>
+</html>
