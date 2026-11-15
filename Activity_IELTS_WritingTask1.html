@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Academic Writing Task 1 — Describing Data</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EAB308; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#5EEAD4; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#5EEAD4; }
+.tab.active .tab-num { color:#5EEAD4; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#5EEAD4; background:rgba(94,234,212,0.08); }
+.opt.sel { border-color:#5EEAD4; background:rgba(94,234,212,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.tfd { display:flex; gap:8px; }
+.tfd button { flex:1; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px; font-size:13.5px; font-weight:800; color:#EBDCE2; cursor:pointer; font-family:'Nunito'; transition:all 0.12s; }
+.tfd button:hover { border-color:#5EEAD4; }
+.tfd button.sel { border-color:#5EEAD4; background:rgba(94,234,212,0.15); border-width:2px; }
+.tfd button.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.16) !important; color:#86EFC0 !important; }
+.tfd button.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.13) !important; color:#FCA5A5 !important; }
+.fix, .coll { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fix .fsent { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.fix .fsent .num, .coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; font-style:normal; }
+.fix .fsent .bad { color:#F43F5E; font-weight:700; text-decoration:line-through; }
+.frow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.frow .lab { font-size:13px; color:#B89BA6; font-weight:700; }
+input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:200px; }
+input.ti:focus { outline:none; border-color:#5EEAD4; }
+input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.sol { font-size:13px; color:#34D399; display:none; } .sol.show { display:inline; }
+.coll { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; }
+.coll input.ti { width:140px; margin:0 3px; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#5EEAD4; color:#0d2a26; } .btn-p:hover { background:#8df0e2; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#5EEAD4; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.model { margin-top:28px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:4px 22px; }
+.model summary { cursor:pointer; font-family:'Space Grotesk'; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; padding:14px 0; }
+.model .mbody { font-family:'Lora',serif; font-size:15px; line-height:1.9; color:#D6C3CB; padding-bottom:16px; }
+.model .mbody b { color:#FCD34D; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; text-transform:uppercase; display:block; margin:10px 0 2px; }
+.stretch { margin-top:22px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">IELTS Track · Academic Writing</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">IELTS · WRITING TASK 1</div></div>
+    <div class="tag">Describe a graph / chart / table / process · 150+ words · ~20 min</div>
+    <div class="ex">Report the <strong style="color:#5EEAD4;">main features</strong> and make <strong style="color:#5EEAD4;">comparisons</strong> — no opinions, no reasons, no "I think".</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 Structure: <strong style="color:#FCD34D;">Intro</strong> (paraphrase the question) → <strong style="color:#FCD34D;">Overview</strong> (2 biggest trends, no numbers) → <strong style="color:#FCD34D;">Details</strong> (data, grouped logically). The <em>overview</em> is the single most important sentence for your band.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Best phrase</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Up or down?</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Find &amp; fix</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Complete</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#5EEAD4;">Task 1 — Choose the best data phrase 🎯</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Pick the accurate, academic option — <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Task 2 — Increase or decrease? 📈</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Build your trend vocabulary. Does each verb describe a rise or a fall?</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkCH()">Check</button><button class="btn btn-s" onclick="resetCH()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#F43F5E;">Task 3 — Find &amp; fix 🔧</div>
+    <div class="sub" style="border-color:#F43F5E; color:#fca5a5;">Each sentence has one <span style="color:#F43F5E;">crossed-out</span> Task 1 error. Type the correction.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkFix()">Check</button><button class="btn btn-s" onclick="resetFix()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#5EEAD4;">Task 4 — Complete the data phrase 🧩</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Fill each gap to complete a useful Task 1 chunk.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkColl()">Check</button><button class="btn btn-s" onclick="resetColl()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <details class="model">
+    <summary>📊 Sample task + model overview</summary>
+    <div class="mbody">
+      <b>The task</b>The line graph below shows the number of visitors (in millions) to three museums in London between 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+      <b>Introduction (paraphrase)</b>The line graph illustrates how many people, in millions, visited three museums in London over a ten-year period from 2010 to 2020.
+      <b>Overview (the key sentence — trends, no data)</b>Overall, visitor numbers rose at all three museums over the period, with the British Museum consistently attracting the most visitors, whereas the Science Museum remained the least popular throughout.
+      <b>Detail (with data)</b>In 2010, the British Museum received around 6 million visitors, a figure which climbed steadily to roughly 8 million by 2020. The Science Museum, by contrast, started at just over 2 million and increased only gradually, reaching approximately 3 million…
+    </div>
+  </details>
+
+  <div class="stretch">
+    <div class="sh">🎓 Band booster</div>
+    <p>To push past band 6: <strong style="color:#FCD34D;">group data logically</strong> (don't describe every line separately), vary your language (rose / climbed / surged), and <strong style="color:#FCD34D;">approximate</strong> precisely (just over, roughly, approximately, nearly). Never give opinions or reasons — Task 1 is pure reporting. Compare this skill with Cambridge: CAE has no Task 1, so this is a genuinely IELTS-specific habit to build.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"Sales ___ sharply between 2010 and 2015.", correct:"rose", opts:["rose","raised","arised","are rising"]},
+ {q:"There was a ___ increase in prices over the decade.", correct:"gradual", opts:["gradual","gradually","graduate","grade"]},
+ {q:"The figure ___ at around 50% for three years.", correct:"remained stable", opts:["remained stable","stabled","stayed stable at","was stability"]},
+ {q:"Spending reached a ___ in December before falling.", correct:"peak", opts:["peak","top","summit","climax"]},
+ {q:"The number of users ___ from 2 to 5 million.", correct:"grew", opts:["grew","growed","was grown","are growing"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=3?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+var CH=[
+ {s:"plummeted", a:"Decrease"},
+ {s:"soared", a:"Increase"},
+ {s:"declined", a:"Decrease"},
+ {s:"climbed", a:"Increase"},
+ {s:"dipped", a:"Decrease"},
+ {s:"surged", a:"Increase"}
+];
+var chSel={}; var chChecked=false; var CHOPTS=['Increase','Decrease'];
+function renderCH(){ var c=document.getElementById('t1'); c.innerHTML='';
+  CH.forEach(function(q,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>“'+q.s+'”</div>';
+    var row=document.createElement('div'); row.className='tfd';
+    CHOPTS.forEach(function(opt){ var b=document.createElement('button'); b.className=(chSel[qi]===opt?'sel':''); b.textContent=opt; b.setAttribute('data-v',opt);
+      b.onclick=function(){ if(chChecked)return; chSel[qi]=opt; renderCH(); }; row.appendChild(b); });
+    d.appendChild(row); c.appendChild(d); }); }
+function checkCH(){ chChecked=true; var correct=0; var qs=document.querySelectorAll('#t1 .q');
+  CH.forEach(function(q,qi){ var btns=qs[qi].querySelectorAll('.tfd button'); btns.forEach(function(b){ var v=b.getAttribute('data-v'); if(v===q.a)b.classList.add('correct'); else if(chSel[qi]===v)b.classList.add('wrong'); }); if(chSel[qi]===q.a)correct++; });
+  var s=document.getElementById('s1'); s.textContent=correct+' / '+CH.length+' correct'+(correct===CH.length?' 🎉':''); s.className='score '+(correct===CH.length?'good':(correct>=CH.length/2?'partial':'bad')); if(correct===CH.length)markDone(1); }
+function resetCH(){ chChecked=false; chSel={}; document.getElementById('s1').textContent=''; renderCH(); }
+
+var FIX=[
+ {pre:"Sales increased ", bad:"of", post:" 10% in a year.", accept:["by"]},
+ {pre:"The number of tourists ", bad:"were", post:" rising steadily.", accept:["was"]},
+ {pre:"There was a ", bad:"sharply", post:" decline in sales.", accept:["sharp"]},
+ {pre:"The graph ", bad:"show", post:" the data clearly.", accept:["shows"]},
+ {pre:"It reached ", bad:"at its peak", post:" in May.", accept:["its peak"]},
+ {pre:"Prices rose ", bad:"to", post:" 20% over the period.", accept:["by"]}
+];
+var fixChecked=false;
+function renderFix(){ var c=document.getElementById('t2'); c.innerHTML='';
+  FIX.forEach(function(f,i){ var d=document.createElement('div'); d.className='fix';
+    d.innerHTML='<div class="fsent"><span class="num">'+String(i+1).padStart(2,'0')+'</span>'+f.pre+'<span class="bad">'+f.bad+'</span>'+f.post+'</div><div class="frow"><span class="lab">Correct it →</span><input class="ti" id="f'+i+'" autocomplete="off"><span class="sol" id="fs'+i+'"></span></div>';
+    c.appendChild(d); }); }
+function checkFix(){ fixChecked=true; var correct=0;
+  FIX.forEach(function(f,i){ var inp=document.getElementById('f'+i); var ok=f.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('fs'+i); if(ok)correct++; else{ sol.textContent='→ '+f.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s2'); s.textContent=correct+' / '+FIX.length+' correct'+(correct===FIX.length?' 🎉':''); s.className='score '+(correct===FIX.length?'good':(correct>=3?'partial':'bad')); if(correct===FIX.length)markDone(2); }
+function resetFix(){ fixChecked=false; document.getElementById('s2').textContent=''; renderFix(); }
+
+var COLL=[
+ {pre:"Sales rose ", post:" 15% in a single year.", accept:["by"], hint:"+ amount of change"},
+ {pre:"There was a ", post:" rise in demand (big &amp; fast).", accept:["sharp","dramatic","steep","significant"], hint:"adjective"},
+ {pre:"The figure ", post:" at 40% (no change).", accept:["remained","stayed","stabilised","stabilized"], hint:"stayed the same"},
+ {pre:"Prices reached a ", post:" of $90 in July.", accept:["peak","high","maximum"], hint:"highest point"},
+ {pre:"Overall, the trend was ", post:" (going up).", accept:["upward","upwards","increasing","rising"], hint:"direction"},
+ {pre:"The chart ", post:" the number of visitors.", accept:["shows","illustrates","depicts","presents"], hint:"introduction verb"}
+];
+var collChecked=false;
+function renderColl(){ var c=document.getElementById('t3'); c.innerHTML='';
+  COLL.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+    d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="k'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="ks'+i+'"></span>';
+    c.appendChild(d); }); }
+function checkColl(){ collChecked=true; var correct=0;
+  COLL.forEach(function(g,i){ var inp=document.getElementById('k'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById('ks'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+  var s=document.getElementById('s3'); s.textContent=correct+' / '+COLL.length+' correct'+(correct===COLL.length?' 🎉':''); s.className='score '+(correct===COLL.length?'good':(correct>=3?'partial':'bad')); if(correct===COLL.length)markDone(3); }
+function resetColl(){ collChecked=false; document.getElementById('s3').textContent=''; renderColl(); }
+
+renderMCQ(); renderCH(); renderFix(); renderColl();
+</script>
+</body>
+</html>

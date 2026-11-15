@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 Advanced — Use of English</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EAB308; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#EAB308; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#EAB308; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#EAB308; background:rgba(234,179,8,0.08); }
+.opt.sel { border-color:#EAB308; background:rgba(234,179,8,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:4px; font-style:normal; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.5; }
+.coll input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:150px; margin:0 3px; }
+.coll input.ti:focus { outline:none; border-color:#EAB308; }
+.coll input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+.coll input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.coll .sol { font-size:13px; color:#34D399; display:none; } .coll .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EAB308; color:#170a12; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EAB308; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.stretch { margin-top:26px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Cambridge Track · C1 Advanced · Use of English</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">CAE · USE OF ENGLISH</div></div>
+    <div class="tag">The four CAE Use-of-English parts — harder than B2 First</div>
+    <div class="ex"><strong style="color:#FCD34D;">Part 1</strong> multiple-choice cloze · <strong style="color:#FCD34D;">Part 2</strong> open cloze · <strong style="color:#FCD34D;">Part 3</strong> word formation · <strong style="color:#FCD34D;">Part 4</strong> key word transformations (3–6 words)</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 At C1, collocations are subtler, word formation needs <strong style="color:#5EEAD4;">prefixes &amp; internal changes</strong>, and transformations combine two structures (often an inversion or a fixed phrase). Use <strong style="color:#5EEAD4;">3–6 words</strong> in Part 4.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Part 1 · MC cloze</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Part 2 · Open cloze</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Part 3 · Word formation</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Part 4 · Transformations</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Part 1 — Multiple-choice cloze 🎯</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Nuanced vocabulary &amp; collocation — only one word truly fits. <strong>A, B, C or D</strong>.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="checkMCQ()">Check</button><button class="btn btn-s" onclick="resetMCQ()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Part 2 — Open cloze 🔑</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">One word per gap — C1 fixed phrases, inversions and grammar words.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F1.check()">Check</button><button class="btn btn-s" onclick="F1.reset()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#34D399;">Part 3 — Word formation 🔨</div>
+    <div class="sub" style="border-color:#34D399; color:#86efc0;">Change the <strong>ROOT</strong> — watch for negative prefixes (un-, in-, im-) and internal changes.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F2.check()">Check</button><button class="btn btn-s" onclick="F2.reset()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Part 4 — Key word transformations ⭐</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Rewrite with the <strong>KEY word</strong>, using <strong>3–6 words</strong>. Often combines two structures.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F3.check()">Check</button><button class="btn btn-s" onclick="F3.reset()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">🎓 Exam note</div>
+    <p>CAE Reading &amp; Use of English is <strong style="color:#FCD34D;">90 minutes, 8 parts</strong>. These four Use-of-English parts reward the C1 core skills directly: Part 1 tests <strong>collocation &amp; nuance</strong>, Part 4 tests <strong>inversion, hedging and fixed phrases</strong> (the structures from this module). Name the grammar point before you build each transformation.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D'];
+
+var MCQ_RAW=[
+ {q:"The new findings ___ serious doubt on the old theory.", correct:"cast", opts:["cast","made","did","put"]},
+ {q:"Please ___ attention to the safety instructions.", correct:"pay", opts:["pay","give","make","take"]},
+ {q:"The whole deal fell ___ at the last minute.", correct:"through", opts:["through","down","off","out"]},
+ {q:"She ___ a small fortune on her new car.", correct:"spent", opts:["spent","paid","cost","made"]},
+ {q:"The chairman decided to ___ the matter to a vote.", correct:"put", opts:["put","bring","take","set"]}
+];
+var MCQ=MCQ_RAW.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+var mcqSel={}; var mcqChecked=false;
+function renderMCQ(){ var c=document.getElementById('t0'); c.innerHTML='';
+  MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+    d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+    var ob=document.createElement('div'); ob.className='opts';
+    m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(mcqSel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+      b.onclick=function(){ if(mcqChecked)return; mcqSel[qi]=oi; renderMCQ(); }; ob.appendChild(b); });
+    d.appendChild(ob); c.appendChild(d); }); }
+function checkMCQ(){ mcqChecked=true; var correct=0; var qs=document.querySelectorAll('#t0 .q');
+  MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(mcqSel[qi]===oi)o.classList.add('wrong'); }); if(mcqSel[qi]===m.ans)correct++; });
+  var s=document.getElementById('s0'); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=3?'partial':'bad')); if(correct===MCQ.length)markDone(0); }
+function resetMCQ(){ mcqChecked=false; mcqSel={}; document.getElementById('s0').textContent=''; renderMCQ(); }
+
+function makeFill(cid, data, sid, doneIdx){
+  var checked=false;
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    data.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+      d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="'+cid+'_'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="'+cid+'_s'+i+'"></span>';
+      c.appendChild(d); }); }
+  function check(){ checked=true; var correct=0;
+    data.forEach(function(g,i){ var inp=document.getElementById(cid+'_'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById(cid+'_s'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+data.length+' correct'+(correct===data.length?' 🎉':''); s.className='score '+(correct===data.length?'good':(correct>=Math.ceil(data.length/2)?'partial':'bad')); if(correct===data.length)markDone(doneIdx); }
+  function reset(){ checked=false; document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check, reset:reset};
+}
+
+var F1=makeFill('t1', [
+ {pre:"No sooner had we arrived ", post:" it began to pour.", accept:["than"], hint:"No sooner … ___"},
+ {pre:"It is high time we ", post:" something about this.", accept:["did"], hint:"it's high time + past"},
+ {pre:"", post:" for your help, I would have failed.", accept:["but"], hint:"___ for = without"},
+ {pre:"She is not used to ", post:" treated so rudely.", accept:["being"], hint:"used to + ___ (passive)"},
+ {pre:"", post:" matter how hard he tries, he fails.", accept:["no"], hint:"___ matter how"},
+ {pre:"Little did they ", post:" what awaited them.", accept:["know","realise","realize"], hint:"after 'Little did they'"},
+ {pre:"The more you read, ", post:" more you learn.", accept:["the"], hint:"the more … ___ more"},
+ {pre:"I'd rather you ", post:" not smoke in here.", accept:["did"], hint:"I'd rather you + past"}
+], 's1', 1);
+
+var F2=makeFill('t2', [
+ {pre:"His behaviour was completely ", post:".", accept:["unacceptable"], hint:"ACCEPT → negative adjective"},
+ {pre:"The two theories are totally ", post:".", accept:["incompatible"], hint:"COMPATIBLE → negative adjective"},
+ {pre:"She answered with great ", post:".", accept:["confidence"], hint:"CONFIDENT → noun"},
+ {pre:"They made several ", post:" to the original plan.", accept:["modifications"], hint:"MODIFY → plural noun"},
+ {pre:"The committee was ", post:" disappointed by the result.", accept:["deeply"], hint:"DEEP → adverb"},
+ {pre:"The panel welcomed the ", post:" of opinions.", accept:["diversity"], hint:"DIVERSE → noun"}
+], 's2', 2);
+
+var F3=makeFill('t3', [
+ {pre:"I regret not studying harder. → (WISH) I ", post:" harder.", accept:["wish i had studied"], hint:"regret → wish + past perfect"},
+ {pre:"People say he is very wealthy. → (SAID) He ", post:" very wealthy.", accept:["is said to be"], hint:"impersonal passive report"},
+ {pre:"As soon as we sat down, the show began. → (SOONER) No ", post:" than the show began.", accept:["sooner had we sat down","sooner had we sat"], hint:"inversion"},
+ {pre:"It's possible that she forgot. → (MAY) She ", post:" forgotten.", accept:["may have"], hint:"past speculation"},
+ {pre:"I only understood the joke later. → (NOT) Not ", post:" did I understand the joke.", accept:["until later"], hint:"Not until … inversion"},
+ {pre:"Despite the heavy rain, we went out. → (SPITE) In ", post:" the heavy rain, we went out.", accept:["spite of"], hint:"fixed phrase"}
+], 's3', 3);
+
+renderMCQ();
+</script>
+</body>
+</html>

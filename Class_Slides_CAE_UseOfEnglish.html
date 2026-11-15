@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>C1 Advanced Use of English — Class Slides</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:#140810; }
+.slide { width:1280px; height:720px; position:relative; overflow:hidden; margin:32px auto; display:block;
+  background:radial-gradient(130% 110% at 85% -10%, #3a1626 0%, #2a1020 48%, #170a12 100%);
+  color:#F2E8EC; box-shadow:0 24px 64px rgba(0,0,0,0.6); }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; }
+.kick::before { content:''; width:32px; height:2px; background:#EAB308; }
+.foot { position:absolute; left:60px; right:60px; bottom:30px; display:flex; justify-content:space-between; align-items:center;
+  font-family:'Space Grotesk'; font-size:10.5px; letter-spacing:2.5px; text-transform:uppercase; color:#7a5c68; border-top:1px solid rgba(255,255,255,0.08); padding-top:13px; }
+.foot b { color:#EAB308; }
+.idx { position:absolute; top:34px; right:58px; font-family:'Space Grotesk'; font-weight:700; font-size:14px; letter-spacing:3px; color:#4a2838; }
+.disp { font-family:'Space Grotesk'; font-weight:700; color:#FBF4F7; letter-spacing:-1px; }
+.pk { color:#FCD34D; } .go { color:#5EEAD4; } .pu { color:#F9A8C9; }
+.card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; }
+.serif { font-family:'Lora',serif; }
+@media print { body{background:white;} .slide{margin:0;page-break-after:always;box-shadow:none;} }
+</style>
+</head>
+<body>
+
+<!-- 01 TITLE -->
+<div class="slide">
+  <div style="position:absolute; left:60px; right:60px; top:54px; display:flex; align-items:center; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:18px;">
+    <div style="font-family:'Space Grotesk'; font-weight:700; font-size:22px; letter-spacing:3px; color:#fff;">THE&nbsp;<span class="pk">LAUREL</span></div>
+    <div style="margin-left:16px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:3px; color:#B89BA6; text-transform:uppercase;">English from Glory · Cambridge Track</div>
+    <div style="margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; color:#B89BA6;">C1 Advanced</div>
+  </div>
+  <div style="position:absolute; left:60px; top:205px; width:900px;">
+    <div style="font-family:'Space Grotesk'; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:18px;">Cambridge C1 Advanced (CAE) · Use of English</div>
+    <div class="serif" style="font-size:52px; font-weight:600; line-height:1.06; color:#FBF4F7;">Use of <span class="pk" style="font-style:italic;">English</span> ⭐</div>
+    <div class="serif" style="margin-top:22px; font-size:19px; color:#C9B3BC; font-style:italic; max-width:680px; line-height:1.5;">The same four parts as B2 First — but sharper. Subtler collocation, trickier word formation, and transformations that reward your C1 core grammar.</div>
+  </div>
+  <svg style="position:absolute; right:104px; top:250px;" width="200" height="175" viewBox="0 0 200 175">
+    <rect x="30" y="25" width="60" height="24" rx="5" fill="rgba(234,179,8,0.14)" stroke="#EAB308" stroke-width="2"/>
+    <rect x="30" y="58" width="60" height="24" rx="5" fill="rgba(94,234,212,0.14)" stroke="#5EEAD4" stroke-width="2"/>
+    <rect x="30" y="91" width="60" height="24" rx="5" fill="rgba(52,211,153,0.14)" stroke="#34D399" stroke-width="2"/>
+    <rect x="30" y="124" width="60" height="24" rx="5" fill="rgba(249,168,201,0.14)" stroke="#F9A8C9" stroke-width="2"/>
+    <text x="120" y="42" font-family="Space Grotesk" font-size="12" fill="#FCD34D">P1</text>
+    <text x="120" y="75" font-family="Space Grotesk" font-size="12" fill="#5EEAD4">P2</text>
+    <text x="120" y="108" font-family="Space Grotesk" font-size="12" fill="#34D399">P3</text>
+    <text x="120" y="141" font-family="Space Grotesk" font-size="12" fill="#F9A8C9">P4</text>
+  </svg>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>01</b> / 10</span></div>
+</div>
+
+<!-- 02 LEAD-IN -->
+<div class="slide">
+  <div class="idx">LEAD-IN</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">How C1 differs from B2</div></div>
+  <div style="position:absolute; left:60px; top:185px; right:60px;">
+    <div class="disp" style="font-size:34px; margin-bottom:26px;">Same shape, higher bar 🔼</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #EAB308;">
+      <div style="font-size:16px; color:#D6C3CB; line-height:2;">
+        • Collocations are <strong style="color:#FCD34D;">subtler</strong> — fixed phrases, not obvious words.<br>
+        • Word formation needs <strong style="color:#FCD34D;">prefixes &amp; internal changes</strong> (accept → unacceptable).<br>
+        • Transformations run to <strong style="color:#FCD34D;">3–6 words</strong> and <strong style="color:#FCD34D;">combine structures</strong> (e.g. inversion + a fixed phrase).
+      </div>
+    </div>
+    <div style="margin-top:20px; font-size:14px; color:#B89BA6;">⏱️ Reading &amp; Use of English: 8 parts, 90 minutes. Today we drill Parts 1–4.</div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>02</b> / 10</span></div>
+</div>
+
+<!-- 03 PART 1 -->
+<div class="slide">
+  <div class="idx">PART 1</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Multiple-choice cloze · nuance</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:175px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Part 1 — the one word that fits 🎯</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #EAB308;">
+      <div style="font-size:16px; color:#D6C3CB; line-height:1.8;">All four options may look possible — only one <strong style="color:#FCD34D;">collocates</strong>. Tests fixed phrases, phrasal verbs and shades of meaning.</div>
+      <div class="serif" style="font-size:18px; color:#EBDCE2; font-style:italic; margin-top:12px;">"The findings <span class="pk">cast</span> doubt on the theory." (not <span style="color:#F43F5E;">made / did / put</span> doubt)</div>
+    </div>
+    <div class="card" style="margin-top:16px; padding:14px 24px; border-left:3px solid #5EEAD4;"><div style="font-size:14px; color:#D6C3CB;">💡 Read the words <strong>around</strong> the gap — the collocation partner is the clue.</div></div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>03</b> / 10</span></div>
+</div>
+
+<!-- 04 PART 2 -->
+<div class="slide">
+  <div class="idx">PART 2</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open cloze · one word</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:175px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Part 2 — fixed phrases &amp; grammar 🔑</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #5EEAD4;">
+      <div style="font-size:16px; color:#D6C3CB; line-height:1.8;">One word per gap. At C1, expect <strong style="color:#5EEAD4;">fixed expressions and inversions</strong>, not just prepositions.</div>
+      <div class="serif" style="font-size:18px; color:#EBDCE2; font-style:italic; margin-top:12px;">"No sooner had we arrived <span class="go">than</span>…" · "<span class="go">But</span> for your help…" · "It's high time we <span class="go">did</span>…"</div>
+    </div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>04</b> / 10</span></div>
+</div>
+
+<!-- 05 PART 3 -->
+<div class="slide">
+  <div class="idx">PART 3</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Word formation · build the word</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:175px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Part 3 — prefixes &amp; internal changes 🔨</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #34D399;">
+      <div style="font-size:16px; color:#D6C3CB; line-height:1.8;">Change the ROOT — but at C1 you often need a <strong style="color:#34D399;">negative prefix</strong> or a <strong style="color:#34D399;">spelling change</strong>.</div>
+      <div class="serif" style="font-size:18px; color:#EBDCE2; font-style:italic; margin-top:12px;">ACCEPT → <span class="pu">unacceptable</span> · COMPATIBLE → <span class="pu">incompatible</span> · DIVERSE → <span class="pu">diversity</span></div>
+    </div>
+    <div class="card" style="margin-top:16px; padding:14px 24px; border-left:3px solid #FCD34D;"><div style="font-size:14px; color:#D6C3CB;">💡 Ask: part of speech? positive or negative? singular or plural? Then check the spelling.</div></div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>05</b> / 10</span></div>
+</div>
+
+<!-- 06 PART 4 -->
+<div class="slide">
+  <div class="idx">PART 4</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Key word transformations · the big one</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:160px;">
+    <div class="disp" style="font-size:32px; margin-bottom:18px;">Part 4 — 3–6 words, combined ⭐</div>
+    <div class="card" style="padding:22px 28px; border-left:3px solid #EAB308;">
+      <div style="font-size:15px; color:#B89BA6;">1st sentence:</div>
+      <div class="serif" style="font-size:17px; color:#EBDCE2; font-style:italic;">"As soon as we sat down, the show began."</div>
+      <div style="font-size:15px; color:#B89BA6; margin-top:10px;">KEY WORD: <strong style="color:#FCD34D;">SOONER</strong> →</div>
+      <div class="serif" style="font-size:18px; color:#FBF4F7; font-style:italic;">"No <span class="pk">sooner had we sat down</span> than the show began."</div>
+    </div>
+    <div class="card" style="margin-top:14px; padding:14px 24px; border-left:3px solid #5EEAD4;"><div style="font-size:14px; color:#D6C3CB;">🎯 This item needs an <strong>inversion</strong> — the exact structure from the C1 Emphasis lesson. Name the grammar, then build.</div></div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>06</b> / 10</span></div>
+</div>
+
+<!-- 07 TASK -->
+<div class="slide">
+  <div class="idx">PRACTICE</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Open the activity · 4 parts</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:180px;">
+    <div class="disp" style="font-size:34px; margin-bottom:20px;">Now you — all four parts 🧩</div>
+    <div class="card" style="padding:26px 32px; border-left:3px solid #EAB308;">
+      <div style="font-size:17px; color:#D6C3CB; line-height:1.9;">Work through tabs 1–4. In Part 4, several items hide a Core structure — an inversion, a passive report, a speculation. Spot it first, then write the 3–6 words.</div>
+    </div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>07</b> / 10</span></div>
+</div>
+
+<!-- 08 STRATEGY -->
+<div class="slide">
+  <div class="idx">STRATEGY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Score more marks</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:165px;">
+    <div class="disp" style="font-size:32px; margin-bottom:20px;">Habits that win marks 🏆</div>
+    <div style="display:flex; flex-direction:column; gap:12px; max-width:960px;">
+      <div class="card" style="padding:15px 24px; border-left:3px solid #EAB308;"><div style="font-size:16px; color:#D6C3CB;"><strong class="pk">Count words</strong> in Part 4 (3–6). Contractions count as two.</div></div>
+      <div class="card" style="padding:15px 24px; border-left:3px solid #5EEAD4;"><div style="font-size:16px; color:#D6C3CB;"><strong class="go">Learn collocations in chunks</strong> — "cast doubt", "pose a threat", "fall through".</div></div>
+      <div class="card" style="padding:15px 24px; border-left:3px solid #34D399;"><div style="font-size:16px; color:#D6C3CB;">In Part 3, keep a <strong class="pu">prefix list</strong> (un-, in-, im-, dis-, mis-) ready.</div></div>
+      <div class="card" style="padding:15px 24px; border-left:3px solid #EAB308;"><div style="font-size:16px; color:#D6C3CB;"><strong class="pk">Never leave blanks</strong> · check spelling — a misspelt answer scores zero.</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>08</b> / 10</span></div>
+</div>
+
+<!-- 09 WHERE CORE PAYS OFF -->
+<div class="slide">
+  <div class="idx">CONNECTION</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Your C1 core pays off here</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:170px;">
+    <div class="disp" style="font-size:30px; margin-bottom:20px;">The core skills, applied 🔗</div>
+    <div class="card" style="padding:24px 30px; border-left:3px solid #5EEAD4;">
+      <div style="font-size:16px; color:#D6C3CB; line-height:1.95;">
+        <strong style="color:#FCD34D;">Emphasis &amp; inversion</strong> → Part 4 transformations (No sooner…, Not until…).<br>
+        <strong style="color:#FCD34D;">Hedging &amp; modality</strong> → Part 4 speculation (She may have…), Part 1 nuance.<br>
+        <strong style="color:#FCD34D;">Collocation &amp; formality</strong> → Part 1 cloze, Part 3 word formation.
+      </div>
+    </div>
+    <div style="margin-top:18px; font-size:15px; color:#B89BA6;">🎯 The shared C1 core <em>is</em> the Use of English — drill the language, and the paper looks after itself.</div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>09</b> / 10</span></div>
+</div>
+
+<!-- 10 WRAP -->
+<div class="slide">
+  <div class="idx">TAKEAWAY</div>
+  <div style="position:absolute; left:60px; top:60px;"><div class="kick">Keep this!</div></div>
+  <div style="position:absolute; left:60px; right:60px; top:165px;">
+    <div class="disp" style="font-size:32px; margin-bottom:22px;">CAE Use of English — in a nutshell 🥜</div>
+    <div style="display:flex; flex-direction:column; gap:12px; max-width:940px;">
+      <div class="card" style="padding:16px 24px; border-left:3px solid #EAB308;"><div style="font-size:16px; color:#D6C3CB;"><strong class="pk">P1</strong> subtle collocation · <strong class="go">P2</strong> fixed phrase / one word · <strong class="pu">P3</strong> prefixes &amp; changes · <strong class="pk">P4</strong> transform in 3–6 words.</div></div>
+      <div class="card" style="padding:16px 24px; border-left:3px solid #5EEAD4;"><div style="font-size:16px; color:#D6C3CB;">Part 4 rewards your <strong class="go">C1 core grammar</strong> — name the structure, then build it.</div></div>
+      <div class="card" style="padding:16px 24px; border-left:3px solid #34D399;"><div style="font-size:16px; color:#D6C3CB;">Collocations in chunks · prefix list · count words · check spelling.</div></div>
+    </div>
+    <div style="margin-top:22px; font-size:15px; color:#B89BA6;">📌 Homework: 10 CAE key word transformations. Next Cambridge lesson: <strong class="pk">Writing — the proposal &amp; report</strong>.</div>
+  </div>
+  <div class="foot"><span>English from Glory · CAE · Use of English</span><span><b>10</b> / 10</span></div>
+</div>
+
+</body>
+</html>
