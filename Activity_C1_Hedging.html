@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 Hedging & Modality — Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EAB308; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#EAB308; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#EAB308; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#EAB308; background:rgba(234,179,8,0.08); }
+.opt.sel { border-color:#EAB308; background:rgba(234,179,8,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:4px; font-style:normal; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.5; }
+.coll input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:160px; margin:0 3px; }
+.coll input.ti:focus { outline:none; border-color:#EAB308; }
+.coll input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+.coll input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.coll .sol { font-size:13px; color:#34D399; display:none; } .coll .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EAB308; color:#170a12; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EAB308; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.stretch { margin-top:26px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">C1 Core Skills · English from Glory</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">C1 CORE · HEDGING & MODALITY</div></div>
+    <div class="tag">Sounding careful, academic and precise</div>
+    <div class="ex"><strong style="color:#FCD34D;">Hedging</strong> softens a claim so it sounds considered, not arrogant. <strong style="color:#FCD34D;">Modality</strong> lets you speculate and deduce — <em>must have, might have, can't have</em>.</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 At C1, <strong style="color:#5EEAD4;">overstating</strong> ("X is always true", "this proves…") costs marks. Cautious, qualified language is what distinguishes a C1 writer and speaker.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Choose the hedge</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Cautious phrases</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Soften the claim</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Past deduction</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Choose the right modal 🎯</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Pick the verb that matches the certainty — strong deduction, possibility or impossibility.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="M0.check()">Check</button><button class="btn btn-s" onclick="M0.reset()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Complete the cautious phrase 🔑</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">One word per gap. These are fixed hedging expressions C1 writers lean on.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F1.check()">Check</button><button class="btn btn-s" onclick="F1.reset()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#34D399;">Soften the bold claim 🪶</div>
+    <div class="sub" style="border-color:#34D399; color:#86efc0;">Rewrite the over-strong statement using the <strong>KEY word</strong> so it sounds cautious.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F2.check()">Check</button><button class="btn btn-s" onclick="F2.reset()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Past deduction — modal + have + p.p. 🕵️</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Deduce about the past: <em>must have</em> (sure), <em>might/may/could have</em> (possible), <em>can't have</em> (impossible).</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F3.check()">Check</button><button class="btn btn-s" onclick="F3.reset()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">🎓 Where it scores</div>
+    <p><strong style="color:#5EEAD4;">IELTS Writing Task 2</strong> &amp; <strong style="color:#5EEAD4;">CAE Essay</strong>: examiners reward qualified claims ("This <em>may</em> be partly because…", "It is <em>likely</em> that…") over absolute ones. <strong style="color:#5EEAD4;">Speaking</strong>: hedging buys thinking time and sounds natural. <strong style="color:#5EEAD4;">CAE Use of English Part 4</strong>: past-modal transformations appear almost every exam.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D','E','F'];
+
+function makeMCQ(cid, raw, sid, doneIdx){
+  var MCQ=raw.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+  var sel={}; var checked=false;
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+      d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+      var ob=document.createElement('div'); ob.className='opts';
+      m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(sel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+        b.onclick=function(){ if(checked)return; sel[qi]=oi; render(); }; ob.appendChild(b); });
+      d.appendChild(ob); c.appendChild(d); }); }
+  function check(){ checked=true; var correct=0; var qs=document.getElementById(cid).querySelectorAll('.q');
+    MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(sel[qi]===oi)o.classList.add('wrong'); }); if(sel[qi]===m.ans)correct++; });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=Math.ceil(MCQ.length/2)?'partial':'bad')); if(correct===MCQ.length)markDone(doneIdx); }
+  function reset(){ checked=false; sel={}; document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check,reset:reset};
+}
+
+function makeFill(cid, data, sid, doneIdx){
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    data.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+      d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="'+cid+'_'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="'+cid+'_s'+i+'"></span>';
+      c.appendChild(d); }); }
+  function check(){ var correct=0;
+    data.forEach(function(g,i){ var inp=document.getElementById(cid+'_'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById(cid+'_s'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+data.length+' correct'+(correct===data.length?' 🎉':''); s.className='score '+(correct===data.length?'good':(correct>=Math.ceil(data.length/2)?'partial':'bad')); if(correct===data.length)markDone(doneIdx); }
+  function reset(){ document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check, reset:reset};
+}
+
+var M0=makeMCQ('t0', [
+ {q:"I'm not certain, but this ___ be the correct answer.", correct:"might", opts:["might","must","will","can't"]},
+ {q:"He isn't picking up — he ___ be asleep by now.", correct:"must", opts:["must","can't","might not","won't"]},
+ {q:"She ___ be at home; I just saw her at the office.", correct:"can't", opts:["can't","must","should","might"]},
+ {q:"The data ___ that the treatment is effective.", correct:"suggests", opts:["suggests","proves","guarantees","confirms"]},
+ {q:"Given the forecast, it ___ to rain this afternoon.", correct:"is likely", opts:["is likely","will definitely","never going","must"]}
+], 's0', 0);
+
+var F1=makeFill('t1', [
+ {pre:"The evidence ", post:" to support this view.", accept:["seems","appears","tends"], hint:"seems / appears / tends"},
+ {pre:"This is, to some ", post:", a matter of opinion.", accept:["extent","degree"], hint:"to some ___"},
+ {pre:"It ", post:" well be the case that costs will rise.", accept:["may","might","could"], hint:"___ well be = quite possibly"},
+ {pre:"On the ", post:", the policy has been successful.", accept:["whole"], hint:"on the ___ = generally"},
+ {pre:"People ", post:" to work longer hours nowadays.", accept:["tend"], hint:"___ to = usually do"},
+ {pre:"It is ", post:" that remote work will continue to grow.", accept:["likely","possible","probable"], hint:"it is ___ that = probably"}
+], 's1', 1);
+
+var F2=makeFill('t2', [
+ {pre:"Social media is bad for teenagers. → (CAN) Social media ", post:" bad for teenagers.", accept:["can be"], hint:"can be = sometimes is"},
+ {pre:"This proves the theory. → (SUGGESTS) This ", post:" the theory is correct.", accept:["suggests"], hint:"cautious reporting verb"},
+ {pre:"Everyone agrees with this. → (TEND) People ", post:" to agree with this.", accept:["tend"], hint:"tend to = generally"},
+ {pre:"The plan will definitely fail. → (LIKELY) The plan ", post:" to fail.", accept:["is likely"], hint:"is likely to"},
+ {pre:"It is completely true. → (EXTENT) It is true to a certain ", post:".", accept:["extent","degree"], hint:"to a certain ___"},
+ {pre:"Prices always rise in December. → (TEND) Prices ", post:" to rise in December.", accept:["tend"], hint:"soften 'always'"}
+], 's2', 2);
+
+var F3=makeFill('t3', [
+ {pre:"The ground is soaked. It ", post:" rained overnight. (sure)", accept:["must have"], hint:"must have + p.p."},
+ {pre:"He failed the exam? He ", post:" revised enough. (impossible)", accept:["can't have","couldn't have"], hint:"can't / couldn't have"},
+ {pre:"I can't find my keys — I ", post:" left them at work. (possible)", accept:["may have","might have","could have"], hint:"may / might / could have"},
+ {pre:"The lights are off, so they ", post:" gone to bed. (sure)", accept:["must have"], hint:"must have + p.p."},
+ {pre:"She got full marks — she ", post:" studied hard. (sure)", accept:["must have"], hint:"must have + p.p."},
+ {pre:"He's an hour late; he ", post:" missed the bus. (possible)", accept:["may have","might have","could have"], hint:"may / might / could have"}
+], 's3', 3);
+</script>
+</body>
+</html>
