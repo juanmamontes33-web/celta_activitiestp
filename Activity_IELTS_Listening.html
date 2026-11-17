@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Listening — Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#5EEAD4; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#5EEAD4; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#5EEAD4; }
+.tab.active .tab-num { color:#5EEAD4; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.read { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:20px 26px; margin-bottom:22px; font-family:'Lora',serif; font-size:15.5px; line-height:1.9; color:#E3D3DA; }
+.read .rh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:10px; }
+.read .sp { color:#FCD34D; font-family:'Nunito'; font-weight:700; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#5EEAD4; background:rgba(94,234,212,0.08); }
+.opt.sel { border-color:#5EEAD4; background:rgba(94,234,212,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:4px; font-style:normal; }
+.coll .phrase { font-family:'Lora',serif; font-size:16.5px; color:#EBDCE2; line-height:1.5; }
+.coll input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:160px; margin:0 3px; }
+.coll input.ti:focus { outline:none; border-color:#5EEAD4; }
+.coll input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+.coll input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.coll .sol { font-size:13px; color:#34D399; display:none; } .coll .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#5EEAD4; color:#0e2a26; } .btn-p:hover { background:#8ff3e4; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#5EEAD4; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.stretch { margin-top:26px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+.tnote { font-size:12.5px; color:#8a6c78; font-style:italic; margin-bottom:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">IELTS Track · English from Glory</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">IELTS · LISTENING</div></div>
+    <div class="tag">Forms · maps · multiple choice — one listen only</div>
+    <div class="ex">IELTS Listening is <strong style="color:#5EEAD4;">4 sections, 40 questions, ~30 minutes</strong>. You hear each recording <strong style="color:#5EEAD4;">once</strong>, so prediction and fast reading are everything.</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 Spelling and numbers must be exact. Read ahead, predict the type of answer, and never stop to dwell on one you missed.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">The skills</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Form completion</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Map & directions</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Check you understood</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#5EEAD4;">The listening skills 🎯</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Know the rules before the recording starts.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="M0.check()">Check</button><button class="btn btn-s" onclick="M0.reset()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Form completion 📝</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Read the transcript of a Section 1 enquiry, then complete the booking form.</div>
+    <div class="tnote">In the real exam this is audio — here you read it, so you can study exactly where each answer comes from.</div>
+    <div class="read">
+      <div class="rh">🎧 Transcript — Greenfield Community Centre</div>
+      <span class="sp">Receptionist:</span> Good morning, Greenfield Community Centre.<br>
+      <span class="sp">Caller:</span> Hi, I'd like to book a place on the pottery course.<br>
+      <span class="sp">R:</span> Of course. Can I take your name?<br>
+      <span class="sp">C:</span> Yes, it's Daniela Ortiz — O-R-T-I-Z.<br>
+      <span class="sp">R:</span> And the course runs on Thursday evenings, 6.30 to 8.<br>
+      <span class="sp">C:</span> How much is it?<br>
+      <span class="sp">R:</span> It's forty-five pounds for the term, with a ten-pound deposit to secure your place.<br>
+      <span class="sp">C:</span> Do I need to bring anything?<br>
+      <span class="sp">R:</span> Just an apron — all the clay and tools are provided.
+    </div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F1.check()">Check</button><button class="btn btn-s" onclick="F1.reset()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#5EEAD4;">Map & directions language 🗺️</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Section 2 often asks you to label a map. Complete the preposition of place or direction.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F2.check()">Check</button><button class="btn btn-s" onclick="F2.reset()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#5EEAD4;">Check you understood 📚</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">Based on the transcript above — the answer paraphrases what was said.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="M3.check()">Check</button><button class="btn btn-s" onclick="M3.reset()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">🎓 Band booster</div>
+    <p><strong style="color:#5EEAD4;">Predict before you listen:</strong> use the question to guess whether the answer is a number, a name, a time or a noun. <strong style="color:#5EEAD4;">Watch word limits</strong> ("NO MORE THAN TWO WORDS AND/OR A NUMBER"). <strong style="color:#5EEAD4;">Spelling counts</strong> — a misspelt word scores zero, so drill names, dates and common nouns. If you miss one, let it go and stay with the recording.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D','E','F'];
+
+function makeMCQ(cid, raw, sid, doneIdx){
+  var MCQ=raw.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+  var sel={}; var checked=false;
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+      d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+      var ob=document.createElement('div'); ob.className='opts';
+      m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(sel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+        b.onclick=function(){ if(checked)return; sel[qi]=oi; render(); }; ob.appendChild(b); });
+      d.appendChild(ob); c.appendChild(d); }); }
+  function check(){ checked=true; var correct=0; var qs=document.getElementById(cid).querySelectorAll('.q');
+    MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(sel[qi]===oi)o.classList.add('wrong'); }); if(sel[qi]===m.ans)correct++; });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=Math.ceil(MCQ.length/2)?'partial':'bad')); if(correct===MCQ.length)markDone(doneIdx); }
+  function reset(){ checked=false; sel={}; document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check,reset:reset};
+}
+
+function makeFill(cid, data, sid, doneIdx){
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    data.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+      d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="'+cid+'_'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="'+cid+'_s'+i+'"></span>';
+      c.appendChild(d); }); }
+  function check(){ var correct=0;
+    data.forEach(function(g,i){ var inp=document.getElementById(cid+'_'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById(cid+'_s'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+data.length+' correct'+(correct===data.length?' 🎉':''); s.className='score '+(correct===data.length?'good':(correct>=Math.ceil(data.length/2)?'partial':'bad')); if(correct===data.length)markDone(doneIdx); }
+  function reset(){ document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check, reset:reset};
+}
+
+var M0=makeMCQ('t0', [
+ {q:"How many times do you hear each recording?", correct:"Once only", opts:["Once only","Twice","Three times","As often as you like"]},
+ {q:"Before each section you should…", correct:"read the questions and predict the answers", opts:["read the questions and predict the answers","close your eyes and relax","write your name","read the whole transcript"]},
+ {q:"If you spell an answer incorrectly, it is…", correct:"marked wrong", opts:["marked wrong","still accepted","worth half a mark","ignored"]},
+ {q:"In Section 2 you often have to…", correct:"label a map or diagram", opts:["label a map or diagram","write an essay","discuss with a partner","read aloud"]},
+ {q:"If you miss an answer, you should…", correct:"move on and stay with the recording", opts:["move on and stay with the recording","stop and search for it","ask for a replay","leave the section"]}
+], 's0', 0);
+
+var F1=makeFill('t1', [
+ {pre:"Surname: ", post:"", accept:["ortiz"], hint:"spelled out in the call"},
+ {pre:"Course: ", post:"", accept:["pottery"], hint:"what she's booking"},
+ {pre:"Day: ", post:" evenings", accept:["thursday"], hint:"which evening"},
+ {pre:"Term fee: £", post:"", accept:["45","forty-five","forty five"], hint:"the price given"},
+ {pre:"Deposit: £", post:"", accept:["10","ten"], hint:"to secure the place"},
+ {pre:"Bring: an ", post:"", accept:["apron"], hint:"the one item needed"}
+], 's1', 1);
+
+var F2=makeFill('t2', [
+ {pre:"The library is directly ", post:" the entrance (facing it).", accept:["opposite"], hint:"facing, across from"},
+ {pre:"Go straight ", post:" and turn left.", accept:["ahead","on"], hint:"keep going forward"},
+ {pre:"The café is ", post:" to the reception desk.", accept:["next"], hint:"___ to = beside"},
+ {pre:"Walk ", post:" the bridge to reach the hall.", accept:["across","over"], hint:"from one side to the other"},
+ {pre:"The car park is ", post:" the main building.", accept:["behind"], hint:"at the back of"},
+ {pre:"The lift is ", post:" the corner, on your right.", accept:["around","round"], hint:"___ the corner"}
+], 's2', 2);
+
+var M3=makeMCQ('t3', [
+ {q:"The pottery course takes place…", correct:"on Thursday evenings", opts:["on Thursday evenings","on Tuesday mornings","at the weekend","every day"]},
+ {q:"To secure a place, the caller must pay a…", correct:"£10 deposit", opts:["£10 deposit","£45 deposit","£8 fee","full year's fee"]},
+ {q:"The student needs to bring…", correct:"an apron", opts:["an apron","clay","her own tools","a notebook"]},
+ {q:"The clay and tools are…", correct:"provided by the centre", opts:["provided by the centre","bought separately","brought by students","not needed"]}
+], 's3', 3);
+</script>
+</body>
+</html>
