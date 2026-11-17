@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 Advanced Writing — The Essay — Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EAB308; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#EAB308; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#EAB308; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#EAB308; background:rgba(234,179,8,0.08); }
+.opt.sel { border-color:#EAB308; background:rgba(234,179,8,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:4px; font-style:normal; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.5; }
+.coll input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:160px; margin:0 3px; }
+.coll input.ti:focus { outline:none; border-color:#EAB308; }
+.coll input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+.coll input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.coll .sol { font-size:13px; color:#34D399; display:none; } .coll .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EAB308; color:#170a12; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EAB308; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.stretch { margin-top:26px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+.prompt { background:rgba(234,179,8,0.07); border:1px solid rgba(234,179,8,0.25); border-radius:12px; padding:16px 22px; margin-bottom:20px; font-size:14.5px; color:#E3D3DA; line-height:1.7; }
+.prompt b { color:#FCD34D; }
+details.model { margin-top:20px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:14px 22px; }
+details.model summary { cursor:pointer; font-family:'Space Grotesk'; font-weight:700; color:#FCD34D; font-size:14px; letter-spacing:1px; }
+details.model .mb { margin-top:14px; font-family:'Lora',serif; font-size:15px; color:#D6C3CB; line-height:1.8; }
+details.model .mb b { color:#5EEAD4; font-family:'Nunito'; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Cambridge Track · C1 Advanced · English from Glory</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">CAE · WRITING PART 1 · THE ESSAY</div></div>
+    <div class="tag">The compulsory essay — 220–260 words, 45 minutes to plan both tasks</div>
+    <div class="ex">In CAE Writing Part 1 you <strong style="color:#FCD34D;">must</strong> write a discursive essay. You are given a question and <strong style="color:#FCD34D;">two points</strong> to discuss, and you must develop both, add support, and give <strong style="color:#FCD34D;">your own opinion</strong>.</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 Marked on Content, Communicative Achievement, Organisation and Language. The register is <strong style="color:#5EEAD4;">formal to neutral</strong> — no contractions, no chat.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Essay craft</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Essay connectors</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Make it formal</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Build the frame</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Essay craft 🎯</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">What does the CAE essay actually require? Pick the strongest option.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="M0.check()">Check</button><button class="btn btn-s" onclick="M0.reset()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Complete the connector 🔑</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">One word per gap — the discursive signposts that organise a formal essay.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F1.check()">Check</button><button class="btn btn-s" onclick="F1.reset()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#34D399;">Make it formal 🎩</div>
+    <div class="sub" style="border-color:#34D399; color:#86efc0;">Rewrite in essay register using the <strong>KEY word</strong>.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F2.check()">Check</button><button class="btn btn-s" onclick="F2.reset()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Build the essay frame 🧱</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Complete each functional sentence of a CAE essay.</div>
+    <div class="prompt"><b>Exam task:</b> "Some people believe cities should reduce traffic by improving public transport, while others prefer building cycle lanes. Discuss both and say which is more effective."</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F3.check()">Check</button><button class="btn btn-s" onclick="F3.reset()">Reset</button><span class="score" id="s3"></span></div>
+    <details class="model">
+      <summary>📄 Model essay — reveal</summary>
+      <div class="mb">
+        <b>Introduction:</b> <em>Traffic congestion is a growing problem in many cities, and authorities are under increasing pressure to address it. This essay will consider two possible solutions — improving public transport and building cycle lanes — before concluding which is likely to be more effective.</em><br><br>
+        <b>Body 1:</b> <em>Firstly, investing in public transport can have a significant impact. When buses and trains are frequent and affordable, commuters are far more willing to leave their cars at home. As a result, the overall number of vehicles on the road falls.</em><br><br>
+        <b>Body 2:</b> <em>Building cycle lanes, on the other hand, encourages a healthier and cleaner alternative. However, its effect is somewhat limited by weather and distance, and it appeals mainly to those making shorter journeys.</em><br><br>
+        <b>Conclusion:</b> <em>In conclusion, while both measures are valuable, improving public transport is, in my view, the more effective solution, since it serves a far greater number of travellers.</em>
+      </div>
+    </details>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">🎓 Exam note</div>
+    <p>CAE essays reward <strong style="color:#5EEAD4;">range and control</strong>. Use the core-skills language directly: <em>hedging</em> ("this may be because…"), <em>emphasis</em> ("Not only does it… but…"), and strong <em>collocations</em>. Plan 5 minutes, write ~230 words, and leave a minute to check. Address <strong>both</strong> points — ignoring one caps your Content mark.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D','E','F'];
+
+function makeMCQ(cid, raw, sid, doneIdx){
+  var MCQ=raw.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+  var sel={}; var checked=false;
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+      d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+      var ob=document.createElement('div'); ob.className='opts';
+      m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(sel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+        b.onclick=function(){ if(checked)return; sel[qi]=oi; render(); }; ob.appendChild(b); });
+      d.appendChild(ob); c.appendChild(d); }); }
+  function check(){ checked=true; var correct=0; var qs=document.getElementById(cid).querySelectorAll('.q');
+    MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(sel[qi]===oi)o.classList.add('wrong'); }); if(sel[qi]===m.ans)correct++; });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=Math.ceil(MCQ.length/2)?'partial':'bad')); if(correct===MCQ.length)markDone(doneIdx); }
+  function reset(){ checked=false; sel={}; document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check,reset:reset};
+}
+
+function makeFill(cid, data, sid, doneIdx){
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    data.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+      d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="'+cid+'_'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="'+cid+'_s'+i+'"></span>';
+      c.appendChild(d); }); }
+  function check(){ var correct=0;
+    data.forEach(function(g,i){ var inp=document.getElementById(cid+'_'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById(cid+'_s'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+data.length+' correct'+(correct===data.length?' 🎉':''); s.className='score '+(correct===data.length?'good':(correct>=Math.ceil(data.length/2)?'partial':'bad')); if(correct===data.length)markDone(doneIdx); }
+  function reset(){ document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check, reset:reset};
+}
+
+var M0=makeMCQ('t0', [
+ {q:"In the CAE Part 1 essay you must…", correct:"discuss the two points given and give your own opinion", opts:["discuss the two points given and give your own opinion","choose any topic you like","write a personal story","describe a picture"]},
+ {q:"The recommended length is…", correct:"220–260 words", opts:["220–260 words","80–100 words","400–500 words","as long as possible"]},
+ {q:"The register of a CAE essay should be…", correct:"formal to neutral, no contractions", opts:["formal to neutral, no contractions","chatty and informal","full of slang","like a text message"]},
+ {q:"A strong conclusion…", correct:"states which point is more important and why", opts:["states which point is more important and why","introduces a brand-new argument","repeats the title word for word","lists statistics"]},
+ {q:"Which opener suits an essay best?", correct:"It is often claimed that…", opts:["It is often claimed that…","Hi there, let me tell you…","So basically…","I wanna talk about…"]}
+], 's0', 0);
+
+var F1=makeFill('t1', [
+ {pre:"", post:", it is worth considering the cost involved.", accept:["firstly","first"], hint:"open the first point"},
+ {pre:"This is largely ", post:" to a lack of investment.", accept:["due","owing"], hint:"___ to = because of"},
+ {pre:"Building cycle lanes, on the other ", post:", is cheaper.", accept:["hand"], hint:"on the other ___"},
+ {pre:"", post:", some would argue the opposite is true.", accept:["however","nevertheless"], hint:"contrast linker"},
+ {pre:"One ", post:" argument in favour is public health.", accept:["strong","compelling","key","convincing"], hint:"a ___ argument"},
+ {pre:"To ", post:" up, the first option is preferable.", accept:["sum"], hint:"to ___ up"}
+], 's1', 1);
+
+var F2=makeFill('t2', [
+ {pre:"Lots of people think… → (MANY) ", post:" people believe…", accept:["many"], hint:"lots of → ___"},
+ {pre:"It's a big problem. → (MAJOR) It is a ", post:" problem.", accept:["major"], hint:"big → ___"},
+ {pre:"I'll talk about… → (ADDRESS) This essay will ", post:"…", accept:["address"], hint:"talk about → ___"},
+ {pre:"Things will get better. → (IMPROVE) The situation will ", post:".", accept:["improve"], hint:"get better → ___"},
+ {pre:"Also, it's cheaper. → (FURTHERMORE) ", post:", it is cheaper.", accept:["furthermore","moreover"], hint:"also → ___"},
+ {pre:"In the end… → (ULTIMATELY) ", post:", …", accept:["ultimately"], hint:"in the end → ___"}
+], 's2', 2);
+
+var F3=makeFill('t3', [
+ {pre:"It is often ", post:" that cities must reduce traffic. (intro claim)", accept:["argued","claimed","said","believed"], hint:"passive opinion verb"},
+ {pre:"There are several ", post:" in favour of public transport. (reasons)", accept:["arguments","reasons","points"], hint:"several ___"},
+ {pre:"The first point to ", post:" is the cost. (introduce point 1)", accept:["consider","address","make","raise"], hint:"first point to ___"},
+ {pre:"A further ", post:" is that cycling improves health. (point 2)", accept:["point","argument","consideration","advantage"], hint:"a further ___"},
+ {pre:"Having ", post:" both options, I believe… (weighed up)", accept:["considered","weighed","examined"], hint:"having ___ both"},
+ {pre:"In ", post:", public transport is the better solution.", accept:["conclusion"], hint:"final paragraph opener"}
+], 's3', 3);
+</script>
+</body>
+</html>

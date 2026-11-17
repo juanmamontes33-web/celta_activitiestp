@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C1 Collocation & Register — Activity</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:radial-gradient(130% 80% at 85% -5%, #3a1626 0%, #2a1020 48%, #170a12 100%); min-height:100vh; padding:40px 18px 80px; color:#F2E8EC; }
+.wrap { max-width:880px; margin:0 auto; }
+.kick { display:flex; align-items:center; gap:14px; font-family:'Space Grotesk'; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#B89BA6; font-weight:700; margin-bottom:14px; }
+.kick::before { content:''; width:30px; height:2px; background:#EAB308; }
+.intro { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:28px 34px; margin-bottom:26px; }
+.intro .ih { display:flex; align-items:center; gap:14px; border-bottom:2px solid rgba(255,255,255,0.14); padding-bottom:14px; margin-bottom:18px; }
+.intro .ih .logo { font-family:'Space Grotesk'; font-weight:700; font-size:16px; letter-spacing:2px; color:#fff; }
+.intro .ih .logo span { color:#EAB308; }
+.intro .ih .rt { margin-left:auto; font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#B89BA6; }
+.intro .ex { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.7; margin:8px 0; }
+.intro .tag { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1px; color:#5EEAD4; text-transform:uppercase; }
+.tabs { display:flex; gap:0; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
+.tab { padding:13px 15px; cursor:pointer; display:flex; align-items:center; gap:9px; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.15s; }
+.tab:hover .tab-label { color:#EBDCE2; }
+.tab.active { border-bottom-color:#EAB308; }
+.tab.active .tab-num { color:#FCD34D; } .tab.active .tab-label { color:#FBF4F7; }
+.tab.done .tab-num { color:#34D399; }
+.tab-num { font-family:'Space Grotesk'; font-weight:700; font-size:16px; color:#7a5c68; }
+.tab-label { font-size:13px; font-weight:800; color:#B89BA6; }
+.panel { display:none; } .panel.active { display:block; }
+.panel .ptitle { font-family:'Space Grotesk'; font-weight:700; font-size:21px; margin-bottom:8px; }
+.panel .sub { font-size:14px; color:#C9B3BC; line-height:1.6; margin-bottom:22px; padding-left:16px; border-left:2px solid; }
+.q { padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.q .qt { font-size:16px; color:#EBDCE2; line-height:1.6; margin-bottom:10px; }
+.q .qt .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:8px; }
+.opts { display:flex; flex-direction:column; gap:7px; }
+.opt { text-align:left; background:rgba(255,255,255,0.03); border:1.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:11px 16px; font-size:14.5px; color:#EBDCE2; cursor:pointer; transition:all 0.12s; font-family:'Nunito'; display:flex; gap:10px; }
+.opt .lt { font-family:'Space Grotesk'; font-weight:700; color:#B89BA6; flex:0 0 auto; }
+.opt:hover { border-color:#EAB308; background:rgba(234,179,8,0.08); }
+.opt.sel { border-color:#EAB308; background:rgba(234,179,8,0.15); border-width:2px; }
+.opt.correct { border-color:#34D399 !important; background:rgba(52,211,153,0.14) !important; color:#86EFC0 !important; font-weight:700; }
+.opt.correct .lt { color:#34D399; }
+.opt.wrong { border-color:#F43F5E !important; background:rgba(244,63,94,0.12) !important; color:#FCA5A5 !important; }
+.coll { padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.coll .num { font-family:'Space Grotesk'; font-weight:700; color:#7a5c68; margin-right:4px; font-style:normal; }
+.coll .phrase { font-family:'Lora',serif; font-size:17px; color:#EBDCE2; line-height:1.5; }
+.coll input.ti { font-family:'Nunito'; font-weight:700; font-size:15px; background:rgba(255,255,255,0.05); border:1.5px solid #4a2838; border-radius:10px; padding:7px 14px; color:#fff; width:160px; margin:0 3px; }
+.coll input.ti:focus { outline:none; border-color:#EAB308; }
+.coll input.ti.ok { border-color:#34D399; background:rgba(52,211,153,0.12); color:#86EFC0; }
+.coll input.ti.no { border-color:#F43F5E; background:rgba(244,63,94,0.1); color:#FCA5A5; }
+.coll .hint { font-size:13px; color:#B89BA6; font-style:italic; }
+.coll .sol { font-size:13px; color:#34D399; display:none; } .coll .sol.show { display:inline; }
+.footer { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:24px; }
+.btn { font-family:'Nunito'; font-size:14px; font-weight:800; padding:11px 26px; border-radius:30px; cursor:pointer; border:none; }
+.btn-p { background:#EAB308; color:#170a12; } .btn-p:hover { background:#fcd34d; }
+.btn-s { background:transparent; color:#B89BA6; border:1px solid rgba(255,255,255,0.15); } .btn-s:hover { border-color:#EAB308; color:#fff; }
+.score { font-size:14px; color:#C9B3BC; }
+.score.good { color:#86EFC0; font-weight:800; } .score.partial { color:#FCD34D; font-weight:800; } .score.bad { color:#FCA5A5; font-weight:800; }
+.stretch { margin-top:26px; background:rgba(94,234,212,0.06); border:1px solid rgba(94,234,212,0.22); border-radius:14px; padding:18px 22px; }
+.stretch .sh { font-family:'Space Grotesk'; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#5EEAD4; font-weight:700; margin-bottom:8px; }
+.stretch p { font-size:14.5px; color:#D6C3CB; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">C1 Core Skills · English from Glory</div>
+  <div class="intro">
+    <div class="ih"><div class="logo">THE <span>LAUREL</span></div><div class="rt">C1 CORE · COLLOCATION & REGISTER</div></div>
+    <div class="tag">The words that belong together — and when to use which</div>
+    <div class="ex"><strong style="color:#FCD34D;">Collocation</strong> is which words naturally pair up (<em>make</em> a decision, <em>heavy</em> rain). <strong style="color:#FCD34D;">Register</strong> is matching your words to the situation — formal or informal.</div>
+    <div style="margin-top:14px; font-size:14px; color:#C9B3BC; line-height:1.7;">🎯 At C1, examiners reward <strong style="color:#5EEAD4;">natural word partnerships</strong> and the right level of formality. A grammatically perfect sentence can still sound "off" if the collocation is wrong.</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="0" onclick="showTab(0)"><div class="tab-num">01</div><div class="tab-label">Which word fits?</div></div>
+    <div class="tab" data-tab="1" onclick="showTab(1)"><div class="tab-num">02</div><div class="tab-label">Complete the pair</div></div>
+    <div class="tab" data-tab="2" onclick="showTab(2)"><div class="tab-num">03</div><div class="tab-label">Make it formal</div></div>
+    <div class="tab" data-tab="3" onclick="showTab(3)"><div class="tab-num">04</div><div class="tab-label">Strong collocations</div></div>
+  </div>
+
+  <div class="panel active" id="panel-0">
+    <div class="ptitle" style="color:#FCD34D;">Which word collocates? 🎯</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Only one option is the natural partner. The others are grammatically fine but sound wrong.</div>
+    <div id="t0"></div>
+    <div class="footer"><button class="btn btn-p" onclick="M0.check()">Check</button><button class="btn btn-s" onclick="M0.reset()">Reset</button><span class="score" id="s0"></span></div>
+  </div>
+  <div class="panel" id="panel-1">
+    <div class="ptitle" style="color:#5EEAD4;">Complete the collocation 🔑</div>
+    <div class="sub" style="border-color:#5EEAD4; color:#5eead4;">One word per gap — the verb, adjective or adverb that habitually goes with the noun.</div>
+    <div id="t1"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F1.check()">Check</button><button class="btn btn-s" onclick="F1.reset()">Reset</button><span class="score" id="s1"></span></div>
+  </div>
+  <div class="panel" id="panel-2">
+    <div class="ptitle" style="color:#34D399;">Make it formal 🎩</div>
+    <div class="sub" style="border-color:#34D399; color:#86efc0;">Replace the informal phrasal verb or word with a single formal verb using the <strong>KEY word</strong>.</div>
+    <div id="t2"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F2.check()">Check</button><button class="btn btn-s" onclick="F2.reset()">Reset</button><span class="score" id="s2"></span></div>
+  </div>
+  <div class="panel" id="panel-3">
+    <div class="ptitle" style="color:#FCD34D;">Strong collocations ⚡</div>
+    <div class="sub" style="border-color:#EAB308; color:#fcd34d;">Complete these high-value C1 chunks — the kind examiners love to see.</div>
+    <div id="t3"></div>
+    <div class="footer"><button class="btn btn-p" onclick="F3.check()">Check</button><button class="btn btn-s" onclick="F3.reset()">Reset</button><span class="score" id="s3"></span></div>
+  </div>
+
+  <div class="stretch">
+    <div class="sh">🎓 Where it scores</div>
+    <p>Collocation lifts <strong style="color:#5EEAD4;">Lexical Resource</strong> in both IELTS and CAE. In <strong style="color:#5EEAD4;">CAE Use of English Part 1</strong>, the answer is almost always a collocation. <strong style="color:#5EEAD4;">Register</strong> matters most in writing: an IELTS essay and a CAE essay are formal, so swap <em>get</em>, <em>a lot of</em> and phrasal verbs for <em>obtain</em>, <em>a significant number of</em> and single formal verbs.</p>
+  </div>
+</div>
+
+<script>
+function showTab(i){ document.querySelectorAll('.tab').forEach(function(t,k){t.classList.toggle('active',k===i);}); document.querySelectorAll('.panel').forEach(function(p,k){p.classList.toggle('active',k===i);}); }
+function markDone(i){ document.querySelectorAll('.tab')[i].classList.add('done'); }
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,!?]/g,''); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+var LT=['A','B','C','D','E','F'];
+
+function makeMCQ(cid, raw, sid, doneIdx){
+  var MCQ=raw.map(function(m){var o=shuffle(m.opts);return {q:m.q,opts:o,ans:o.indexOf(m.correct)};});
+  var sel={}; var checked=false;
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    MCQ.forEach(function(m,qi){ var d=document.createElement('div'); d.className='q';
+      d.innerHTML='<div class="qt"><span class="num">'+String(qi+1).padStart(2,'0')+'</span>'+m.q+'</div>';
+      var ob=document.createElement('div'); ob.className='opts';
+      m.opts.forEach(function(o,oi){ var b=document.createElement('button'); b.className='opt'+(sel[qi]===oi?' sel':''); b.innerHTML='<span class="lt">'+LT[oi]+'</span><span>'+o+'</span>';
+        b.onclick=function(){ if(checked)return; sel[qi]=oi; render(); }; ob.appendChild(b); });
+      d.appendChild(ob); c.appendChild(d); }); }
+  function check(){ checked=true; var correct=0; var qs=document.getElementById(cid).querySelectorAll('.q');
+    MCQ.forEach(function(m,qi){ var opts=qs[qi].querySelectorAll('.opt'); opts.forEach(function(o,oi){ if(oi===m.ans)o.classList.add('correct'); else if(sel[qi]===oi)o.classList.add('wrong'); }); if(sel[qi]===m.ans)correct++; });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+MCQ.length+' correct'+(correct===MCQ.length?' 🎉':''); s.className='score '+(correct===MCQ.length?'good':(correct>=Math.ceil(MCQ.length/2)?'partial':'bad')); if(correct===MCQ.length)markDone(doneIdx); }
+  function reset(){ checked=false; sel={}; document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check,reset:reset};
+}
+
+function makeFill(cid, data, sid, doneIdx){
+  function render(){ var c=document.getElementById(cid); c.innerHTML='';
+    data.forEach(function(g,i){ var d=document.createElement('div'); d.className='coll';
+      d.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span class="phrase">'+g.pre+'<input class="ti" id="'+cid+'_'+i+'" autocomplete="off">'+g.post+'</span><span class="hint">— '+g.hint+'</span><span class="sol" id="'+cid+'_s'+i+'"></span>';
+      c.appendChild(d); }); }
+  function check(){ var correct=0;
+    data.forEach(function(g,i){ var inp=document.getElementById(cid+'_'+i); var ok=g.accept.map(norm).indexOf(norm(inp.value))>=0; inp.classList.remove('ok','no'); inp.classList.add(ok?'ok':'no'); inp.disabled=true; var sol=document.getElementById(cid+'_s'+i); if(ok)correct++; else{ sol.textContent='→ '+g.accept[0]; sol.classList.add('show'); } });
+    var s=document.getElementById(sid); s.textContent=correct+' / '+data.length+' correct'+(correct===data.length?' 🎉':''); s.className='score '+(correct===data.length?'good':(correct>=Math.ceil(data.length/2)?'partial':'bad')); if(correct===data.length)markDone(doneIdx); }
+  function reset(){ document.getElementById(sid).textContent=''; render(); }
+  render();
+  return {check:check, reset:reset};
+}
+
+var M0=makeMCQ('t0', [
+ {q:"You need to ___ a decision before Friday.", correct:"make", opts:["make","do","take","give"]},
+ {q:"The scientists are going to ___ research into the virus.", correct:"conduct", opts:["conduct","make","play","give"]},
+ {q:"We got caught in ___ rain on the way home.", correct:"heavy", opts:["heavy","strong","big","hard"]},
+ {q:"She paid me a ___ compliment on my presentation.", correct:"genuine", opts:["genuine","hard","heavy","fast"]},
+ {q:"He has a very ___ sense of humour.", correct:"dry", opts:["dry","wet","hard","strong"]}
+], 's0', 0);
+
+var F1=makeFill('t1', [
+ {pre:"The new policy will ", post:" a major impact on small firms.", accept:["have"], hint:"___ an impact"},
+ {pre:"I'd like to ", post:" a suggestion, if I may.", accept:["make"], hint:"___ a suggestion"},
+ {pre:"They finally reached a ", post:" after hours of talks.", accept:["decision","compromise","conclusion","agreement"], hint:"reach a ___"},
+ {pre:"Smoking poses a serious ", post:" to health.", accept:["threat","risk","danger"], hint:"pose a ___ to"},
+ {pre:"He ", post:" a fortune on the stock market.", accept:["made"], hint:"___ a fortune"},
+ {pre:"The film received ", post:" acclaim from critics.", accept:["critical","widespread"], hint:"___ acclaim"}
+], 's1', 1);
+
+var F2=makeFill('t2', [
+ {pre:"The study looks at… → (EXAMINES) The study ", post:" the causes.", accept:["examines"], hint:"look at → formal verb"},
+ {pre:"They found out the truth. → (DISCOVERED) They ", post:" the truth.", accept:["discovered"], hint:"find out → formal"},
+ {pre:"Prices went up. → (ROSE) Prices ", post:" sharply.", accept:["rose"], hint:"go up → formal"},
+ {pre:"We need to get more data. → (OBTAIN) We need to ", post:" more data.", accept:["obtain"], hint:"get → formal"},
+ {pre:"The plan fell through. → (FAILED) The plan ", post:".", accept:["failed"], hint:"fall through → formal"},
+ {pre:"Lots of people came. → (NUMEROUS) ", post:" people attended.", accept:["numerous"], hint:"lots of → formal"}
+], 's2', 2);
+
+var F3=makeFill('t3', [
+ {pre:"This raises an important ", post:" about privacy.", accept:["issue","question","point"], hint:"raise an ___"},
+ {pre:"The company is under ", post:" to cut costs.", accept:["pressure"], hint:"under ___ to"},
+ {pre:"Her argument makes a lot of ", post:".", accept:["sense"], hint:"make ___"},
+ {pre:"We should take full ", post:" of the opportunity.", accept:["advantage"], hint:"take ___ of"},
+ {pre:"The decision had far-", post:" consequences.", accept:["reaching"], hint:"far-___ consequences"},
+ {pre:"They drew a clear ", post:" between the two ideas.", accept:["distinction"], hint:"draw a ___ between"}
+], 's3', 3);
+</script>
+</body>
+</html>
